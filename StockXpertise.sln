@@ -6,9 +6,6 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockXpertise", "StockXpertise\StockXpertise.csproj", "{9D27AD63-4729-4A25-A2AE-359A3A6CF687}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Éléments de solution", "Éléments de solution", "{CC56EB2C-112A-47CA-AD8C-F8CD06FF3334}"
-	ProjectSection(SolutionItems) = preProject
-		toto.txt = toto.txt
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
