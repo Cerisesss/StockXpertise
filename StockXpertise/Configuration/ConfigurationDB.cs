@@ -1,35 +1,66 @@
 ﻿using System;
 using System.Configuration;
-using System.Data.SqlClient;
-using System.Data;
+using System.IO;
 using MySql.Data.MySqlClient;
 
-class Program
+namespace StockXpertise
 {
-    static void Main()
+    public class ConfigurationDB
     {
-        string connectionString = ConfigurationManager.ConnectionStrings["MyDbConnection"].ConnectionString;
-
-        using (MySqlConnection connection = new MySqlConnection(connectionString))
+        public static void ConnectionDB()
         {
             try
             {
-                connection.Open();
+                string configFilePath = "./Configuration/config.xml";
+                string connectionString = GetConnectionString(configFilePath);
 
-                // Perform database operations here
+                if (string.IsNullOrEmpty(connectionString))
+                {
+                    Console.WriteLine("Connection string is null or empty.");
+                    return;
+                }
 
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+                    Console.WriteLine("Connection opened successfully.");
+
+                    string scriptFilePath = "./Configuration/construct.MySql";
+                    ExecuteSqlScript(connection, scriptFilePath);
+                }
             }
             catch (Exception ex)
             {
-                // Handle exceptions
-                Console.WriteLine(ex.Message);
+                Console.WriteLine($"Error in ConnectionDB: {ex.Message}");
             }
-            finally
+        }
+
+        private static string GetConnectionString(string configFilePath)
+        {
+            ExeConfigurationFileMap configFileMap = new ExeConfigurationFileMap();
+            configFileMap.ExeConfigFilename = configFilePath;
+
+            Configuration config = ConfigurationManager.OpenMappedExeConfiguration(configFileMap, ConfigurationUserLevel.None);
+
+            return config.ConnectionStrings.ConnectionStrings["MyDbConnection"]?.ConnectionString;
+        }
+
+        private static void ExecuteSqlScript(MySqlConnection connection, string scriptFilePath)
+        {
+            try
             {
-                if (connection.State == ConnectionState.Open)
+                string script = File.ReadAllText(scriptFilePath);
+
+                using (MySqlCommand command = new MySqlCommand(script, connection))
                 {
-                    connection.Close();
+                    command.ExecuteNonQuery();
                 }
+
+                Console.WriteLine("SQL script executed successfully.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error executing SQL script: {ex.Message}");
             }
         }
     }

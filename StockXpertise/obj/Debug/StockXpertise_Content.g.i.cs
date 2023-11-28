@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("configuration/config.xml")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute(".gitignore")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("configuration/construct.mysql")]
 
 
