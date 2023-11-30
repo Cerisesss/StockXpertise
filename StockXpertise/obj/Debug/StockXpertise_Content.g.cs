@@ -8,8 +8,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+<<<<<<< HEAD
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("components/logovnoir.png")]
+=======
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("configuration/config.xml")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute(".gitignore")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("configuration/construct.mysql")]
+>>>>>>> 90af5f6fa5e44088ae900414c76a1260c8a4fc36
 
 
