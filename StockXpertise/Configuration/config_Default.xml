@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<configuration>
-	<connectionStrings>
-		<add name="MyDbConnection"
-			 connectionString="Server=(ID d'habitude c'est localhost);Database=(nom base de donnee);User ID=(d'habitude c'est root);Password=(Le MDP de votre db);" />
-	</connectionStrings>
-</configuration>
