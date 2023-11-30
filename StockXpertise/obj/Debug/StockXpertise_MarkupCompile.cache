@@ -9,12 +9,21 @@ StockXpertise
 none
 false
 DEBUG;TRACE
+<<<<<<< HEAD
 C:\Users\paulb\Desktop\travail de fou malade\stockxpertise\StockXpertise\App.xaml
 2-217593209
 1-837663612
 61818421243
 35-960398533
 components\UserControl.xaml;MainWindow.xaml;
+=======
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\App.xaml
+1219584333
+3-825273912
+61887879065
+331581341997
+MainWindow.xaml;
+>>>>>>> 90af5f6fa5e44088ae900414c76a1260c8a4fc36
 
 False
 

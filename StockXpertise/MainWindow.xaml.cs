@@ -19,6 +19,7 @@ namespace StockXpertise
     {
         public MainWindow()
         {
+            ConfigurationDB.ConnectionDB();
             InitializeComponent();
             WindowState = WindowState.Maximized;
         }

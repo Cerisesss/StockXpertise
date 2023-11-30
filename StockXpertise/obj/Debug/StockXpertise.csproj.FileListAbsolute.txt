@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\paulb\Desktop\travail de fou malade\stockxpertise\StockXpertise\bin\Debug\StockXpertise.exe.config
 C:\Users\paulb\Desktop\travail de fou malade\stockxpertise\StockXpertise\bin\Debug\StockXpertise.exe
 C:\Users\paulb\Desktop\travail de fou malade\stockxpertise\StockXpertise\bin\Debug\StockXpertise.pdb
@@ -50,3 +51,55 @@ C:\Users\paulb\Desktop\travail de fou malade\stockxpertise\StockXpertise\bin\Deb
 C:\Users\paulb\Desktop\travail de fou malade\stockxpertise\StockXpertise\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\paulb\Desktop\travail de fou malade\stockxpertise\StockXpertise\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\paulb\Desktop\travail de fou malade\stockxpertise\StockXpertise\obj\Debug\StockXpertise.csproj.CopyComplete
+=======
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\obj\Debug\StockXpertise.csproj.AssemblyReference.cache
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\obj\Debug\MainWindow.g.cs
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\obj\Debug\App.g.cs
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\obj\Debug\StockXpertise_Content.g.cs
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\obj\Debug\StockXpertise_MarkupCompile.cache
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\obj\Debug\StockXpertise_MarkupCompile.lref
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\bin\Debug\StockXpertise.exe.config
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\bin\Debug\StockXpertise.exe
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\bin\Debug\StockXpertise.pdb
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\bin\Debug\Google.Protobuf.dll
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\bin\Debug\K4os.Compression.LZ4.dll
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\bin\Debug\K4os.Compression.LZ4.Streams.dll
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\bin\Debug\K4os.Hash.xxHash.dll
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\bin\Debug\MySql.Data.dll
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\bin\Debug\System.Buffers.dll
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\bin\Debug\System.Configuration.ConfigurationManager.dll
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\bin\Debug\System.IO.Pipelines.dll
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\bin\Debug\System.Memory.dll
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\bin\Debug\ZstdSharp.dll
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\bin\Debug\Google.Protobuf.pdb
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\bin\Debug\Google.Protobuf.xml
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\bin\Debug\K4os.Compression.LZ4.xml
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\bin\Debug\K4os.Compression.LZ4.Streams.xml
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\bin\Debug\K4os.Hash.xxHash.xml
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\bin\Debug\MySql.Data.xml
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\bin\Debug\System.Buffers.xml
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\bin\Debug\System.IO.Pipelines.xml
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\bin\Debug\System.Memory.xml
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\obj\Debug\MainWindow.baml
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\obj\Debug\StockXpertise.g.resources
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\obj\Debug\StockXpertise.Properties.Resources.resources
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\obj\Debug\StockXpertise.csproj.GenerateResource.cache
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\obj\Debug\StockXpertise.csproj.CoreCompileInputs.cache
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\obj\Debug\StockXpertise.csproj.CopyComplete
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\obj\Debug\StockXpertise.exe
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\obj\Debug\StockXpertise.pdb
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\bin\Debug\Configuration\config.xml
+C:\Users\luluc\Desktop\Cours\Projet StockXpertise\stockxpertise\StockXpertise\bin\Debug\Configuration\construct.MySql
+>>>>>>> 90af5f6fa5e44088ae900414c76a1260c8a4fc36

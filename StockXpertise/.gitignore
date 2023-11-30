@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /Configuration/config.xml
 ../.vs
 .vs
@@ -131,3 +132,8 @@ $RECYCLE.BIN/
 .DS_Store
 
 _NCrunch*
+=======
+﻿/Configuration/config.xml
+../.vs
+.vs
+>>>>>>> 90af5f6fa5e44088ae900414c76a1260c8a4fc36

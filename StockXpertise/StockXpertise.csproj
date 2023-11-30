@@ -172,11 +172,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Content Include="components\logoVnoir.png">
+=======
+    <Content Include="Configuration\config.xml">
+>>>>>>> 90af5f6fa5e44088ae900414c76a1260c8a4fc36
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.7.2 %28x86 et x64%29</ProductName>
@@ -187,6 +192,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+=======
+    <Content Include=".gitignore" />
+    <Content Include="Configuration\construct.MySql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+>>>>>>> 90af5f6fa5e44088ae900414c76a1260c8a4fc36
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
