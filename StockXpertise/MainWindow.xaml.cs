@@ -21,6 +21,10 @@ namespace StockXpertise
         {
             ConfigurationDB.ConnectionDB();
             InitializeComponent();
+            
+            string nomemployes = "SELECT nom FROM employes"; 
+            
+            ConfigurationDB.ExecuteQuery(nomemployes);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
