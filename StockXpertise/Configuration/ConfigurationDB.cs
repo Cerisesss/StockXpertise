@@ -27,6 +27,8 @@ namespace StockXpertise
 
                     string scriptFilePath = "./Configuration/construct.MySql";
                     ExecuteSqlScript(connection, scriptFilePath);
+                    string insertFilePath = "./Configuration/insert.MySql";
+                    ExecuteSqlScript(connection, insertFilePath);
                 }
             }
             catch (Exception ex)
