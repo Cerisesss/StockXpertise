@@ -22,5 +22,12 @@ namespace StockXpertise
             ConfigurationDB.ConnectionDB();
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            gridMainWidow.Visibility = Visibility.Collapsed;
+            mainWindow.Navigate(new Uri("/Connection/Connection.xaml", UriKind.RelativeOrAbsolute));
+
+        }
     }
 }
