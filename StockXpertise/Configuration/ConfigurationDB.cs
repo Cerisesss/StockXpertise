@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Configuration;
 using System.IO;
 using System.Windows;
@@ -56,10 +56,10 @@ namespace StockXpertise
             {
                 string configFilePath = "./Configuration/config.xml";
                 string connectionString = GetConnectionString(configFilePath);
+
                 MySqlConnection ConnectionDB = new MySqlConnection(connectionString);
                 ConnectionDB.Open();
 
-                // Requête pour vérifier les informations de connexion dans la base de données
                 MySqlCommand commande = new MySqlCommand(query, ConnectionDB);
                 return reader = commande.ExecuteReader();
             }

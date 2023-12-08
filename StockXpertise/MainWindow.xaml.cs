@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,7 +31,6 @@ namespace StockXpertise
         {
             gridMainWidow.Visibility = Visibility.Collapsed;
             mainWindow.Navigate(new Uri("/Connection/Connection.xaml", UriKind.RelativeOrAbsolute));
-
         }
     }
 }
