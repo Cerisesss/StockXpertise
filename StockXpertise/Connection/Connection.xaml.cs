@@ -1,8 +1,10 @@
-﻿using MySqlX.XDevAPI;
+﻿using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -32,56 +34,22 @@ namespace StockXpertise.Connection
             string mail = textboxMail.Text;
             string password = textboxPassword.Text;
 
-            // Requête pour vérifier les informations de connexion dans la base de données
-            string query = "SELECT * FROM employes WHERE mail = " + mail + " AND mot_de_passe = " + password + " ; ";
+            string query = "SELECT * FROM employes WHERE mail = '" + mail + "' AND mot_de_passe = '" + password + "' ; ";
 
-            ExecuteQuery(query);
-
-            //recuperer les resultats de la requete
-            //result = SqlDataReader.
-
-            if ($result_query->num_rows > 0) {
-                //msg : connexion reussie
-                // page d'accueil
-                
-            }
-            else 
-            {                 
-                //msg : connexion échouée
-                                              
-            }
-
-            /*string connectionString = "YourConnectionString"; // Remplacez ceci par votre chaîne de connexion
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            if (ConfigurationDB.ExecuteQuery(query).HasRows)
             {
-                string query = "SELECT * FROM YourTable"; // Remplacez YourTable par le nom de votre table
+                //msg : connexion reussie
+                MessageBox.Show("Connexion réussie.");
 
-                SqlCommand command = new SqlCommand(query, connection);
+                // renvoie vers la page d'accueil
+                gridConnection.Visibility = Visibility.Collapsed;
+                connection.Navigate(new Uri("/Accueil/Accueil.xaml", UriKind.RelativeOrAbsolute));
+            }
+            else
+            {
+                MessageBox.Show("Connexion échouée. Le mail ou le mot de passe est incorrect.");
 
-                connection.Open();
-
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
-                    if (reader.HasRows)
-                    {
-                        while (reader.Read())
-                        {
-                            // Récupérer les valeurs des colonnes pour chaque ligne
-                            int id = reader.GetInt32(0); // Supposons que la première colonne est un entier
-                            string name = reader.GetString(1); // Supposons que la deuxième colonne est une chaîne de caractères
-
-                            Console.WriteLine($"ID: {id}, Name: {name}");
-
-                            // Faites quelque chose avec les données récupérées
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine("Aucune ligne trouvée.");
-                    }
-                }
-            }*/
+            }
         }
 
         private void TextBox_TextChanged_Mail(object sender, TextChangedEventArgs e)
