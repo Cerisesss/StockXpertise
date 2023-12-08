@@ -1,6 +1,7 @@
-﻿using System;
+using System;
 using System.Configuration;
 using System.IO;
+using System.Windows;
 using MySql.Data.MySqlClient;
 
 namespace StockXpertise
@@ -37,7 +38,7 @@ namespace StockXpertise
             }
         }
 
-        private static string GetConnectionString(string configFilePath)
+        public static string GetConnectionString(string configFilePath)
         {
             ExeConfigurationFileMap configFileMap = new ExeConfigurationFileMap();
             configFileMap.ExeConfigFilename = configFilePath;
@@ -47,46 +48,25 @@ namespace StockXpertise
             return config.ConnectionStrings.ConnectionStrings["MyDbConnection"]?.ConnectionString;
         }
 
-        public static void ExecuteQuery(string query)
+        public static MySqlDataReader ExecuteQuery(string query)
         {
+            MySqlDataReader reader;
+
             try
             {
                 string configFilePath = "./Configuration/config.xml";
                 string connectionString = GetConnectionString(configFilePath);
 
-                if (string.IsNullOrEmpty(connectionString))
-                {
-                    Console.WriteLine("Connection string is null or empty.");
-                    return;
-                }
+                MySqlConnection ConnectionDB = new MySqlConnection(connectionString);
+                ConnectionDB.Open();
 
-                using (MySqlConnection connection = new MySqlConnection(connectionString))
-                {
-                    connection.Open();
-                    Console.WriteLine("Connection opened successfully.");
-
-                    using (MySqlCommand command = new MySqlCommand(query, connection))
-                    {
-                        using (MySqlDataReader reader = command.ExecuteReader())
-                        {
-                            // Afficher les résultats dans la console
-                            while (reader.Read())
-                            {
-                                for (int i = 0; i < reader.FieldCount; i++)
-                                {
-                                    Console.Write($"{reader.GetName(i)}: {reader.GetValue(i)}\t");
-                                }
-                                Console.WriteLine();
-                            }
-                        }
-                    }
-
-                    Console.WriteLine("SQL query executed successfully.");
-                }
+                MySqlCommand commande = new MySqlCommand(query, ConnectionDB);
+                return reader = commande.ExecuteReader();
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error in ExecuteQuery: {ex.Message}");
+                MessageBox.Show($"Error in ConnectionDB: {ex.Message}");
+                return reader = null;
             }
         }
 

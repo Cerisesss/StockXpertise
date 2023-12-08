@@ -5,8 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StockXpertise.components"
         mc:Ignorable="d"
+        d:DesignHeight="450" d:DesignWidth="800"
         Title="MainWindow" Height="700" Width="1024">
     <Grid>
-        <local:UserControl1/>
+        <Frame x:Name="mainWindow" NavigationUIVisibility="Hidden"/>
+
+        <Grid x:Name="gridMainWidow">
+        <!--<local:UserControl1/>-->
+
+        <Image Source="/Images/LogoWithShadow.png" HorizontalAlignment="Center" Height="306" Margin="0,31,0,0" VerticalAlignment="Top" Width="340"/>
+        <Button Content="Connexion" HorizontalAlignment="Center" Height="51" Margin="0,332,0,0" VerticalAlignment="Top" Width="116" Click="Button_Click"/>
+        </Grid>
     </Grid>
 </Window>
