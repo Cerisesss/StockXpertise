@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +25,12 @@ namespace StockXpertise
             string nomemployes = "SELECT nom FROM employes"; 
             
             ConfigurationDB.ExecuteQuery(nomemployes);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            gridMainWidow.Visibility = Visibility.Collapsed;
+            mainWindow.Navigate(new Uri("/Connection/Connection.xaml", UriKind.RelativeOrAbsolute));
         }
     }
 }
