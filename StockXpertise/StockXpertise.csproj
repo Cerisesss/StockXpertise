@@ -107,6 +107,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Statgénérate.xaml.cs">
+      <DependentUpon>Statgénérate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Statistique.xaml.cs">
+      <DependentUpon>Statistique.xaml</DependentUpon>
+    </Compile>
     <Page Include="components\UserControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -134,7 +140,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Profile\Profile.xaml">
+    <Page Include="Statgénérate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Statistique.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
