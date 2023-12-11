@@ -2,6 +2,6 @@
 <configuration>
 	<connectionStrings>
 		<add name="MyDbConnection"
-			 connectionString="Server=(ID d'habitude c'est localhost);Database=(nom base de donnee);User ID=(d'habitude c'est root);Password=(Le MDP de votre db);" />
+			 connectionString="Server=localhost;Database=stockxpertise;User ID=root;Password=polo;" />
 	</connectionStrings>
 </configuration>
