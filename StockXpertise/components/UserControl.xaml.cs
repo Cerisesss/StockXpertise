@@ -24,5 +24,17 @@ namespace StockXpertise.components
         {
             InitializeComponent();
         }
+
+        private void b4_Click(object sender, RoutedEventArgs e)
+        {
+            // Redirection vers la page statistique.xaml
+            Statistique statistique = new Statistique();
+            Window parentWindow = Window.GetWindow(this);
+
+            if (parentWindow != null)
+            {
+                parentWindow.Content = statistique;
+            }
+        }
     }
 }
