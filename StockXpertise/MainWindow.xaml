@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StockXpertise.components"
         mc:Ignorable="d"
-        d:DesignHeight="450" d:DesignWidth="800"
-        Title="MainWindow" Height="700" Width="1024">
+        Title="MainWindow" Height="700" Width="1024"
+        >
     <Grid>
         <Frame x:Name="mainWindow" NavigationUIVisibility="Hidden"/>
 
