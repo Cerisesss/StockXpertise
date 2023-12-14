@@ -3,10 +3,13 @@ DROP TABLE IF EXISTS `vente`;
 DROP TABLE IF EXISTS `mouvement`;
 DROP TABLE IF EXISTS `stockage`;
 DROP TABLE IF EXISTS `produit`;
-DROP TABLE IF EXISTS `article`;
+DROP TABLE IF EXISTS `articles`;
 DROP TABLE IF EXISTS `emplacement`;
 DROP TABLE IF EXISTS `employes`;
 DROP TABLE IF EXISTS `fournisseur`;
+DROP TABLE IF EXISTS `article`;
+DROP TABLE IF EXISTS `historique`;
+
 
 CREATE TABLE `fournisseur` (
   `id_fournisseur` int AUTO_INCREMENT,
@@ -47,7 +50,7 @@ CREATE TABLE `articles` (
   `description` text,
   `date_ajout` timestamp,
   `image_path` varchar(255),
-  PRIMARY KEY (`id_article`),
+  PRIMARY KEY (`id_articles`),
   FOREIGN KEY (`id_fournisseur`) REFERENCES `fournisseur` (`id_fournisseur`)
 );
 
