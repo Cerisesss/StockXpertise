@@ -20,7 +20,7 @@ namespace StockXpertise.Profile
     /// </summary>
     public partial class Profile : Page
     {
-        public Profile(int test)
+        public Profile()
         {
             InitializeComponent();
 
