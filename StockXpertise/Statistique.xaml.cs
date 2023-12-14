@@ -37,6 +37,11 @@ namespace StockXpertise
             comboBoxAffichage.Items.Add("Semaine");
             comboBoxAffichage.Items.Add("Mois");
             comboBoxAffichage.Items.Add("Année");
+
+            comboBoxAffichage_mode.SelectedItem = "Tableau";
+            comboBoxAffichage.SelectedItem = "Jour";
+
+
         }
 
         private void Statistique_Loaded(object sender, RoutedEventArgs e)
@@ -63,6 +68,8 @@ namespace StockXpertise
                 statistique.Top10Produits = checkboxTop10Produits.IsChecked ?? false;
                 statistique.StockNegatif = checkboxStockNegatif.IsChecked ?? false;
                 statistique.TotalVentes = checkboxTotalVentes.IsChecked ?? false;
+                statistique.affichemod = comboBoxAffichage_mode.SelectedItem.ToString();
+                statistique.date = comboBoxAffichage.SelectedItem.ToString();
 
                 parentWindow.Content = statistique;
                 statistique.GenerateTable();
@@ -80,6 +87,11 @@ namespace StockXpertise
         }
 
         private void ComboBox_SelectionChanged_trier_par(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void framePrincipal_Navigated(object sender, NavigationEventArgs e)
         {
 
         }

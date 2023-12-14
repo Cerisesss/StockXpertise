@@ -64,6 +64,6 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Frame x:Name="framePrincipal" NavigationUIVisibility="Hidden"/>
+        <Frame x:Name="framePrincipal" NavigationUIVisibility="Hidden" Navigated="framePrincipal_Navigated"/>
 	</Grid>
 </Page>

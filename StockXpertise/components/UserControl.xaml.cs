@@ -36,5 +36,16 @@ namespace StockXpertise.components
                 parentWindow.Content = statistique;
             }
         }
+
+        private void b1_Click(object sender, RoutedEventArgs e)
+        {
+            Stock.Stock stock = new Stock.Stock();
+            Window parentWindow = Window.GetWindow(this);
+
+            if (parentWindow != null)
+            {
+                parentWindow.Content = stock;
+            }
+        }
     }
 }
