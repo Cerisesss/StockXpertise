@@ -37,7 +37,7 @@ namespace StockXpertise
             comboBoxAffichage.Items.Add("Prix croissant");
             comboBoxAffichage.Items.Add("Prix décroissant");
 
-            string query = "SELECT image, nom, famille, code_barre, description, quantite, prix_ht, prix_ttc FROM articles";
+            string query = "SELECT articles.image, articles.nom, articles.famille, articles.code_barre, articles.description, articles.prix_ht, articles.prix_ttc, produit.quantite_stock FROM articles JOIN produit ON articles.id_articles = produit.id_articles";
             MySqlDataReader reader = ConfigurationDB.ExecuteQuery(query);
 
             // Assigne les données au DataGrid
@@ -63,7 +63,7 @@ namespace StockXpertise
                         query = "SELECT nom, code_barre FROM articles ORDER BY code_barre;";
                         break;
                     case "Quantité":
-                        query = "SELECT nom, quantite FROM articles ORDER BY quantite;";
+                        query = "SELECT articles.nom, produit.quantite_stock FROM articles JOIN produit ON articles.id_articles = produit.id_articles;"; 
                         break;
                     case "Prix croissant":
                         query = "SELECT nom, prix_ht, prix_ttc FROM articles ORDER BY prix_ht ASC;";
@@ -72,7 +72,7 @@ namespace StockXpertise
                         query = "SELECT nom, prix_ht, prix_ttc FROM articles ORDER BY prix_ht DESC;";
                         break;
                     default:
-                        query = "SELECT image, nom, famille, code_barre, description, quantite, prix_ht, prix_ttc FROM articles;";
+                        query = "SELECT articles.image, articles.nom, articles.famille, articles.code_barre, articles.description, articles.prix_ht, articles.prix_ttc, produit.quantite_stock FROM articles JOIN produit ON articles.id_articles = produit.id_articles";
                         break;
                 }
                 MySqlDataReader reader = ConfigurationDB.ExecuteQuery(query);
