@@ -39,7 +39,7 @@ namespace StockXpertise.components
 
         private void b1_Click(object sender, RoutedEventArgs e)
         {
-            Stock.Stock stock = new Stock.Stock();
+            Stock stock = new Stock();
             Window parentWindow = Window.GetWindow(this);
 
             if (parentWindow != null)
