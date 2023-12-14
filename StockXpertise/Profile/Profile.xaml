@@ -3,19 +3,20 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:StockXpertise.Profile"
+      xmlns:local="clr-namespace:StockXpertise.components"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Profile">
 
     <Grid Background="White">
-        <Border CornerRadius="150" BorderThickness="2" BorderBrush="#FFACACAC" Margin="417,45,185,194" >
+        <local:UserControl1/>
+        <Border CornerRadius="150" BorderThickness="2" BorderBrush="#FFACACAC" Margin="380,55,230,190" >
             <Border.Clip>
                 <EllipseGeometry Center="90,90" RadiusX="90" RadiusY="90"/>
             </Border.Clip>
             <Image x:Name="ProfilePicture" Source="./Images/Femme.png" Stretch="Uniform" Margin="-7,-8,7,8"/>
         </Border>
-        <Rectangle HorizontalAlignment="Left" Height="104" Margin="260,252,0,0" Stroke="#FFACACAC" VerticalAlignment="Top" Width="512">
+        <Rectangle HorizontalAlignment="Left" Height="104" Margin="214,253,0,0" Stroke="#FFACACAC" VerticalAlignment="Top" Width="512">
             <Rectangle.Fill>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black"/>
@@ -24,17 +25,17 @@
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <Label Content="Nom " HorizontalAlignment="Left" Height="31" Margin="286,260,0,0" VerticalAlignment="Top" Width="78"/>
-        <Label Content="Prénom" HorizontalAlignment="Left" Height="24" Margin="286,280,0,0" VerticalAlignment="Top" Width="78"/>
-        <Label Content="Mail" HorizontalAlignment="Left" Height="33" Margin="286,302,0,0" VerticalAlignment="Top" Width="78"/>
-        <Label Content="Status" HorizontalAlignment="Left" Height="26" Margin="286,322,0,0" VerticalAlignment="Top" Width="78"/>
-        <Rectangle HorizontalAlignment="Left" Height="104" Margin="368,252,0,0" Stroke="#FFACACAC" VerticalAlignment="Top" Width="362" Fill="White"/>
-        <Label x:Name="ProfileFirstName" Content="Nom " HorizontalAlignment="Left" Height="31" Margin="390,258,0,0" VerticalAlignment="Top" Width="324"/>
-        <Label x:Name="ProfileLastName" Content="Prénom" HorizontalAlignment="Left" Height="24" Margin="390,280,0,0" VerticalAlignment="Top" Width="324"/>
-        <Label x:Name="ProfileMail" Content="Mail" HorizontalAlignment="Left" Height="33" Margin="390,302,0,0" VerticalAlignment="Top" Width="324"/>
-        <Label x:Name="ProfileStatus" Content="Status" HorizontalAlignment="Left" Height="26" Margin="390,322,0,0" VerticalAlignment="Top" Width="324"/>
-        <Button Content="Modifier" HorizontalAlignment="Left" Height="30" Margin="392,378,0,0" VerticalAlignment="Top" Width="91"/>
-        <Button Content="Déconnexion" HorizontalAlignment="Left" Height="30" Margin="549,378,0,0" VerticalAlignment="Top" Width="91"/>
-        <Button Content="+" HorizontalAlignment="Left" Height="25" Margin="594,210,0,0" VerticalAlignment="Top" Width="26"/>
+        <Label Content="Nom " HorizontalAlignment="Left" Height="31" Margin="240,261,0,0" VerticalAlignment="Top" Width="78"/>
+        <Label Content="Prénom" HorizontalAlignment="Left" Height="24" Margin="240,281,0,0" VerticalAlignment="Top" Width="78"/>
+        <Label Content="Mail" HorizontalAlignment="Left" Height="33" Margin="240,303,0,0" VerticalAlignment="Top" Width="78"/>
+        <Label Content="Status" HorizontalAlignment="Left" Height="26" Margin="240,323,0,0" VerticalAlignment="Top" Width="78"/>
+        <Rectangle HorizontalAlignment="Left" Height="104" Margin="318,253,0,0" Stroke="#FFACACAC" VerticalAlignment="Top" Width="362" Fill="White"/>
+        <Label x:Name="ProfileFirstName" Content="Nom " HorizontalAlignment="Left" Height="31" Margin="344,259,0,0" VerticalAlignment="Top" Width="324"/>
+        <Label x:Name="ProfileLastName" Content="Prénom" HorizontalAlignment="Left" Height="24" Margin="344,281,0,0" VerticalAlignment="Top" Width="324"/>
+        <Label x:Name="ProfileMail" Content="Mail" HorizontalAlignment="Left" Height="33" Margin="344,303,0,0" VerticalAlignment="Top" Width="324"/>
+        <Label x:Name="ProfileStatus" Content="Status" HorizontalAlignment="Left" Height="26" Margin="344,323,0,0" VerticalAlignment="Top" Width="324"/>
+        <Button Content="Modifier" HorizontalAlignment="Left" Height="30" Margin="346,379,0,0" VerticalAlignment="Top" Width="92"/>
+        <Button Content="Déconnexion" HorizontalAlignment="Left" Height="30" Margin="504,379,0,0" VerticalAlignment="Top" Width="90"/>
+        <Button Content="+" HorizontalAlignment="Left" Height="25" Margin="549,208,0,0" VerticalAlignment="Top" Width="26"/>
     </Grid>
 </Page>
