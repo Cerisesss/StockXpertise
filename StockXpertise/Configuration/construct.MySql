@@ -35,8 +35,8 @@ CREATE TABLE `emplacement` (
   PRIMARY KEY (`id_emplacement`)
 );
 
-CREATE TABLE `article` (
-  `id_article` int AUTO_INCREMENT,
+CREATE TABLE `articles` (
+  `id_articles` int AUTO_INCREMENT,
   `id_fournisseur` int,
   `nom` varchar(255),
   `famille` varchar(255),
@@ -53,11 +53,11 @@ CREATE TABLE `article` (
 
 CREATE TABLE `produit` (
   `id_produit` int AUTO_INCREMENT,
-  `id_article` int,
+  `id_articles` int,
   `id_emplacement` int,
   `quantite_stock` int,
   PRIMARY KEY (`id_produit`),
-  FOREIGN KEY (`id_article`) REFERENCES `article` (`id_article`),
+  FOREIGN KEY (`id_articles`) REFERENCES `articles` (`id_articles`),
   FOREIGN KEY (`id_emplacement`) REFERENCES `emplacement` (`id_emplacement`)
 );
 
