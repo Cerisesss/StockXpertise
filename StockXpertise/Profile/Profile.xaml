@@ -10,6 +10,7 @@
 
     <Grid Background="White">
         <local:UserControl1/>
+        
         <Border CornerRadius="150" BorderThickness="2" BorderBrush="#FFACACAC" Margin="380,55,230,190" >
             <Border.Clip>
                 <EllipseGeometry Center="90,90" RadiusX="90" RadiusY="90"/>

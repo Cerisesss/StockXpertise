@@ -42,14 +42,14 @@ namespace StockXpertise.Connection
             {
                 while (reader.Read())
                 {
-                    int id_employee = Convert.ToInt32(reader["id_employe"]);
+                    int id_employee = Convert.ToInt32(reader["id_employes"]);
 
                     User user_connected = new User(id_employee, reader["nom"].ToString(), reader["prenom"].ToString(), password, mail, reader["role"].ToString());
                         
-                    Application.Current.Properties["id_employe"] = user_connected.GetIdEmployee();
+                    Application.Current.Properties["id_employes"] = user_connected.GetIdEmployee();
                     Application.Current.Properties["nom"] = reader["nom"].ToString();
                     Application.Current.Properties["prenom"] = user_connected.GetPrenom();
-                    Application.Current.Properties["password"] = reader["mot_de_passe"].ToString();
+                    Application.Current.Properties["mot_de_passe"] = reader["mot_de_passe"].ToString();
                     Application.Current.Properties["mail"] = reader["mail"].ToString();
                     Application.Current.Properties["role"] = reader["role"].ToString();
                 }
