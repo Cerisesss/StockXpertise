@@ -1,34 +1,71 @@
-﻿INSERT INTO employes (nom, prenom, mot_de_passe, mail, role) VALUES
-('Doe', 'John', 'password1', 'john.doe@example.com', 'Manager'),
-('Smith', 'Jane', 'password2', 'jane.smith@example.com', 'Cashier'),
-('Johnson', 'Bob', 'password3', 'bob.johnson@example.com', 'Salesperson'),
-('Williams', 'Alice', 'password4', 'alice.williams@example.com', 'Stock Clerk'),
-('Brown', 'David', 'password5', 'david.brown@example.com', 'Assistant');
+﻿-- Inserts for fournisseur table
+INSERT INTO `fournisseur` (`nom`, `prenom`, `numero`, `mail`, `adresse`) VALUES
+('Fournisseur1', 'Nom1', 123456789, 'fournisseur1@mail.com', 'Adresse1'),
+('Fournisseur2', 'Nom2', 987654321, 'fournisseur2@mail.com', 'Adresse2'),
+('Fournisseur3', 'Nom3', 456789123, 'fournisseur3@mail.com', 'Adresse3'),
+('Fournisseur4', 'Nom4', 321654987, 'fournisseur4@mail.com', 'Adresse4'),
+('Fournisseur5', 'Nom5', 789123456, 'fournisseur5@mail.com', 'Adresse5');
 
-INSERT INTO articles (nom, famille, prix_ht, prix_ttc, prix_achat, code_barre, description, quantite, date_ajout, image) VALUES
-('Laptop', 'Electronics', 800, 960, 600, '123456789', 'High-performance laptop', 50, NOW(), '/images/laptop.jpg'),
-('Coffee Maker', 'Appliances', 50, 60, 30, '987654321', 'Programmable coffee maker', 30, NOW(), '/images/coffee_maker.jpg'),
-('Smartphone', 'Electronics', 500, 600, 400, '456789012', 'Latest model smartphone', 100, NOW(), '/images/smartphone.jpg'),
-('Office Chair', 'Furniture', 100, 120, 80, '789012345', 'Ergonomic office chair', 20, NOW(), '/images/office_chair.jpg'),
-('Printer', 'Electronics', 150, 180, 100, '234567890', 'Wireless printer with scanner', 40, NOW(), '/images/printer.jpg');
+-- Inserts for employes table
+INSERT INTO `employes` (`nom`, `prenom`, `mot_de_passe`, `mail`, `role`) VALUES
+('admin', 'admin', '123', 'admin@mail.com', 'admin'),
+('Employe2', 'Prenom2', 'mdp2', 'employe2@mail.com', 'Role2'),
+('Employe3', 'Prenom3', 'mdp3', 'employe3@mail.com', 'Role3'),
+('Employe4', 'Prenom4', 'mdp4', 'employe4@mail.com', 'Role4'),
+('Employe5', 'Prenom5', 'mdp5', 'employe5@mail.com', 'Role5');
 
-INSERT INTO fournisseur (id_produit, nom, prenom, numero, mail, adresse) VALUES
-(1, 'Tech Supplier', 'Company', 123456789, 'info@techsupplier.com', '123 Main Street'),
-(2, 'Home Appliances', 'Distributor', 987654321, 'sales@homeappliances.com', '456 Oak Avenue'),
-(3, 'Gadget World', 'Importer', 456789012, 'contact@gadgetworld.com', '789 Pine Road'),
-(4, 'Furniture Distributors', 'Ltd.', 789012345, 'info@furnituredistributors.com', '101 Maple Lane'),
-(5, 'Printers R Us', 'Inc.', 234567890, 'sales@printersrus.com', '202 Cedar Boulevard');
+-- Inserts for emplacement table
+INSERT INTO `emplacement` (`code`, `capacite`) VALUES
+('C1', 100),
+('B2', 150),
+('B3', 200),
+('A4', 120),
+('A5', 180);
 
-INSERT INTO historique (id_article, prix_ht, prix_ttc, type, code_barre, quantite_avant, quantite_actuelle, total, date, id_employe) VALUES
-(1, 800, 960, 'Restock', '123456789', 30, 80, 76800, NOW(), 1),
-(2, 50, 60, 'Sale', '987654321', 30, 29, 1740, NOW(), 3),
-(3, 500, 600, 'Restock', '456789012', 80, 120, 72000, NOW(), 1),
-(4, 100, 120, 'Sale', '789012345', 20, 19, 2280, NOW(), 3),
-(5, 150, 180, 'Restock', '234567890', 40, 60, 10800, NOW(), 1);
+-- Inserts for article table
+INSERT INTO `article` (`id_fournisseur`, `nom`, `famille`, `prix_ht`, `prix_ttc`, `prix_vente`, `prix_achat`, `description`, `date_ajout`, `image_path`) VALUES
+(1, 'Article1', 'Famille1', 50, 60, 80, 40, 'Description1', '2023-01-01 10:00:00', 'path1'),
+(2, 'Article2', 'Famille2', 40, 48, 70, 35, 'Description2', '2023-02-02 11:30:00', 'path2'),
+(3, 'Article3', 'Famille2', 60, 72, 100, 50, 'Description3', '2023-03-03 14:15:00', 'path3'),
+(4, 'Article4', 'Famille2', 45, 54, 85, 42, 'Description4', '2023-04-04 16:45:00', 'path4'),
+(5, 'Article5', 'Famille5', 55, 66, 90, 45, 'Description5', '2023-05-05 09:20:00', 'path5');
 
-INSERT INTO ventes (prix_ventes, id_article, id_employe, date) VALUES
-(960, 1, 3, NOW()),
-(60, 2, 2, NOW()),
-(600, 3, 4, NOW()),
-(120, 4, 1, NOW()),
-(180, 5, 5, NOW());
+-- Inserts for produit table
+INSERT INTO `produit` (`id_article`, `id_emplacement`, `quantite_stock`) VALUES
+(1, 1, 50),
+(2, 2, 30),
+(3, 3, 75),
+(4, 4, 40),
+(5, 5, 60);
+
+-- Inserts for stockage table
+INSERT INTO `stockage` (`id_emplacement`, `id_produit`) VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 5);
+
+-- Inserts for mouvement table
+INSERT INTO `mouvement` (`id_employes`, `date`) VALUES
+(1, '2023-01-15 08:00:00'),
+(2, '2023-02-20 12:30:00'),
+(3, '2023-03-25 14:45:00'),
+(4, '2023-04-30 17:15:00'),
+(5, '2023-05-05 09:00:00');
+
+-- Inserts for vente table
+INSERT INTO `vente` (`prix_ventes`, `date_vente`, `id_produit`, `id_mouvement`) VALUES
+(100, '2023-01-16 10:30:00', 1, 1),
+(150, '2023-02-21 13:45:00', 2, 2),
+(200, '2023-03-26 16:00:00', 3, 3),
+(120, '2023-05-01 18:30:00', 4, 4),
+(180, '2023-06-06 10:00:00', 5, 5);
+
+-- Inserts for achat table
+INSERT INTO `achat` (`id_produit`, `id_mouvement`, `date_achat`) VALUES
+(1, 1, '2023-01-17 11:00:00'),
+(2, 2, '2023-02-22 14:15:00'),
+(3, 3, '2023-03-27 17:30:00'),
+(4, 4, '2023-05-02 19:45:00'),
+(5, 5, '2023-06-07 11:15:00');

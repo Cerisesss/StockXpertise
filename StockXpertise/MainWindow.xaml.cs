@@ -19,7 +19,7 @@ namespace StockXpertise
     {
         public MainWindow()
         {
-            ConfigurationDB.ConnectionDB();
+            ConfigurationDB.ActualisationDB();
             InitializeComponent();
             
             string nomemployes = "SELECT nom FROM employes"; 
