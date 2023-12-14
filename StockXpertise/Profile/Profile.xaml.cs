@@ -16,13 +16,19 @@ using System.Windows.Shapes;
 namespace StockXpertise.Profile
 {
     /// <summary>
-    /// Logique d'interaction pour Profil.xaml
+    /// Logique d'interaction pour Profile.xaml
     /// </summary>
-    public partial class Profil : Page
+    public partial class Profile : Page
     {
-        public Profil()
+        public Profile(int test)
         {
-            //InitializeComponent();
+            InitializeComponent();
+
+            // autre methode pour recuperer les donnees de l'utilisateur connecte : singleton, methode static
+            ProfileFirstName.Content = Application.Current.Properties["nom"];
+            ProfileLastName.Content = Application.Current.Properties["prenom"];
+            ProfileMail.Content = Application.Current.Properties["mail"];
+            ProfileStatus.Content = Application.Current.Properties["role"];
         }
     }
 }
