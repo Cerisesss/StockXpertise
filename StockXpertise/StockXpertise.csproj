@@ -107,11 +107,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="donnees_articles.cs" />
     <Compile Include="Statgénérate.xaml.cs">
       <DependentUpon>Statgénérate.xaml</DependentUpon>
     </Compile>
     <Compile Include="Statistique.xaml.cs">
       <DependentUpon>Statistique.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Stock\affichageStock.xaml.cs">
+      <DependentUpon>affichageStock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Stock\inventaire.xaml.cs">
+      <DependentUpon>inventaire.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Stock\Stock.xaml.cs">
+      <DependentUpon>Stock.xaml</DependentUpon>
     </Compile>
     <Page Include="components\UserControl.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -148,6 +158,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Stock\affichageStock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Stock\inventaire.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Stock\Stock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Profile\Profile.xaml.cs">
@@ -170,6 +192,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Content Include="Configuration\config.xml">
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Configuration\insert.MySql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -184,9 +210,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="components\logoVnoir.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Configuration\config.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Profile\Images\Femme.png">
