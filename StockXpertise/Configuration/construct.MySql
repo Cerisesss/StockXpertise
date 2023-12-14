@@ -1,65 +1,100 @@
-﻿DROP TABLE IF EXISTS `ventes`;
-DROP TABLE IF EXISTS `historique`;
-DROP TABLE IF EXISTS `fournisseur`;
-DROP TABLE IF EXISTS `articles`;
+﻿DROP TABLE IF EXISTS `achat`;
+DROP TABLE IF EXISTS `vente`;
+DROP TABLE IF EXISTS `mouvement`;
+DROP TABLE IF EXISTS `stockage`;
+DROP TABLE IF EXISTS `produit`;
+DROP TABLE IF EXISTS `article`;
+DROP TABLE IF EXISTS `emplacement`;
 DROP TABLE IF EXISTS `employes`;
-
-CREATE TABLE `employes` (
-  `id_employe` int PRIMARY KEY AUTO_INCREMENT,
-  `nom` varchar(255),
-  `prenom` varchar(255),
-  `mot_de_passe` varchar(255),
-  `mail` varchar(255),
-  `role` varchar(255)
-);
-
-CREATE TABLE `articles` (
-  `id_article` int PRIMARY KEY AUTO_INCREMENT,
-  `nom` varchar(255),
-  `famille` varchar(255),
-  `prix_ht` int,
-  `prix_ttc` int,
-  `prix_achat` int,
-  `code_barre` varchar(255),
-  `description` varchar(255),
-  `quantite` int,
-  `date_ajout` timestamp,
-  `image` varchar(255) -- Assuming 'image' is a file path or URL
-);
+DROP TABLE IF EXISTS `fournisseur`;
 
 CREATE TABLE `fournisseur` (
-  `id_fournisseur` int PRIMARY KEY AUTO_INCREMENT,
-  `id_produit` int,
+  `id_fournisseur` int AUTO_INCREMENT,
   `nom` varchar(255),
   `prenom` varchar(255),
   `numero` int,
   `mail` varchar(255),
   `adresse` varchar(255),
-  FOREIGN KEY (`id_produit`) REFERENCES `articles` (`id_article`)
+  PRIMARY KEY (`id_fournisseur`)
 );
 
-CREATE TABLE `historique` (
-  `id_historique` int PRIMARY KEY AUTO_INCREMENT,
-  `id_article` int,
+CREATE TABLE `employes` (
+  `id_employes` int AUTO_INCREMENT,
+  `nom` varchar(255),
+  `prenom` varchar(255),
+  `mot_de_passe` varchar(255),
+  `mail` varchar(255),
+  `role` varchar(255),
+  PRIMARY KEY (`id_employes`)
+);
+
+CREATE TABLE `emplacement` (
+  `id_emplacement` int AUTO_INCREMENT,
+  `code` varchar(255),
+  `capacite` int,
+  PRIMARY KEY (`id_emplacement`)
+);
+
+CREATE TABLE `article` (
+  `id_article` int AUTO_INCREMENT,
+  `id_fournisseur` int,
+  `nom` varchar(255),
+  `famille` varchar(255),
   `prix_ht` int,
   `prix_ttc` int,
-  `type` varchar(255),
-  `code_barre` varchar(255),
-  `quantite_avant` int,
-  `quantite_actuelle` int,
-  `total` int,
-  `date` timestamp,
-  `id_employe` int,
-  FOREIGN KEY (`id_article`) REFERENCES `articles` (`id_article`),
-  FOREIGN KEY (`id_employe`) REFERENCES `employes` (`id_employe`)
+  `prix_vente` int,
+  `prix_achat` int,
+  `description` text,
+  `date_ajout` timestamp,
+  `image_path` varchar(255),
+  PRIMARY KEY (`id_article`),
+  FOREIGN KEY (`id_fournisseur`) REFERENCES `fournisseur` (`id_fournisseur`)
 );
 
-CREATE TABLE `ventes` (
-  `id_ventes` int PRIMARY KEY AUTO_INCREMENT,
-  `prix_ventes` int,
+CREATE TABLE `produit` (
+  `id_produit` int AUTO_INCREMENT,
   `id_article` int,
-  `id_employe` int,
+  `id_emplacement` int,
+  `quantite_stock` int,
+  PRIMARY KEY (`id_produit`),
+  FOREIGN KEY (`id_article`) REFERENCES `article` (`id_article`),
+  FOREIGN KEY (`id_emplacement`) REFERENCES `emplacement` (`id_emplacement`)
+);
+
+CREATE TABLE `stockage` (
+  `id_stockage` int AUTO_INCREMENT,
+  `id_emplacement` int,
+  `id_produit` int,
+  PRIMARY KEY (`id_stockage`),
+  FOREIGN KEY (`id_produit`) REFERENCES `produit` (`id_produit`),
+  FOREIGN KEY (`id_emplacement`) REFERENCES `emplacement` (`id_emplacement`)
+);
+
+CREATE TABLE `mouvement` (
+  `id_mouvement` int AUTO_INCREMENT,
+  `id_employes` int,
   `date` timestamp,
-  FOREIGN KEY (`id_article`) REFERENCES `articles` (`id_article`),
-  FOREIGN KEY (`id_employe`) REFERENCES `employes` (`id_employe`)
+  PRIMARY KEY (`id_mouvement`),
+  FOREIGN KEY (`id_employes`) REFERENCES `employes` (`id_employes`)
+);
+
+CREATE TABLE `vente` (
+  `id_vente` int AUTO_INCREMENT,
+  `prix_ventes` int,
+  `date_vente` timestamp,
+  `id_produit` int,
+  `id_mouvement` int,
+  PRIMARY KEY (`id_vente`),
+  FOREIGN KEY (`id_produit`) REFERENCES `produit` (`id_produit`),
+  FOREIGN KEY (`id_mouvement`) REFERENCES `mouvement` (`id_mouvement`)
+);
+
+CREATE TABLE `achat` (
+  `id_achat` int AUTO_INCREMENT,
+  `id_produit` int,
+  `id_mouvement` int,
+  `date_achat` timestamp,
+  PRIMARY KEY (`id_achat`),
+  FOREIGN KEY (`id_produit`) REFERENCES `produit` (`id_produit`),
+  FOREIGN KEY (`id_mouvement`) REFERENCES `mouvement` (`id_mouvement`)
 );

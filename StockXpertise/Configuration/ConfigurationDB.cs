@@ -8,7 +8,7 @@ namespace StockXpertise
 {
     public class ConfigurationDB
     {
-        public static void ConnectionDB()
+        public static void ActualisationDB()
         {
             try
             {
