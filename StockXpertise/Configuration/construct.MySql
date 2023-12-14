@@ -49,7 +49,7 @@ CREATE TABLE `articles` (
   `prix_achat` int,
   `description` text,
   `date_ajout` timestamp,
-  `image_path` varchar(255),
+  `image` varchar(255),
   PRIMARY KEY (`id_articles`),
   FOREIGN KEY (`id_fournisseur`) REFERENCES `fournisseur` (`id_fournisseur`)
 );

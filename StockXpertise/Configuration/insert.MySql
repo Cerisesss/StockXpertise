@@ -23,7 +23,7 @@ INSERT INTO `emplacement` (`code`, `capacite`) VALUES
 ('A5', 180);
 
 -- Inserts for articles table
-INSERT INTO `articles` (`id_fournisseur`, `nom`, `famille`, `prix_ht`, `prix_ttc`, `prix_vente`, `prix_achat`, `description`, `date_ajout`, `image_path`) VALUES
+INSERT INTO `articles` (`id_fournisseur`, `nom`, `famille`, `prix_ht`, `prix_ttc`, `prix_vente`, `prix_achat`, `description`, `date_ajout`, `image`) VALUES
 (1, 'Article1', 'Famille1', 50, 60, 80, 40, 'Description1', '2023-01-01 10:00:00', 'path1'),
 (2, 'Article2', 'Famille2', 40, 48, 70, 35, 'Description2', '2023-02-02 11:30:00', 'path2'),
 (3, 'Article3', 'Famille2', 60, 72, 100, 50, 'Description3', '2023-03-03 14:15:00', 'path3'),
