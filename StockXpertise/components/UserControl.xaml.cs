@@ -47,5 +47,17 @@ namespace StockXpertise.components
                 parentWindow.Content = stock;
             }
         }
+
+        private void b5_Click_1(object sender, RoutedEventArgs e)
+        {
+            Historique historique = new Historique();
+            Window parentWindow = Window.GetWindow(this);
+
+            if (parentWindow != null)
+            {
+                parentWindow.Content = historique;
+            }
+
+        }
     }
 }

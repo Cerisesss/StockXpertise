@@ -59,7 +59,7 @@
 							<Separator Height="30" Style="{StaticResource CustomSeparator}"/>
 							<Button x:Name="b4" Content="Statistique" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="150" Background="{Binding Visibility.Hidden, ElementName=button}" BorderBrush="{Binding Visibility.Hidden, ElementName=button}" Click="b4_Click"/>
 							<Separator Height="30" Style="{StaticResource CustomSeparator}"/>
-							<Button x:Name="b5" Content="Historique" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="150" Background="{Binding Visibility.Hidden, ElementName=button}" BorderBrush="{Binding Visibility.Hidden, ElementName=button}"/>
+							<Button x:Name="b5" Content="Historique" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="150" Background="{Binding Visibility.Hidden, ElementName=button}" BorderBrush="{Binding Visibility.Hidden, ElementName=button}" Click="b5_Click_1"/>
 							<Separator Height="30" Style="{StaticResource CustomSeparator}"/>
 							<Button x:Name="b6" Content="Profil" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="150" Background="{Binding Visibility.Hidden, ElementName=button}" BorderBrush="{Binding Visibility.Hidden, ElementName=button}"/>
 							<Separator Height="30" Style="{StaticResource CustomSeparator}"/>
