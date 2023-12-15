@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StockXpertise.Connection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,6 +30,32 @@ namespace StockXpertise.Profile
             ProfileLastName.Content = Application.Current.Properties["prenom"];
             ProfileMail.Content = Application.Current.Properties["mail"];
             ProfileStatus.Content = Application.Current.Properties["role"];
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Etes-vous sûr de vouloir vous déconnecter ?", "Confirmation", MessageBoxButton.YesNo);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                Application.Current.Properties["id_employes"] = null; ;
+                Application.Current.Properties["nom"] = null;
+                Application.Current.Properties["prenom"] = null;
+                Application.Current.Properties["mot_de_passe"] = null;
+                Application.Current.Properties["mail"] = null;
+                Application.Current.Properties["role"] = null;
+
+                Connection.Connection connection = new Connection.Connection();
+                Window parentWindow = Window.GetWindow(this);
+
+                if (parentWindow != null)
+                {
+                    parentWindow.Content = connection;
+                }
+
+                gridProfile.Visibility = Visibility.Collapsed;
+                profile.Navigate(new Uri("/Connection/Connection.xaml", UriKind.RelativeOrAbsolute));
+            }
         }
     }
 }
