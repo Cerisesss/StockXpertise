@@ -1,0 +1,24 @@
+﻿<Page x:Class="StockXpertise.Caisse.Caisse"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:StockXpertise.components"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Caisse">
+
+    <Grid Background="White">
+        <local:UserControl1/>
+        <Rectangle Height="26" Margin="171,56,272,368" Stroke="#FFACACAC" Fill="#FFACACAC"/>
+        <Rectangle Height="26" Margin="171,118,349,306" Stroke="#FFACACAC" Fill="#FFACACAC"/>
+        <Rectangle Height="26" Margin="171,87,382,337" Stroke="#FFACACAC" Width="247" Fill="#FFACACAC"/>
+        <Rectangle Margin="547,56,20,66" Stroke="#FFACACAC" Fill="White"/>
+        <Rectangle Height="26" Margin="423,87,272,337" Stroke="#FFACACAC" Fill="#FFACACAC"/>
+        <Rectangle Height="26" Margin="456,118,272,306" Stroke="#FFACACAC" Fill="#FFACACAC"/>
+        <Rectangle Margin="171,149,272,81" Stroke="#FFACACAC" Fill="#FFACACAC"/>
+        <Rectangle Height="26" Margin="171,383,272,41" Stroke="#FFACACAC" Fill="#FFACACAC"/>
+
+
+    </Grid>
+</Page>
