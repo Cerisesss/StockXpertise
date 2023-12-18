@@ -32,7 +32,7 @@ namespace StockXpertise.Connection
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string mail = textboxMail.Text;
-            string password = textboxPassword.Text;
+            string password = passwordboxPassword.Password;
 
             string query = "SELECT * FROM employes WHERE mail = '" + mail + "' AND mot_de_passe = '" + password + "' ; ";
 
@@ -44,7 +44,7 @@ namespace StockXpertise.Connection
                 {
                     int id_employee = Convert.ToInt32(reader["id_employes"]);
 
-                    User user_connected = new User(id_employee, reader["nom"].ToString(), reader["prenom"].ToString(), password, mail, reader["role"].ToString());
+                    UserConnected user_connected = new UserConnected(id_employee, reader["nom"].ToString(), reader["prenom"].ToString(), password, mail, reader["role"].ToString());
                         
                     Application.Current.Properties["id_employes"] = user_connected.GetIdEmployee();
                     Application.Current.Properties["nom"] = reader["nom"].ToString();
