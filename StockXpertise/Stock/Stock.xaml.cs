@@ -25,6 +25,8 @@ namespace StockXpertise
     /// </summary>
     public partial class Stock : Page
     {
+        List<Article> articlesDataList = new List<Article>();
+
         public Stock()
         {
             InitializeComponent();
@@ -37,11 +39,34 @@ namespace StockXpertise
             comboBoxAffichage.Items.Add("Prix croissant");
             comboBoxAffichage.Items.Add("Prix décroissant");
 
-            string query = "SELECT articles.image, articles.nom, articles.famille, articles.code_barre, articles.description, articles.prix_ht, articles.prix_ttc, produit.quantite_stock FROM articles JOIN produit ON articles.id_articles = produit.id_articles";
+            string query = "SELECT articles.id_articles, articles.image, articles.nom, articles.famille, articles.code_barre, articles.description, articles.prix_ht, articles.prix_ttc, produit.quantite_stock FROM articles JOIN produit ON articles.id_articles = produit.id_articles";
             MySqlDataReader reader = ConfigurationDB.ExecuteQuery(query);
 
+            remplissage_donnees(reader);
+        }
+
+        private void remplissage_donnees(MySqlDataReader reader)
+        {
+            // Remplissez la liste d'Article
+            while (reader.Read())
+            {
+                var articleData = new Article
+                {
+                    Id = Convert.ToInt32(reader["id_articles"]),
+                    Nom = reader["nom"].ToString(),
+                    Famille = reader["famille"].ToString(),
+                    CodeBarre = reader["code_barre"].ToString(),
+                    Description = reader["description"].ToString(),
+                    Quantite = Convert.ToInt32(reader["quantite_stock"]),
+                    PrixHT = Convert.ToInt32(reader["prix_ht"]),
+                    PrixTTC = Convert.ToInt32(reader["prix_ttc"])
+                };
+
+                articlesDataList.Add(articleData);
+            }
+
             // Assigne les données au DataGrid
-            MyDataGrid.ItemsSource = reader; 
+            MyDataGrid.ItemsSource = articlesDataList;
         }
 
         private void ComboBox_SelectionChanged_affichage(object sender, SelectionChangedEventArgs e)
@@ -54,31 +79,31 @@ namespace StockXpertise
                 switch (selectedValue)
                 {
                     case "Nom":
-                        query = "SELECT nom FROM articles ORDER BY nom;";
+                        query = "SELECT id_articles, nom FROM articles ORDER BY nom;";
                         break;
                     case "Famille":
-                        query = "SELECT nom, famille FROM articles ORDER BY famille;";
+                        query = "SELECT id_articles, nom, famille FROM articles ORDER BY famille;";
                         break;
                     case "Code barre":
-                        query = "SELECT nom, code_barre FROM articles ORDER BY code_barre;";
+                        query = "SELECT id_articles, nom, code_barre FROM articles ORDER BY code_barre;";
                         break;
                     case "Quantité":
-                        query = "SELECT articles.nom, produit.quantite_stock FROM articles JOIN produit ON articles.id_articles = produit.id_articles;"; 
+                        query = "SELECT id_articles, articles.nom, produit.quantite_stock FROM articles JOIN produit ON articles.id_articles = produit.id_articles;"; 
                         break;
                     case "Prix croissant":
-                        query = "SELECT nom, prix_ht, prix_ttc FROM articles ORDER BY prix_ht ASC;";
+                        query = "SELECT id_articles, nom, prix_ht, prix_ttc FROM articles ORDER BY prix_ht ASC;";
                         break;
                     case "Prix décroissant":
-                        query = "SELECT nom, prix_ht, prix_ttc FROM articles ORDER BY prix_ht DESC;";
+                        query = "SELECT id_articles nom, prix_ht, prix_ttc FROM articles ORDER BY prix_ht DESC;";
                         break;
                     default:
-                        query = "SELECT articles.image, articles.nom, articles.famille, articles.code_barre, articles.description, articles.prix_ht, articles.prix_ttc, produit.quantite_stock FROM articles JOIN produit ON articles.id_articles = produit.id_articles";
+                        query = "SELECT id_articles, articles.image, articles.nom, articles.famille, articles.code_barre, articles.description, articles.prix_ht, articles.prix_ttc, produit.quantite_stock FROM articles JOIN produit ON articles.id_articles = produit.id_articles";
                         break;
                 }
                 MySqlDataReader reader = ConfigurationDB.ExecuteQuery(query);
 
                 // Assigne les données au DataGrid
-                MyDataGrid.ItemsSource = reader;
+                remplissage_donnees(reader);
             }
         }
 
@@ -88,11 +113,11 @@ namespace StockXpertise
             {
                 gridStock.Visibility = Visibility.Collapsed;
 
-                // Charger les données de l'article sélectionné
-                var selectedData = MyDataGrid.SelectedItem;
-
-                // Charger la page dans le Frame
-                StockFrame.Navigate(new affichageStock(selectedData));
+                if (MyDataGrid.SelectedItem is Article selectedData)
+                {
+                    // Charger la page dans le Frame
+                    StockFrame.Navigate(new affichageStock(selectedData));
+                }
             }
         }
 
