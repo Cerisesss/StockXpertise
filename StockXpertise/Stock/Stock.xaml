@@ -8,11 +8,11 @@
       d:DesignHeight="700" d:DesignWidth="1024"
       Title="Stock">
 
-    <Grid Height="500" Width="1000">
+    <Grid>
         <local:UserControl1/>
         <Frame x:Name="StockFrame" NavigationUIVisibility="Hidden"/>
         <Grid x:Name="gridStock" Margin="104,39,-104,-39">
-            <Button x:Name="button" Content="PDF" HorizontalAlignment="Left" Height="36" Margin="757,28,0,0" VerticalAlignment="Top" Width="110" RenderTransformOrigin="0.743,1.834" BorderBrush="{Binding Visibility.Hidden, ElementName=button}" Click="generation_pdf">
+            <Button x:Name="button" Content="PDF" HorizontalAlignment="Left" Height="23" Margin="795,28,0,0" VerticalAlignment="Top" Width="72" RenderTransformOrigin="0.743,1.834" BorderBrush="{Binding Visibility.Hidden, ElementName=button}" Click="generation_pdf">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="#FFAEAEAE" Offset="0"/>
@@ -20,7 +20,7 @@
                     </LinearGradientBrush>
                 </Button.Background>
             </Button>
-            <Rectangle HorizontalAlignment="Left" Height="36" Margin="80,28,0,0" Stroke="Transparent" VerticalAlignment="Top" Width="167" RenderTransformOrigin="0.527,0.493">
+            <Rectangle HorizontalAlignment="Left" Height="23" Margin="80,28,0,0" Stroke="Transparent" VerticalAlignment="Top" Width="167" RenderTransformOrigin="0.527,0.493">
                 <Rectangle.Fill>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="#FFACACAC"/>
@@ -29,9 +29,9 @@
                     </LinearGradientBrush>
                 </Rectangle.Fill>
             </Rectangle>
-            <ComboBox x:Name="comboBoxAffichage" HorizontalAlignment="Left" Height="36" Margin="247,28,0,0" VerticalAlignment="Top" Width="253" SelectionChanged="ComboBox_SelectionChanged_affichage"/>
-            <Label Content="Affichage" HorizontalAlignment="Left" Height="36" Margin="102,33,0,0" VerticalAlignment="Top" Width="122"/>
-            <DataGrid x:Name="MyDataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Height="353" Width="787" Margin="80,92,0,0"
+            <ComboBox x:Name="comboBoxAffichage" HorizontalAlignment="Left" Height="23" Margin="247,28,0,0" VerticalAlignment="Top" Width="253" SelectionChanged="ComboBox_SelectionChanged_affichage"/>
+            <Label Content="Affichage" HorizontalAlignment="Left" Height="36" Margin="102,26,0,0" VerticalAlignment="Top" Width="122"/>
+            <DataGrid x:Name="MyDataGrid" HorizontalAlignment="Left" VerticalAlignment="Center" Height="352" Width="787" Margin="80,0,0,0"
           AutoGenerateColumns="True"
           AlternatingRowBackground="#F0F0F0"
           GridLinesVisibility="None"
@@ -39,7 +39,7 @@
           CanUserResizeRows="False"
           SelectionMode="Single"
           RowHeight="40" SelectionChanged="MyDataGrid_SelectionChanged">
-                
+
                 <!-- Style des colonnes -->
                 <DataGrid.Resources>
                     <Style TargetType="DataGridCell">
