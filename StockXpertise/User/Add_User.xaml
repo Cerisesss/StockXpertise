@@ -1,0 +1,36 @@
+﻿<Page x:Class="StockXpertise.User.Add_User"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:StockXpertise.components"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Add_User">
+
+    <Grid x:Name="griAddUser" Background="White">
+        <local:UserControl1/>
+        <Frame x:Name="addUser" NavigationUIVisibility="Hidden"/>
+
+        <Rectangle Margin="312,68,162,89" Stroke="#FFACACAC" Fill="#FFACACAC"/>
+        <Button Content="Confirmer" Height="27" Margin="356,394,357,29" Width="87" Click="Button_Click"/>
+        <Button Content="Annuler" Height="27" Margin="524,394,189,29" Width="87" Click="Button_Click_1"/>
+
+        <Label Content="Nom" Height="23" Margin="333,70,379,335" Width="88"/>
+        <Label Content="Prénom" Height="23" Margin="333,105,379,295" Width="88"/>
+        <Label Content="Mot de passe" Height="23" Margin="333,155,379,270" Width="88"/>
+        <Label Content="Mail" Height="23" Margin="333,170,379,214" Width="88"/>
+        <Label Content="Status" Height="23" Margin="333,200,379,173" Width="88"/>
+
+        <TextBox x:Name="nomTextBox" Height="23" Margin="426,81,179,346" TextWrapping="Wrap" Text="" Width="195" TextChanged="TextBox_TextChanged"/>
+        <TextBox x:Name="prenomTextBox" Height="23" Margin="426,118,179,308" TextWrapping="Wrap" Text="" Width="195" TextChanged="TextBox_TextChanged"/>
+        <TextBox x:Name="mdpTextBox" Height="23" Margin="426,155,179,272" TextWrapping="Wrap" Text="" Width="195" TextChanged="TextBox_TextChanged"/>
+        <TextBox x:Name="mailTextBox" Height="23" Margin="426,192,179,236" TextWrapping="Wrap" Text="" Width="195" TextChanged="TextBox_TextChanged"/>
+        
+        <Rectangle Height="58" Margin="426,227,179,165" Stroke="White" Width="195" Fill="White"/>
+        <RadioButton x:Name="radioAdmin" Content="Admin" Height="15" Margin="433,231,285,204" Width="80" Checked="RadioButton_Checked" GroupName="radioRole"/>
+        <RadioButton x:Name="radioPersonnel" Content="Personnel" Height="15" Margin="433,246,285,189" Width="80" Checked="RadioButton_Checked" GroupName="radioRole"/>
+        <RadioButton x:Name="radioCaissier" Content="Caissier" Height="15" Margin="433,261,285,175" Width="80" Checked="RadioButton_Checked" GroupName="radioRole"/>
+
+    </Grid>
+</Page>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StockXpertise
 {
-    public class User
+    public class UserConnected
     {
         private int id_employee { get; set; }
         private string nom { get; set; }
@@ -15,7 +15,7 @@ namespace StockXpertise
         private string mail { get; set; }
         private string role { get; set; }
 
-        public User(int id_employee, string nom, string prenom, string mot_de_passe, string mail, string role)
+        public UserConnected(int id_employee, string nom, string prenom, string mot_de_passe, string mail, string role)
         {
             this.id_employee = id_employee;
             this.nom = nom;
