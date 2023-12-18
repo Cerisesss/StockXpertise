@@ -4,7 +4,12 @@ INSERT INTO `fournisseur` (`nom`, `prenom`, `numero`, `mail`, `adresse`) VALUES
 ('Martin', 'Sophie', 987654321, 'martin.sophie@mail.com', '8 Avenue des Fleurs, Lyon'),
 ('Lefevre', 'Jacques', 456789123, 'lefevre.jacques@mail.com', '25 Rue du Commerce, Marseille'),
 ('Thomas', 'Isabelle', 321654987, 'thomas.isabelle@mail.com', '5 Boulevard Voltaire, Lille'),
-('Dufour', 'Marie', 789123456, 'dufour.marie@mail.com', '16 Avenue Victor Hugo, Bordeaux');
+('Dufour', 'Marie', 789123456, 'dufour.marie@mail.com', '16 Avenue Victor Hugo, Bordeaux'),
+('Garcia', 'Carlos', 654321987, 'garcia.carlos@mail.com', '20 Rue de la Liberté, Toulouse'),
+('Lambert', 'Julien', 987654789, 'lambert.julien@mail.com', '14 Avenue des Roses, Nice'),
+('Moreau', 'Hélène', 321789654, 'moreau.helene@mail.com', '7 Rue de la Paix, Nantes'),
+('Robert', 'Luc', 654987321, 'robert.luc@mail.com', '10 Boulevard Carnot, Strasbourg'),
+('Leclerc', 'Sophie', 789654321, 'leclerc.sophie@mail.com', '18 Avenue de la Gare, Rennes');
 
 -- Inserts for employes table
 INSERT INTO `employes` (`nom`, `prenom`, `mot_de_passe`, `mail`, `role`) VALUES
@@ -12,23 +17,48 @@ INSERT INTO `employes` (`nom`, `prenom`, `mot_de_passe`, `mail`, `role`) VALUES
 ('Durand', 'Paul', 'mdp2', 'durand.paul@mail.com', 'Vendeur'),
 ('Leroy', 'Julie', 'mdp3', 'leroy.julie@mail.com', 'Magasinier'),
 ('Girard', 'Philippe', 'mdp4', 'girard.philippe@mail.com', 'Caissier'),
-('Lemoine', 'Sophie', 'mdp5', 'lemoine.sophie@mail.com', 'Responsable Stock');
+('Lemoine', 'Sophie', 'mdp5', 'lemoine.sophie@mail.com', 'Responsable Stock'),
+('Smith', 'John', 'mdp6', 'smith.john@mail.com', 'Vendeur'),
+('Dubois', 'Céline', 'mdp7', 'dubois.celine@mail.com', 'Magasinier'),
+('Fournier', 'François', 'mdp8', 'fournier.francois@mail.com', 'Caissier'),
+('Lopez', 'Eva', 'mdp9', 'lopez.eva@mail.com', 'Responsable Stock'),
+('Muller', 'Thomas', 'mdp10', 'muller.thomas@mail.com', 'Vendeur');
 
 -- Inserts for emplacement table
 INSERT INTO `emplacement` (`code`, `capacite`) VALUES
 ('A1', 100),
 ('B2', 150),
 ('C3', 200),
-('C4', 120),
-('C2', 180);
+('D4', 120),
+('A5', 180),
+('B1', 120),
+('C4', 180),
+('D2', 200),
+('A4', 160),
+('B5', 150);
 
 -- Inserts for articles table
 INSERT INTO `articles` (`id_fournisseur`, `nom`, `famille`, `prix_ht`, `prix_ttc`, `prix_vente`, `prix_achat`, `description`, `code_barre`, `image`) VALUES
-(1, 'Ordinateur Portable', 'Informatique', 800, 960, 1200, 600, 'Ordinateur portable haut de gamme', '012345678901', 'path1'),
-(2, 'Smartphone', 'Téléphonie', 600, 720, 950, 500, 'Smartphone dernière génération', '234567890123', 'path2'),
-(3, 'Tablette', 'Informatique', 400, 480, 650, 350, 'Tablette légère et performante', '345678901234', 'path3'),
-(4, 'Imprimante', 'Informatique', 200, 240, 300, 150, 'Imprimante multifonction', '456789012345', 'path4'),
-(5, 'Caméra de Surveillance', 'Électronique', 150, 180, 250, 120, 'Caméra de surveillance WiFi', '567890123456', 'path5');
+(1, 'Ordinateur Portable', 'Informatique', 800, 960, 1200, 600, 'Ordinateur portable haut de gamme', '012345678901', '/chemin/vers/le/fichier.pdf'),
+(2, 'Smartphone', 'Téléphonie', 600, 720, 950, 500, 'Smartphone dernière génération', '234567890123', '/chemin/vers/le/fichier.pdf'),
+(3, 'Tablette', 'Informatique', 400, 480, 650, 350, 'Tablette légère et performante', '345678901234', '/chemin/vers/le/fichier.pdf'),
+(4, 'Imprimante', 'Informatique', 200, 240, 300, 150, 'Imprimante multifonction', '456789012345', '/chemin/vers/le/fichier.pdf'),
+(5, 'Caméra de Surveillance', 'Électronique', 150, 180, 250, 120, 'Caméra de surveillance WiFi', '567890123456', '/chemin/vers/le/fichier.pdf'),
+(1, 'Casque Audio', 'Audio', 100, 120, 150, 70, 'Casque audio sans fil', '678901234567', '/chemin/vers/le/fichier.pdf'),
+(2, 'Montre Connectée', 'Électronique', 300, 360, 450, 250, 'Montre connectée étanche', '789012345678', '/chemin/vers/le/fichier.pdf'),
+(3, 'Aspirateur Robot', 'Électroménager', 250, 300, 400, 200, 'Aspirateur robot intelligent', '890123456789', '/chemin/vers/le/fichier.pdf'),
+(4, 'Lampadaire LED', 'Éclairage', 80, 96, 120, 60, 'Lampadaire LED avec variateur', '901234567890', '/chemin/vers/le/fichier.pdf'),
+(5, 'Enceinte Bluetooth', 'Audio', 50, 60, 80, 40, 'Enceinte Bluetooth portable', '012345678912', '/chemin/vers/le/fichier.pdf'),
+(3, 'Clavier Sans Fil', 'Informatique', 50, 60, 80, 30, 'Clavier sans fil avec pavé numérique', '123456789012', '/chemin/vers/le/fichier.pdf'),
+(4, 'Scanner Document', 'Informatique', 120, 144, 180, 90, 'Scanner de documents haute résolution', '234567890123', '/chemin/vers/le/fichier.pdf'),
+(2, 'Écouteurs Bluetooth', 'Audio', 30, 36, 50, 20, 'Écouteurs Bluetooth sans fil', '345678901234', '/chemin/vers/le/fichier.pdf'),
+(5, 'Console de Jeu', 'Jeux Vidéo', 300, 360, 450, 200, 'Console de jeu avec capacités haute performance', '456789012345', '/chemin/vers/le/fichier.pdf'),
+(1, 'Disque Dur Externe', 'Informatique', 80, 96, 120, 50, 'Disque dur externe de grande capacité', '567890123456', '/chemin/vers/le/fichier.pdf'),
+(3, 'Imprimante 3D', 'Informatique', 250, 300, 400, 150, 'Imprimante 3D pour la création de prototypes', '678901234567', '/chemin/vers/le/fichier.pdf'),
+(4, 'Téléviseur 4K', 'Électronique', 700, 840, 1000, 500, 'Téléviseur 4K avec technologie HDR', '789012345678', '/chemin/vers/le/fichier.pdf'),
+(2, 'Enceinte Smart', 'Audio', 100, 120, 150, 70, 'Enceinte intelligente avec assistant vocal', '890123456789', '/chemin/vers/le/fichier.pdf'),
+(5, 'Souris Gaming', 'Informatique', 40, 48, 60, 25, 'Souris gaming avec rétroéclairage RGB', '901234567890', '/chemin/vers/le/fichier.pdf'),
+(1, 'Appareil Photo Reflex', 'Photographie', 600, 720, 900, 450, 'Appareil photo reflex professionnel', '012345678912', '/chemin/vers/le/fichier.pdf');
 
 -- Inserts for produit table
 INSERT INTO `produit` (`id_articles`, `quantite_stock`) VALUES
@@ -36,7 +66,12 @@ INSERT INTO `produit` (`id_articles`, `quantite_stock`) VALUES
 (1, 30),
 (3, 75),
 (4, 40),
-(5, 60);
+(5, 60),
+(6, 25),
+(7, 35),
+(8, 50),
+(9, 30),
+(10, 40);
 
 -- Inserts for stockage table
 INSERT INTO `stockage` (`id_emplacement`, `id_produit`) VALUES
@@ -44,7 +79,12 @@ INSERT INTO `stockage` (`id_emplacement`, `id_produit`) VALUES
 (2, 2),
 (3, 3),
 (4, 4),
-(5, 5);
+(5, 5),
+(6, 6),
+(7, 7),
+(8, 8),
+(9, 9),
+(10, 10);
 
 -- Inserts for mouvement table
 INSERT INTO `mouvement` (`id_employes`) VALUES
@@ -60,17 +100,18 @@ INSERT INTO `mouvement` (`id_employes`) VALUES
 (2);
 
 -- Inserts for vente table
-INSERT INTO `vente` (`prix_ventes`,`id_produit`, `id_mouvement`) VALUES
-(100, 1, 1),
-(150, 2, 2),
-(200, 3, 3),
-(120, 4, 4),
-(180, 5, 5);
+INSERT INTO `vente` (`prix_ventes`,`id_produit`, `id_mouvement`, `facture`) VALUES
+(100, 1, 1, '/chemin/vers/le/fichier.pdf'),
+(150, 2, 2, '/chemin/vers/le/fichier.pdf'),
+(200, 3, 3, '/chemin/vers/le/fichier.pdf'),
+(120, 4, 4, '/chemin/vers/le/fichier.pdf'),
+(180, 5, 5, '/chemin/vers/le/fichier.pdf');
 
--- Inserts for achat table
-INSERT INTO `achat` (`id_produit`, `id_mouvement`, `prix_achat`) VALUES
-(1, 6, 70),
-(2, 7, 110),
-(3, 8, 150),
-(4, 9, 100),
-(5, 10, 75);
+-- Corrected inserts for achat table
+INSERT INTO `achat` (`id_produit`, `id_mouvement`, `prix_achat`, `facture`) VALUES
+(1, 6, 70, '/chemin/vers/le/fichier.pdf'),
+(2, 7, 110, '/chemin/vers/le/fichier.pdf'),
+(3, 8, 150, '/chemin/vers/le/fichier.pdf'),
+(4, 9, 100, '/chemin/vers/le/fichier.pdf'),
+(5, 10, 75, '/chemin/vers/le/fichier.pdf');
+

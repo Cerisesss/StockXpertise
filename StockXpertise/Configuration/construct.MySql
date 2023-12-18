@@ -79,7 +79,7 @@ CREATE TABLE vente (
   id_produit INT,
   prix_ventes INT,
   date_vente TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  facture pdf,,
+  facture VARCHAR(255),
   id_mouvement INT,
   FOREIGN KEY (id_produit) REFERENCES produit(id_produit),
   FOREIGN KEY (id_mouvement) REFERENCES mouvement(id_mouvement)
@@ -90,6 +90,7 @@ CREATE TABLE achat (
   id_produit INT,
   prix_achat INT,
   date_achat TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  facture VARCHAR(255),
   id_mouvement INT,
   FOREIGN KEY (id_produit) REFERENCES produit(id_produit),
   FOREIGN KEY (id_mouvement) REFERENCES mouvement(id_mouvement)
