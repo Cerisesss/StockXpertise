@@ -112,6 +112,7 @@
     <Compile Include="Caisse\Caisse.xaml.cs">
       <DependentUpon>Caisse.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Article.cs" />
     <Compile Include="donnees_articles.cs" />
     <Compile Include="Profile\Profile.xaml.cs">
       <DependentUpon>Profile.xaml</DependentUpon>
@@ -125,7 +126,6 @@
     <Compile Include="Stock\affichageStock.xaml.cs">
       <DependentUpon>affichageStock.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Stock\DataInventaire.cs" />
     <Compile Include="Stock\inventaire.xaml.cs">
       <DependentUpon>inventaire.xaml</DependentUpon>
     </Compile>
@@ -221,6 +221,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Content Include="Profile\Images\path1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

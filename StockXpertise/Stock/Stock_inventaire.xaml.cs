@@ -24,7 +24,7 @@ namespace StockXpertise.Stock
     /// </summary>
     public partial class Stock_inventaire : Page
     {
-        List<DataInventaire> articlesDataList = new List<DataInventaire>();
+        List<Article> articlesDataList = new List<Article>();
 
         public Stock_inventaire()
         {
@@ -41,7 +41,7 @@ namespace StockXpertise.Stock
             // Remplir la liste
             while (reader.Read())
             {
-                var articleData = new DataInventaire()
+                var articleData = new DataInventaire();
                 {
                     Id_produit = Convert.ToInt32(reader["id_produit"]),
                     Nom = reader["nom"].ToString(),
