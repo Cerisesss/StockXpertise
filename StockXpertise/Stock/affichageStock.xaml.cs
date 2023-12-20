@@ -60,7 +60,7 @@ namespace StockXpertise
             string imagePath = selectedData.Image;
 
             if (!string.IsNullOrEmpty(imagePath))
-            {
+        {
                 // Crée une instance de BitmapImage
                 BitmapImage bitmap = new BitmapImage();
 
@@ -72,7 +72,7 @@ namespace StockXpertise
                 // Image affecté au contrôle Image
                 image_avant.Source = bitmap;
                 image_apres.Source = bitmap;
-            }
+        }
         }
 
         private void enregistrer_modification(object sender, RoutedEventArgs e)
@@ -112,7 +112,7 @@ namespace StockXpertise
             {
                 query = "UPDATE articles SET prix_ht = '" + nouveauPrixHT + "' WHERE id_articles = " + selectedData.Id;
                 ConfigurationDB.ExecuteQuery(query);
-            }
+        }
             if (!string.IsNullOrEmpty(nouveauPrixTTC))
             {
                 query = "UPDATE articles SET prix_ttc = '" + nouveauPrixTTC + "' WHERE id_articles = " + selectedData.Id;
@@ -121,14 +121,14 @@ namespace StockXpertise
 
             // Si l'utilisateur a supprimé l'image existante et a ajouté une nouvelle image
             if (initialImagePath != imagePath)
-            {
+        {
                 // Mettre à jour le chemin de l'image dans la base de données
                 query = "UPDATE articles SET image = '" + imagePath + "' WHERE id_articles = " + selectedData.Id;
                 ConfigurationDB.ExecuteQuery(query);
             }
 
             // Retourner à la page Stock après avoir enregistrer les modifications
-            Stock stock = new Stock();
+            Storage stock = new Storage();
             Window parentWindow = Window.GetWindow(this);
 
             if (parentWindow != null)
@@ -138,9 +138,9 @@ namespace StockXpertise
         }
 
         private void annuler(object sender, RoutedEventArgs e)
-        {
+            {
             // Retourner à la page Stock sans enregistrer les modifications
-            Stock stock = new Stock();
+            Storage stock = new Storage();
             Window parentWindow = Window.GetWindow(this);
 
             if (parentWindow != null)
@@ -162,7 +162,7 @@ namespace StockXpertise
                 openFileDialog.Filter = "Fichiers images (*.jpg, *.jpeg, *.png, *.gif) | *.jpg; *.jpeg; *.png; *.gif";
 
                 if (openFileDialog.ShowDialog() == true)
-                {
+        {
                     string selectedImagePath = openFileDialog.FileName;
 
                     // Emplacement de destination pour télécgarger l'image

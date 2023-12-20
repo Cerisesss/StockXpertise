@@ -59,7 +59,7 @@ namespace StockXpertise.Connection
 
                 // envoie vers la page d'accueil
                 gridConnection.Visibility = Visibility.Collapsed;
-                connection.Navigate(new Uri("/Statistique.xaml", UriKind.RelativeOrAbsolute));
+                connection.Navigate(new Uri("/User/User.xaml", UriKind.RelativeOrAbsolute));
             }
             else
             {

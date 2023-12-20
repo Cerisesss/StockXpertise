@@ -40,13 +40,13 @@ namespace StockXpertise
         private void Annuler(object sender, RoutedEventArgs e)
         {
             // Retourner à la page Stock sans enregistrer les modifications
-            Stock_inventaire stock_inventaire = new Stock_inventaire();
+            Stock.Stock_inventaire stock_inventaire = new Stock.Stock_inventaire();
             Window parentWindow = Window.GetWindow(this);
 
             if (parentWindow != null)
             {
                 parentWindow.Content = stock_inventaire;
-            }
+        }
         }
 
         private void Sauvegarder(object sender, RoutedEventArgs e)
@@ -56,11 +56,11 @@ namespace StockXpertise
             string stockReel = stock_reel.Text;
 
             // Retourner à la page Stock après avoir enregistrer les modifications
-            Stock stock = new Stock();
+            Stock.Storage stock = new Stock.Storage();
             Window parentWindow = Window.GetWindow(this);
 
             if (parentWindow != null)
-            {
+        {
                 parentWindow.Content = stock;
             }
 
