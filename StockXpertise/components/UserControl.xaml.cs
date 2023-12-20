@@ -37,7 +37,7 @@ namespace StockXpertise.components
             }
         }
 
-        private void b1_Click(object sender, RoutedEventArgs e)
+        /*private void b1_Click(object sender, RoutedEventArgs e)
         {
             Stock stock = new Stock();
             Window parentWindow = Window.GetWindow(this);
@@ -57,7 +57,7 @@ namespace StockXpertise.components
             {
                 //parentWindow.Content = stock_inventaire;
             }
-        }
+        }*/
 
         private void b6_Click(object sender, RoutedEventArgs e)
         {

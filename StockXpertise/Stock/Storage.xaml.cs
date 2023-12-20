@@ -23,11 +23,11 @@ namespace StockXpertise
     /// <summary>
     /// Logique d'interaction pour Stock.xaml
     /// </summary>
-    public partial class Stock : Page
+    public partial class Storage : Page
     {
         List<Article> articlesDataList = new List<Article>();
 
-        public Stock()
+        public Storage()
         {
             InitializeComponent();
 
@@ -115,10 +115,10 @@ namespace StockXpertise
 
                 if (MyDataGrid.SelectedItem is Article selectedData)
                 {
-                    // Charger la page dans le Frame
-                    StockFrame.Navigate(new affichageStock(selectedData));
-                }
+                // Charger la page dans le Frame
+                StockFrame.Navigate(new affichageStock(selectedData));
             }
+        }
         }
 
         private void generation_pdf(object sender, RoutedEventArgs e)
