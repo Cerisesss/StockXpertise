@@ -47,5 +47,40 @@ namespace StockXpertise.components
                 parentWindow.Content = stock;
             }
         }
+
+        private void inventaire_Click(object sender, RoutedEventArgs e)
+        {
+            //Stock_inventaire stock_inventaire = new Stock_inventaire();
+            Window parentWindow = Window.GetWindow(this);
+
+            if (parentWindow != null)
+            {
+                //parentWindow.Content = stock_inventaire;
+            }
+        }
+
+        private void b6_Click(object sender, RoutedEventArgs e)
+        {
+            Profile.Profile profile = new Profile.Profile();
+
+            Window parentWindow = Window.GetWindow(this);
+
+            if (parentWindow != null)
+            {
+                parentWindow.Content = profile;
+            }
+        }
+
+        private void b2_Click(object sender, RoutedEventArgs e)
+        {
+            fournisseur fournisseur = new fournisseur();
+
+            Window parentWindow = Window.GetWindow(this);
+
+            if (parentWindow != null)
+            {
+                parentWindow.Content = fournisseur;
+            }
+        }
     }
 }

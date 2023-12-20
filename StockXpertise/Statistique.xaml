@@ -54,8 +54,7 @@
         <CheckBox x:Name="checkboxArticlesVendus" Content="Articles vendus" HorizontalAlignment="Left" Margin="344,295,0,0" VerticalAlignment="Top" Height="18" Width="130"/>
         <CheckBox x:Name="checkboxMarge" Content="Marge" HorizontalAlignment="Left" Margin="344,313,0,0" VerticalAlignment="Top" Height="18" Width="130"/>
         <CheckBox x:Name="checkboxTop10Produits" Content="Top 10 produits" HorizontalAlignment="Left" Margin="344,331,0,0" VerticalAlignment="Top" Height="18" Width="130"/>
-        <CheckBox x:Name="checkboxStockNegatif" Content="Stock négatif" HorizontalAlignment="Left" Margin="344,349,0,0" VerticalAlignment="Top" Height="18" Width="130"/>
-        <CheckBox x:Name="checkboxTotalVentes" Content="Total des ventes" HorizontalAlignment="Left" Margin="344,367,0,0" VerticalAlignment="Top" Height="18" Width="130"/>
+        <CheckBox x:Name="checkboxStockNegatif" Content="Stock low" HorizontalAlignment="Left" Margin="344,349,0,0" VerticalAlignment="Top" Height="18" Width="130"/>
         <Button x:Name="button" Content="prévisualiser" HorizontalAlignment="Left" Height="31" Margin="886,124,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="0.743,1.834" BorderBrush="{Binding Visibility.Hidden, ElementName=button}" Click="generation_pdf">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
