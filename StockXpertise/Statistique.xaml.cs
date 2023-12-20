@@ -67,7 +67,7 @@ namespace StockXpertise
                 statistique.Marge = checkboxMarge.IsChecked ?? false;
                 statistique.Top10Produits = checkboxTop10Produits.IsChecked ?? false;
                 statistique.StockNegatif = checkboxStockNegatif.IsChecked ?? false;
-                statistique.TotalVentes = checkboxTotalVentes.IsChecked ?? false;
+                statistique.date = comboBoxAffichage.SelectedItem.ToString();
 
                 parentWindow.Content = statistique;
                 statistique.GenerateTable();

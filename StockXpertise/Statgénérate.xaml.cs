@@ -1,3 +1,4 @@
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,15 +10,15 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Collections.ObjectModel;
+
 
 namespace StockXpertise
 {
-
-
-
     public partial class Statgénérate : Page
     {
         public bool PrixAchat { get; set; }
@@ -27,6 +28,7 @@ namespace StockXpertise
         public bool Top10Produits { get; set; }
         public bool StockNegatif { get; set; }
         public bool TotalVentes { get; set; }
+        public string date { get; set; }
 
         public Statgénérate()
         {
@@ -35,8 +37,131 @@ namespace StockXpertise
 
         public void GenerateTable()
         {
+            string query="SELECT ";
+            if (PrixAchat)
+            {
+                query += "prix_achat, ";
+            }
+            if (PrixVente)
+            {
+                query += "prix_ventes, ";
+            }
+            if (ArticlesVendus)
+            {
+                query += "(SELECT COUNT(*) FROM vente where id_articles=id_vente) AS total_ventes, ";
 
+            }
+            if (Marge)
+            {
+                query += "(prix_ventes * (SELECT COUNT(*) FROM vente where id_articles=id_vente) - (prix_achat * (SELECT COUNT(*) FROM vente where id_articles=id_vente))) as marge, ";
+            }
+           // query += "(select sum(quantite_stock) from produit where id_articles = id_produit) as stock, ";  attendre qu'il y ai du peuplement, parce que il ne peut pas ne pas y avoir de stock sinon la commande bug
+            if (!PrixAchat && !PrixVente && !ArticlesVendus && !Marge)
+            {
+                query += "nom, famille, prix_ht ,prix_ttc ,prix_vente ,prix_achat ,description ,code_barre, ";
+            }
+
+            if (query.Length >= 2)
+            {
+                query = query.Substring(0, query.Length - 2);
+                Console.WriteLine(query);
+            }
+
+
+
+            query += " from articles inner join vente on id_articles = id_produit";
+
+            string date_code = "Day";
+            if (date == "Semaine")
+            {
+                date_code = "* 7 day";
+            }
+            if (date == "Mois")
+            {
+                date_code = "month";
+            }
+            if (date == "Année")
+            {
+                date_code = "year";
+            }
+
+            query += " WHERE date_vente >= DATE_SUB(CURDATE(), INTERVAL 1 "+ date_code +") ";
+
+            if (StockNegatif) {
+                query += "AND (SELECT SUM(quantite_stock) FROM produit WHERE id_articles = id_produit) > 10 ";
+            }
+
+            if (Marge)
+            {
+                query += " ORDER BY marge DESC";
+            }
+
+            if (Top10Produits)
+            {
+                query += " LIMIT 10";
+            }
+
+            MySqlDataReader result = ConfigurationDB.ExecuteQuery(query);
+
+            dataGrid.ItemsSource = result;
+
+
+            //  ________________________________________________________________________________________________________
+
+            if (PrixAchat || PrixVente || ArticlesVendus || Marge)
+            {
+                string query2 = "SELECT ";
+                if (PrixAchat)
+                {
+                    query2 += "SUM(prix_achat) AS total_prix_achat, ";
+                }
+                if (PrixVente)
+                {
+                    query2 += "SUM(prix_ventes) AS total_prix_ventes, ";
+                }
+                if (ArticlesVendus)
+                {
+                    query2 += "SUM((SELECT COUNT(*) FROM vente WHERE id_articles = id_vente)) AS total_ventes, ";
+
+                }
+                if (Marge)
+                {
+                    query2 += "SUM(prix_ventes * (SELECT COUNT(*) FROM vente WHERE id_articles = id_vente) - (prix_achat * (SELECT COUNT(*) FROM vente WHERE id_articles = id_vente))) AS total_marge, ";
+                }
+                if (!PrixAchat && !PrixVente && !ArticlesVendus && !Marge)
+                {
+                    query2 += "* ,";
+                }
+
+                if (query.Length >= 2)
+                {
+                    query2 = query2.Substring(0, query2.Length - 2);
+                    Console.WriteLine(query2); // Affiche "Exem"
+                }
+
+
+
+                query2 += " from articles inner join vente on id_articles = id_produit";
+                if (Marge)
+                {
+                    query2 += " ORDER BY total_marge DESC";
+                }
+
+                if (Top10Produits)
+                {
+                    query2 += " LIMIT 10";
+                }
+
+                MySqlDataReader result2 = ConfigurationDB.ExecuteQuery(query2);
+
+                dataGrid2.ItemsSource = result2;
+            }
+            else {
+                dataGrid2.Visibility = Visibility.Hidden;
+            }
         }
+
+
     }
 
 }

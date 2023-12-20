@@ -112,6 +112,9 @@
     </Compile>
     <Compile Include="Article.cs" />
     <Compile Include="donnees_articles.cs" />
+    <Compile Include="fournisseur.xaml.cs">
+      <DependentUpon>fournisseur.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Profile\Profile.xaml.cs">
       <DependentUpon>Profile.xaml</DependentUpon>
     </Compile>
@@ -149,6 +152,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Connection\Connection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="fournisseur.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

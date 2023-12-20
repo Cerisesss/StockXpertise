@@ -4,15 +4,55 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:StockXpertise.components"
+      xmlns:dvc="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
       mc:Ignorable="d"
       d:DesignHeight="700" d:DesignWidth="1024"
       Title="Statgénérate">
 
-	<Grid>
-		<local:UserControl1/>
-		<Grid>
-			<DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="489" VerticalAlignment="Top" Width="703" AutoGenerateColumns="True" Margin="243,118,0,0" />
-		</Grid>
+    <Grid>
+        <local:UserControl1/>
+        <Grid>
+            <DataGrid x:Name="dataGrid" 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="top" 
+            AlternatingRowBackground="#F0F0F0"
+            GridLinesVisibility="None"
+            CanUserResizeColumns="True"
+            CanUserResizeRows="False"
+            RowHeight="40"
+            SelectionMode="Single"
+            Margin="190,118,30,120"
+            AutoGenerateColumns="True"
+            FontFamily="Arial"
+            FontSize="16"
+                      
+        />
+
+        </Grid>
+        <Grid>
+            <dvc:Chart Title="Sample Bar Chart" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <dvc:Chart.Series>
+                    <dvc:ColumnSeries Title="Sample Data" ItemsSource="{Binding DataCollection}" DependentValuePath="Value" IndependentValuePath="Key" />
+                </dvc:Chart.Series>
+            </dvc:Chart>
+        </Grid>
+        <Grid>
+            <DataGrid x:Name="dataGrid2" 
+                    HorizontalAlignment="center" 
+                    VerticalAlignment="Top" 
+                    AlternatingRowBackground="#F0F0F0"
+                    GridLinesVisibility="None"
+                    CanUserResizeColumns="True"
+                    CanUserResizeRows="False"
+                    RowHeight="40"
+                    SelectionMode="Single"
+                    Margin="190,561,30,30"
+                    AutoGenerateColumns="True"
+                    FontFamily="Arial"
+                    FontSize="16"
+                                />
+
+        </Grid>
 
 	</Grid>
 </Page>
