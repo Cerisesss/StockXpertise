@@ -1,51 +1,56 @@
 ﻿<Page x:Class="StockXpertise.Historique"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:StockXpertise.components"
-      mc:Ignorable="d"
-      Title="Historique" Height="700" Width="1024">
-    <Grid Loaded="Grid_Loaded">
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="1024"
+      Title="Historique">
+
+    <Grid Height="500" Width="1000">
         <local:UserControl1/>
-        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
-        <Rectangle HorizontalAlignment="Left" Height="31" Margin="216,124,0,0" Stroke="Transparent" VerticalAlignment="Top" Width="110" RenderTransformOrigin="0.527,0.493">
-            <Rectangle.Fill>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FFACACAC"/>
-                    <GradientStop Color="White" Offset="1"/>
-                    <GradientStop Color="#FFAEAEAE" Offset="0"/>
-                </LinearGradientBrush>
-            </Rectangle.Fill>
-        </Rectangle>
-        <ComboBox x:Name="comboBoxAffichage" HorizontalAlignment="Left" Height="31" Margin="326,124,0,0" VerticalAlignment="Top" Width="166" SelectionChanged="ComboBox_SelectionChanged_affichage"/>
-        <Label Content="Trier par" HorizontalAlignment="Left" Height="36" Margin="232,123,0,0" VerticalAlignment="Top" Width="80"/>
-        <Rectangle HorizontalAlignment="Left" Height="176" Margin="216,229,0,0" Stroke="Transparent" VerticalAlignment="Top" Width="312" RenderTransformOrigin="0.527,0.493">
-            <Rectangle.Fill>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FFACACAC"/>
-                    <GradientStop Color="White" Offset="1"/>
-                    <GradientStop Color="#FFAEAEAE" Offset="0"/>
-                </LinearGradientBrush>
-            </Rectangle.Fill>
-        </Rectangle>
-        <Label Content="Statistique" HorizontalAlignment="Left" Height="36" Margin="231,246,0,0" VerticalAlignment="Top" Width="80"/>
-        <TextBlock HorizontalAlignment="Left" Margin="338,253,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="white" Height="132" Width="154" Text=""/>
-        <CheckBox x:Name="checkboxPrixAchat" Content="Prix d'achat" HorizontalAlignment="Left" Margin="344,259,0,0" VerticalAlignment="Top" Height="18" Width="130"/>
-        <CheckBox x:Name="checkboxPrixVente" Content="Prix de vente" HorizontalAlignment="Left" Margin="344,277,0,0" VerticalAlignment="Top" Height="18" Width="130"/>
-        <CheckBox x:Name="checkboxArticlesVendus" Content="Articles vendus" HorizontalAlignment="Left" Margin="344,295,0,0" VerticalAlignment="Top" Height="18" Width="130"/>
-        <CheckBox x:Name="checkboxMarge" Content="Marge" HorizontalAlignment="Left" Margin="344,313,0,0" VerticalAlignment="Top" Height="18" Width="130"/>
-        <CheckBox x:Name="checkboxTop10Produits" Content="Top 10 produits" HorizontalAlignment="Left" Margin="344,331,0,0" VerticalAlignment="Top" Height="18" Width="130"/>
-        <CheckBox x:Name="checkboxStockNegatif" Content="Stock négatif" HorizontalAlignment="Left" Margin="344,349,0,0" VerticalAlignment="Top" Height="18" Width="130"/>
-        <CheckBox x:Name="checkboxTotalVentes" Content="Total des ventes" HorizontalAlignment="Left" Margin="344,367,0,0" VerticalAlignment="Top" Height="18" Width="130"/>
-        <Button x:Name="button" Content="prévisualiser" HorizontalAlignment="Left" Height="31" Margin="886,124,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="0.743,1.834" BorderBrush="{Binding Visibility.Hidden, ElementName=button}" Click="generation_pdf">
-            <Button.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FFAEAEAE" Offset="0"/>
-                    <GradientStop Color="White" Offset="1"/>
-                </LinearGradientBrush>
-            </Button.Background>
-        </Button>
-        <Frame x:Name="framePrincipal" NavigationUIVisibility="Hidden" Navigated="framePrincipal_Navigated"/>
+        <Frame x:Name="StockFrame" NavigationUIVisibility="Hidden"/>
+        <Grid x:Name="gridHistorique" Margin="104,39,-104,-39">
+         
+            <Rectangle HorizontalAlignment="Left" Height="36" Margin="80,28,0,0" Stroke="Transparent" VerticalAlignment="Top" Width="167" RenderTransformOrigin="0.527,0.493">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFACACAC"/>
+                        <GradientStop Color="White" Offset="1"/>
+                        <GradientStop Color="#FFAEAEAE" Offset="0"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Label Content="Affichage" HorizontalAlignment="Left" Height="36" Margin="102,33,0,0" VerticalAlignment="Top" Width="122"/>
+            <DataGrid x:Name="MyDataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Height="353" Width="787" Margin="80,92,0,0"
+          AutoGenerateColumns="True"
+          AlternatingRowBackground="#F0F0F0"
+          GridLinesVisibility="None"
+          CanUserResizeColumns="True"
+          CanUserResizeRows="False"
+          SelectionMode="Single"
+          RowHeight="40" SelectionChanged="MyDataGrid_SelectionChanged">
+
+                <!-- Style des colonnes -->
+                <DataGrid.Resources>
+                    <Style TargetType="DataGridCell">
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="Padding" Value="10"/>
+                        <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+                    </Style>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="Background" Value="#FFD2D2D2"/>
+                        <Setter Property="Foreground" Value="Black"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="Padding" Value="15,10"/>
+                        <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                    </Style>
+                </DataGrid.Resources>
+            </DataGrid>
+
+        </Grid>
     </Grid>
 </Page>

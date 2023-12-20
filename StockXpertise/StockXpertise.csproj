@@ -108,9 +108,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="donnees_articles.cs" />
-    <Compile Include="Historique\Historique.xaml.cs">
+    <Content Include="Historique\Historique.xaml.cs">
       <DependentUpon>Historique.xaml</DependentUpon>
-    </Compile>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Compile Include="Profile\Profile.xaml.cs">
       <DependentUpon>Profile.xaml</DependentUpon>
     </Compile>
@@ -141,6 +142,7 @@
     <Page Include="Historique\Historique.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

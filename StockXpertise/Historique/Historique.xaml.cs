@@ -17,12 +17,12 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data;
 using MySql.Data.MySqlClient;
-using System.Windows.Media.Animation;
-using System.Diagnostics;
 
 namespace StockXpertise
 {
-
+    /// <summary>
+    /// Logique d'interaction pour Stock.xaml
+    /// </summary>
     public partial class Historique : Page
     {
         public Historique()
@@ -30,11 +30,18 @@ namespace StockXpertise
             InitializeComponent();
 
             comboBoxAffichage.Items.Add(" ");
-            comboBoxAffichage.Items.Add("Quantité des stock modifié(tous)");
-            comboBoxAffichage.Items.Add("Inventaire(utilisateur)");
-            comboBoxAffichage.Items.Add("Ajout d’article(admin)");
-            comboBoxAffichage.Items.Add("Suppression d’article(admin)");
-            comboBoxAffichage.Items.Add("Transaction(caissier)");
+            comboBoxAffichage.Items.Add("Nom");
+            comboBoxAffichage.Items.Add("Famille");
+            comboBoxAffichage.Items.Add("Code barre");
+            comboBoxAffichage.Items.Add("Quantité");
+            comboBoxAffichage.Items.Add("Prix croissant");
+            comboBoxAffichage.Items.Add("Prix décroissant");
+
+            string query = "SELECT articles.image, articles.nom, articles.famille, articles.code_barre, articles.description, articles.prix_ht, articles.prix_ttc, produit.quantite_stock FROM articles JOIN produit ON articles.id_articles = produit.id_articles";
+            MySqlDataReader reader = ConfigurationDB.ExecuteQuery(query);
+
+            // Assigne les données au DataGrid
+            MyDataGrid.ItemsSource = reader;
         }
 
         private void ComboBox_SelectionChanged_affichage(object sender, SelectionChangedEventArgs e)
@@ -46,24 +53,26 @@ namespace StockXpertise
 
                 switch (selectedValue)
                 {
-
-                    case "Quantité des stock modifié(tous)":
-                        query = "SELECT * FROM produit ORDER BY date_modification DESC";  
+                    case "Nom":
+                        query = "SELECT nom FROM articles ORDER BY nom;";
                         break;
-                    case "Inventaire(utilisateur)":
-                        query = "SELECT * FROM articles WHERE id_employes = <UserId> ORDER BY date_ajout DESC";  
+                    case "Famille":
+                        query = "SELECT nom, famille FROM articles ORDER BY famille;";
                         break;
-                    case "Ajout d’article(admin)":
-                        query = "SELECT * FROM articles WHERE role = 'admin' ORDER BY date_ajout DESC";
+                    case "Code barre":
+                        query = "SELECT nom, code_barre FROM articles ORDER BY code_barre;";
                         break;
-                    case "Suppression d’article(admin)":
-                        query = "SELECT * FROM articles WHERE role = 'admin' ORDER BY date_suppression DESC";  
+                    case "Quantité":
+                        query = "SELECT articles.nom, produit.quantite_stock FROM articles JOIN produit ON articles.id_articles = produit.id_articles;";
                         break;
-                    case "Transaction(caissier)":
-                        query = "SELECT * FROM vente ORDER BY date_vente DESC";  
+                    case "Prix croissant":
+                        query = "SELECT nom, prix_ht, prix_ttc FROM articles ORDER BY prix_ht ASC;";
+                        break;
+                    case "Prix décroissant":
+                        query = "SELECT nom, prix_ht, prix_ttc FROM articles ORDER BY prix_ht DESC;";
                         break;
                     default:
-                        query = "SELECT * FROM articles ORDER BY date_ajout DESC";
+                        query = "SELECT articles.image, articles.nom, articles.famille, articles.code_barre, articles.description, articles.prix_ht, articles.prix_ttc, produit.quantite_stock FROM articles JOIN produit ON articles.id_articles = produit.id_articles";
                         break;
                 }
                 MySqlDataReader reader = ConfigurationDB.ExecuteQuery(query);
@@ -72,6 +81,7 @@ namespace StockXpertise
                 MyDataGrid.ItemsSource = reader;
             }
         }
+
         private void MyDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (MyDataGrid.SelectedItem != null)
@@ -82,9 +92,13 @@ namespace StockXpertise
                 var selectedData = MyDataGrid.SelectedItem;
 
                 // Charger la page dans le Frame
-                MainFrame.Navigate(new affichageStock(selectedData));
+                HistoriqueFrame.Navigate(new affichageHistorique(selectedData));
             }
         }
 
+        private void generation_pdf(object sender, RoutedEventArgs e)
+        {
+            // TODO : Générer le PDF
+        }
     }
 }
