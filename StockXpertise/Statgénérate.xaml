@@ -4,7 +4,6 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:StockXpertise.components"
-      xmlns:dvc="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
       mc:Ignorable="d"
       d:DesignHeight="700" d:DesignWidth="1024"
       Title="Statgénérate">
@@ -28,13 +27,6 @@
                       
         />
 
-        </Grid>
-        <Grid>
-            <dvc:Chart Title="Sample Bar Chart" HorizontalAlignment="Left" VerticalAlignment="Top">
-                <dvc:Chart.Series>
-                    <dvc:ColumnSeries Title="Sample Data" ItemsSource="{Binding DataCollection}" DependentValuePath="Value" IndependentValuePath="Key" />
-                </dvc:Chart.Series>
-            </dvc:Chart>
         </Grid>
         <Grid>
             <DataGrid x:Name="dataGrid2" 
