@@ -24,7 +24,6 @@ namespace StockXpertise
         {
             InitializeComponent();
             Loaded += Statistique_Loaded;
-            MainFrame.Visibility = Visibility.Visible;
 
             comboBoxAffichage_mode.Items.Add("Tableau");
             comboBoxAffichage_mode.Items.Add("Barres");
