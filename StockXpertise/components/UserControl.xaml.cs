@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StockXpertise.Stock;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,27 +38,27 @@ namespace StockXpertise.components
             }
         }
 
-        /*private void b1_Click(object sender, RoutedEventArgs e)
+        private void b1_Click(object sender, RoutedEventArgs e)
         {
-            Stock stock = new Stock();
+            Stock.affichage_stock stock_display = new Stock.affichage_stock();
             Window parentWindow = Window.GetWindow(this);
 
             if (parentWindow != null)
             {
-                parentWindow.Content = stock;
+                parentWindow.Content = stock_display;
             }
         }
 
         private void inventaire_Click(object sender, RoutedEventArgs e)
         {
-            //Stock_inventaire stock_inventaire = new Stock_inventaire();
+            Stock.affichage_inventaire inventory_display = new Stock.affichage_inventaire();
             Window parentWindow = Window.GetWindow(this);
 
             if (parentWindow != null)
             {
-                //parentWindow.Content = stock_inventaire;
+                parentWindow.Content = inventory_display;
             }
-        }*/
+        }
 
         private void b6_Click(object sender, RoutedEventArgs e)
         {

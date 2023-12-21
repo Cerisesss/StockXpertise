@@ -153,10 +153,10 @@ namespace StockXpertise
 
                 MySqlDataReader result2 = ConfigurationDB.ExecuteQuery(query2);
 
-                dataGrid2.ItemsSource = result2;
+                //dataGrid2.ItemsSource = result2;
             }
             else {
-                dataGrid2.Visibility = Visibility.Hidden;
+                //dataGrid2.Visibility = Visibility.Hidden;
             }
         }
 

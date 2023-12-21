@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace StockXpertise
+namespace StockXpertise.Stock
 {
     /// <summary>
     /// Logique d'interaction pour inventaire.xaml
@@ -32,38 +32,37 @@ namespace StockXpertise
 
         public void LoadData()
         {
-            // Récupérer les données de l'article pour les afficher dans les TextBoxs
+            // Récupère les données de l'article pour les afficher dans les TextBoxs
             stock_actuel.Text = selectedData.Quantite_stock.ToString();
             emplacement_actuel.Text = selectedData.Code;
         }
 
         private void Annuler(object sender, RoutedEventArgs e)
         {
-            // Retourner à la page Stock sans enregistrer les modifications
-            Stock.Stock_inventaire stock_inventaire = new Stock.Stock_inventaire();
+            // Retourne à la page Stock sans enregistrer les modifications
+            affichage_inventaire inventory_display = new affichage_inventaire();
             Window parentWindow = Window.GetWindow(this);
 
             if (parentWindow != null)
             {
-                parentWindow.Content = stock_inventaire;
-        }
+                parentWindow.Content = inventory_display;
+            }
         }
 
         private void Sauvegarder(object sender, RoutedEventArgs e)
         {
-            // Récupérer le texte entrer dans les TextBoxs
+            // Récupère le texte entrer dans les TextBoxs
             string emplacementReel = emplacement_reel.Text;
             string stockReel = stock_reel.Text;
 
-            // Retourner à la page Stock après avoir enregistrer les modifications
-            Stock.Storage stock = new Stock.Storage();
+            // Retourner à la page affichage_iventaire après avoir enregistrer les modifications
+            affichage_inventaire inventory_display = new affichage_inventaire();
             Window parentWindow = Window.GetWindow(this);
 
             if (parentWindow != null)
-        {
-                parentWindow.Content = stock;
+            {
+                parentWindow.Content = inventory_display;
             }
-
         }
     }
 }

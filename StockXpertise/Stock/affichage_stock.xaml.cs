@@ -17,17 +17,18 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data;
 using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Asn1.X509;
 
-namespace StockXpertise
+namespace StockXpertise.Stock
 {
     /// <summary>
-    /// Logique d'interaction pour Stock.xaml
+    /// Logique d'interaction pour affichage_stock.xaml
     /// </summary>
-    public partial class Storage : Page
+    public partial class affichage_stock : Page
     {
         List<Article> articlesDataList = new List<Article>();
 
-        public Storage()
+        public affichage_stock()
         {
             InitializeComponent();
 
@@ -79,25 +80,26 @@ namespace StockXpertise
                 switch (selectedValue)
                 {
                     case "Nom":
-                        query = "SELECT id_articles, nom FROM articles ORDER BY nom;";
+                        query = "SELECT articles.id_articles, articles.image, articles.nom, articles.famille, articles.code_barre, articles.description, articles.prix_ht, articles.prix_ttc, produit.quantite_stock FROM articles JOIN produit ON articles.id_articles = produit.id_articles ORDER BY articles.nom";
                         break;
                     case "Famille":
-                        query = "SELECT id_articles, nom, famille FROM articles ORDER BY famille;";
+                        query = "SELECT articles.id_articles, articles.image, articles.nom, articles.famille, articles.code_barre, articles.description, articles.prix_ht, articles.prix_ttc, produit.quantite_stock FROM articles JOIN produit ON articles.id_articles = produit.id_articles ORDER BY articles.famille";
                         break;
                     case "Code barre":
-                        query = "SELECT id_articles, nom, code_barre FROM articles ORDER BY code_barre;";
+                        query = "SELECT articles.id_articles, articles.image, articles.nom, articles.famille, articles.code_barre, articles.description, articles.prix_ht, articles.prix_ttc, produit.quantite_stock FROM articles JOIN produit ON articles.id_articles = produit.id_articles ORDER BY articles.code_barre";
                         break;
                     case "Quantité":
-                        query = "SELECT id_articles, articles.nom, produit.quantite_stock FROM articles JOIN produit ON articles.id_articles = produit.id_articles;"; 
+                        query = "SELECT articles.id_articles, articles.nom, produit.quantite_stock, articles.image, articles.famille, articles.code_barre, articles.description, articles.prix_ht, articles.prix_ttc FROM articles JOIN produit ON articles.id_articles = produit.id_articles";
                         break;
                     case "Prix croissant":
-                        query = "SELECT id_articles, nom, prix_ht, prix_ttc FROM articles ORDER BY prix_ht ASC;";
+                        query = "SELECT articles.id_articles, articles.nom, articles.prix_ht, articles.prix_ttc, articles.image, articles.famille, articles.code_barre, articles.description, produit.quantite_stock FROM articles JOIN produit ON articles.id_articles = produit.id_articles ORDER BY prix_ht ASC;";
                         break;
                     case "Prix décroissant":
-                        query = "SELECT id_articles nom, prix_ht, prix_ttc FROM articles ORDER BY prix_ht DESC;";
+                        query = "SELECT articles.id_articles, articles.image, articles.nom, articles.famille, articles.code_barre, articles.description, articles.prix_ht, articles.prix_ttc, produit.quantite_stock FROM articles JOIN produit ON articles.id_articles = produit.id_articles ORDER BY prix_ht DESC";
                         break;
                     default:
-                        query = "SELECT id_articles, articles.image, articles.nom, articles.famille, articles.code_barre, articles.description, articles.prix_ht, articles.prix_ttc, produit.quantite_stock FROM articles JOIN produit ON articles.id_articles = produit.id_articles";
+                        query = "SELECT articles.id_articles, articles.image, articles.nom, articles.famille, articles.code_barre, articles.description, articles.prix_ht, articles.prix_ttc, produit.quantite_stock FROM articles JOIN produit ON articles.id_articles = produit.id_articles ORDER BY articles.nom";
+
                         break;
                 }
                 MySqlDataReader reader = ConfigurationDB.ExecuteQuery(query);
@@ -115,10 +117,10 @@ namespace StockXpertise
 
                 if (MyDataGrid.SelectedItem is Article selectedData)
                 {
-                // Charger la page dans le Frame
-                StockFrame.Navigate(new affichageStock(selectedData));
+                    // Charger la page dans le Frame
+                    StockFrame.Navigate(new modification_stock(selectedData));
+                }
             }
-        }
         }
 
         private void generation_pdf(object sender, RoutedEventArgs e)
