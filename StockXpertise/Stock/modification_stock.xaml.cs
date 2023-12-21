@@ -17,24 +17,24 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
 
-namespace StockXpertise
+namespace StockXpertise.Stock
 {
     /// <summary>
-    /// Logique d'interaction pour affichageStock.xaml
+    /// Logique d'interaction pour modification_stock.xaml
     /// </summary>
-    public partial class affichageStock : Page
+    public partial class modification_stock : Page
     {
 
         private Article selectedData;
-        // Stocke le chemin de l'image
+        // Stock le chemin de l'image
         private string imagePath;
         // Suit l'état du bouton Supprimer_image
         private bool supprimerImageClicked = false;
-        // Stocke le chemin initial de l'image
+        // Stock le chemin initial de l'image
         private string initialImagePath;
 
 
-        public affichageStock(Article selectedData)
+        public modification_stock(Article selectedData)
         {
             InitializeComponent();
 
@@ -47,7 +47,7 @@ namespace StockXpertise
 
         public void LoadData()
         {
-            // Récupérer les données de l'article pour les afficher dans les TextBoxs
+            // Récupère les données de l'article pour les afficher dans les TextBoxs
             nom_avant.Text = selectedData.Nom;
             famille_avant.Text = selectedData.Famille;
             code_barre_avant.Text = selectedData.CodeBarre;
@@ -60,7 +60,7 @@ namespace StockXpertise
             string imagePath = selectedData.Image;
 
             if (!string.IsNullOrEmpty(imagePath))
-        {
+            {
                 // Crée une instance de BitmapImage
                 BitmapImage bitmap = new BitmapImage();
 
@@ -72,7 +72,7 @@ namespace StockXpertise
                 // Image affecté au contrôle Image
                 image_avant.Source = bitmap;
                 image_apres.Source = bitmap;
-        }
+            }
         }
 
         private void enregistrer_modification(object sender, RoutedEventArgs e)
@@ -112,7 +112,7 @@ namespace StockXpertise
             {
                 query = "UPDATE articles SET prix_ht = '" + nouveauPrixHT + "' WHERE id_articles = " + selectedData.Id;
                 ConfigurationDB.ExecuteQuery(query);
-        }
+            }
             if (!string.IsNullOrEmpty(nouveauPrixTTC))
             {
                 query = "UPDATE articles SET prix_ttc = '" + nouveauPrixTTC + "' WHERE id_articles = " + selectedData.Id;
@@ -121,31 +121,31 @@ namespace StockXpertise
 
             // Si l'utilisateur a supprimé l'image existante et a ajouté une nouvelle image
             if (initialImagePath != imagePath)
-        {
+            {
                 // Mettre à jour le chemin de l'image dans la base de données
                 query = "UPDATE articles SET image = '" + imagePath + "' WHERE id_articles = " + selectedData.Id;
                 ConfigurationDB.ExecuteQuery(query);
             }
 
             // Retourner à la page Stock après avoir enregistrer les modifications
-            Storage stock = new Storage();
+            affichage_stock stock_display = new affichage_stock();
             Window parentWindow = Window.GetWindow(this);
 
             if (parentWindow != null)
             {
-                parentWindow.Content = stock;
+                parentWindow.Content = stock_display;
             }
         }
 
         private void annuler(object sender, RoutedEventArgs e)
-            {
+        {
             // Retourner à la page Stock sans enregistrer les modifications
-            Storage stock = new Storage();
+            affichage_stock stock_display = new affichage_stock();
             Window parentWindow = Window.GetWindow(this);
 
             if (parentWindow != null)
             {
-                parentWindow.Content = stock;
+                parentWindow.Content = stock_display;
             }
         }
 
@@ -162,7 +162,7 @@ namespace StockXpertise
                 openFileDialog.Filter = "Fichiers images (*.jpg, *.jpeg, *.png, *.gif) | *.jpg; *.jpeg; *.png; *.gif";
 
                 if (openFileDialog.ShowDialog() == true)
-        {
+                {
                     string selectedImagePath = openFileDialog.FileName;
 
                     // Emplacement de destination pour télécgarger l'image
@@ -194,7 +194,7 @@ namespace StockXpertise
 
         private void Supprimer_image(object sender, RoutedEventArgs e)
         {
-            // Supprimer l'image de l'article uniquement dans la page affichageStock et non dans la base de données
+            // Supprimer l'image de l'article uniquement dans la page modification_stock et non dans la base de données
             // Marquer que le bouton Supprimer_image a été cliqué
             supprimerImageClicked = true;
             // Effacer le chemin de l'image
