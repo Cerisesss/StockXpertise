@@ -32,8 +32,8 @@
         </Button>
         <Label Content="Stock actuel" HorizontalAlignment="Left" Height="30" Margin="262,174,0,0" VerticalAlignment="Top" Width="75"/>
         <Label Content="Stock réel" HorizontalAlignment="Left" Height="30" Margin="634,172,0,0" VerticalAlignment="Top" Width="75"/>
-        <TextBlock x:Name="stock_actuel" TextAlignment="Center" HorizontalAlignment="Left" Height="15" Margin="359,244,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116"/>
-        <TextBlock x:Name="emplacement_actuel" TextAlignment="Center" HorizontalAlignment="Left" Height="17" Margin="359,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116"/>
+        <TextBlock x:Name="stock_actuel" TextAlignment="Center" HorizontalAlignment="Left" Height="15" Margin="368,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116"/>
+        <TextBlock x:Name="emplacement_actuel" TextAlignment="Center" HorizontalAlignment="Left" Height="17" Margin="368,242,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116"/>
         <Label Content="Emplacement" HorizontalAlignment="Left" Height="30" Margin="262,237,0,0" VerticalAlignment="Top" Width="91"/>
         <Label Content="Emplacement" HorizontalAlignment="Left" Height="30" Margin="634,235,0,0" VerticalAlignment="Top" Width="92"/>
         <TextBox x:Name="emplacement_reel" HorizontalAlignment="Left" Height="19" Margin="732,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
