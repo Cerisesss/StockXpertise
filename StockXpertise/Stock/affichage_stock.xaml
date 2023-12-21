@@ -38,7 +38,7 @@
           CanUserResizeColumns="True"
           CanUserResizeRows="False"
           SelectionMode="Single"
-          RowHeight="40" SelectionChanged="ComboBox_SelectionChanged_affichage">
+          RowHeight="40" SelectionChanged="ComboBox_SelectionChanged">
 
                 <!-- Style des colonnes -->
                 <DataGrid.Resources>
