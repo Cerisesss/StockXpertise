@@ -1,104 +1,68 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Runtime.Remoting.Messaging;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Data;
-using MySql.Data.MySqlClient;
 
 namespace StockXpertise
 {
-    /// <summary>
-    /// Logique d'interaction pour Stock.xaml
-    /// </summary>
     public partial class Historique : Page
     {
         public Historique()
         {
             InitializeComponent();
-
-            comboBoxAffichage.Items.Add(" ");
-            comboBoxAffichage.Items.Add("Nom");
-            comboBoxAffichage.Items.Add("Famille");
-            comboBoxAffichage.Items.Add("Code barre");
-            comboBoxAffichage.Items.Add("Quantité");
-            comboBoxAffichage.Items.Add("Prix croissant");
-            comboBoxAffichage.Items.Add("Prix décroissant");
-
-            string query = "SELECT articles.image, articles.nom, articles.famille, articles.code_barre, articles.description, articles.prix_ht, articles.prix_ttc, produit.quantite_stock FROM articles JOIN produit ON articles.id_articles = produit.id_articles";
-            MySqlDataReader reader = ConfigurationDB.ExecuteQuery(query);
-
-            // Assigne les données au DataGrid
-            MyDataGrid.ItemsSource = reader;
+            Loaded += Historique_Loaded;
         }
 
-        private void ComboBox_SelectionChanged_affichage(object sender, SelectionChangedEventArgs e)
+        private void Historique_Loaded(object sender, RoutedEventArgs e)
         {
-            if (comboBoxAffichage.SelectedItem != null)
+            // Charger les données initiales
+            comboBoxAffichage.ItemsSource = new string[] { "Quantité des stocks modifiée (tous)", "Action d'utilisateur", "Entrées", "Sorties", "Transactions (caissier)" };
+            comboBoxAffichage.SelectedIndex = 0;
+            ChargerComboBoxUtilisateur();
+
+            // Gestionnaire d'événement pour le changement de sélection
+            comboBoxAffichage.SelectionChanged += (s, args) => ChargerDonnees();
+
+            // Gestionnaire d'événement pour le double-clic sur une cellule
+            dataGridHistorique.MouseDoubleClick += DataGridHistorique_MouseDoubleClick;
+        }
+
+        private void ChargerDonnees()
+        {
+            string selectedItem = comboBoxAffichage.SelectedItem as string;
+
+            // Si l'option "Action d'utilisateur" est sélectionnée
+            if (selectedItem == "Action d'utilisateur")
             {
-                string selectedValue = comboBoxAffichage.SelectedItem.ToString();
-                string query;
+                // Exemple de logique pour obtenir le nom de l'utilisateur sélectionné depuis la ComboBox
+                string selectedUserName = comboBoxUtilisateur.SelectedItem as string;
 
-                switch (selectedValue)
-                {
-                    case "Nom":
-                        query = "SELECT nom FROM articles ORDER BY nom;";
-                        break;
-                    case "Famille":
-                        query = "SELECT nom, famille FROM articles ORDER BY famille;";
-                        break;
-                    case "Code barre":
-                        query = "SELECT nom, code_barre FROM articles ORDER BY code_barre;";
-                        break;
-                    case "Quantité":
-                        query = "SELECT articles.nom, produit.quantite_stock FROM articles JOIN produit ON articles.id_articles = produit.id_articles;";
-                        break;
-                    case "Prix croissant":
-                        query = "SELECT nom, prix_ht, prix_ttc FROM articles ORDER BY prix_ht ASC;";
-                        break;
-                    case "Prix décroissant":
-                        query = "SELECT nom, prix_ht, prix_ttc FROM articles ORDER BY prix_ht DESC;";
-                        break;
-                    default:
-                        query = "SELECT articles.image, articles.nom, articles.famille, articles.code_barre, articles.description, articles.prix_ht, articles.prix_ttc, produit.quantite_stock FROM articles JOIN produit ON articles.id_articles = produit.id_articles";
-                        break;
-                }
-                MySqlDataReader reader = ConfigurationDB.ExecuteQuery(query);
+                // Récupérer l'ID de l'utilisateur
+                int userId = StockManager.GetUserId(selectedUserName);
 
-                // Assigne les données au DataGrid
-                MyDataGrid.ItemsSource = reader;
+                // Charger les données en fonction de l'option sélectionnée
+                dataGridHistorique.ItemsSource = StockManager.ChargerModificationsStock(selectedItem, userId);
+            }
+            else
+            {
+                // Charger les données en fonction de l'option sélectionnée
+                dataGridHistorique.ItemsSource = StockManager.ChargerModificationsStock(selectedItem);
             }
         }
 
-        private void MyDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void DataGridHistorique_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            if (MyDataGrid.SelectedItem != null)
+            if (dataGridHistorique.SelectedItem != null)
             {
-                gridHistorique.Visibility = Visibility.Collapsed;
-
-                // Charger les données de l'article sélectionné
-                var selectedData = MyDataGrid.SelectedItem;
-
-                // Charger la page dans le Frame
-                HistoriqueFrame.Navigate(new affichageHistorique(selectedData));
+                StockModificationItem selectedItem = (StockModificationItem)dataGridHistorique.SelectedItem;
+                MessageBox.Show($"Double-clic sur l'utilisateur : {selectedItem.Utilisateur}");
             }
         }
 
-        private void generation_pdf(object sender, RoutedEventArgs e)
+        private void ChargerComboBoxUtilisateur()
         {
-            // TODO : Générer le PDF
+            comboBoxUtilisateur.ItemsSource = StockManager.ChargerUtilisateurs();
         }
     }
 }
