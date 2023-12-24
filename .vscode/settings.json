@@ -1,0 +1,9 @@
+{
+    "dotnet.preferCSharpExtension": true,
+    "python.testing.pytestArgs": [
+        "StockXpertise"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "discord.enabled": false
+}
