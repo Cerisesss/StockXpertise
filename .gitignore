@@ -1,6 +1,9 @@
 ﻿/StockXpertise/Configuration/config.xml
 ../.vs
 .vs
+.vscode
+.vscode/
+.vscode/*
 .vs/
 packages/
 package/
