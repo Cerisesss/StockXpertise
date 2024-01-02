@@ -12,7 +12,22 @@
         <local:UserControl1/>
         <Frame x:Name="StockInventaireFrame" NavigationUIVisibility="Hidden" Margin="104,39,-104,-39"/>
         <Grid x:Name="gridStock" Margin="104,39,-104,-39">
-            <Button x:Name="button" Content="PDF" HorizontalAlignment="Left" Height="23" Margin="800,38,0,0" VerticalAlignment="Top" Width="72" RenderTransformOrigin="0.743,1.834" BorderBrush="{Binding Visibility.Hidden, ElementName=button}" Click="generation_pdf">
+            <Border BorderThickness="2" Margin="120,51,0,0" CornerRadius="10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="77" Width="700">
+                <Border.BorderBrush>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFF19494"/>
+                        <GradientStop Color="#FFDAFD00" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.BorderBrush>
+                <Border.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFF19494"/>
+                        <GradientStop Color="#FFDAFD00" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+            <TextBlock Text="Inventaire" HorizontalAlignment="Left" FontSize="24" Margin="404,66,0,554" Width="138" FontWeight="Bold"/>
+            <Button x:Name="button" Content="PDF" HorizontalAlignment="Left" Height="37" Margin="623,242,0,0" VerticalAlignment="Top" Width="94" RenderTransformOrigin="0.743,1.834" BorderBrush="{Binding Visibility.Hidden, ElementName=button}" Click="generation_pdf">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="#FFAEAEAE" Offset="0"/>
@@ -20,7 +35,7 @@
                     </LinearGradientBrush>
                 </Button.Background>
             </Button>
-            <DataGrid x:Name="MyDataGrid" HorizontalAlignment="Left" VerticalAlignment="Center" Height="486" Width="783" Margin="89,0,0,0"
+            <DataGrid x:Name="MyDataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Height="284" Width="357" Margin="155,196,0,0"
           AutoGenerateColumns="True"
           AlternatingRowBackground="#F0F0F0"
           GridLinesVisibility="None"

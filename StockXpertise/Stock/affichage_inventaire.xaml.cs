@@ -2,6 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics; // Pour le Debug.WriteLine
+using System.IO;
+using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Element;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -16,6 +20,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 
 namespace StockXpertise.Stock
 {
@@ -71,7 +76,28 @@ namespace StockXpertise.Stock
 
         private void generation_pdf(object sender, RoutedEventArgs e)
         {
-            // TODO : Générer le PDF
+            // Ajout d'un titre au document PDF
+            string text = "INVENTAIRE";
+
+            // Ajout des données au document PDF : 4 colonnes pour id_produit, nom, quantite_stock, code
+            iText.Layout.Element.Table table = new iText.Layout.Element.Table(4);
+
+            // Ajoute des en-têtes de colonnes
+            table.AddHeaderCell("ID Produit");
+            table.AddHeaderCell("Nom");
+            table.AddHeaderCell("Quantité en stock");
+            table.AddHeaderCell("Code Emplacement");
+
+            // Ajoute des données de la liste articlesDataList au tableau dans le PDF
+            foreach (var data in articlesDataList)
+            {
+                table.AddCell(data.Id_produit.ToString());
+                table.AddCell(data.Nom);
+                table.AddCell(data.Quantite_stock.ToString());
+                table.AddCell(data.Code);
+            }
+
+            PDFGenerator.GeneratePDF(text, table, "inventaire.pdf");
         }
     }
 }

@@ -8,7 +8,7 @@
       d:DesignHeight="700" d:DesignWidth="1024"
       Title="fournisseur">
 
-    <Grid>
+    <Grid>  
         <local:UserControl1/>
         <Frame x:Name="StockFrame" NavigationUIVisibility="Hidden"/>
         <Grid x:Name="gridStock" Margin="104,39,-104,-39">

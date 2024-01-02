@@ -87,53 +87,61 @@ namespace StockXpertise.Stock
 
             string query;
 
-            // Vérifier si les TextBoxs ne sont pas vides pour enregistrer que les données qui ont été modifiées
-            if (!string.IsNullOrEmpty(nouveauNom))
+            if (string.IsNullOrEmpty(nouveauNom) && string.IsNullOrEmpty(nouvelleFamille) && string.IsNullOrEmpty(nouvelledescription) && string.IsNullOrEmpty(nouvelleQuantite) && string.IsNullOrEmpty(nouveauPrixHT) && string.IsNullOrEmpty(nouveauPrixTTC) && string.IsNullOrEmpty(imagePath))
             {
-                query = "UPDATE articles SET nom = '" + nouveauNom + "' WHERE id_articles = " + selectedData.Id;
-                ConfigurationDB.ExecuteQuery(query);
+                MessageBox.Show("Veuillez remplir au moins un champ");
+                return;
             }
-            if (!string.IsNullOrEmpty(nouvelleFamille))
+            else
             {
-                query = "UPDATE articles SET famille = '" + nouvelleFamille + "' WHERE id_articles = " + selectedData.Id;
-                ConfigurationDB.ExecuteQuery(query);
-            }
-            if (!string.IsNullOrEmpty(nouvelledescription))
-            {
-                query = "UPDATE articles SET description = '" + nouvelledescription + "' WHERE id_articles = " + selectedData.Id;
-                ConfigurationDB.ExecuteQuery(query);
-            }
-            if (!string.IsNullOrEmpty(nouvelleQuantite))
-            {
-                query = "UPDATE produit SET quantite_stock = '" + nouvelleQuantite + "' WHERE id_articles = " + selectedData.Id;
-                ConfigurationDB.ExecuteQuery(query);
-            }
-            if (!string.IsNullOrEmpty(nouveauPrixHT))
-            {
-                query = "UPDATE articles SET prix_ht = '" + nouveauPrixHT + "' WHERE id_articles = " + selectedData.Id;
-                ConfigurationDB.ExecuteQuery(query);
-            }
-            if (!string.IsNullOrEmpty(nouveauPrixTTC))
-            {
-                query = "UPDATE articles SET prix_ttc = '" + nouveauPrixTTC + "' WHERE id_articles = " + selectedData.Id;
-                ConfigurationDB.ExecuteQuery(query);
-            }
+                // Vérifier si les TextBoxs ne sont pas vides pour enregistrer que les données qui ont été modifiées
+                if (!string.IsNullOrEmpty(nouveauNom))
+                {
+                    query = "UPDATE articles SET nom = '" + nouveauNom + "' WHERE id_articles = " + selectedData.Id;
+                    ConfigurationDB.ExecuteQuery(query);
+                }
+                if (!string.IsNullOrEmpty(nouvelleFamille))
+                {
+                    query = "UPDATE articles SET famille = '" + nouvelleFamille + "' WHERE id_articles = " + selectedData.Id;
+                    ConfigurationDB.ExecuteQuery(query);
+                }
+                if (!string.IsNullOrEmpty(nouvelledescription))
+                {
+                    query = "UPDATE articles SET description = '" + nouvelledescription + "' WHERE id_articles = " + selectedData.Id;
+                    ConfigurationDB.ExecuteQuery(query);
+                }
+                if (!string.IsNullOrEmpty(nouvelleQuantite))
+                {
+                    query = "UPDATE produit SET quantite_stock = '" + nouvelleQuantite + "' WHERE id_articles = " + selectedData.Id;
+                    ConfigurationDB.ExecuteQuery(query);
+                }
+                if (!string.IsNullOrEmpty(nouveauPrixHT))
+                {
+                    query = "UPDATE articles SET prix_ht = '" + nouveauPrixHT + "' WHERE id_articles = " + selectedData.Id;
+                    ConfigurationDB.ExecuteQuery(query);
+                }
+                if (!string.IsNullOrEmpty(nouveauPrixTTC))
+                {
+                    query = "UPDATE articles SET prix_ttc = '" + nouveauPrixTTC + "' WHERE id_articles = " + selectedData.Id;
+                    ConfigurationDB.ExecuteQuery(query);
+                }
 
-            // Si l'utilisateur a supprimé l'image existante et a ajouté une nouvelle image
-            if (initialImagePath != imagePath)
-            {
-                // Mettre à jour le chemin de l'image dans la base de données
-                query = "UPDATE articles SET image = '" + imagePath + "' WHERE id_articles = " + selectedData.Id;
-                ConfigurationDB.ExecuteQuery(query);
-            }
+                // Si l'utilisateur a supprimé l'image existante et a ajouté une nouvelle image
+                if (initialImagePath != imagePath)
+                {
+                    // Mettre à jour le chemin de l'image dans la base de données
+                    query = "UPDATE articles SET image = '" + imagePath + "' WHERE id_articles = " + selectedData.Id;
+                    ConfigurationDB.ExecuteQuery(query);
+                }
 
-            // Retourner à la page Stock après avoir enregistrer les modifications
-            affichage_stock stock_display = new affichage_stock();
-            Window parentWindow = Window.GetWindow(this);
+                // Retourner à la page Stock après avoir enregistrer les modifications
+                affichage_stock stock_display = new affichage_stock();
+                Window parentWindow = Window.GetWindow(this);
 
-            if (parentWindow != null)
-            {
-                parentWindow.Content = stock_display;
+                if (parentWindow != null)
+                {
+                    parentWindow.Content = stock_display;
+                }
             }
         }
 
