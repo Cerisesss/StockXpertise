@@ -18,6 +18,7 @@ using System.Windows.Shapes;
 using System.Data;
 using MySql.Data.MySqlClient;
 using Org.BouncyCastle.Asn1.X509;
+using StockXpertise.Connection;
 
 namespace StockXpertise.Stock
 {
@@ -32,23 +33,14 @@ namespace StockXpertise.Stock
         {
             InitializeComponent();
 
-            comboBoxAffichage.Items.Add(" ");
-            comboBoxAffichage.Items.Add("Nom");
-            comboBoxAffichage.Items.Add("Famille");
-            comboBoxAffichage.Items.Add("Code barre");
-            comboBoxAffichage.Items.Add("Quantité");
-            comboBoxAffichage.Items.Add("Prix croissant");
-            comboBoxAffichage.Items.Add("Prix décroissant");
-
             string query = "SELECT articles.id_articles, articles.image, articles.nom, articles.famille, articles.code_barre, articles.description, articles.prix_ht, articles.prix_ttc, produit.quantite_stock FROM articles JOIN produit ON articles.id_articles = produit.id_articles";
             MySqlDataReader reader = ConfigurationDB.ExecuteQuery(query);
-
             remplissage_donnees(reader);
         }
 
         private void remplissage_donnees(MySqlDataReader reader)
         {
-            // Remplissez la liste d'Article
+            // Rempli la liste d'Article
             while (reader.Read())
             {
                 var articleData = new Article
@@ -70,46 +62,55 @@ namespace StockXpertise.Stock
             MyDataGrid.ItemsSource = articlesDataList;
         }
 
-        private void ComboBox_SelectionChanged_affichage(object sender, SelectionChangedEventArgs e)
+        private void remplissage_donnees(MySqlDataReader reader, string motRecherche)
         {
-            if (comboBoxAffichage.SelectedItem != null)
+            List<Article> matchingArticles = new List<Article>();
+            List<Article> otherArticles = new List<Article>();
+
+            while (reader.Read())
             {
-                string selectedValue = comboBoxAffichage.SelectedItem.ToString();
-                string query;
-
-                switch (selectedValue)
+                var articleData = new Article
                 {
-                    case "Nom":
-                        query = "SELECT articles.id_articles, articles.image, articles.nom, articles.famille, articles.code_barre, articles.description, articles.prix_ht, articles.prix_ttc, produit.quantite_stock FROM articles JOIN produit ON articles.id_articles = produit.id_articles ORDER BY articles.nom";
-                        break;
-                    case "Famille":
-                        query = "SELECT articles.id_articles, articles.image, articles.nom, articles.famille, articles.code_barre, articles.description, articles.prix_ht, articles.prix_ttc, produit.quantite_stock FROM articles JOIN produit ON articles.id_articles = produit.id_articles ORDER BY articles.famille";
-                        break;
-                    case "Code barre":
-                        query = "SELECT articles.id_articles, articles.image, articles.nom, articles.famille, articles.code_barre, articles.description, articles.prix_ht, articles.prix_ttc, produit.quantite_stock FROM articles JOIN produit ON articles.id_articles = produit.id_articles ORDER BY articles.code_barre";
-                        break;
-                    case "Quantité":
-                        query = "SELECT articles.id_articles, articles.nom, produit.quantite_stock, articles.image, articles.famille, articles.code_barre, articles.description, articles.prix_ht, articles.prix_ttc FROM articles JOIN produit ON articles.id_articles = produit.id_articles";
-                        break;
-                    case "Prix croissant":
-                        query = "SELECT articles.id_articles, articles.nom, articles.prix_ht, articles.prix_ttc, articles.image, articles.famille, articles.code_barre, articles.description, produit.quantite_stock FROM articles JOIN produit ON articles.id_articles = produit.id_articles ORDER BY prix_ht ASC;";
-                        break;
-                    case "Prix décroissant":
-                        query = "SELECT articles.id_articles, articles.image, articles.nom, articles.famille, articles.code_barre, articles.description, articles.prix_ht, articles.prix_ttc, produit.quantite_stock FROM articles JOIN produit ON articles.id_articles = produit.id_articles ORDER BY prix_ht DESC";
-                        break;
-                    default:
-                        query = "SELECT articles.id_articles, articles.image, articles.nom, articles.famille, articles.code_barre, articles.description, articles.prix_ht, articles.prix_ttc, produit.quantite_stock FROM articles JOIN produit ON articles.id_articles = produit.id_articles ORDER BY articles.nom";
+                    Id = Convert.ToInt32(reader["id_articles"]),
+                    Nom = reader["nom"].ToString(),
+                    Famille = reader["famille"].ToString(),
+                    CodeBarre = reader["code_barre"].ToString(),
+                    Description = reader["description"].ToString(),
+                    Quantite = Convert.ToInt32(reader["quantite_stock"]),
+                    PrixHT = Convert.ToInt32(reader["prix_ht"]),
+                    PrixTTC = Convert.ToInt32(reader["prix_ttc"])
+                };
 
+                bool isMatching = false;
+
+                // Comparaison du mot de recherche avec chaque propriété de l'article
+                foreach (var property in articleData.GetType().GetProperties())
+                {
+                    var value = property.GetValue(articleData);
+                    if (value != null && value.ToString().ToLower().Contains(motRecherche.ToLower()))
+                    {
+                        isMatching = true;
                         break;
+                    }
                 }
-                MySqlDataReader reader = ConfigurationDB.ExecuteQuery(query);
 
-                // Assigne les données au DataGrid
-                remplissage_donnees(reader);
+                if (isMatching)
+                {
+                    matchingArticles.Add(articleData);
+                }
+                else
+                {
+                    otherArticles.Add(articleData);
+                }
             }
+
+            // Fusion des listes pour placer les lignes correspondantes en haut
+            matchingArticles.AddRange(otherArticles);
+
+            MyDataGrid.ItemsSource = matchingArticles;
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (MyDataGrid.SelectedItem != null)
             {
@@ -117,7 +118,7 @@ namespace StockXpertise.Stock
 
                 if (MyDataGrid.SelectedItem is Article selectedData)
                 {
-                    // Charger la page dans le Frame
+                    // Charge la page dans le Frame
                     StockFrame.Navigate(new modification_stock(selectedData));
                 }
             }
@@ -125,7 +126,63 @@ namespace StockXpertise.Stock
 
         private void generation_pdf(object sender, RoutedEventArgs e)
         {
-            // TODO : Générer le PDF
+            var articlesDataList = MyDataGrid.ItemsSource as List<Article>;
+
+            if (articlesDataList != null)
+            {
+                string text = "STOCK";
+
+                iText.Layout.Element.Table table = new iText.Layout.Element.Table(8);
+
+                table.AddHeaderCell("ID Articles");
+                table.AddHeaderCell("Nom");
+                table.AddHeaderCell("Famille");
+                table.AddHeaderCell("Code barre");
+                table.AddHeaderCell("Description");
+                table.AddHeaderCell("Prix HT");
+                table.AddHeaderCell("Prix TTC");
+                table.AddHeaderCell("Quantité en stock");
+
+                foreach (var data in articlesDataList)
+                {
+                    table.AddCell(data.Id.ToString());
+                    table.AddCell(data.Nom);
+                    table.AddCell(data.Famille);
+                    table.AddCell(data.CodeBarre);
+                    table.AddCell(data.Description);
+                    table.AddCell(data.PrixHT.ToString());
+                    table.AddCell(data.PrixTTC.ToString());
+                    table.AddCell(data.Quantite.ToString());
+                }
+
+                PDFGenerator.GeneratePDF(text, table, "stock.pdf");
+            }
+        }
+
+        private void Search_TextBox_TextChanged(object sender, RoutedEventArgs e)
+        {
+            string motRecherche = Search_TextBox.Text;
+
+            string query = "SELECT articles.id_articles, articles.image, articles.nom, articles.famille, articles.code_barre, articles.description, articles.prix_ht, articles.prix_ttc, produit.quantite_stock FROM articles JOIN produit ON articles.id_articles = produit.id_articles";
+
+            // Si un mot de recherche est saisi, ajuste la requête et exécute la recherche
+            if (!string.IsNullOrEmpty(motRecherche))
+            {
+                query += " WHERE articles.id_articles LIKE @motRecherche OR articles.nom LIKE @motRecherche OR articles.famille LIKE @motRecherche OR articles.code_barre LIKE @motRecherche OR articles.description LIKE @motRecherche OR articles.prix_ht LIKE @motRecherche OR articles.prix_ttc LIKE @motRecherche OR produit.quantite_stock LIKE @motRecherche";
+                query = query.Replace("@motRecherche", "'" + "%" + motRecherche + "%" + "'");
+                MySqlDataReader reader = ConfigurationDB.ExecuteQuery(query);
+
+                // Appel de la méthode remplissage_donnees avec le lecteur retourné et le mot de recherche
+                remplissage_donnees(reader, motRecherche);
+            }
+            else
+            {
+                // Si aucun mot de recherche n'est saisi, exécute la méthode sans l'argument supplémentaire
+                MySqlDataReader reader = ConfigurationDB.ExecuteQuery(query);
+
+                // Appel de la méthode remplissage_donnees sans le deuxième argument
+                remplissage_donnees(reader);
+            }
         }
     }
 }

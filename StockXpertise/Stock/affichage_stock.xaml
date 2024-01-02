@@ -12,7 +12,25 @@
         <local:UserControl1/>
         <Frame x:Name="StockFrame" NavigationUIVisibility="Hidden"/>
         <Grid x:Name="gridStock" Margin="104,39,-104,-39">
-            <Button x:Name="button" Content="PDF" HorizontalAlignment="Left" Height="23" Margin="795,66,0,0" VerticalAlignment="Top" Width="72" RenderTransformOrigin="0.743,1.834" BorderBrush="{Binding Visibility.Hidden, ElementName=button}" Click="generation_pdf">
+            <Grid.Background>
+                <ImageBrush/>
+            </Grid.Background>
+            <Border BorderThickness="2" Margin="120,51,0,0" CornerRadius="10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="77" Width="700">
+                <Border.BorderBrush>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFF19494"/>
+                        <GradientStop Color="#FFDAFD00" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.BorderBrush>
+                <Border.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFF19494"/>
+                        <GradientStop Color="#FFDAFD00" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+            <TextBlock Text="Stock" HorizontalAlignment="Left" FontSize="24" Margin="404,66,0,554" Width="138" FontWeight="Bold"/>
+            <Button x:Name="button" Content="PDF" HorizontalAlignment="Left" Height="30" Margin="810,181,0,0" VerticalAlignment="Top" Width="72" RenderTransformOrigin="0.743,1.834" BorderBrush="{Binding Visibility.Hidden, ElementName=button}" Click="generation_pdf">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="#FFAEAEAE" Offset="0"/>
@@ -20,25 +38,14 @@
                     </LinearGradientBrush>
                 </Button.Background>
             </Button>
-            <Rectangle HorizontalAlignment="Left" Height="23" Margin="84,66,0,0" Stroke="Transparent" VerticalAlignment="Top" Width="182" RenderTransformOrigin="0.527,0.493">
-                <Rectangle.Fill>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#FFACACAC"/>
-                        <GradientStop Color="White" Offset="1"/>
-                        <GradientStop Color="#FFAEAEAE" Offset="0"/>
-                    </LinearGradientBrush>
-                </Rectangle.Fill>
-            </Rectangle>
-            <ComboBox x:Name="comboBoxAffichage" HorizontalAlignment="Left" Height="23" Margin="266,66,0,0" VerticalAlignment="Top" Width="275" SelectionChanged="ComboBox_SelectionChanged_affichage"/>
-            <Label Content="Affichage" HorizontalAlignment="Left" Height="36" Margin="108,64,0,0" VerticalAlignment="Top" Width="133"/>
-            <DataGrid x:Name="MyDataGrid" HorizontalAlignment="Left" VerticalAlignment="Center" Height="352" Width="787" Margin="80,0,0,0"
+            <DataGrid x:Name="MyDataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Height="352" Width="787" Margin="95,251,0,0"
           AutoGenerateColumns="True"
           AlternatingRowBackground="#F0F0F0"
           GridLinesVisibility="None"
           CanUserResizeColumns="True"
           CanUserResizeRows="False"
           SelectionMode="Single"
-          RowHeight="40" SelectionChanged="ComboBox_SelectionChanged">
+          RowHeight="40" SelectionChanged="DataGrid_SelectionChanged">
 
                 <!-- Style des colonnes -->
                 <DataGrid.Resources>
@@ -58,6 +65,18 @@
                     </Style>
                 </DataGrid.Resources>
             </DataGrid>
+            <TextBox x:Name="Search_TextBox" HorizontalAlignment="Left" Height="30" Margin="95,181,0,0" Text="Search ..." TextWrapping="Wrap" VerticalAlignment="Top" Width="151">
+                <TextBox.Template>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Grid>
+                            <Border CornerRadius="10" BorderBrush="Black" BorderThickness="1" Background="White">
+                                <ScrollViewer x:Name="PART_ContentHost" Padding="5" Margin="5"/>
+                            </Border>
+                            <Button Content="🔍" HorizontalAlignment="Right" VerticalAlignment="Center" Width="30" Margin="-35,0,5,0" BorderBrush="{x:Null}" Click="Search_TextBox_TextChanged" Background="White"/>
+                        </Grid>
+                    </ControlTemplate>
+                </TextBox.Template>
+            </TextBox>
         </Grid>
     </Grid>
 </Page>
