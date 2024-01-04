@@ -15,12 +15,12 @@ INSERT INTO `employes` (`nom`, `prenom`, `mot_de_passe`, `mail`, `role`) VALUES
 ('Employe5', 'Prenom5', 'mdp5', 'employe5@mail.com', 'Role5');
 
 -- Inserts for emplacement table
-INSERT INTO `emplacement` (`code`, `capacite`) VALUES
-('C1', 100),
-('B2', 150),
-('B3', 200),
-('A4', 120),
-('A5', 180);
+INSERT INTO `emplacement` (`code`, `code_reel`, `capacite`) VALUES
+('C1', 'null', 100),
+('B2', 'null', 150),
+('B3', 'null', 200),
+('A4', 'null', 120),
+('A5', 'null', 180);
 
 -- Inserts for articles table
 INSERT INTO `articles` (`id_fournisseur`, `nom`, `famille`, `prix_ht`, `prix_ttc`, `prix_vente`, `prix_achat`, `description`, `date_ajout`, `code_barre`, `image`) VALUES
@@ -31,12 +31,12 @@ INSERT INTO `articles` (`id_fournisseur`, `nom`, `famille`, `prix_ht`, `prix_ttc
 (5, 'Article5', 'Famille5', 55, 66, 90, 45, 'Description5', '2023-05-05 09:20:00', 567890123456, 'path5');
 
 -- Inserts for produit table
-INSERT INTO `produit` (`id_articles`, `id_emplacement`, `quantite_stock`) VALUES
-(1, 1, 50),
-(2, 2, 30),
-(3, 3, 75),
-(4, 4, 40),
-(5, 5, 60);
+INSERT INTO `produit` (`id_articles`, `id_emplacement`, `quantite_stock`, `quantite_stock_reel`) VALUES
+(1, 1, 50, 0),
+(2, 2, 30, 0),
+(3, 3, 75, 0),
+(4, 4, 40, 0),
+(5, 5, 60, 0);
 
 -- Inserts for stockage table
 INSERT INTO `stockage` (`id_emplacement`, `id_produit`) VALUES

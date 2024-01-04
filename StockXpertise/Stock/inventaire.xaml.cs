@@ -67,13 +67,13 @@ namespace StockXpertise.Stock
             {
                 if (!string.IsNullOrEmpty(stockReel))
                 {
-                    query = "UPDATE produit SET quantite_stock = '" + stockReel + "' WHERE id_produit = " + selectedData.Id_produit;
+                    query = "UPDATE produit SET quantite_stock_reel = '" + stockReel + "' WHERE id_produit = " + selectedData.Id_produit;
                     ConfigurationDB.ExecuteQuery(query);
                 }
 
                 if (!string.IsNullOrEmpty(emplacementReel))
                 {
-                    query = "UPDATE emplacement SET code = '" + emplacementReel + "' WHERE id_emplacement = " + selectedData.Id_produit;
+                    query = "UPDATE emplacement SET code_reel = '" + emplacementReel + "' WHERE id_emplacement = " + selectedData.Id_produit;
                     ConfigurationDB.ExecuteQuery(query);
                 }
 
