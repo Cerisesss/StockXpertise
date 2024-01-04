@@ -21,6 +21,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.Linq;
+using MySqlX.XDevAPI.Relational;
 
 namespace StockXpertise.Stock
 {
@@ -35,7 +36,7 @@ namespace StockXpertise.Stock
         {
             InitializeComponent();
 
-            string query = "SELECT produit.id_produit, produit.quantite_stock, articles.nom, emplacement.code FROM produit INNER JOIN articles ON produit.id_articles = articles.id_articles INNER JOIN emplacement ON produit.id_emplacement = emplacement.id_emplacement;";
+            string query = "SELECT produit.id_produit, produit.quantite_stock, produit.quantite_stock_reel, articles.nom, emplacement.code, emplacement.code_reel FROM produit INNER JOIN articles ON produit.id_articles = articles.id_articles INNER JOIN emplacement ON produit.id_emplacement = emplacement.id_emplacement;";
             MySqlDataReader reader = ConfigurationDB.ExecuteQuery(query);
 
             remplissage_donnees(reader);
@@ -43,7 +44,10 @@ namespace StockXpertise.Stock
 
         private void remplissage_donnees(MySqlDataReader reader)
         {
-            // Remplir la liste
+            List<int> redIds = new List<int>();
+            List<int> greenIds = new List<int>();
+
+            // Remplissage de la liste
             while (reader.Read())
             {
                 var articleData = new DataInventaire()
@@ -51,13 +55,50 @@ namespace StockXpertise.Stock
                     Id_produit = Convert.ToInt32(reader["id_produit"]),
                     Nom = reader["nom"].ToString(),
                     Quantite_stock = Convert.ToInt32(reader["quantite_stock"]),
-                    Code = reader["code"].ToString()
+                    Quantite_stock_reel = Convert.ToInt32(reader["quantite_stock_reel"]),
+                    Code = reader["code"].ToString(),
+                    Code_reel = reader["code_reel"].ToString()
                 };
+
+                if ((articleData.Quantite_stock != articleData.Quantite_stock_reel || articleData.Code != articleData.Code_reel) &&
+                    !(articleData.Quantite_stock_reel == 0 && articleData.Code_reel == "null"))
+                {
+                    redIds.Add(articleData.Id_produit);
+                }
+                else if (articleData.Quantite_stock == articleData.Quantite_stock_reel && articleData.Code == articleData.Code_reel)
+                {
+                    greenIds.Add(articleData.Id_produit);
+                }
 
                 articlesDataList.Add(articleData);
             }
-            // Assigne les données au DataGrid
+
             MyDataGrid.ItemsSource = articlesDataList;
+
+            // Attache un gestionnaire d'événements au chargement du DataGrid
+            MyDataGrid.Loaded += (sender, args) =>
+            {
+                // Parcours les lignes du DataGrid pour changer la couleur de fond
+                for (int i = 0; i < MyDataGrid.Items.Count; i++)
+                {
+                    var item = MyDataGrid.Items[i] as DataInventaire;
+                    if (item != null)
+                    {
+                        var row = MyDataGrid.ItemContainerGenerator.ContainerFromIndex(i) as DataGridRow;
+                        if (row != null)
+                        {
+                            if (redIds.Contains(item.Id_produit))
+                            {
+                                row.Background = Brushes.Red;
+                            }
+                            else if (greenIds.Contains(item.Id_produit))
+                            {
+                                row.Background = Brushes.LightGreen;
+                            }
+                        }
+                    }
+                }
+            };
         }
 
         private void MyDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -80,13 +121,15 @@ namespace StockXpertise.Stock
             string text = "INVENTAIRE";
 
             // Ajout des données au document PDF : 4 colonnes pour id_produit, nom, quantite_stock, code
-            iText.Layout.Element.Table table = new iText.Layout.Element.Table(4);
+            iText.Layout.Element.Table table = new iText.Layout.Element.Table(6);
 
             // Ajoute des en-têtes de colonnes
             table.AddHeaderCell("ID Produit");
             table.AddHeaderCell("Nom");
             table.AddHeaderCell("Quantité en stock");
+            table.AddHeaderCell("Quantité réelle");
             table.AddHeaderCell("Code Emplacement");
+            table.AddHeaderCell("Code Emplacement réel");
 
             // Ajoute des données de la liste articlesDataList au tableau dans le PDF
             foreach (var data in articlesDataList)
@@ -94,7 +137,9 @@ namespace StockXpertise.Stock
                 table.AddCell(data.Id_produit.ToString());
                 table.AddCell(data.Nom);
                 table.AddCell(data.Quantite_stock.ToString());
+                table.AddCell(data.Quantite_stock_reel.ToString());
                 table.AddCell(data.Code);
+                table.AddCell(data.Code_reel);
             }
 
             PDFGenerator.GeneratePDF(text, table, "inventaire.pdf");
