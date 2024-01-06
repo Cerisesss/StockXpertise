@@ -15,6 +15,7 @@ namespace StockXpertise
         private string mail { get; set; }
         private string role { get; set; }
 
+        //il faut ajouter un singleton pour que la connection soit unique
         public UserConnected(int id_employee, string nom, string prenom, string mot_de_passe, string mail, string role)
         {
             this.id_employee = id_employee;

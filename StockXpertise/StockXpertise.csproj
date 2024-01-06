@@ -173,6 +173,7 @@
     <Compile Include="Caisse\Caisse.xaml.cs">
       <DependentUpon>Caisse.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Connection\Query_Connection.cs" />
     <Compile Include="donnees_articles.cs" />
     <Compile Include="fournisseur.xaml.cs">
       <DependentUpon>fournisseur.xaml</DependentUpon>
@@ -208,6 +209,7 @@
     <Compile Include="User\Modify_User.xaml.cs">
       <DependentUpon>Modify_User.xaml</DependentUpon>
     </Compile>
+    <Compile Include="User\Query_User.cs" />
     <Compile Include="User\User.xaml.cs">
       <DependentUpon>User.xaml</DependentUpon>
     </Compile>

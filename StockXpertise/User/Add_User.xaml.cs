@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace StockXpertise.User
 {
@@ -38,12 +39,14 @@ namespace StockXpertise.User
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            //recuperation des données des champs
             string nom = nomTextBox.Text;
             string prenom = prenomTextBox.Text;
             string password = mdpTextBox.Text;
             string mail = mailTextBox.Text;
             string role = null;
 
+            //recuperation du role selectionné
             if (radioAdmin.IsChecked == true)
             {
                 role = radioAdmin.Content.ToString();
@@ -57,18 +60,20 @@ namespace StockXpertise.User
                 role = radioCaissier.Content.ToString();
             }
 
-            if (nom == null || prenom == null || password == null || mail == null || role == null)
+            //condition pour verifier si les champs sont vides
+            //si c'est le cas alors on affiche un message
+            //sinon on execute la requete d'ajout d'un utilisateur
+            if (string.IsNullOrEmpty(nom) || string.IsNullOrEmpty(prenom) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(mail)|| role == null)
             {
                 MessageBox.Show("Veuillez remplir tous les champs.");
             }
             else
             {
-                string query = "INSERT INTO employes (nom, prenom, mot_de_passe, mail, role) VALUES ('" + nom + "', '" + prenom + "', '" + password + "', '" + mail + "', '" + role + "');";
+                // requete pour ajouter un utilisateur
+                Query_User query_insert = new Query_User(nom, prenom, password, mail, role);
+                query_insert.Insert_User();
 
-                ConfigurationDB.ExecuteQuery(query);
-
-                MessageBox.Show("Ajouté avec succès.");
-
+                //redirection vers la page User.xaml
                 User user = new User();
                 Window parentWindow = Window.GetWindow(this);
 
@@ -77,13 +82,14 @@ namespace StockXpertise.User
                     parentWindow.Content = user;
                 }
 
-                griAddUser.Visibility = Visibility.Collapsed;
-                addUser.Navigate(new Uri("/User/User.xaml", UriKind.RelativeOrAbsolute));
+                //griAddUser.Visibility = Visibility.Collapsed;
+                //addUser.Navigate(new Uri("/User/User.xaml", UriKind.RelativeOrAbsolute));
             }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            //redirection vers la page User.xaml
             User user = new User();
             Window parentWindow = Window.GetWindow(this);
 
@@ -92,8 +98,8 @@ namespace StockXpertise.User
                 parentWindow.Content = user;
             }
 
-            griAddUser.Visibility = Visibility.Collapsed;
-            addUser.Navigate(new Uri("/User/User.xaml", UriKind.RelativeOrAbsolute));
+            //griAddUser.Visibility = Visibility.Collapsed;
+            //addUser.Navigate(new Uri("/User/User.xaml", UriKind.RelativeOrAbsolute));
         }
     }
 }
