@@ -83,5 +83,24 @@ namespace StockXpertise.components
                 parentWindow.Content = fournisseur;
             }
         }
+
+        private void b8_Click(object sender, RoutedEventArgs e)
+        {
+            if (Application.Current.Properties["role"].ToString() == "Admin" || Application.Current.Properties["role"].ToString() == "admin")
+            {
+                User.User user = new User.User();
+
+                Window parentWindow = Window.GetWindow(this);
+
+                if (parentWindow != null)
+                {
+                    parentWindow.Content = user;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vous n'avez pas les droits pour accéder à cette page.");
+            }
+        }
     }
 }
