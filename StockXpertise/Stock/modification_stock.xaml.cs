@@ -16,6 +16,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
+using iText.Barcodes.Dmcode;
+using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace StockXpertise.Stock
 {
@@ -43,6 +45,15 @@ namespace StockXpertise.Stock
 
             this.selectedData = selectedData;
             LoadData();
+
+            if (Application.Current.Properties["role"].ToString() == "Admin" || Application.Current.Properties["role"].ToString() == "admin")
+            {
+                button_supprimer.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                button_supprimer.Visibility = Visibility.Hidden;
+            }
         }
 
         public void LoadData()
@@ -209,6 +220,34 @@ namespace StockXpertise.Stock
             imagePath = "";
             // Effacer l'image dans le contrôle Image
             image_apres.Source = null;
+        }
+
+        private void deleteArticle(object sender, RoutedEventArgs e)
+        {
+            string nom = selectedData.Nom;
+            string famille = selectedData.Famille;
+            string code_barre = selectedData.CodeBarre;
+            string description = selectedData.Description;
+            string quantite_string = selectedData.Quantite.ToString();
+            string prix_HT_string = selectedData.PrixHT.ToString();
+            string prix_TTC_string = selectedData.PrixTTC.ToString();
+
+            int quantite = Convert.ToInt32(quantite_string);
+            int prix_HT = Convert.ToInt32(prix_HT_string);
+            int prix_TTC = Convert.ToInt32(prix_TTC_string);
+
+            // requete pour ajouter un article
+            Query_Stock query_insert = new Query_Stock(nom, famille, prix_HT, prix_TTC, description, code_barre, quantite);
+            query_insert.Delete_Stock();
+
+            //redirection vers la page affichage_stock.xaml
+            affichage_stock stock = new affichage_stock();
+            Window parentWindow = Window.GetWindow(this);
+
+            if (parentWindow != null)
+            {
+                parentWindow.Content = stock;
+            }
         }
     }
 }
