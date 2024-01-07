@@ -76,5 +76,14 @@
         <TextBlock x:Name="quantite_avant" TextAlignment="Center" HorizontalAlignment="Left" Height="14" Margin="378,439,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116"/>
         <TextBlock x:Name="prix_HT_avant" TextAlignment="Center" HorizontalAlignment="Left" Height="14" Margin="378,499,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116"/>
         <TextBlock x:Name="prix_TTC_avant" TextAlignment="Center" HorizontalAlignment="Left" Height="24" Margin="378,554,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116"/>
+        <Button x:Name="button_supprimer" Content="Supprimer" HorizontalAlignment="Left" Height="34" Margin="187,646,0,0" VerticalAlignment="Top" Width="126" BorderBrush="{Binding Visibility.Hidden, ElementName=button}" Click="deleteArticle" RenderTransformOrigin="0.915,1.521">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFAEAEAE"/>
+                    <GradientStop Color="White" Offset="1"/>
+                    <GradientStop Color="#FFD7513B" Offset="0"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
     </Grid>
 </Page>

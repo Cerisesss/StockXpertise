@@ -36,6 +36,15 @@ namespace StockXpertise.Stock
             string query = "SELECT articles.id_articles, articles.image, articles.nom, articles.famille, articles.code_barre, articles.description, articles.prix_ht, articles.prix_ttc, produit.quantite_stock FROM articles JOIN produit ON articles.id_articles = produit.id_articles";
             MySqlDataReader reader = ConfigurationDB.ExecuteQuery(query);
             remplissage_donnees(reader);
+
+            if (Application.Current.Properties["role"].ToString() == "Admin" || Application.Current.Properties["role"].ToString() == "admin")
+            {
+                addStock.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                addStock.Visibility = Visibility.Hidden;
+            }
         }
 
         private void remplissage_donnees(MySqlDataReader reader)
@@ -182,6 +191,18 @@ namespace StockXpertise.Stock
 
                 // Appel de la méthode remplissage_donnees sans le deuxième argument
                 remplissage_donnees(reader);
+            }
+        }
+
+        private void Add_New_Stock(object sender, RoutedEventArgs e)
+        {
+            Add_Stock newStock = new Add_Stock();
+
+            Window parentWindow = Window.GetWindow(this);
+
+            if (parentWindow != null)
+            {
+                parentWindow.Content = newStock;
             }
         }
     }

@@ -175,6 +175,7 @@
     </Compile>
     <Compile Include="Connection\Query_Connection.cs" />
     <Compile Include="donnees_articles.cs" />
+    <Compile Include="Fournisseur.cs" />
     <Compile Include="fournisseur.xaml.cs">
       <DependentUpon>fournisseur.xaml</DependentUpon>
     </Compile>
@@ -187,6 +188,9 @@
     </Compile>
     <Compile Include="Statistique.xaml.cs">
       <DependentUpon>Statistique.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Stock\Add_Stock.xaml.cs">
+      <DependentUpon>Add_Stock.xaml</DependentUpon>
     </Compile>
     <Compile Include="Stock\affichage_inventaire.xaml.cs">
       <DependentUpon>affichage_inventaire.xaml</DependentUpon>
@@ -202,6 +206,7 @@
     <Compile Include="Stock\modification_stock.xaml.cs">
       <DependentUpon>modification_stock.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Stock\Query_Stock.cs" />
     <Compile Include="UserConnected.cs" />
     <Compile Include="User\Add_User.xaml.cs">
       <DependentUpon>Add_User.xaml</DependentUpon>
@@ -257,6 +262,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Statistique.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Stock\Add_Stock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
