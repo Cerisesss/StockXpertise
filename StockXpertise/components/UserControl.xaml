@@ -51,7 +51,7 @@
 							</Rectangle.Fill>
 						</Rectangle>
 						<StackPanel HorizontalAlignment="Left" Width="150" Height="933">
-							<Button x:Name="b1" Content="Stock" HorizontalAlignment="Left" Height="42" VerticalAlignment="Top" Width="150" Margin="0,15,0,0" Background="{Binding Visibility.Hidden, ElementName=button}" BorderBrush="{Binding Visibility.Hidden, ElementName=button}" Click="b1_Click"/>
+							<Button x:Name="b1" Content="Stock" HorizontalAlignment="Left" Height="42" VerticalAlignment="Top" Width="150" Margin="0,15,0,0" Background="{Binding Visibility.Hidden, ElementName=button}" BorderBrush="{Binding Visibility.Hidden, ElementName=button}" />
                             <Separator Height="25" Style="{StaticResource CustomSeparator}"/>
                             <Button x:Name="inventaire" Content="Inventaire" HorizontalAlignment="Left" Height="42" VerticalAlignment="Top" Width="150" Background="{Binding Visibility.Hidden, ElementName=button}" BorderBrush="{Binding Visibility.Hidden, ElementName=button}" Click="inventaire_Click"/>
                             <Separator Height="25" Style="{StaticResource CustomSeparator}"/>

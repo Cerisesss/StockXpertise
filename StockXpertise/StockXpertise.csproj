@@ -110,7 +110,6 @@
     <Compile Include="Caisse\Caisse.xaml.cs">
       <DependentUpon>Caisse.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Article.cs" />
     <Compile Include="donnees_articles.cs" />
     <Compile Include="fournisseur.xaml.cs">
       <DependentUpon>fournisseur.xaml</DependentUpon>
@@ -123,15 +122,6 @@
     </Compile>
     <Compile Include="Statistique.xaml.cs">
       <DependentUpon>Statistique.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Stock\affichageStock.xaml.cs">
-      <DependentUpon>affichageStock.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Stock\inventaire.xaml.cs">
-      <DependentUpon>inventaire.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Stock\Stock.xaml.cs">
-      <DependentUpon>Stock.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserConnected.cs" />
     <Compile Include="User\Add_User.xaml.cs">
@@ -190,18 +180,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Stock\affichageStock.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Stock\inventaire.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Stock\Stock.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="User\Add_User.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -229,7 +207,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Content Include="Profile\Images\path1.jpg">
+    <Content Include="txttoexcel.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <EmbeddedResource Include="Properties\Resources.resx">

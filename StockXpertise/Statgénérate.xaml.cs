@@ -15,6 +15,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
+using System.Data;
+using System.Diagnostics;
+using System.IO;
+using System.Runtime.Remoting.Messaging;
 
 
 namespace StockXpertise
@@ -34,6 +38,63 @@ namespace StockXpertise
         {
             InitializeComponent();
         }
+
+        static void toexcel()
+        {
+            string command = "python"; // Commande pour exécuter Python
+            string scriptPath = "txttoexcel.py"; // Chemin vers ton script Python
+
+            ProcessStartInfo start = new ProcessStartInfo();
+            start.FileName = command;
+            start.Arguments = scriptPath;
+            start.UseShellExecute = false;
+            start.RedirectStandardOutput = true;
+
+            using (Process process = Process.Start(start))
+            {
+                using (System.IO.StreamReader reader = process.StandardOutput)
+                {
+                    string result = reader.ReadToEnd();
+                    Console.Write(result);
+                }
+            }
+        }
+        static void ConvertDataReaderToTxt(MySqlDataReader reader)
+        {
+            string outputPath = "lecturexel1.txt";
+            using (StreamWriter writer = new StreamWriter(outputPath, false, System.Text.Encoding.GetEncoding("ISO-8859-1")))
+            {
+                // Écriture des en-têtes de colonnes
+                for (int i = 0; i < reader.FieldCount; i++)
+                {
+                    writer.Write(reader.GetName(i));
+                    if (i < reader.FieldCount - 1)
+                    {
+                        writer.Write(",");
+                    }
+                }
+                writer.WriteLine();
+
+
+
+                // Écriture des données
+                while (reader.Read())
+                {
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        writer.Write(reader[i]);
+                        if (i < reader.FieldCount - 1)
+                        {
+                            writer.Write(",");
+                        }
+                    }
+                    writer.WriteLine();
+                } 
+            }
+            toexcel();
+        }
+
+
 
         public void GenerateTable()
         {
@@ -102,8 +163,10 @@ namespace StockXpertise
             }
 
             MySqlDataReader result = ConfigurationDB.ExecuteQuery(query);
-
+            ConvertDataReaderToTxt(result);
+            result = ConfigurationDB.ExecuteQuery(query);
             dataGrid.ItemsSource = result;
+            
 
 
             //  ________________________________________________________________________________________________________
@@ -160,8 +223,5 @@ namespace StockXpertise
                 dataGrid2.Visibility = Visibility.Hidden;
             }
         }
-
-
     }
-
 }
