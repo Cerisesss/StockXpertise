@@ -13,17 +13,32 @@ namespace StockXpertise
             switch (selectedItem)
             {
                 case "Quantité des stocks modifiée (tous)":
-                    query = "SELECT date, description, utilisateur FROM modifications_stock ORDER BY date DESC;";
+                    // À remplir avec la logique appropriée
+                    query = "SELECT m.date, 'Modification' as description, CONCAT(e.prenom, ' ', e.nom) as utilisateur FROM mouvement m JOIN employes e ON m.id_employes = e.id_employes ORDER BY m.date DESC;";
                     break;
 
                 case "Action d'utilisateur":
                     if (userId != -1)
                     {
-                        query = $"SELECT date, description, utilisateur FROM modifications_stock WHERE id_employes = {userId} ORDER BY date DESC;";
+                        // À remplir avec la logique appropriée
+                        query = $"SELECT m.date, 'Action utilisateur' as description, CONCAT(e.prenom, ' ', e.nom) as utilisateur FROM mouvement m JOIN employes e ON m.id_employes = e.id_employes WHERE e.id_employes = {userId} ORDER BY m.date DESC;";
                     }
                     break;
 
-                // Ajoutez d'autres cas ici...
+                case "Rentrez":
+                    // Exemple de requête pour les articles entrés (ajustez selon votre logique)
+                    query = "SELECT a.date_ajout as date, 'Entrée de stock' as description, a.nom as utilisateur FROM articles a ORDER BY a.date_ajout DESC;";
+                    break;
+
+                case "Sortie":
+                    // Exemple de requête pour les articles sortis (ajustez selon votre logique)
+                    query = "SELECT s.date as date, 'Sortie de stock' as description, a.nom as utilisateur FROM stockage s JOIN produit p ON s.id_produit = p.id_produit JOIN articles a ON p.id_articles = a.id_articles ORDER BY s.date DESC;";
+                    break;
+
+                case "Transaction (caissier)":
+                    // Exemple de requête pour les transactions des caissiers
+                    query = "SELECT v.date_vente as date, 'Vente' as description, CONCAT(e.prenom, ' ', e.nom) as utilisateur FROM vente v JOIN mouvement m ON v.id_mouvement = m.id_mouvement JOIN employes e ON m.id_employes = e.id_employes WHERE e.role = 'Caissier' UNION ALL SELECT a.date_achat, 'Achat' as description, CONCAT(e.prenom, ' ', e.nom) as utilisateur FROM achat a JOIN mouvement m ON a.id_mouvement = m.id_mouvement JOIN employes e ON m.id_employes = e.id_employes WHERE e.role = 'Caissier' ORDER BY date DESC;";
+                    break;
 
                 default:
                     break;
@@ -112,6 +127,38 @@ namespace StockXpertise
             }
 
             return stockModifications;
+        }
+        public static int GetUserId(string userName)
+        {
+            string query = "SELECT id_employes FROM employes WHERE CONCAT(prenom, ' ', nom) = @userName";
+
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(ConfigurationDB.GetConnectionString("./Configuration/config.xml")))
+                {
+                    connection.Open();
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        // Paramètre pour éviter les injections SQL
+                        command.Parameters.AddWithValue("@userName", userName);
+
+                        object result = command.ExecuteScalar();
+
+                        if (result != null && result != DBNull.Value)
+                        {
+                            return Convert.ToInt32(result);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error in StockManager - GetUserId: {ex.Message}");
+            }
+
+            // Retourner -1 si l'utilisateur n'est pas trouvé ou en cas d'erreur
+            return -1;
         }
     }
 }

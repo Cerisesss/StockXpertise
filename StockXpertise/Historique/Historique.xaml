@@ -17,8 +17,8 @@
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <ComboBox x:Name="comboBoxAffichage" HorizontalAlignment="Left" Height="31" Margin="326,124,0,0" VerticalAlignment="Top" Width="166" SelectionChanged="comboBoxAffichage_SelectionChanged"/>
-        <ComboBox x:Name="comboBoxUtilisateur" HorizontalAlignment="Left" Height="31" Margin="500,124,0,0" VerticalAlignment="Top" Width="200" SelectionChanged="comboBoxUtilisateur_SelectionChanged"/>
+        <ComboBox x:Name="comboBoxAffichage" HorizontalAlignment="Left" Height="31" Margin="326,124,0,0" VerticalAlignment="Top" Width="166"/>
+        <ComboBox x:Name="comboBoxUtilisateur" HorizontalAlignment="Left" Height="31" Margin="500,124,0,0" VerticalAlignment="Top" Width="200"/>
         <Label Content="Trier par" HorizontalAlignment="Left" Height="36" Margin="232,123,0,0" VerticalAlignment="Top" Width="80"/>
 
         <!-- DataGrid pour l'historique -->

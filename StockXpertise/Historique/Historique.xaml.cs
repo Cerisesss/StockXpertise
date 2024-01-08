@@ -12,7 +12,16 @@ namespace StockXpertise
         {
             InitializeComponent();
             Loaded += Historique_Loaded;
+            comboBoxAffichage.ItemsSource = new string[] {
+                "Quantité des stocks modifiée (tous)",
+                "Action d'utilisateur",
+                "Rentrez",
+                "Sortie",
+                "Transaction (caissier)"
+            };
+            comboBoxAffichage.SelectedIndex = 0;
         }
+
 
         private void Historique_Loaded(object sender, RoutedEventArgs e)
         {
@@ -32,23 +41,29 @@ namespace StockXpertise
         {
             string selectedItem = comboBoxAffichage.SelectedItem as string;
 
-            // Si l'option "Action d'utilisateur" est sélectionnée
-            if (selectedItem == "Action d'utilisateur")
+            switch (selectedItem)
             {
-                // Exemple de logique pour obtenir le nom de l'utilisateur sélectionné depuis la ComboBox
-                string selectedUserName = comboBoxUtilisateur.SelectedItem as string;
+                case "Quantité des stocks modifiée (tous)":
+                case "Rentrez":
+                case "Sortie":
+                case "Transaction (caissier)":
+                    dataGridHistorique.ItemsSource = StockManager.ChargerModificationsStock(selectedItem);
+                    break;
 
-                // Récupérer l'ID de l'utilisateur
-                int userId = StockManager.GetUserId(selectedUserName);
-
-                // Charger les données en fonction de l'option sélectionnée
-                dataGridHistorique.ItemsSource = StockManager.ChargerModificationsStock(selectedItem, userId);
+                case "Action d'utilisateur":
+                    if (comboBoxUtilisateur.SelectedItem != null)
+                    {
+                        string selectedUserName = comboBoxUtilisateur.SelectedItem as string;
+                        int userId = StockManager.GetUserId(selectedUserName);
+                        dataGridHistorique.ItemsSource = StockManager.ChargerModificationsStock(selectedItem, userId);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Veuillez sélectionner un utilisateur.");
+                    }
+                    break;
             }
-            else
-            {
-                // Charger les données en fonction de l'option sélectionnée
-                dataGridHistorique.ItemsSource = StockManager.ChargerModificationsStock(selectedItem);
-            }
+            Console.WriteLine($"Nombre d'éléments chargés : {dataGridHistorique.Items.Count}");
         }
 
         private void DataGridHistorique_MouseDoubleClick(object sender, MouseButtonEventArgs e)
