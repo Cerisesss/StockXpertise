@@ -111,13 +111,6 @@
     <Compile Include="Historique\Historique.xaml.cs">
       <DependentUpon>Historique.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Historique\HistoriqueItem.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Historique\HistoriqueManager.cs" />
-    <Compile Include="Historique\VenteItem.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
     <Compile Include="Profile\Profile.xaml.cs">
       <DependentUpon>Profile.xaml</DependentUpon>
     </Compile>
