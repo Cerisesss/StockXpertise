@@ -35,16 +35,15 @@
             <Rectangle  Height="295" Margin="175,70,335,87" Width="295" Stroke="#FFACACAC" Fill="#FFACACAC"/>
             <Label Content="Nom" Height="23" Margin="183,92,528,335" Width="82"/>
             <Label Content="Prénom" Height="23" Margin="183,137,528,290" Width="82"/>
-            <Label Content="Mot de passe" Height="23" Margin="183,182,528,243" Width="82"/>
-            <Label Content="Mot de passe" Height="23" Margin="183,182,528,243" Width="82"/>
+            <Label Content="Mot de passe" Height="23" Margin="186,183,532,232" Width="82"/>
             <Label Content="Mail" Height="23" Margin="183,230,528,197" Width="82"/>
             <Label Content="Status" Height="23" Margin="183,279,528,148" Width="82"/>
 
-            <Label x:Name="labelNom" Content="" Height="23" Margin="290,91,344,336" Width="82"/>
-            <Label x:Name="labelPrenom" Content="" Height="23" Margin="290,137,344,290" Width="82"/>
-            <Label x:Name="labelMdp" Content="" Height="23" Margin="290,182,344,245" Width="82"/>
-            <Label x:Name="labelMail" Content="" Height="23" Margin="290,230,344,197" Width="82"/>
-            <Label x:Name="labelRole" Content="" Height="23" Margin="290,279,344,148" Width="82"/>
+            <Label x:Name="labelNom" Content="" Height="29" Margin="279,91,350,330" Width="175"/>
+            <Label x:Name="labelPrenom" Content="" Height="29" Margin="279,137,350,284" Width="175"/>
+            <Label x:Name="labelMdp" Content="" Height="29" Margin="279,188,346,232" Width="175"/>
+            <Label x:Name="labelMail" Content="" Height="29" Margin="279,230,350,191" Width="175"/>
+            <Label x:Name="labelRole" Content="" Height="29" Margin="279,279,350,142" Width="175"/>
         </Grid>
 
         <Button Content="Supprimer" Height="27" Margin="175,381,538,42" Width="87" Click="Button_Supprimer" Background="#FFFF7A7A"/>

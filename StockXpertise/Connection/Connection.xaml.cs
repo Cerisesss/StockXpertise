@@ -1,7 +1,9 @@
 ﻿using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI;
+using StockXpertise.User;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
@@ -34,9 +36,9 @@ namespace StockXpertise.Connection
             string mail = textboxMail.Text;
             string password = passwordboxPassword.Password;
 
-            string query = "SELECT * FROM employes WHERE mail = '" + mail + "' AND mot_de_passe = '" + password + "' ; ";
-
-            MySqlDataReader reader = ConfigurationDB.ExecuteQuery(query);
+            // requete pour ajouter un utilisateur
+            Query_Connection query_select = new Query_Connection(mail, password);
+            MySqlDataReader reader = query_select.Select_Connection();
 
             if (reader.HasRows)
             {
@@ -59,7 +61,7 @@ namespace StockXpertise.Connection
 
                 // envoie vers la page d'accueil
                 gridConnection.Visibility = Visibility.Collapsed;
-                connection.Navigate(new Uri("/Statistique.xaml", UriKind.RelativeOrAbsolute));
+                connection.Navigate(new Uri("/Stock/affichage_stock.xaml", UriKind.RelativeOrAbsolute));
             }
             else
             {

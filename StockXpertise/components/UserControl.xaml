@@ -36,7 +36,6 @@
 		<DataTemplate>
 			<Grid>
 				<StackPanel>
-					<TextBlock Name="Txtnamepage" Background="#D1D1D1" Text="" HorizontalAlignment="Left" FontSize="24" Margin="0,0,0,0" Grid.RowSpan="2" Width="2048" Height="42" Grid.ColumnSpan="2"/>
 					<Grid Height="703">
 						<Grid.ColumnDefinitions>
 							<ColumnDefinition Width="7*"/>
@@ -65,7 +64,9 @@
 							<Separator Height="25" Style="{StaticResource CustomSeparator}"/>
 							<Button x:Name="b6" Content="Profil" HorizontalAlignment="Left" Height="42" VerticalAlignment="Top" Width="150" Background="{Binding Visibility.Hidden, ElementName=button}" BorderBrush="{Binding Visibility.Hidden, ElementName=button}" Click="b6_Click"/>
 							<Separator Height="25" Style="{StaticResource CustomSeparator}"/>
-							<Button x:Name="b7" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="150" Background="{Binding Visibility.Hidden, ElementName=button}" BorderBrush="{Binding Visibility.Hidden, ElementName=button}">
+                            <Button x:Name="b8" Content="Utilisateur" HorizontalAlignment="Left" Height="42" VerticalAlignment="Top" Width="150" Background="{Binding Visibility.Hidden, ElementName=button}" BorderBrush="{Binding Visibility.Hidden, ElementName=button}" Click="b8_Click"/>
+                            <Separator Height="25" Style="{StaticResource CustomSeparator}"/>
+                            <Button x:Name="b7" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="150" Background="{Binding Visibility.Hidden, ElementName=button}" BorderBrush="{Binding Visibility.Hidden, ElementName=button}">
 								<Image Height="100" Source="./logoVnoir.png" Stretch="Fill" Width="100"/>
 							</Button>
 						</StackPanel>

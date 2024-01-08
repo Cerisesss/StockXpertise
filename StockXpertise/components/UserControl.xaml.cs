@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StockXpertise.Stock;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -39,23 +40,23 @@ namespace StockXpertise.components
 
         /*private void b1_Click(object sender, RoutedEventArgs e)
         {
-            Stock stock = new Stock();
+            Stock.affichage_stock stock_display = new Stock.affichage_stock();
             Window parentWindow = Window.GetWindow(this);
 
             if (parentWindow != null)
             {
-                parentWindow.Content = stock;
+                parentWindow.Content = stock_display;
             }
         }*/
 
         private void inventaire_Click(object sender, RoutedEventArgs e)
         {
-            //Stock_inventaire stock_inventaire = new Stock_inventaire();
+            Stock.affichage_inventaire inventory_display = new Stock.affichage_inventaire();
             Window parentWindow = Window.GetWindow(this);
 
             if (parentWindow != null)
             {
-                //parentWindow.Content = stock_inventaire;
+                parentWindow.Content = inventory_display;
             }
         }
 
@@ -80,6 +81,25 @@ namespace StockXpertise.components
             if (parentWindow != null)
             {
                 parentWindow.Content = fournisseur;
+            }
+        }
+
+        private void b8_Click(object sender, RoutedEventArgs e)
+        {
+            if (Application.Current.Properties["role"].ToString() == "Admin" || Application.Current.Properties["role"].ToString() == "admin")
+            {
+                User.User user = new User.User();
+
+                Window parentWindow = Window.GetWindow(this);
+
+                if (parentWindow != null)
+                {
+                    parentWindow.Content = user;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vous n'avez pas les droits pour accéder à cette page.");
             }
         }
     }

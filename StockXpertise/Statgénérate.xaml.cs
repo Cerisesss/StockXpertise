@@ -1,4 +1,3 @@
-using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
-
+using MySql.Data.MySqlClient;
 
 namespace StockXpertise
 {
@@ -154,10 +153,10 @@ namespace StockXpertise
 
                 MySqlDataReader result2 = ConfigurationDB.ExecuteQuery(query2);
 
-                dataGrid2.ItemsSource = result2;
+                //dataGrid2.ItemsSource = result2;
             }
             else {
-                dataGrid2.Visibility = Visibility.Hidden;
+                //dataGrid2.Visibility = Visibility.Hidden;
             }
         }
 

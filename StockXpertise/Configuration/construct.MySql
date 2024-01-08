@@ -34,6 +34,7 @@ CREATE TABLE `employes` (
 CREATE TABLE `emplacement` (
   `id_emplacement` int AUTO_INCREMENT,
   `code` varchar(255),
+  `code_reel` varchar(255),
   `capacite` int,
   PRIMARY KEY (`id_emplacement`)
 );
@@ -60,6 +61,7 @@ CREATE TABLE `produit` (
   `id_articles` int,
   `id_emplacement` int,
   `quantite_stock` int,
+  `quantite_stock_reel` int,
   PRIMARY KEY (`id_produit`),
   FOREIGN KEY (`id_articles`) REFERENCES `articles` (`id_articles`),
   FOREIGN KEY (`id_emplacement`) REFERENCES `emplacement` (`id_emplacement`)
