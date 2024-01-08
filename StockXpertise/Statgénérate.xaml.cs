@@ -16,8 +16,11 @@ using System.Windows.Shapes;
 using System.Collections.ObjectModel;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 using MySql.Data.MySqlClient;
 =======
+=======
+>>>>>>> 7b7e258 (l'ajout de fonction pour faire un excel a partir du tableau)
 =======
 >>>>>>> 7b7e258 (l'ajout de fonction pour faire un excel a partir du tableau)
 using System.Data;
