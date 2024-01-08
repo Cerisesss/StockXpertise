@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using MySql.Data.MySqlClient;
-using StockXpertise.Historique;
 
 namespace StockXpertise
 {

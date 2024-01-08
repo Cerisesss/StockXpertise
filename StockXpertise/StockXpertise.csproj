@@ -111,6 +111,8 @@
     <Compile Include="Historique\Historique.xaml.cs">
       <DependentUpon>Historique.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Historique\StockManager.cs" />
+    <Compile Include="Historique\StockModificationItem.cs" />
     <Compile Include="Profile\Profile.xaml.cs">
       <DependentUpon>Profile.xaml</DependentUpon>
     </Compile>
