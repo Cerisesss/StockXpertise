@@ -188,20 +188,6 @@
     <Compile Include="Statistique.xaml.cs">
       <DependentUpon>Statistique.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Stock\affichage_inventaire.xaml.cs">
-      <DependentUpon>affichage_inventaire.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Stock\affichage_stock.xaml.cs">
-      <DependentUpon>affichage_stock.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Stock\Article.cs" />
-    <Compile Include="Stock\DataInventaire.cs" />
-    <Compile Include="Stock\inventaire.xaml.cs">
-      <DependentUpon>inventaire.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Stock\modification_stock.xaml.cs">
-      <DependentUpon>modification_stock.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UserConnected.cs" />
     <Compile Include="User\Add_User.xaml.cs">
       <DependentUpon>Add_User.xaml</DependentUpon>
@@ -260,22 +246,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Stock\affichage_inventaire.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Stock\affichage_stock.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Stock\inventaire.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Stock\modification_stock.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="User\Add_User.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -303,7 +273,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Content Include="txttoexcel.py">
+    <Content Include="Profile\Images\path1.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <EmbeddedResource Include="Properties\Resources.resx">

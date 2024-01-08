@@ -79,13 +79,14 @@ namespace StockXpertise.Stock
 
                 // Retourner à la page affichage_iventaire après avoir enregistrer les modifications
                 affichage_inventaire inventory_display = new affichage_inventaire();
-                Window parentWindow = Window.GetWindow(this);
+            Window parentWindow = Window.GetWindow(this);
 
-                if (parentWindow != null)
-                {
+            if (parentWindow != null)
+            {
                     parentWindow.Content = inventory_display;
                 }
             }
+
         }
     }
 }
