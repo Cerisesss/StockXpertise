@@ -173,10 +173,7 @@
     <Compile Include="Caisse\Caisse.xaml.cs">
       <DependentUpon>Caisse.xaml</DependentUpon>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="Connection\Query_Connection.cs" />
-=======
->>>>>>> 7b7e258 (l'ajout de fonction pour faire un excel a partir du tableau)
     <Compile Include="donnees_articles.cs" />
     <Compile Include="fournisseur.xaml.cs">
       <DependentUpon>fournisseur.xaml</DependentUpon>
@@ -191,7 +188,6 @@
     <Compile Include="Statistique.xaml.cs">
       <DependentUpon>Statistique.xaml</DependentUpon>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="Stock\affichage_inventaire.xaml.cs">
       <DependentUpon>affichage_inventaire.xaml</DependentUpon>
     </Compile>
@@ -206,9 +202,6 @@
     <Compile Include="Stock\modification_stock.xaml.cs">
       <DependentUpon>modification_stock.xaml</DependentUpon>
     </Compile>
->>>>>>> 7b7e258 (l'ajout de fonction pour faire un excel a partir du tableau)
-=======
->>>>>>> 7b7e258 (l'ajout de fonction pour faire un excel a partir du tableau)
     <Compile Include="UserConnected.cs" />
     <Compile Include="User\Add_User.xaml.cs">
       <DependentUpon>Add_User.xaml</DependentUpon>
@@ -267,7 +260,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-<<<<<<< HEAD
     <Page Include="Stock\affichage_inventaire.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -284,8 +276,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-=======
->>>>>>> 7b7e258 (l'ajout de fonction pour faire un excel a partir du tableau)
     <Page Include="User\Add_User.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -316,7 +306,6 @@
     <Content Include="txttoexcel.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
->>>>>>> 7b7e258 (l'ajout de fonction pour faire un excel a partir du tableau)
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
