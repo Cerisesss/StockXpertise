@@ -1,6 +1,8 @@
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,18 +21,17 @@ namespace StockXpertise
     {
         public MainWindow()
         {
-            ConfigurationDB.ActualisationDB();
             InitializeComponent();
-            
-            string nomemployes = "SELECT nom FROM employes"; 
-            
-            ConfigurationDB.ExecuteQuery(nomemployes);
+            InitializeWebView();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void InitializeWebView()
         {
-            gridMainWidow.Visibility = Visibility.Collapsed;
-            mainWindow.Navigate(new Uri("/Connection/Connection.xaml", UriKind.RelativeOrAbsolute));
+            string currentDir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            string htmlFilePath = System.IO.Path.Combine(currentDir, "wwwroot", "index.html");
+            webView.Source = new Uri(htmlFilePath);
+            Console.WriteLine(htmlFilePath);
+
         }
     }
 }
