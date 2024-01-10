@@ -5,28 +5,11 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:StockXpertise.components"
       mc:Ignorable="d"
-      Title="Statistique" Height="700" Width="1024">
+      Title="Statistique">
 	<Grid Loaded="Grid_Loaded">
 		<local:UserControl1/>
-		<Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
-
-		<Rectangle HorizontalAlignment="Left" Height="31" Margin="559,124,0,0" Stroke="Transparent" VerticalAlignment="Top" Width="112">
-			<Rectangle.Fill>
-				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-					<GradientStop Color="#FFACACAC"/>
-					<GradientStop Color="White" Offset="1"/>
-				</LinearGradientBrush>
-			</Rectangle.Fill>
-		</Rectangle>
-		<ComboBox x:Name="comboBoxAffichage_mode" HorizontalAlignment="Left" Height="31" Margin="662,124,0,0" VerticalAlignment="Top" Width="169" SelectionChanged="ComboBox_SelectionChanged_trier_par" Loaded="comboBoxAffichage_stat_Loaded">
-			<ComboBox.Background>
-				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-					<GradientStop Color="Black"/>
-					<GradientStop Color="#FFF4F4F4" Offset="1"/>
-				</LinearGradientBrush>
-			</ComboBox.Background>
-		</ComboBox>
-		<Rectangle HorizontalAlignment="Left" Height="31" Margin="216,124,0,0" Stroke="Transparent" VerticalAlignment="Top" Width="110" RenderTransformOrigin="0.527,0.493">
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
+        <Rectangle HorizontalAlignment="Left" Height="31" Margin="216,124,0,0" Stroke="Transparent" VerticalAlignment="Top" Width="110" RenderTransformOrigin="0.527,0.493">
 			<Rectangle.Fill>
 				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
 					<GradientStop Color="#FFACACAC"/>
@@ -36,7 +19,6 @@
 			</Rectangle.Fill>
 		</Rectangle>
 		<ComboBox x:Name="comboBoxAffichage" HorizontalAlignment="Left" Height="31" Margin="326,124,0,0" VerticalAlignment="Top" Width="166" SelectionChanged="ComboBox_SelectionChanged_affichage"/>
-		<Label Content="Mode" HorizontalAlignment="Left" Height="36" Margin="575,123,0,0" VerticalAlignment="Top" Width="82"/>
 		<Label Content="Trier par" HorizontalAlignment="Left" Height="36" Margin="232,123,0,0" VerticalAlignment="Top" Width="80"/>
 		<Rectangle HorizontalAlignment="Left" Height="176" Margin="216,229,0,0" Stroke="Transparent" VerticalAlignment="Top" Width="312" RenderTransformOrigin="0.527,0.493">
 			<Rectangle.Fill>
