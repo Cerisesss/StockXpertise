@@ -1,5 +1,13 @@
+#coding: utf-8
 import pandas as pd
 from pathlib import Path
+import sys
+
+# Récupère les arguments passés au script
+args = sys.argv
+
+if len(args) > 1:
+    input_path = args[1]
 
 def txt_to_excel(input_path, output_path):
     # Lecture du fichier texte avec Pandas
@@ -11,13 +19,9 @@ def txt_to_excel(input_path, output_path):
     print(f"'{input_path}'  '{output_path}'")
 
 # Utilisation de la fonction pour convertir le fichier texte en Excel
-txt_file = 'lecturexel1.txt'
-excel_file = 'C:\\Users\\paulb\\Downloads\\lecturexel.xlsx'
-
+txt_file = 'lecturexel.txt'
 p=Path(txt_file)
-if p.exists():
-    print("txt_file exist")
-    txt_to_excel(txt_file, excel_file)
 
-else:
-    print("txt_file n existe pas")
+if p.exists():
+    print(input_path)
+    txt_to_excel(txt_file, input_path)
