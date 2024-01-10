@@ -25,20 +25,12 @@ namespace StockXpertise
             InitializeComponent();
             Loaded += Statistique_Loaded;
             MainFrame.Visibility = Visibility.Visible;
-
-            comboBoxAffichage_mode.Items.Add("Tableau");
-            comboBoxAffichage_mode.Items.Add("Barres");
-            comboBoxAffichage_mode.Items.Add("Circulaire");
-            comboBoxAffichage_mode.Items.Add("Lignes");
-            comboBoxAffichage_mode.Items.Add("Nuage de points");
-
-
+            
             comboBoxAffichage.Items.Add("Jour");
             comboBoxAffichage.Items.Add("Semaine");
             comboBoxAffichage.Items.Add("Mois");
             comboBoxAffichage.Items.Add("Année");
 
-            comboBoxAffichage_mode.SelectedItem = "Tableau";
             comboBoxAffichage.SelectedItem = "Jour";
 
 

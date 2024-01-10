@@ -18,7 +18,7 @@ namespace StockXpertise
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            AllocConsole(); // Allocating a console for standard output
+            //AllocConsole(); // Allocating a console for standard output
             base.OnStartup(e);
         }
     }
