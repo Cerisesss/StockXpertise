@@ -17,6 +17,9 @@ using System.Collections.ObjectModel;
 using MySql.Data.MySqlClient;
 using System.Diagnostics;
 using System.IO;
+using StockXpertise.User;
+using Microsoft.Win32;
+
 
 namespace StockXpertise
 {
@@ -36,14 +39,16 @@ namespace StockXpertise
             InitializeComponent();
         }
 
-        static void toexcel()
+        public void toexcel()
         {
+            string inputPath = cheminexcel.Text;
             string command = "python"; // Commande pour excuter Python
             string scriptPath = "txttoexcel.py"; // Chemin vers ton script Python
 
+            inputPath += "\\lectureexel.xlsx";
             ProcessStartInfo start = new ProcessStartInfo();
             start.FileName = command;
-            start.Arguments = scriptPath;
+            start.Arguments = $"{scriptPath} {inputPath}";
             start.UseShellExecute = false;
             start.RedirectStandardOutput = true;
 
@@ -58,7 +63,7 @@ namespace StockXpertise
         }
         static void ConvertDataReaderToTxt(MySqlDataReader reader)
         {
-            string outputPath = "lecturexel1.txt";
+            string outputPath = "lecturexel.txt";
             using (StreamWriter writer = new StreamWriter(outputPath, false, System.Text.Encoding.GetEncoding("ISO-8859-1")))
             {
                 // criture des en-ttes de colonnes
@@ -88,7 +93,6 @@ namespace StockXpertise
                     writer.WriteLine();
                 }
             }
-            toexcel();
         }
 
 
@@ -220,7 +224,10 @@ namespace StockXpertise
                 //dataGrid2.Visibility = Visibility.Hidden;
             }
         }
-
+        private void create_excel(object sender, RoutedEventArgs e)
+        {
+            toexcel();
+        }
 
     }
 

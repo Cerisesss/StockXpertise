@@ -11,8 +11,24 @@
     <Grid>
         <local:UserControl1/>
         <Grid>
-            <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="489" VerticalAlignment="Top" Width="703" AutoGenerateColumns="True" Margin="243,118,0,0" />
+            <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="489" VerticalAlignment="Top" Width="703" AutoGenerateColumns="True" Margin="232,149,0,0" />
+            <Button x:Name="excelgenerate" Content="généré le excel" HorizontalAlignment="Left" Height="42" Margin="418,60,0,0" VerticalAlignment="Top" Width="134" Click="create_excel" BorderBrush="#FFE4E77A" BorderThickness="2" RenderTransformOrigin="0.5,0.5">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform X="0"/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFAEAEAE" Offset="0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <TextBox Name="cheminexcel"  HorizontalAlignment="Left" Margin="584,68,0,0" TextWrapping="Wrap" Text="Chemin d'accès fichier" VerticalAlignment="Top" Width="290" Height="26"/>
         </Grid>
-
-	</Grid>
+    </Grid>
 </Page>
