@@ -12,7 +12,7 @@ def txt_to_excel(input_path, output_path):
 
 # Utilisation de la fonction pour convertir le fichier texte en Excel
 txt_file = 'lecturexel1.txt'
-excel_file = 'C:\\Users\\luluc\\lecturexel.xlsx'
+excel_file = 'C:\\Users\\paulb\\Downloads\\lecturexel.xlsx'
 
 p=Path(txt_file)
 if p.exists():
