@@ -26,10 +26,10 @@ namespace StockXpertise
                     connection.Open();
                     Console.WriteLine("Connection opened successfully.");
 
-                    /*string scriptFilePath = "./Configuration/construct.MySql";
+                    string scriptFilePath = "./Configuration/construct.MySql";
                     ExecuteSqlScript(connection, scriptFilePath);
                     string insertFilePath = "./Configuration/insert.MySql";
-                    ExecuteSqlScript(connection, insertFilePath);*/
+                    ExecuteSqlScript(connection, insertFilePath);
                 }
             }
             catch (Exception ex)

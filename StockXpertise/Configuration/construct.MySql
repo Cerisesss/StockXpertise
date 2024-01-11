@@ -67,14 +67,7 @@ CREATE TABLE `produit` (
   FOREIGN KEY (`id_emplacement`) REFERENCES `emplacement` (`id_emplacement`)
 );
 
-CREATE TABLE `stockage` (
-  `id_stockage` int AUTO_INCREMENT,
-  `id_emplacement` int,
-  `id_produit` int,
-  PRIMARY KEY (`id_stockage`),
-  FOREIGN KEY (`id_produit`) REFERENCES `produit` (`id_produit`),
-  FOREIGN KEY (`id_emplacement`) REFERENCES `emplacement` (`id_emplacement`)
-);
+
 
 CREATE TABLE `mouvement` (
   `id_mouvement` int AUTO_INCREMENT,

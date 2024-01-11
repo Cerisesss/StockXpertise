@@ -8,8 +8,23 @@
       Title="Statistique">
 	<Grid Loaded="Grid_Loaded">
 		<local:UserControl1/>
+        <Border BorderThickness="2" Margin="200,51,0,0" CornerRadius="10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="77" Width="700">
+            <Border.BorderBrush>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF19494"/>
+                    <GradientStop Color="#FFDAFD00" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF19494"/>
+                    <GradientStop Color="#FFDAFD00" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+        <TextBlock Text="Statistiques" HorizontalAlignment="Left" FontSize="24" Margin="480,66,0,554" Width="149" FontWeight="Bold"/>
         <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
-        <Rectangle HorizontalAlignment="Left" Height="31" Margin="216,124,0,0" Stroke="Transparent" VerticalAlignment="Top" Width="110" RenderTransformOrigin="0.527,0.493">
+        <Rectangle HorizontalAlignment="Left" Height="31" Margin="216,150,0,0" Stroke="Transparent" VerticalAlignment="Top" Width="110" RenderTransformOrigin="0.527,0.493">
 			<Rectangle.Fill>
 				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
 					<GradientStop Color="#FFACACAC"/>
@@ -18,8 +33,8 @@
 				</LinearGradientBrush>
 			</Rectangle.Fill>
 		</Rectangle>
-		<ComboBox x:Name="comboBoxAffichage" HorizontalAlignment="Left" Height="31" Margin="326,124,0,0" VerticalAlignment="Top" Width="166" SelectionChanged="ComboBox_SelectionChanged_affichage"/>
-		<Label Content="Trier par" HorizontalAlignment="Left" Height="36" Margin="232,123,0,0" VerticalAlignment="Top" Width="80"/>
+		<ComboBox x:Name="comboBoxAffichage" HorizontalAlignment="Left" Height="31" Margin="326,150,0,0" VerticalAlignment="Top" Width="166" SelectionChanged="ComboBox_SelectionChanged_affichage"/>
+		<Label Content="Trier par" HorizontalAlignment="Left" Height="36" Margin="232,150,0,0" VerticalAlignment="Top" Width="80"/>
 		<Rectangle HorizontalAlignment="Left" Height="176" Margin="216,229,0,0" Stroke="Transparent" VerticalAlignment="Top" Width="312" RenderTransformOrigin="0.527,0.493">
 			<Rectangle.Fill>
 				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -37,7 +52,7 @@
         <CheckBox x:Name="checkboxMarge" Content="Marge" HorizontalAlignment="Left" Margin="344,313,0,0" VerticalAlignment="Top" Height="18" Width="130"/>
         <CheckBox x:Name="checkboxTop10Produits" Content="Top 10 produits" HorizontalAlignment="Left" Margin="344,331,0,0" VerticalAlignment="Top" Height="18" Width="130"/>
         <CheckBox x:Name="checkboxStockNegatif" Content="Stock low" HorizontalAlignment="Left" Margin="344,349,0,0" VerticalAlignment="Top" Height="18" Width="130"/>
-        <Button x:Name="button" Content="prévisualiser" HorizontalAlignment="Left" Height="31" Margin="886,124,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="0.743,1.834" BorderBrush="{Binding Visibility.Hidden, ElementName=button}" Click="generation_pdf">
+        <Button x:Name="button" Content="prévisualiser" HorizontalAlignment="Left" Height="31" Margin="886,150,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="0.743,1.834" BorderBrush="{Binding Visibility.Hidden, ElementName=button}" Click="generation_pdf">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FFAEAEAE" Offset="0"/>
