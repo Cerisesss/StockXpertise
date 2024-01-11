@@ -1,33 +1,32 @@
-const arrowBtns = document.querySelectorAll('.arrow-btn')
-const cardBtns = document.querySelectorAll('.card')
+const arrowBtns = document.querySelectorAll('.arrow-btn');
+const cardBtns = document.querySelectorAll('.card');
 let currentCard = 2;
 let dir = 1;
-moveCards()
+moveCards();
 
-arrowBtns.forEach((btn,i)=>{
-  btn.onpointerenter = (e)=> gsap.to(btn, {
-    ease:'expo',
-    'box-shadow':'0 3px 4px #00000050'
-  })
-  
-  btn.onpointerleave = (e)=> gsap.to(btn, {
-    ease:'expo',
-    'box-shadow':'0 6px 8px #00000030'
-  })
-  
-  btn.onclick = (e)=> {
-    dir = (i==0)? 1:-1
-    if (i==0) {
-      currentCard--
-      currentCard = Math.max(0, currentCard)
-    }
-    else {
-      currentCard++
-      currentCard = Math.min(4, currentCard)
-    }
-    moveCards(0.75)
-  }
-})
+arrowBtns.forEach((btn, i) => {
+    btn.onpointerenter = (e) => gsap.to(btn, {
+        ease: 'expo',
+        'box-shadow': '0 3px 4px #00000050'
+    });
+
+    btn.onpointerleave = (e) => gsap.to(btn, {
+        ease: 'expo',
+        'box-shadow': '0 6px 8px #00000030'
+    });
+
+    btn.onclick = (e) => {
+        dir = (i == 0) ? 1 : -1;
+        if (i == 0) {
+            currentCard--;
+            currentCard = (currentCard < 0) ? 4 : currentCard;
+        } else {
+            currentCard++;
+            currentCard = (currentCard > 4) ? 0 : currentCard;
+        }
+        moveCards();
+    };
+});
 
 cardBtns.forEach((btn,i)=>{
   btn.onpointerenter = (e)=> gsap.to(btn, {
