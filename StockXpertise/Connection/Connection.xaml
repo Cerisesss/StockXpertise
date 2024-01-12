@@ -7,19 +7,56 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Connection">
+    <Page.Resources>
+        <Color x:Key="GradientStopColor1">White</Color>
+    </Page.Resources>
 
     <Grid Background="White">
         <Frame x:Name="connection" NavigationUIVisibility="Hidden"/>
 
         <Grid x:Name="gridConnection">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" Opacity="1">
+                    <LinearGradientBrush.RelativeTransform>
+                        <TransformGroup>
+                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                            <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                            <RotateTransform Angle="-582.274" CenterX="0.5" CenterY="0.5"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </LinearGradientBrush.RelativeTransform>
+                    <GradientStop Color="#FFEBEF95" Offset="1"/>
+                    <GradientStop Color="#FFEF9595" Offset="0"/>
+                </LinearGradientBrush>
+            </Grid.Background>
             <Image Source="/Images/Logo.png" Height="190" Margin="296,17,296,243"/>
-            <Rectangle Height="35" Margin="167,225,515,190" Stroke="#FF2E2E2E" Width="118" Fill="#FFCBC8C8"/>
+            <Rectangle Height="35" Margin="167,225,515,190" Stroke="#FF2E2E2E" Width="118">
+                <Rectangle.Fill>
+                    <SolidColorBrush Color="White" Opacity="0.8"/>
+                </Rectangle.Fill>
+            </Rectangle>
             <Label Content="Mail" Height="29" Margin="206,228,554,194" Width="35"/>
-            <Rectangle Height="34" Margin="167,268,515,148" Stroke="#FF2E2E2E" Width="118" Fill="#FFCBC8C8"/>
+            <Rectangle Height="34" Margin="167,268,515,148" Stroke="#FF2E2E2E" Width="118">
+                <Rectangle.Fill>
+                    <SolidColorBrush Color="White" Opacity="0.8"/>
+                </Rectangle.Fill>
+            </Rectangle>
             <Label Content="Mot de passe" Height="26" Margin="185,272,533,152" Width="82"/>
-            <Button Content="Connexion" Height="42" Margin="342,342,342,66" Width="116" Click="Button_Click"/>
-            <TextBox x:Name="textboxMail" Height="36" Margin="296,224,164,190" TextWrapping="Wrap" Text="admin@mail.com" Width="340" Background="#FFACACAC" BorderBrush="#FF2E2E2E" TextChanged="TextBox_TextChanged_Mail"/>
-            <PasswordBox x:Name="passwordboxPassword" Height="34" Margin="296,268,164,148" Width="340" Background="#FFACACAC" BorderBrush="Black" Password="123"/>
+            <Button Content="Connexion" Height="42" Margin="342,342,342,66" Width="116" Click="Button_Click">
+                <Button.Background>
+                    <SolidColorBrush Color="White" Opacity="0.8"/>
+                </Button.Background>
+            </Button>
+            <TextBox x:Name="textboxMail" Height="36" Margin="296,224,164,190" TextWrapping="Wrap" Text="admin@gmail.com" Width="340" BorderBrush="#FF2E2E2E" TextChanged="TextBox_TextChanged_Mail">
+                <TextBox.Background>
+                    <SolidColorBrush Color="White" Opacity="0.8"/>
+                </TextBox.Background>
+            </TextBox>
+            <PasswordBox x:Name="passwordboxPassword" Height="34" Margin="296,268,164,148" Width="340" BorderBrush="Black" Password="admin">
+                <PasswordBox.Background>
+                    <SolidColorBrush Color="White" Opacity="0.8"/>
+                </PasswordBox.Background>
+            </PasswordBox>
         </Grid>
     </Grid>
 </Page>

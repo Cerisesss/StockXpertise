@@ -40,18 +40,22 @@ namespace StockXpertise.Connection
             Query_Connection query_select = new Query_Connection(mail, password);
             MySqlDataReader reader = query_select.Select_Connection();
 
-            if (reader.HasRows)
+            if (reader == null)
+            {
+                MessageBox.Show("Connexion échouée. Le mail ou le mot de passe est incorrect.");
+                return;
+            }
+            else
             {
                 while (reader.Read())
                 {
                     int id_employee = Convert.ToInt32(reader["id_employes"]);
 
                     UserConnected user_connected = new UserConnected(id_employee, reader["nom"].ToString(), reader["prenom"].ToString(), password, mail, reader["role"].ToString());
-                        
+
                     Application.Current.Properties["id_employes"] = user_connected.GetIdEmployee();
                     Application.Current.Properties["nom"] = reader["nom"].ToString();
                     Application.Current.Properties["prenom"] = user_connected.GetPrenom();
-                    Application.Current.Properties["mot_de_passe"] = reader["mot_de_passe"].ToString();
                     Application.Current.Properties["mail"] = reader["mail"].ToString();
                     Application.Current.Properties["role"] = reader["role"].ToString();
                 }
@@ -62,10 +66,6 @@ namespace StockXpertise.Connection
                 // envoie vers la page d'accueil
                 gridConnection.Visibility = Visibility.Collapsed;
                 connection.Navigate(new Uri("/Stock/affichage_stock.xaml", UriKind.RelativeOrAbsolute));
-            }
-            else
-            {
-                MessageBox.Show("Connexion échouée. Le mail ou le mot de passe est incorrect.");
             }
         }
 

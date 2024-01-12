@@ -1,8 +1,10 @@
 ﻿using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Utilities;
 using StockXpertise.Connection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -69,8 +71,14 @@ namespace StockXpertise.User
             }
             else
             {
+                //generation du sel
+                string salt = BCrypt.Net.BCrypt.GenerateSalt(15);
+
+                //hash le mot de passe avec le sel
+                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password, salt);
+
                 // requete pour ajouter un utilisateur
-                Query_User query_insert = new Query_User(nom, prenom, password, mail, role);
+                Query_User query_insert = new Query_User(nom, prenom, hashedPassword, mail, role);
                 query_insert.Insert_User();
 
                 //redirection vers la page User.xaml
@@ -101,5 +109,6 @@ namespace StockXpertise.User
             //griAddUser.Visibility = Visibility.Collapsed;
             //addUser.Navigate(new Uri("/User/User.xaml", UriKind.RelativeOrAbsolute));
         }
+
     }
 }

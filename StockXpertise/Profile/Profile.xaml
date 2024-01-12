@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:StockXpertise.components"
+      d:DesignHeight="450" d:DesignWidth="800"
       mc:Ignorable="d" 
       
       Title="Profile">
@@ -28,15 +29,15 @@
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <Label Content="Nom" Height="23" Margin="251,273,471,154" Width="78"/>
-        <Label Content="Prénom" Height="23" Margin="251,297,471,130" Width="78"/>
-        <Label Content="Mail" Height="23" Margin="251,323,471,104" Width="78"/>
-        <Label Content="Status" Height="23" Margin="251,346,471,81" Width="78"/>
+        <Label Content="Nom" Height="28" Margin="251,273,471,154" Width="78"/>
+        <Label Content="Prénom" Height="28" Margin="251,297,471,130" Width="78"/>
+        <Label Content="Mail" Height="28" Margin="251,323,471,104" Width="78"/>
+        <Label Content="Status" Height="28" Margin="251,346,471,81" Width="78"/>
         <Rectangle Height="111" Margin="338,266,100,73" Stroke="#FFACACAC" Width="362" Fill="White"/>
-        <Label x:Name="ProfileFirstName" Content="Nom " Height="23" Margin="357,273,119,154" Width="324"/>
-        <Label x:Name="ProfileLastName" Content="Prénom" Height="23" Margin="357,297,119,130" Width="324"/>
-        <Label x:Name="ProfileMail" Content="Mail" Height="23" Margin="357,323,119,104" Width="324"/>
-        <Label x:Name="ProfileStatus" Content="Status" Height="23" Margin="357,346,119,81" Width="324"/>
+        <Label x:Name="ProfileFirstName" Content="Nom " Height="28" Margin="357,273,119,154" Width="324"/>
+        <Label x:Name="ProfileLastName" Content="Prénom" Height="28" Margin="357,297,119,130" Width="324"/>
+        <Label x:Name="ProfileMail" Content="Mail" Height="28" Margin="357,323,119,104" Width="324"/>
+        <Label x:Name="ProfileStatus" Content="Status" Height="28" Margin="357,346,119,81" Width="324"/>
         <Button Content="Déconnexion" Height="30" Margin="429,396,281,24" Width="90" Click="Button_Click"/>
     </Grid>
 </Page>
