@@ -27,6 +27,7 @@ namespace StockXpertise.Stock
         string prenomFournisseur;
         int id_fournisseur;
         int id_emplacement;
+        int id_produit;
 
         public Query_Stock(string nom, string famille, int prixHT, int prixTTC, string description, string code_barre, int quantite) : this(0, nom, famille, prixHT, prixTTC, 0, description, code_barre, quantite, "", "", "")
         {
@@ -64,7 +65,7 @@ namespace StockXpertise.Stock
             return ConnectionDB;
         }
 
-        public void Recup_id_article()
+        public void Count_id_article()
         {
             MySqlDataReader reader;
 
@@ -76,7 +77,7 @@ namespace StockXpertise.Stock
 
             while (reader.Read())
             {
-                id_article = reader.GetInt32(0) + 1; 
+                id_article = reader.GetInt32(0) + 1;
             }
         }
 
@@ -171,7 +172,7 @@ namespace StockXpertise.Stock
 
             Recup_id_fournisseur();
             Recup_id_emplacement();
-            Recup_id_article();
+            Count_id_article();
 
             try
             {
@@ -209,6 +210,79 @@ namespace StockXpertise.Stock
             }
         }
 
+
+        //***********************************************************************************  supression d'un article  ***************************************************************************************************\\
+
+        public void Delete_From_Achat()
+        {
+            MySqlDataReader reader;
+
+            //supprimer de la table achat
+            try
+            {
+                string query_getIDProduit = "SELECT * FROM produit WHERE id_articles = @IdArticle ;";
+                MySqlCommand commande = new MySqlCommand(query_getIDProduit, ConnectionDB());
+
+                commande.Parameters.AddWithValue("@IdArticle", id_article);
+
+                reader = commande.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        id_produit = Convert.ToInt32(reader["id_produit"]);
+
+                        string query_produit = "DELETE FROM achat WHERE id_produit = @Id_Produit ;";
+                        MySqlCommand commande_sql = new MySqlCommand(query_produit, ConnectionDB());
+
+                        commande_sql.Parameters.AddWithValue("@Id_Produit", id_produit);
+
+                        commande_sql.ExecuteReader();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error in ConnectionDB: {ex.Message}");
+            }
+        }
+
+        public void Delete_From_Vente()
+        {
+            MySqlDataReader reader;
+
+            //supprimer de la table vente
+            try
+            {
+                string query_getIDProduit = "SELECT * FROM produit WHERE id_articles = @IdArticle ;";
+                MySqlCommand commande = new MySqlCommand(query_getIDProduit, ConnectionDB());
+
+                commande.Parameters.AddWithValue("@IdArticle", id_article);
+
+                reader = commande.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        id_produit = Convert.ToInt32(reader["id_produit"]);
+
+                        string query_produit = "DELETE FROM vente WHERE id_produit = @Id_Produit ;";
+                        MySqlCommand commande_sql = new MySqlCommand(query_produit, ConnectionDB());
+
+                        commande_sql.Parameters.AddWithValue("@Id_Produit", id_produit);
+
+                        commande_sql.ExecuteReader();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error in ConnectionDB: {ex.Message}");
+            }
+        }
+
         public void Delete_Stock()
         {
             MySqlDataReader reader;
@@ -233,8 +307,12 @@ namespace StockXpertise.Stock
                     id_article = reader.GetInt32(0);
                 }
 
+
+                Delete_From_Achat();
+                Delete_From_Vente();
+
                 // supprimer de la table produit
-                string query_produit = "DELETE FROM produit WHERE id_articles = @IdArticles AND quantite_stock = @Quantite;";
+                string query_produit = "DELETE FROM produit WHERE id_articles = @IdArticles ;";
                 MySqlCommand commande_sql = new MySqlCommand(query_produit, ConnectionDB());
 
                 commande_sql.Parameters.AddWithValue("@IdArticles", id_article);
