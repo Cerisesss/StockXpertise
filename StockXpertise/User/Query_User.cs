@@ -19,6 +19,8 @@ namespace StockXpertise.User
         string mail;
         string role;
 
+        int id_mouvement;
+
         //id = 0 par défaut pour l'insertion 
         public Query_User(string nom, string prenom, string password, string mail, string role) : this(0, nom, prenom, password, mail, role)
         {
@@ -78,26 +80,135 @@ namespace StockXpertise.User
             }
         }
 
+
+        public void Delete_From_Vente(int id_mouvement)
+        {
+            MySqlDataReader reader;
+
+            //supprimer de la table vente
+            try
+            {
+                //supprimer de la table vente
+                string query_vente = "SELECT * FROM vente WHERE id_mouvement = @Id_mouvement ;";
+                MySqlCommand commande_vente = new MySqlCommand(query_vente, ConnectionDB());
+
+                commande_vente.Parameters.AddWithValue("@Id_mouvement", id_mouvement);
+                reader = commande_vente.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        string query = "DELETE FROM vente WHERE id_mouvement = @Id_mouvement ;";
+                        MySqlCommand commande = new MySqlCommand(query, ConnectionDB());
+
+                        commande.Parameters.AddWithValue("@Id_mouvement", id_mouvement);
+
+                        commande.ExecuteReader();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error in ConnectionDB: {ex.Message}");
+            }
+        }
+
+        public void Delete_From_Achat(int id_mouvement)
+        {
+            MySqlDataReader reader;
+
+            try
+            {
+                //supprimer de la table achat
+                string query_achat = "SELECT * FROM achat WHERE id_mouvement = @Id_mouvement ;";
+                MySqlCommand commande_achat = new MySqlCommand(query_achat, ConnectionDB());
+
+                commande_achat.Parameters.AddWithValue("@Id_mouvement", id_mouvement);
+                reader = commande_achat.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        string query = "DELETE FROM achat WHERE id_mouvement = @Id_mouvement ;";
+                        MySqlCommand commande = new MySqlCommand(query, ConnectionDB());
+
+                        commande.Parameters.AddWithValue("@Id_mouvement", id_mouvement);
+
+                        commande.ExecuteReader();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error in ConnectionDB: {ex.Message}");
+            }
+        }
+
+        public void Delete_From_Mouvement()
+        {
+            MySqlDataReader reader;
+
+            //supprimer de la table mouvement
+            try
+            {
+                string query = "SELECT * FROM mouvement WHERE id_employes = @Id ;";
+                MySqlCommand commande = new MySqlCommand(query, ConnectionDB());
+
+                commande.Parameters.AddWithValue("@Id", id);
+
+                reader = commande.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        id_mouvement = Convert.ToInt32(reader["id_mouvement"]);
+
+                        //supprimer dans les tables achat et vente
+                        Delete_From_Vente(id_mouvement);
+                        Delete_From_Achat(id_mouvement);
+                    }
+
+                    //supprimer de la table mouvement
+                    string query_delete = "DELETE FROM mouvement WHERE id_employes = @Id_employes ;";
+                    MySqlCommand commande_sql = new MySqlCommand(query_delete, ConnectionDB());
+
+                    commande_sql.Parameters.AddWithValue("@Id_employes", id);
+
+                    commande_sql.ExecuteReader();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error in ConnectionDB: {ex.Message}");
+            }
+        }
+
         public void Delete_User()
         {
             MySqlDataReader reader;
 
             try
             {
+                Delete_From_Mouvement();
+
                 // Requête SQL paramétrée
                 string query = "DELETE FROM employes WHERE id_employes = @Id; ";
 
                 // Crée une commande SQL avec la requête et la connexion
-                MySqlCommand commande = new MySqlCommand(query, ConnectionDB());
+                MySqlCommand command = new MySqlCommand(query, ConnectionDB());
 
                 // Ajoute les paramètres à la commande pour eviter les injections SQL
-                commande.Parameters.AddWithValue("@Id", id);
+                command.Parameters.AddWithValue("@Id", id);
 
                 // Exécute la commande
-                reader = commande.ExecuteReader();
+                reader = command.ExecuteReader();
 
                 //message de confirmation
                 MessageBox.Show("Supprimé avec succès.");
+
             }
             catch (Exception ex)
             {
