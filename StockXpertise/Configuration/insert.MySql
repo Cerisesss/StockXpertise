@@ -13,7 +13,6 @@ INSERT INTO `fournisseur` (`nom`, `prenom`, `numero`, `mail`, `adresse`) VALUES
 
 -- Inserts for employes table
 INSERT INTO `employes` (`nom`, `prenom`, `mot_de_passe`, `mail`, `role`) VALUES
-('admin', 'admin', '123', 'admin@mail.com', 'admin'),
 ('Durand', 'Paul', 'mdp2', 'durand.paul@mail.com', 'Vendeur'),
 ('Leroy', 'Julie', 'mdp3', 'leroy.julie@mail.com', 'Magasinier'),
 ('Girard', 'Philippe', 'mdp4', 'girard.philippe@mail.com', 'Caissier'),
