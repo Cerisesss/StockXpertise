@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -62,6 +63,20 @@ namespace StockXpertise.User
                 role = radioCaissier.Content.ToString();
             }
 
+            //verification pour savoir si le nom et prenom sont des lettres et si le mail est bien un mail
+            if (!Regex.IsMatch(nom, "^[a-zA-Z]+$") || !Regex.IsMatch(prenom, "^[a-zA-Z]+$"))
+            {
+                MessageBox.Show("Le nom et prénom doit etre des lettres.");
+                return;
+            }
+            /*le regex ne marche pas
+             * if (!Regex.IsMatch(mail, @"^\S+@\S+\.\S+$"))
+            {
+                MessageBox.Show("Ce mail n'est pas valide");
+                return;
+            }*/
+
+
             //condition pour verifier si les champs sont vides
             //si c'est le cas alors on affiche un message
             //sinon on execute la requete d'ajout d'un utilisateur
@@ -89,9 +104,6 @@ namespace StockXpertise.User
                 {
                     parentWindow.Content = user;
                 }
-
-                //griAddUser.Visibility = Visibility.Collapsed;
-                //addUser.Navigate(new Uri("/User/User.xaml", UriKind.RelativeOrAbsolute));
             }
         }
 
