@@ -44,7 +44,6 @@ namespace StockXpertise.User
             nom = Application.Current.Properties["NomDataGrid"].ToString();
             prenom = Application.Current.Properties["PrenomDataGrid"].ToString();
             password = Application.Current.Properties["MdpDataGrid"].ToString();
-            password = Application.Current.Properties["MdpDataGrid"].ToString();
             mail = Application.Current.Properties["MailDataGrid"].ToString();
             role = Application.Current.Properties["RoleDataGrid"].ToString();
         }
@@ -85,6 +84,12 @@ namespace StockXpertise.User
             {
                 role = radioCaissier.Content.ToString();
             }
+
+            //generation du sel
+            string salt = BCrypt.Net.BCrypt.GenerateSalt(15);
+
+            //hash le mot de passe avec le sel
+            password = BCrypt.Net.BCrypt.HashPassword(password, salt);
 
             //requete pour modifier les données de la ligne selectionnée
             Query_User query_modify = new Query_User(id, nom, prenom, password, mail, role);
