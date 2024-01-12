@@ -218,28 +218,43 @@ namespace StockXpertise.User
 
         public void Insert_User()
         {
+            MySqlDataReader reader_verif;
             MySqlDataReader reader;
 
             try
             {
-                // Requête SQL paramétrée
-                string query = "INSERT INTO employes (nom, prenom, mot_de_passe, mail, role) VALUES (@Nom, @Prenom, @Password, @Mail, @Role);";
+                string query_verif = "SELECT * FROM employes WHERE mail = @Mail;";
 
-                // Crée une commande SQL avec la requête et la connexion
-                MySqlCommand commande = new MySqlCommand(query, ConnectionDB());
+                MySqlCommand commande_verif = new MySqlCommand(query_verif, ConnectionDB());
+                commande_verif.Parameters.AddWithValue("@Mail", mail);
 
-                // Ajoute les paramètres à la commande pour eviter les injections SQL
-                commande.Parameters.AddWithValue("@Nom", nom);
-                commande.Parameters.AddWithValue("@Prenom", prenom);
-                commande.Parameters.AddWithValue("@Password", password);
-                commande.Parameters.AddWithValue("@Mail", mail);
-                commande.Parameters.AddWithValue("@Role", role);
+                reader_verif = commande_verif.ExecuteReader();
 
-                // Exécute la commande
-                reader = commande.ExecuteReader();
+                if (reader_verif.HasRows)
+                {
+                    MessageBox.Show("Mail déjà utilisé.");
+                }
+                else
+                {
+                    // Requête SQL paramétrée
+                    string query = "INSERT INTO employes (nom, prenom, mot_de_passe, mail, role) VALUES (@Nom, @Prenom, @Password, @Mail, @Role);";
 
-                //message de confirmation
-                MessageBox.Show("Ajouté avec succès.");
+                    // Crée une commande SQL avec la requête et la connexion
+                    MySqlCommand commande = new MySqlCommand(query, ConnectionDB());
+
+                    // Ajoute les paramètres à la commande pour eviter les injections SQL
+                    commande.Parameters.AddWithValue("@Nom", nom);
+                    commande.Parameters.AddWithValue("@Prenom", prenom);
+                    commande.Parameters.AddWithValue("@Password", password);
+                    commande.Parameters.AddWithValue("@Mail", mail);
+                    commande.Parameters.AddWithValue("@Role", role);
+
+                    // Exécute la commande
+                    reader = commande.ExecuteReader();
+
+                    //message de confirmation
+                    MessageBox.Show("Ajouté avec succès.");
+                }
             }
             catch (Exception ex)
             {
