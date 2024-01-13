@@ -64,16 +64,18 @@ namespace StockXpertise.Stock
             }
             else
             {
+                Int32.TryParse(stockReel, out var quantite);
+
+                Query_Stock query_Update = new Query_Stock(quantite, emplacementReel, selectedData.Id_produit);
+
                 if (!string.IsNullOrEmpty(stockReel))
                 {
-                    query = "UPDATE produit SET quantite_stock_reel = '" + stockReel + "' WHERE id_produit = " + selectedData.Id_produit;
-                    ConfigurationDB.ExecuteQuery(query);
+                    query_Update.Update_Quantite_Reel();
                 }
 
                 if (!string.IsNullOrEmpty(emplacementReel))
                 {
-                    query = "UPDATE emplacement SET code_reel = '" + emplacementReel + "' WHERE id_emplacement = " + selectedData.Id_produit;
-                    ConfigurationDB.ExecuteQuery(query);
+                    query_Update.Update_Code_Reel();
                 }
 
                 // Retourner à la page affichage_iventaire après avoir enregistrer les modifications

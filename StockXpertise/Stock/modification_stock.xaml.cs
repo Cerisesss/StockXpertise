@@ -105,36 +105,36 @@ namespace StockXpertise.Stock
             }
             else
             {
+                Int32.TryParse(nouveauPrixHT, out var prixHT);
+                Int32.TryParse(nouveauPrixTTC, out var prixTTC);
+                Int32.TryParse(nouvelleQuantite, out var quantite);
+
+                Query_Stock query_Update = new Query_Stock(selectedData.Id, nouveauNom, nouvelleFamille, prixHT, prixTTC, nouvelledescription, quantite);
+
                 // Vérifier si les TextBoxs ne sont pas vides pour enregistrer que les données qui ont été modifiées
                 if (!string.IsNullOrEmpty(nouveauNom))
                 {
-                    query = "UPDATE articles SET nom = '" + nouveauNom + "' WHERE id_articles = " + selectedData.Id;
-                    ConfigurationDB.ExecuteQuery(query);
+                    query_Update.Update_Name();
                 }
                 if (!string.IsNullOrEmpty(nouvelleFamille))
                 {
-                    query = "UPDATE articles SET famille = '" + nouvelleFamille + "' WHERE id_articles = " + selectedData.Id;
-                    ConfigurationDB.ExecuteQuery(query);
+                    query_Update.Update_Famille();
                 }
                 if (!string.IsNullOrEmpty(nouvelledescription))
                 {
-                    query = "UPDATE articles SET description = '" + nouvelledescription + "' WHERE id_articles = " + selectedData.Id;
-                    ConfigurationDB.ExecuteQuery(query);
+                    query_Update.Update_Description();
                 }
                 if (!string.IsNullOrEmpty(nouvelleQuantite))
                 {
-                    query = "UPDATE produit SET quantite_stock = '" + nouvelleQuantite + "' WHERE id_articles = " + selectedData.Id;
-                    ConfigurationDB.ExecuteQuery(query);
+                    query_Update.Update_Quantite();
                 }
                 if (!string.IsNullOrEmpty(nouveauPrixHT))
                 {
-                    query = "UPDATE articles SET prix_ht = '" + nouveauPrixHT + "' WHERE id_articles = " + selectedData.Id;
-                    ConfigurationDB.ExecuteQuery(query);
+                    query_Update.Update_PrixHT();
                 }
                 if (!string.IsNullOrEmpty(nouveauPrixTTC))
                 {
-                    query = "UPDATE articles SET prix_ttc = '" + nouveauPrixTTC + "' WHERE id_articles = " + selectedData.Id;
-                    ConfigurationDB.ExecuteQuery(query);
+                    query_Update.Update_PrixTTC();
                 }
 
                 // Si l'utilisateur a supprimé l'image existante et a ajouté une nouvelle image
