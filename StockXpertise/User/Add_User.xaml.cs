@@ -17,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace StockXpertise.User
@@ -26,9 +27,25 @@ namespace StockXpertise.User
     /// </summary>
     public partial class Add_User : Page
     {
+        private DispatcherTimer timer;
+
         public Add_User()
         {
             InitializeComponent();
+
+            ConnexionProgressBar.Visibility = Visibility.Hidden;
+
+            ConnexionProgressBar.Value = 0;
+
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromMilliseconds(100);
+            timer.Tick += Timer_Tick;
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            // Incrémentez la barre de progression
+            ConnexionProgressBar.Value += (200.0 / (3500 / timer.Interval.TotalMilliseconds));
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -40,7 +57,7 @@ namespace StockXpertise.User
         {
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
             //recuperation des données des champs
             string nom = nomTextBox.Text;
@@ -69,6 +86,7 @@ namespace StockXpertise.User
                 MessageBox.Show("Le nom et prénom doit etre des lettres.");
                 return;
             }
+
             /*le regex ne marche pas
              * if (!Regex.IsMatch(mail, @"^\S+@\S+\.\S+$"))
             {
@@ -76,6 +94,12 @@ namespace StockXpertise.User
                 return;
             }*/
 
+            //barre de progression
+            ConnexionProgressBar.Visibility = Visibility.Visible;
+
+            timer.Start();
+
+            await Task.Delay(2500);
 
             //condition pour verifier si les champs sont vides
             //si c'est le cas alors on affiche un message
@@ -95,6 +119,9 @@ namespace StockXpertise.User
                 // requete pour ajouter un utilisateur
                 Query_User query_insert = new Query_User(nom, prenom, hashedPassword, mail, role);
                 query_insert.Insert_User();
+
+                ConnexionProgressBar.Value = 100;
+                timer.Stop();
 
                 //redirection vers la page User.xaml
                 User user = new User();

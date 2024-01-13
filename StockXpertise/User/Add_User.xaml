@@ -12,25 +12,33 @@
         <local:UserControl1/>
         <Frame x:Name="addUser" NavigationUIVisibility="Hidden"/>
 
-        <Rectangle Margin="312,68,162,89" Stroke="#FFACACAC" Fill="#FFACACAC"/>
-        <Button Content="Confirmer" Height="27" Margin="356,394,357,29" Width="87" Click="Button_Click"/>
-        <Button Content="Annuler" Height="27" Margin="524,394,189,29" Width="87" Click="Button_Click_1"/>
+        <Rectangle Margin="312,28,162,129" Stroke="#FFACACAC" Fill="#FFACACAC"/>
+        <Button Content="Confirmer" Height="27" Margin="356,354,356,69" Width="87" Click="Button_Click"/>
+        <Button Content="Annuler" Height="27" Margin="524,354,188,69" Width="87" Click="Button_Click_1"/>
 
-        <Label Content="Nom" Height="23" Margin="333,70,379,335" Width="88"/>
-        <Label Content="Prénom" Height="23" Margin="333,105,379,295" Width="88"/>
-        <Label Content="Mot de passe" Height="23" Margin="333,155,379,270" Width="88"/>
-        <Label Content="Mail" Height="23" Margin="333,170,379,214" Width="88"/>
-        <Label Content="Status" Height="23" Margin="333,200,379,173" Width="88"/>
+        <Label Content="Nom" Height="23" Margin="334,41,378,386" Width="88"/>
+        <Label Content="Prénom" Height="23" Margin="334,79,378,348" Width="88"/>
+        <Label Content="Mot de passe" Height="23" Margin="334,116,378,311" Width="88"/>
+        <Label Content="Mail" Height="23" Margin="334,152,378,275" Width="88"/>
+        <Label Content="Status" Height="23" Margin="334,187,378,240" Width="88"/>
 
-        <TextBox x:Name="nomTextBox" Height="23" Margin="426,81,179,346" TextWrapping="Wrap" Text="" Width="195" TextChanged="TextBox_TextChanged"/>
-        <TextBox x:Name="prenomTextBox" Height="23" Margin="426,118,179,308" TextWrapping="Wrap" Text="" Width="195" TextChanged="TextBox_TextChanged"/>
-        <TextBox x:Name="mdpTextBox" Height="23" Margin="426,155,179,272" TextWrapping="Wrap" Text="" Width="195" TextChanged="TextBox_TextChanged"/>
-        <TextBox x:Name="mailTextBox" Height="23" Margin="426,192,179,236" TextWrapping="Wrap" Text="" Width="195" TextChanged="TextBox_TextChanged"/>
-        
-        <Rectangle Height="58" Margin="426,227,179,165" Stroke="White" Width="195" Fill="White"/>
-        <RadioButton x:Name="radioAdmin" Content="Admin" Height="15" Margin="433,231,285,204" Width="80" Checked="RadioButton_Checked" GroupName="radioRole"/>
-        <RadioButton x:Name="radioPersonnel" Content="Personnel" Height="15" Margin="433,246,285,189" Width="80" Checked="RadioButton_Checked" GroupName="radioRole"/>
-        <RadioButton x:Name="radioCaissier" Content="Caissier" Height="15" Margin="433,261,285,175" Width="80" Checked="RadioButton_Checked" GroupName="radioRole"/>
+        <TextBox x:Name="nomTextBox" Height="23" Margin="426,41,178,386" TextWrapping="Wrap" Text="" Width="195" TextChanged="TextBox_TextChanged"/>
+        <TextBox x:Name="prenomTextBox" Height="23" Margin="426,79,178,348" TextWrapping="Wrap" Text="" Width="195" TextChanged="TextBox_TextChanged"/>
+        <TextBox x:Name="mdpTextBox" Height="23" Margin="426,115,178,312" TextWrapping="Wrap" Text="" Width="195" TextChanged="TextBox_TextChanged"/>
+        <TextBox x:Name="mailTextBox" Height="23" Margin="426,152,178,275" TextWrapping="Wrap" Text="" Width="195" TextChanged="TextBox_TextChanged"/>
 
+        <Rectangle Height="58" Margin="426,187,178,205" Stroke="White" Width="195" Fill="White"/>
+        <RadioButton x:Name="radioAdmin" Content="Admin" Height="15" Margin="434,191,286,244" Width="80" Checked="RadioButton_Checked" GroupName="radioRole"/>
+        <RadioButton x:Name="radioPersonnel" Content="Personnel" Height="15" Margin="434,206,286,229" Width="80" Checked="RadioButton_Checked" GroupName="radioRole"/>
+        <RadioButton x:Name="radioCaissier" Content="Caissier" Height="15" Margin="434,221,286,214" Width="80" Checked="RadioButton_Checked" GroupName="radioRole"/>
+
+        <ProgressBar x:Name="ConnexionProgressBar" Height="10" Margin="168,408,16,32" Minimum="0" Maximum="100" Background="White" BorderBrush="#FFBCBCBC">
+            <ProgressBar.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFD9EDBF"/>
+                    <GradientStop Color="#FFADF056" Offset="1"/>
+                </LinearGradientBrush>
+            </ProgressBar.Foreground>
+        </ProgressBar>
     </Grid>
 </Page>
