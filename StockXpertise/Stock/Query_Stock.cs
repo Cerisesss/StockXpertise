@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 using System.Windows;
 using Org.BouncyCastle.Pqc.Crypto.Lms;
+using System.Collections;
 
 namespace StockXpertise.Stock
 {
@@ -28,6 +29,16 @@ namespace StockXpertise.Stock
         int id_fournisseur;
         int id_emplacement;
         int id_produit;
+
+        public Query_Stock(int quantite, string emplacement, int id_produit) : this(0, "", "", 0, 0, 0, "", "", quantite, "", "", "")
+        {
+            this.emplacement = emplacement;
+            this.id_produit = id_produit;
+        }
+
+        public Query_Stock(int id_article, string nom, string famille, int prixHT, int prixTTC, string description, int quantite) : this(id_article, nom, famille, prixHT, prixTTC, 0, description, "", quantite, "", "", "")
+        {
+        }
 
         public Query_Stock(string nom, string famille, int prixHT, int prixTTC, string description, string code_barre, int quantite) : this(0, nom, famille, prixHT, prixTTC, 0, description, code_barre, quantite, "", "", "")
         {
@@ -53,6 +64,10 @@ namespace StockXpertise.Stock
             this.prenomFournisseur = prenomFournisseur;
         }
 
+
+        //***********************************************************************************  connection DB  ********************************************************************************************************\\
+       
+        
         public MySqlConnection ConnectionDB()
         {
             // Connexion à la database
@@ -64,6 +79,216 @@ namespace StockXpertise.Stock
 
             return ConnectionDB;
         }
+
+        //***********************************************************************************  update article  ********************************************************************************************************\\
+
+        public void Update_Name()
+        {
+            try
+            {
+                string query = "UPDATE articles SET nom = @Nom WHERE id_articles = @Id_Article;";
+
+                // Crée une commande SQL avec la requête et la connexion
+                MySqlCommand commande = new MySqlCommand(query, ConnectionDB());
+
+                // Ajoute les paramètres à la commande pour eviter les injections SQL
+                commande.Parameters.AddWithValue("@Nom", nom);
+                commande.Parameters.AddWithValue("@Id_Article", id_article);
+
+                // Exécute la commande
+                commande.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error in ConnectionDB: {ex.Message}");
+            }
+        }
+
+        public void Update_Famille()
+        {
+            try
+            {
+                string query = "UPDATE articles SET famille = @Famille WHERE id_articles = @Id_Article;";
+
+                // Crée une commande SQL avec la requête et la connexion
+                MySqlCommand commande = new MySqlCommand(query, ConnectionDB());
+
+                // Ajoute les paramètres à la commande pour eviter les injections SQL
+                commande.Parameters.AddWithValue("@Famille", famille);
+                commande.Parameters.AddWithValue("@Id_Article", id_article);
+
+                // Exécute la commande
+                commande.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error in ConnectionDB: {ex.Message}");
+            }
+        }
+
+        public void Update_Description()
+        {
+            try
+            {
+                string query = "UPDATE articles SET description = @Description WHERE id_articles = @Id_Article;" ;
+
+                // Crée une commande SQL avec la requête et la connexion
+                MySqlCommand commande = new MySqlCommand(query, ConnectionDB());
+
+                // Ajoute les paramètres à la commande pour eviter les injections SQL
+                commande.Parameters.AddWithValue("@Description", description);
+                commande.Parameters.AddWithValue("@Id_Article", id_article);
+
+                // Exécute la commande
+                commande.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error in ConnectionDB: {ex.Message}");
+            }
+        }
+
+        public void Update_Quantite()
+        {
+            try
+            {
+                /*
+                 * on ne peut pas savoir le bon id produit car il y a plusieurs produit avec le meme id article
+                 * il faudrait le determiner avec id_emplacement mais comment savoir? 
+                 * //recupere l'id produit
+                string query = "SELECT * FROM produit WHERE  quantite_stock = @Quantite WHERE id_articles = @Id_Article AND ;";
+                MySqlCommand commande = new MySqlCommand(query, ConnectionDB());
+                commande.Parameters.AddWithValue("@Quantite", quantite);
+                commande.Parameters.AddWithValue("@Id_Article", id_article);
+
+                commande.ExecuteReader();
+                */
+
+                //modif 
+                string query = "UPDATE produit SET quantite_stock = @Quantite WHERE id_articles = @Id_Article AND ;";
+
+                // Crée une commande SQL avec la requête et la connexion
+                MySqlCommand commande = new MySqlCommand(query, ConnectionDB());
+
+                // Ajoute les paramètres à la commande pour eviter les injections SQL
+                commande.Parameters.AddWithValue("@Quantite", quantite);
+                commande.Parameters.AddWithValue("@Id_Article", id_article);
+
+                // Exécute la commande
+                commande.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error in ConnectionDB: {ex.Message}");
+            }
+        }
+
+        public void Update_PrixHT()
+        {
+            try
+            {
+                string query = "UPDATE articles SET prix_ht = @PrixHT WHERE id_articles = @Id_Article;";
+
+                // Crée une commande SQL avec la requête et la connexion
+                MySqlCommand commande = new MySqlCommand(query, ConnectionDB());
+
+                // Ajoute les paramètres à la commande pour eviter les injections SQL
+                commande.Parameters.AddWithValue("@PrixHT", prixHT);
+                commande.Parameters.AddWithValue("@Id_Article", id_article);
+
+                // Exécute la commande
+                commande.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error in ConnectionDB: {ex.Message}");
+            }
+        }
+
+        public void Update_PrixTTC()
+        {
+            try
+            {
+                string query = "UPDATE articles SET prix_ttc = @PrixTTC WHERE id_articles = @Id_Article;";
+
+                // Crée une commande SQL avec la requête et la connexion
+                MySqlCommand commande = new MySqlCommand(query, ConnectionDB());
+
+                // Ajoute les paramètres à la commande pour eviter les injections SQL
+                commande.Parameters.AddWithValue("@PrixTTC", prixTTC);
+                commande.Parameters.AddWithValue("@Id_Article", id_article);
+
+                // Exécute la commande
+                commande.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error in ConnectionDB: {ex.Message}");
+            }
+        }
+
+
+        //***********************************************************************************  update inventaire  ***************************************************************************************************\\
+
+        public void Update_Quantite_Reel()
+        {
+            try
+            {
+                string query = "UPDATE produit SET quantite_stock_reel = @Quantite WHERE id_produit = @Id_Produit;";
+
+                // Crée une commande SQL avec la requête et la connexion
+                MySqlCommand commande = new MySqlCommand(query, ConnectionDB());
+
+                // Ajoute les paramètres à la commande pour eviter les injections SQL
+                commande.Parameters.AddWithValue("@Quantite", quantite);
+                commande.Parameters.AddWithValue("@Id_Produit", id_produit);
+
+                // Exécute la commande
+                commande.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error in ConnectionDB: {ex.Message}");
+            }
+        }
+
+        public void Update_Code_Reel()
+        {
+            MySqlDataReader reader;
+
+            try
+            {
+                //recup id_emplacement
+                string query_emplacement = "SELECT id_emplacement FROM produit WHERE id_produit = @Id_Produit;";
+
+                MySqlCommand command = new MySqlCommand(query_emplacement, ConnectionDB());
+
+                command.Parameters.AddWithValue("@Id_Produit", id_produit);
+
+                reader = command.ExecuteReader();
+
+                while(reader.Read())
+                {
+                    id_emplacement = Convert.ToInt32(reader["id_emplacement"]);
+                }
+
+                //modif
+                string query = "UPDATE emplacement SET code_reel = @Emplacement WHERE id_emplacement = @Id_Emplacement;";
+
+                MySqlCommand commande = new MySqlCommand(query, ConnectionDB());
+
+                commande.Parameters.AddWithValue("@Emplacement", emplacement);
+                commande.Parameters.AddWithValue("@Id_Emplacement", id_emplacement);
+
+                commande.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error in ConnectionDB: {ex.Message}");
+            }
+        }
+
+        //*********************************************************************************** add new article  ***************************************************************************************************\\
 
         public void Count_id_article()
         {
@@ -211,7 +436,7 @@ namespace StockXpertise.Stock
         }
 
 
-        //***********************************************************************************  supression d'un article  ***************************************************************************************************\\
+        //***********************************************************************************  delete article  ********************************************************************************************************\\
 
         public void Delete_From_Achat()
         {
