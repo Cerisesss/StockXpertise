@@ -56,7 +56,6 @@ namespace StockXpertise.Stock
             // Récupère le texte entrer dans les TextBoxs
             string emplacementReel = emplacement_reel.Text;
             string stockReel = stock_reel.Text;
-            string query;
 
             if(string.IsNullOrEmpty(emplacementReel) && string.IsNullOrEmpty(stockReel))
             {

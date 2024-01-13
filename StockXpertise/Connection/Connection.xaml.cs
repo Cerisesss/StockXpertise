@@ -18,6 +18,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace StockXpertise.Connection
 {
@@ -26,15 +27,38 @@ namespace StockXpertise.Connection
     /// </summary>
     public partial class Connection : Page
     {
+        private DispatcherTimer timer;
+
         public Connection()
         {
             InitializeComponent();
+
+            ConnexionProgressBar.Visibility = Visibility.Hidden;
+
+            ConnexionProgressBar.Value = 0;
+
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromMilliseconds(100);
+            timer.Tick += Timer_Tick;
+
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            // Incrémentez la barre de progression
+            ConnexionProgressBar.Value += (200.0 / (3500 / timer.Interval.TotalMilliseconds));
+        }
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
             string mail = textboxMail.Text;
             string password = passwordboxPassword.Password;
+
+            ConnexionProgressBar.Visibility = Visibility.Visible;
+
+            timer.Start();
+
+            await Task.Delay(2500);
 
             // requete pour ajouter un utilisateur
             Query_Connection query_select = new Query_Connection(mail, password);
@@ -43,10 +67,16 @@ namespace StockXpertise.Connection
             if (reader == null)
             {
                 MessageBox.Show("Connexion échouée. Le mail ou le mot de passe est incorrect.");
+
+                ConnexionProgressBar.IsIndeterminate = false;
+
                 return;
             }
             else
             {
+                ConnexionProgressBar.Value = 100;
+                timer.Stop();
+
                 while (reader.Read())
                 {
                     int id_employee = Convert.ToInt32(reader["id_employes"]);
