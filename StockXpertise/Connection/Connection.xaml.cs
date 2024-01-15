@@ -68,7 +68,8 @@ namespace StockXpertise.Connection
             {
                 MessageBox.Show("Connexion échouée. Le mail ou le mot de passe est incorrect.");
 
-                ConnexionProgressBar.IsIndeterminate = false;
+                ConnexionProgressBar.Visibility = Visibility.Hidden;
+                ConnexionProgressBar.Value = 0;
 
                 return;
             }
@@ -89,9 +90,6 @@ namespace StockXpertise.Connection
                     Application.Current.Properties["mail"] = reader["mail"].ToString();
                     Application.Current.Properties["role"] = reader["role"].ToString();
                 }
-
-                //msg : connexion reussie
-                MessageBox.Show("Connexion réussie.");
 
                 // envoie vers la page d'accueil
                 gridConnection.Visibility = Visibility.Collapsed;

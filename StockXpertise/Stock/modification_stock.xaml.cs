@@ -18,6 +18,10 @@ using System.Windows.Shapes;
 using System.IO;
 using iText.Barcodes.Dmcode;
 using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
+using AForge.Video.DirectShow;
+using AForge.Video;
+using System.Drawing;
+using ZXing;
 
 namespace StockXpertise.Stock
 {
@@ -34,7 +38,8 @@ namespace StockXpertise.Stock
         private bool supprimerImageClicked = false;
         // Stock le chemin initial de l'image
         private string initialImagePath;
-
+        private FilterInfoCollection filterInfoCollection;
+        private VideoCaptureDevice videoCaptureDevice;
 
         public modification_stock(Article selectedData)
         {
@@ -95,10 +100,9 @@ namespace StockXpertise.Stock
             string nouvelleQuantite = quantite_apres.Text;
             string nouveauPrixHT = prix_HT_apres.Text;
             string nouveauPrixTTC = prix_TTC_apres.Text;
+            string code_barre = code_barre_apres.Text;
 
-            string query;
-
-            if (string.IsNullOrEmpty(nouveauNom) && string.IsNullOrEmpty(nouvelleFamille) && string.IsNullOrEmpty(nouvelledescription) && string.IsNullOrEmpty(nouvelleQuantite) && string.IsNullOrEmpty(nouveauPrixHT) && string.IsNullOrEmpty(nouveauPrixTTC) && string.IsNullOrEmpty(imagePath))
+            if (string.IsNullOrEmpty(code_barre) && string.IsNullOrEmpty(nouveauNom) && string.IsNullOrEmpty(nouvelleFamille) && string.IsNullOrEmpty(nouvelledescription) && string.IsNullOrEmpty(nouvelleQuantite) && string.IsNullOrEmpty(nouveauPrixHT) && string.IsNullOrEmpty(nouveauPrixTTC) && string.IsNullOrEmpty(imagePath))
             {
                 MessageBox.Show("Veuillez remplir au moins un champ");
                 return;
@@ -109,7 +113,7 @@ namespace StockXpertise.Stock
                 Int32.TryParse(nouveauPrixTTC, out var prixTTC);
                 Int32.TryParse(nouvelleQuantite, out var quantite);
 
-                Query_Stock query_Update = new Query_Stock(selectedData.Id, nouveauNom, nouvelleFamille, prixHT, prixTTC, nouvelledescription, quantite);
+                Query_Stock query_Update = new Query_Stock(selectedData.Id, nouveauNom, nouvelleFamille, prixHT, prixTTC, nouvelledescription, code_barre, quantite, imagePath);
 
                 // Vérifier si les TextBoxs ne sont pas vides pour enregistrer que les données qui ont été modifiées
                 if (!string.IsNullOrEmpty(nouveauNom))
@@ -136,13 +140,16 @@ namespace StockXpertise.Stock
                 {
                     query_Update.Update_PrixTTC();
                 }
+                if (!string.IsNullOrEmpty(code_barre))
+                {
+                    query_Update.Update_CodeBarre();
+                }
 
                 // Si l'utilisateur a supprimé l'image existante et a ajouté une nouvelle image
                 if (initialImagePath != imagePath)
                 {
                     // Mettre à jour le chemin de l'image dans la base de données
-                    query = "UPDATE articles SET image = '" + imagePath + "' WHERE id_articles = " + selectedData.Id;
-                    ConfigurationDB.ExecuteQuery(query);
+                    query_Update.Update_ImagePath();
                 }
 
                 // Retourner à la page Stock après avoir enregistrer les modifications
@@ -249,5 +256,93 @@ namespace StockXpertise.Stock
                 parentWindow.Content = stock;
             }
         }
+
+        private void btnScanner_Click(object sender, RoutedEventArgs e)
+        {
+            filterInfoCollection = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+            videoCaptureDevice = new VideoCaptureDevice(filterInfoCollection[0].MonikerString);
+            videoCaptureDevice.NewFrame += VideoCaptureDevice_NewFrame;
+            videoCaptureDevice.Start();
+        }
+
+        private void VideoCaptureDevice_NewFrame(object sender, NewFrameEventArgs eventArgs)
+        {
+            try
+            {
+                using (Bitmap bitmap = (Bitmap)eventArgs.Frame.Clone())
+                {
+                    BarcodeReader reader = new BarcodeReader();
+                    reader.AutoRotate = true;
+                    reader.Options.TryInverted = true;
+                    reader.Options.TryHarder = true;
+
+                    reader.Options = new ZXing.Common.DecodingOptions
+                    {
+                        PossibleFormats = new List<BarcodeFormat> { BarcodeFormat.All_1D }
+                    };
+
+                    //lit le code barre et le stock dans result
+                    var result = reader.Decode(bitmap);
+
+                    //si result est different de null alors on affiche le code barre dans le textbox
+                    if (result != null)
+                    {
+                        //Dispatcher.Invoke permet d'executer du code dans le thread de l'interface utilisateur (methode object de wpf provenant de dispatcher)
+                        code_barre_apres.Dispatcher.Invoke(() =>
+                        {
+                            // Afficher le code barre dans le textbox
+                            code_barre_apres.Text = result.ToString();
+                        });
+
+                        if (videoCaptureDevice != null && videoCaptureDevice.IsRunning)
+                        {
+                            // Stopp la caméra
+                            videoCaptureDevice.Stop();
+                            videoCaptureDevice = null;
+                        }
+                    }
+
+                    videoScan.Dispatcher.Invoke(() =>
+                    {
+                        // Libérer l'image précédente
+                        if (videoScan.Source is BitmapSource previousBitmapSource)
+                        {
+                            //freez l'image
+                            previousBitmapSource.Freeze();
+
+                            // Libérer la mémoire
+                            videoScan.Source = null;
+                        }
+
+                        // Convertit le Bitmap actuel en BitmapSource et l'affiche dans l'interface (image)
+                        videoScan.Source = ConvertBitmapToBitmapSource(bitmap);
+                    });
+
+                    // Force une collecte des objets non référencés, permettant de libérer de la mémoire
+                    GC.Collect();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private BitmapSource ConvertBitmapToBitmapSource(Bitmap bitmap)
+        {
+            var memoryStream = new MemoryStream();
+
+            // Enregistre le Bitmap dans le MemoryStream au format BMP
+            bitmap.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Bmp);
+
+            // Initialise le BitmapImage avec le MemoryStream contenant l'image BMP
+            var bitmapImage = new BitmapImage();
+            bitmapImage.BeginInit();
+            bitmapImage.StreamSource = new MemoryStream(memoryStream.ToArray());
+            bitmapImage.EndInit();
+
+            return bitmapImage;
+        }
+
     }
 }
