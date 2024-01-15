@@ -38,7 +38,7 @@
                     </LinearGradientBrush>
                 </Button.Background>
             </Button>
-            <DataGrid x:Name="MyDataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Height="352" Width="787" Margin="95,251,0,0"
+            <DataGrid x:Name="MyDataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Height="500" Width="1000" Margin="95,251,0,0"
           AutoGenerateColumns="True"
           AlternatingRowBackground="#F0F0F0"
           GridLinesVisibility="None"
