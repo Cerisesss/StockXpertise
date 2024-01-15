@@ -9,6 +9,8 @@ namespace StockXpertise.Stock
     public class Article
     {
         public int Id { get; set; }
+        public int Id_emplacement { get; set; }
+        public string Code_emplacement { get; set; }
         public string Nom { get; set; }
         public string Description { get; set; }
         public int Quantite { get; set; }

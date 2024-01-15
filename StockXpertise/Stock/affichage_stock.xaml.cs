@@ -33,7 +33,7 @@ namespace StockXpertise.Stock
         {
             InitializeComponent();
 
-            string query = "SELECT articles.id_articles, articles.image, articles.nom, articles.famille, articles.code_barre, articles.description, articles.prix_ht, articles.prix_ttc, produit.quantite_stock FROM articles JOIN produit ON articles.id_articles = produit.id_articles";
+            string query = "SELECT articles.id_articles, articles.image, articles.nom, articles.famille, articles.code_barre, articles.description, articles.prix_ht, articles.prix_ttc, produit.quantite_stock, produit.id_emplacement, emplacement.code FROM articles JOIN produit ON articles.id_articles = produit.id_articles JOIN emplacement ON produit.id_emplacement = emplacement.id_emplacement";
             MySqlDataReader reader = ConfigurationDB.ExecuteQuery(query);
             remplissage_donnees(reader);
 
@@ -55,6 +55,8 @@ namespace StockXpertise.Stock
                 var articleData = new Article
                 {
                     Id = Convert.ToInt32(reader["id_articles"]),
+                    Id_emplacement = Convert.ToInt32(reader["id_emplacement"]),
+                    Code_emplacement = reader["code"].ToString(),
                     Nom = reader["nom"].ToString(),
                     Famille = reader["famille"].ToString(),
                     CodeBarre = reader["code_barre"].ToString(),
@@ -81,6 +83,8 @@ namespace StockXpertise.Stock
                 var articleData = new Article
                 {
                     Id = Convert.ToInt32(reader["id_articles"]),
+                    Id_emplacement = Convert.ToInt32(reader["id_emplacement"]),
+                    Code_emplacement = reader["code"].ToString(),
                     Nom = reader["nom"].ToString(),
                     Famille = reader["famille"].ToString(),
                     CodeBarre = reader["code_barre"].ToString(),
@@ -144,6 +148,8 @@ namespace StockXpertise.Stock
                 iText.Layout.Element.Table table = new iText.Layout.Element.Table(8);
 
                 table.AddHeaderCell("ID Articles");
+                table.AddHeaderCell("ID Emplacement");
+                table.AddHeaderCell("Code emplacement");
                 table.AddHeaderCell("Nom");
                 table.AddHeaderCell("Famille");
                 table.AddHeaderCell("Code barre");
@@ -155,6 +161,8 @@ namespace StockXpertise.Stock
                 foreach (var data in articlesDataList)
                 {
                     table.AddCell(data.Id.ToString());
+                    table.AddCell(data.Id_emplacement.ToString());
+                    table.AddCell(data.Code_emplacement.ToString());
                     table.AddCell(data.Nom);
                     table.AddCell(data.Famille);
                     table.AddCell(data.CodeBarre);
@@ -172,12 +180,12 @@ namespace StockXpertise.Stock
         {
             string motRecherche = Search_TextBox.Text;
 
-            string query = "SELECT articles.id_articles, articles.image, articles.nom, articles.famille, articles.code_barre, articles.description, articles.prix_ht, articles.prix_ttc, produit.quantite_stock FROM articles JOIN produit ON articles.id_articles = produit.id_articles";
+            string query = "SELECT articles.id_articles, articles.image, articles.nom, articles.famille, articles.code_barre, articles.description, articles.prix_ht, articles.prix_ttc, produit.quantite_stock, produit.id_emplacement, emplacement.code FROM articles JOIN produit ON articles.id_articles = produit.id_articles JOIN emplacement ON produit.id_emplacement = emplacement.id_emplacement";
 
             // Si un mot de recherche est saisi, ajuste la requête et exécute la recherche
             if (!string.IsNullOrEmpty(motRecherche))
             {
-                query += " WHERE articles.id_articles LIKE @motRecherche OR articles.nom LIKE @motRecherche OR articles.famille LIKE @motRecherche OR articles.code_barre LIKE @motRecherche OR articles.description LIKE @motRecherche OR articles.prix_ht LIKE @motRecherche OR articles.prix_ttc LIKE @motRecherche OR produit.quantite_stock LIKE @motRecherche";
+                query += " WHERE articles.id_articles LIKE @motRecherche OR articles.nom LIKE @motRecherche OR articles.famille LIKE @motRecherche OR articles.code_barre LIKE @motRecherche OR articles.description LIKE @motRecherche OR articles.prix_ht LIKE @motRecherche OR articles.prix_ttc LIKE @motRecherche OR produit.quantite_stock LIKE @motRecherche OR produit.id_emplacement LIKE @motRecherche OR emplacement.code LIKE @motRecherche";
                 query = query.Replace("@motRecherche", "'" + "%" + motRecherche + "%" + "'");
                 MySqlDataReader reader = ConfigurationDB.ExecuteQuery(query);
 
