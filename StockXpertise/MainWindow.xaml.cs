@@ -32,5 +32,6 @@ namespace StockXpertise
             gridMainWidow.Visibility = Visibility.Collapsed;
             mainWindow.Navigate(new Uri("/Connection/Connection.xaml", UriKind.RelativeOrAbsolute));
         }
+
     }
 }

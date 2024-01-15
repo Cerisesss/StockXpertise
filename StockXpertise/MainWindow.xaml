@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="700" Width="1024"
         >
+
     <Grid>
         <Frame x:Name="mainWindow" NavigationUIVisibility="Hidden"/>
 
@@ -14,7 +15,11 @@
         <!--<local:UserControl1/>-->
 
         <Image Source="/Images/LogoWithShadow.png" HorizontalAlignment="Center" Height="306" Margin="0,31,0,0" VerticalAlignment="Top" Width="340"/>
-        <Button Content="Connexion" HorizontalAlignment="Center" Height="51" Margin="0,332,0,0" VerticalAlignment="Top" Width="116" Click="Button_Click"/>
+            <Button Content="Connexion"
+                Style="{StaticResource CustomButtonStyle}"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Click="Button_Click"/>
         </Grid>
     </Grid>
 </Window>

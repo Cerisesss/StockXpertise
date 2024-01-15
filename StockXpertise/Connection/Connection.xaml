@@ -17,7 +17,7 @@
             <Label Content="Mail" Height="29" Margin="206,228,554,194" Width="35"/>
             <Rectangle Height="34" Margin="167,268,515,148" Stroke="#FF2E2E2E" Width="118" Fill="#FFCBC8C8"/>
             <Label Content="Mot de passe" Height="26" Margin="185,272,533,152" Width="82"/>
-            <Button Content="Connexion" Height="42" Margin="342,342,342,66" Width="116" Click="Button_Click"/>
+            <Button Content="Connexion" Style="{StaticResource CustomButtonStyle}" Height="42" Margin="342,342,342,66" Width="116" Click="Button_Click"/>
             <TextBox x:Name="textboxMail" Height="36" Margin="296,224,164,190" TextWrapping="Wrap" Text="admin@mail.com" Width="340" Background="#FFACACAC" BorderBrush="#FF2E2E2E" TextChanged="TextBox_TextChanged_Mail"/>
             <PasswordBox x:Name="passwordboxPassword" Height="34" Margin="296,268,164,148" Width="340" Background="#FFACACAC" BorderBrush="Black" Password="123"/>
         </Grid>
