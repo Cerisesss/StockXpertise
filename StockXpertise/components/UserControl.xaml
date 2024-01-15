@@ -60,14 +60,14 @@
                             <Separator Height="25" Style="{StaticResource CustomSeparator}"/>
 							<Button x:Name="b4" Content="Statistique" HorizontalAlignment="Left" Height="42" VerticalAlignment="Top" Width="150" Background="{Binding Visibility.Hidden, ElementName=button}" BorderBrush="{Binding Visibility.Hidden, ElementName=button}" Click="b4_Click"/>
 							<Separator Height="25" Style="{StaticResource CustomSeparator}"/>
-							<Button x:Name="b5" Content="Historique" HorizontalAlignment="Left" Height="42" VerticalAlignment="Top" Width="150" Background="{Binding Visibility.Hidden, ElementName=button}" BorderBrush="{Binding Visibility.Hidden, ElementName=button}"/>
-							<Separator Height="25" Style="{StaticResource CustomSeparator}"/>
+							<!--<Button x:Name="b5" Content="Historique" HorizontalAlignment="Left" Height="42" VerticalAlignment="Top" Width="150" Background="{Binding Visibility.Hidden, ElementName=button}" BorderBrush="{Binding Visibility.Hidden, ElementName=button}"/>
+							<Separator Height="25" Style="{StaticResource CustomSeparator}"/>-->
 							<Button x:Name="b6" Content="Profil" HorizontalAlignment="Left" Height="42" VerticalAlignment="Top" Width="150" Background="{Binding Visibility.Hidden, ElementName=button}" BorderBrush="{Binding Visibility.Hidden, ElementName=button}" Click="b6_Click"/>
 							<Separator Height="25" Style="{StaticResource CustomSeparator}"/>
                             <Button x:Name="b8" Content="Utilisateur" HorizontalAlignment="Left" Height="42" VerticalAlignment="Top" Width="150" Background="{Binding Visibility.Hidden, ElementName=button}" BorderBrush="{Binding Visibility.Hidden, ElementName=button}" Click="b8_Click"/>
                             <Separator Height="25" Style="{StaticResource CustomSeparator}"/>
-                            <Button x:Name="b7" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="150" Background="{Binding Visibility.Hidden, ElementName=button}" BorderBrush="{Binding Visibility.Hidden, ElementName=button}">
-								<Image Height="100" Source="./logoVnoir.png" Stretch="Fill" Width="100"/>
+                            <Button x:Name="b7" HorizontalAlignment="Left" Height="150" VerticalAlignment="Top" Width="150" Background="{Binding Visibility.Hidden, ElementName=button}" BorderBrush="{Binding Visibility.Hidden, ElementName=button}">
+								<Image Height="150" Source="./logoVnoir.png" Width="150"/>
 							</Button>
 						</StackPanel>
 
