@@ -52,8 +52,8 @@
                         <Rectangle Name="bar" HorizontalAlignment="Left" Stroke="Transparent" Width="150">
                             <Rectangle.Fill>
                                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                    <GradientStop Color="#FFF35353"/>
-                                    <GradientStop Color="#FFDAFD00" Offset="1"/>
+                                    <GradientStop Color="#FFFF9393"/>
+                                    <GradientStop Color="#FFE4F76C" Offset="1"/>
                                 </LinearGradientBrush>
                             </Rectangle.Fill>
                         </Rectangle>
