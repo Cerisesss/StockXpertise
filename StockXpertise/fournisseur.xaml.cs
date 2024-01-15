@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using StockXpertise.Stock;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -65,6 +66,18 @@ namespace StockXpertise
 
                 // Assigne les données au DataGrid
                 MyDataGrid.ItemsSource = reader;
+            }
+        }
+
+        private void Add_New_Stock(object sender, RoutedEventArgs e)
+        {
+            Add_fournisseur newfournisseur = new Add_fournisseur();
+
+            Window parentWindow = Window.GetWindow(this);
+
+            if (parentWindow != null)
+            {
+                parentWindow.Content = newfournisseur;
             }
         }
     }

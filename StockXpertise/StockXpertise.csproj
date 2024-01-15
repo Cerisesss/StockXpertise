@@ -192,6 +192,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Add_fournisseur.xaml.cs">
+      <DependentUpon>Add_fournisseur.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Caisse\Caisse.xaml.cs">
       <DependentUpon>Caisse.xaml</DependentUpon>
     </Compile>
@@ -205,6 +208,7 @@
     <Compile Include="Profile\Profile.xaml.cs">
       <DependentUpon>Profile.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Query_Fournisseur.cs" />
     <Compile Include="Statgénérate.xaml.cs">
       <DependentUpon>Statgénérate.xaml</DependentUpon>
     </Compile>
@@ -240,6 +244,10 @@
     <Compile Include="User\User.xaml.cs">
       <DependentUpon>User.xaml</DependentUpon>
     </Compile>
+    <Page Include="Add_fournisseur.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Caisse\Caisse.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
