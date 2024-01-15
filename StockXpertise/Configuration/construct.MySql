@@ -1,24 +1,65 @@
 ﻿-- Drop tables
 DROP TABLE IF EXISTS `achat`;
+DROP TABLE IF EXISTS `Historique_achat`;
 DROP TABLE IF EXISTS `vente`;
+DROP TABLE IF EXISTS `Historique_vente`;
 DROP TABLE IF EXISTS `stockage`;
+DROP TABLE IF EXISTS `Historique_stockage`;
 DROP TABLE IF EXISTS `produit`;
+DROP TABLE IF EXISTS `Historique_produit`;
 DROP TABLE IF EXISTS `articles`;
+DROP TABLE IF EXISTS `Historique_articles`;
 DROP TABLE IF EXISTS `emplacement`;
+DROP TABLE IF EXISTS `Historique_emplacement`;
 DROP TABLE IF EXISTS `fournisseur`;
+DROP TABLE IF EXISTS `Historique_fournisseur`;
 DROP TABLE IF EXISTS `mouvement`;  
+DROP TABLE IF EXISTS `Historique_mouvement`;  
 DROP TABLE IF EXISTS `employes`;
+DROP TABLE IF EXISTS `Historique_employes`;
+
+
+-- Construct SQL with History Tables and Triggers
 
 CREATE TABLE fournisseur (
+
   id_fournisseur INT AUTO_INCREMENT PRIMARY KEY,
   nom VARCHAR(255),
   prenom VARCHAR(255),
   numero INT,
   mail VARCHAR(255),
   adresse VARCHAR(255)
+
 );
 
+
+CREATE TABLE Historique_fournisseur (
+    
+  id_fournisseur INT AUTO_INCREMENT PRIMARY KEY,
+  nom VARCHAR(255),
+  prenom VARCHAR(255),
+  numero INT,
+  mail VARCHAR(255),
+  adresse VARCHAR(255)
+,
+    Type_Modification ENUM('Ajout', 'Modification', 'Suppression') NOT NULL,
+    Date_Modification TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TRIGGER fournisseur_after_insert AFTER INSERT ON fournisseur
+FOR EACH ROW
+INSERT INTO Historique_fournisseur SELECT *, 'Ajout', CURRENT_TIMESTAMP FROM fournisseur WHERE id_fournisseur = NEW.id_fournisseur;
+
+CREATE TRIGGER fournisseur_after_update AFTER UPDATE ON fournisseur
+FOR EACH ROW
+INSERT INTO Historique_fournisseur SELECT *, 'Modification', CURRENT_TIMESTAMP FROM fournisseur WHERE id_fournisseur = NEW.id_fournisseur;
+
+CREATE TRIGGER fournisseur_after_delete AFTER DELETE ON fournisseur
+FOR EACH ROW
+INSERT INTO Historique_fournisseur SELECT *, 'Suppression', CURRENT_TIMESTAMP FROM fournisseur WHERE id_fournisseur = OLD.id_fournisseur;
+
 CREATE TABLE employes (
+
   id_employes INT AUTO_INCREMENT PRIMARY KEY,
   nom VARCHAR(255),
   prenom VARCHAR(255),
@@ -26,16 +67,71 @@ CREATE TABLE employes (
   mail VARCHAR(255),
   role VARCHAR(255),
   date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
 );
 
+
+CREATE TABLE Historique_employes (
+    
+  id_employes INT AUTO_INCREMENT PRIMARY KEY,
+  nom VARCHAR(255),
+  prenom VARCHAR(255),
+  mot_de_passe VARCHAR(255),
+  mail VARCHAR(255),
+  role VARCHAR(255),
+  date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+,
+    Type_Modification ENUM('Ajout', 'Modification', 'Suppression') NOT NULL,
+    Date_Modification TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TRIGGER employes_after_insert AFTER INSERT ON employes
+FOR EACH ROW
+INSERT INTO Historique_employes SELECT *, 'Ajout', CURRENT_TIMESTAMP FROM employes WHERE id_employes = NEW.id_employes;
+
+CREATE TRIGGER employes_after_update AFTER UPDATE ON employes
+FOR EACH ROW
+INSERT INTO Historique_employes SELECT *, 'Modification', CURRENT_TIMESTAMP FROM employes WHERE id_employes = NEW.id_employes;
+
+CREATE TRIGGER employes_after_delete AFTER DELETE ON employes
+FOR EACH ROW
+INSERT INTO Historique_employes SELECT *, 'Suppression', CURRENT_TIMESTAMP FROM employes WHERE id_employes = OLD.id_employes;
+
 CREATE TABLE emplacement (
+
   id_emplacement INT AUTO_INCREMENT PRIMARY KEY,
   code VARCHAR(255),
   capacite INT,
   code_reel VARCHAR(255)
+
 );
 
+
+CREATE TABLE Historique_emplacement (
+    
+  id_emplacement INT AUTO_INCREMENT PRIMARY KEY,
+  code VARCHAR(255),
+  capacite INT,
+  code_reel VARCHAR(255)
+,
+    Type_Modification ENUM('Ajout', 'Modification', 'Suppression') NOT NULL,
+    Date_Modification TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TRIGGER emplacement_after_insert AFTER INSERT ON emplacement
+FOR EACH ROW
+INSERT INTO Historique_emplacement SELECT *, 'Ajout', CURRENT_TIMESTAMP FROM emplacement WHERE id_emplacement = NEW.id_emplacement;
+
+CREATE TRIGGER emplacement_after_update AFTER UPDATE ON emplacement
+FOR EACH ROW
+INSERT INTO Historique_emplacement SELECT *, 'Modification', CURRENT_TIMESTAMP FROM emplacement WHERE id_emplacement = NEW.id_emplacement;
+
+CREATE TRIGGER emplacement_after_delete AFTER DELETE ON emplacement
+FOR EACH ROW
+INSERT INTO Historique_emplacement SELECT *, 'Suppression', CURRENT_TIMESTAMP FROM emplacement WHERE id_emplacement = OLD.id_emplacement;
+
 CREATE TABLE articles (
+
   id_articles INT AUTO_INCREMENT PRIMARY KEY,
   id_fournisseur INT,
   nom VARCHAR(255),
@@ -49,9 +145,44 @@ CREATE TABLE articles (
   code_barre VARCHAR(255),
   image VARCHAR(255),
   FOREIGN KEY (id_fournisseur) REFERENCES fournisseur(id_fournisseur)
+
 );
 
+
+CREATE TABLE Historique_articles (
+    
+  id_articles INT AUTO_INCREMENT PRIMARY KEY,
+  id_fournisseur INT,
+  nom VARCHAR(255),
+  famille VARCHAR(255),
+  prix_ht INT,
+  prix_ttc INT,
+  prix_vente INT,
+  prix_achat INT,
+  description TEXT,
+  date_ajout TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  code_barre VARCHAR(255),
+  image VARCHAR(255),
+  FOREIGN KEY (id_fournisseur) REFERENCES fournisseur(id_fournisseur)
+,
+    Type_Modification ENUM('Ajout', 'Modification', 'Suppression') NOT NULL,
+    Date_Modification TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TRIGGER articles_after_insert AFTER INSERT ON articles
+FOR EACH ROW
+INSERT INTO Historique_articles SELECT *, 'Ajout', CURRENT_TIMESTAMP FROM articles WHERE id_articles = NEW.id_articles;
+
+CREATE TRIGGER articles_after_update AFTER UPDATE ON articles
+FOR EACH ROW
+INSERT INTO Historique_articles SELECT *, 'Modification', CURRENT_TIMESTAMP FROM articles WHERE id_articles = NEW.id_articles;
+
+CREATE TRIGGER articles_after_delete AFTER DELETE ON articles
+FOR EACH ROW
+INSERT INTO Historique_articles SELECT *, 'Suppression', CURRENT_TIMESTAMP FROM articles WHERE id_articles = OLD.id_articles;
+
 CREATE TABLE produit (
+
   id_produit INT AUTO_INCREMENT PRIMARY KEY,
   id_articles INT,
   quantite_stock INT,
@@ -59,16 +190,71 @@ CREATE TABLE produit (
   id_emplacement INT,
   FOREIGN KEY (id_articles) REFERENCES articles(id_articles),
   FOREIGN KEY (`id_emplacement`) REFERENCES `emplacement` (`id_emplacement`)
+
 );
 
+
+CREATE TABLE Historique_produit (
+    
+  id_produit INT AUTO_INCREMENT PRIMARY KEY,
+  id_articles INT,
+  quantite_stock INT,
+  quantite_stock_reel INT,
+  id_emplacement INT,
+  FOREIGN KEY (id_articles) REFERENCES articles(id_articles),
+  FOREIGN KEY (`id_emplacement`) REFERENCES `emplacement` (`id_emplacement`)
+,
+    Type_Modification ENUM('Ajout', 'Modification', 'Suppression') NOT NULL,
+    Date_Modification TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TRIGGER produit_after_insert AFTER INSERT ON produit
+FOR EACH ROW
+INSERT INTO Historique_produit SELECT *, 'Ajout', CURRENT_TIMESTAMP FROM produit WHERE id_produit = NEW.id_produit;
+
+CREATE TRIGGER produit_after_update AFTER UPDATE ON produit
+FOR EACH ROW
+INSERT INTO Historique_produit SELECT *, 'Modification', CURRENT_TIMESTAMP FROM produit WHERE id_produit = NEW.id_produit;
+
+CREATE TRIGGER produit_after_delete AFTER DELETE ON produit
+FOR EACH ROW
+INSERT INTO Historique_produit SELECT *, 'Suppression', CURRENT_TIMESTAMP FROM produit WHERE id_produit = OLD.id_produit;
+
 CREATE TABLE mouvement (
+
   id_mouvement INT AUTO_INCREMENT PRIMARY KEY,
   id_employes INT,
   date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (id_employes) REFERENCES employes(id_employes)
+
 );
 
+
+CREATE TABLE Historique_mouvement (
+    
+  id_mouvement INT AUTO_INCREMENT PRIMARY KEY,
+  id_employes INT,
+  date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (id_employes) REFERENCES employes(id_employes)
+,
+    Type_Modification ENUM('Ajout', 'Modification', 'Suppression') NOT NULL,
+    Date_Modification TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TRIGGER mouvement_after_insert AFTER INSERT ON mouvement
+FOR EACH ROW
+INSERT INTO Historique_mouvement SELECT *, 'Ajout', CURRENT_TIMESTAMP FROM mouvement WHERE id_mouvement = NEW.id_mouvement;
+
+CREATE TRIGGER mouvement_after_update AFTER UPDATE ON mouvement
+FOR EACH ROW
+INSERT INTO Historique_mouvement SELECT *, 'Modification', CURRENT_TIMESTAMP FROM mouvement WHERE id_mouvement = NEW.id_mouvement;
+
+CREATE TRIGGER mouvement_after_delete AFTER DELETE ON mouvement
+FOR EACH ROW
+INSERT INTO Historique_mouvement SELECT *, 'Suppression', CURRENT_TIMESTAMP FROM mouvement WHERE id_mouvement = OLD.id_mouvement;
+
 CREATE TABLE vente (
+
   id_vente INT AUTO_INCREMENT PRIMARY KEY,
   id_produit INT,
   prix_ventes INT,
@@ -77,9 +263,39 @@ CREATE TABLE vente (
   id_mouvement INT,
   FOREIGN KEY (id_produit) REFERENCES produit(id_produit),
   FOREIGN KEY (id_mouvement) REFERENCES mouvement(id_mouvement)
+
 );
 
+
+CREATE TABLE Historique_vente (
+    
+  id_vente INT AUTO_INCREMENT PRIMARY KEY,
+  id_produit INT,
+  prix_ventes INT,
+  date_vente TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  facture VARCHAR(255),
+  id_mouvement INT,
+  FOREIGN KEY (id_produit) REFERENCES produit(id_produit),
+  FOREIGN KEY (id_mouvement) REFERENCES mouvement(id_mouvement)
+,
+    Type_Modification ENUM('Ajout', 'Modification', 'Suppression') NOT NULL,
+    Date_Modification TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TRIGGER vente_after_insert AFTER INSERT ON vente
+FOR EACH ROW
+INSERT INTO Historique_vente SELECT *, 'Ajout', CURRENT_TIMESTAMP FROM vente WHERE id_vente = NEW.id_vente;
+
+CREATE TRIGGER vente_after_update AFTER UPDATE ON vente
+FOR EACH ROW
+INSERT INTO Historique_vente SELECT *, 'Modification', CURRENT_TIMESTAMP FROM vente WHERE id_vente = NEW.id_vente;
+
+CREATE TRIGGER vente_after_delete AFTER DELETE ON vente
+FOR EACH ROW
+INSERT INTO Historique_vente SELECT *, 'Suppression', CURRENT_TIMESTAMP FROM vente WHERE id_vente = OLD.id_vente;
+
 CREATE TABLE achat (
+
   id_achat INT AUTO_INCREMENT PRIMARY KEY,
   id_produit INT,
   prix_achat INT,
@@ -88,4 +304,33 @@ CREATE TABLE achat (
   id_mouvement INT,
   FOREIGN KEY (id_produit) REFERENCES produit(id_produit),
   FOREIGN KEY (id_mouvement) REFERENCES mouvement(id_mouvement)
+
 );
+
+
+CREATE TABLE Historique_achat (
+    
+  id_achat INT AUTO_INCREMENT PRIMARY KEY,
+  id_produit INT,
+  prix_achat INT,
+  date_achat TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  facture VARCHAR(255),
+  id_mouvement INT,
+  FOREIGN KEY (id_produit) REFERENCES produit(id_produit),
+  FOREIGN KEY (id_mouvement) REFERENCES mouvement(id_mouvement)
+,
+    Type_Modification ENUM('Ajout', 'Modification', 'Suppression') NOT NULL,
+    Date_Modification TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TRIGGER achat_after_insert AFTER INSERT ON achat
+FOR EACH ROW
+INSERT INTO Historique_achat SELECT *, 'Ajout', CURRENT_TIMESTAMP FROM achat WHERE id_achat = NEW.id_achat;
+
+CREATE TRIGGER achat_after_update AFTER UPDATE ON achat
+FOR EACH ROW
+INSERT INTO Historique_achat SELECT *, 'Modification', CURRENT_TIMESTAMP FROM achat WHERE id_achat = NEW.id_achat;
+
+CREATE TRIGGER achat_after_delete AFTER DELETE ON achat
+FOR EACH ROW
+INSERT INTO Historique_achat SELECT *, 'Suppression', CURRENT_TIMESTAMP FROM achat WHERE id_achat = OLD.id_achat;
