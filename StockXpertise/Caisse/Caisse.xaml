@@ -5,7 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:StockXpertise.components"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="780" d:DesignWidth="1280"
+
       Title="Caisse">
 
     <Grid Background="White">
@@ -16,7 +17,7 @@
         <Label Content="Code" Height="27" Margin="178,51,551,372" Width="71"/>
         <Label Content="Qté" Height="27" Margin="422,51,338,372" Width="40"/>
         <Button Content="Ajouter" Height="27" Margin="166,93,350,330" Width="285" Click="Button_Click_ajouter_article"/>
-        <Button Content="Scan" Height="27" Margin="456,93,272,330" Width="72"/>
+        <Button x:Name="btnScanner" Content="Scan" Height="27" Margin="456,93,272,330" Width="72" Click="btnScanner_Click"/>
         <TextBox x:Name="text_code_barre" Height="27" Margin="242,50,400,372" TextWrapping="Wrap" Width="160"/>
         <TextBox x:Name="text_quantite" Height="27" Margin="457,50,284,372" TextWrapping="Wrap" Width="59"/>
         <ListBox x:Name="listBoxImages" Height="199" Margin="178,144,284,108" Width="338">
@@ -32,5 +33,6 @@
         </ListBox>
         <Button Content="Valider" Height="26" Margin="166,367,274,57" Click="Button_Click_Valider" Width="360"/>
         <Label x:Name="info_cassier" HorizontalAlignment="Left" Height="29" Margin="572,120,0,0" VerticalAlignment="Top" Width="186"/>
+        <Image x:Name="videoScan" Height="350" Margin="545,45,15,55" Width="240"/>
     </Grid>
 </Page>
