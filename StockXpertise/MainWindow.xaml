@@ -8,13 +8,27 @@
         Title="MainWindow" Height="700" Width="1024"
         >
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" Opacity="1">
+                <LinearGradientBrush.RelativeTransform>
+                    <TransformGroup>
+                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                        <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                        <RotateTransform Angle="-582.274" CenterX="0.5" CenterY="0.5"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </LinearGradientBrush.RelativeTransform>
+                <GradientStop Color="#FFFFB996" Offset="0.7"/>
+                <GradientStop Color="#FFD9EDBF" Offset="0.15"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Frame x:Name="mainWindow" NavigationUIVisibility="Hidden"/>
 
         <Grid x:Name="gridMainWidow">
-        <!--<local:UserControl1/>-->
+            <!--<local:UserControl1/>-->
 
-        <Image Source="/Images/LogoWithShadow.png" HorizontalAlignment="Center" Height="306" Margin="0,31,0,0" VerticalAlignment="Top" Width="340"/>
-        <Button Content="Connexion" HorizontalAlignment="Center" Height="51" Margin="0,332,0,0" VerticalAlignment="Top" Width="116" Click="Button_Click"/>
+            <Image Source="/Images/LogoWithShadow.png" HorizontalAlignment="Center" Height="306" Margin="0,31,0,0" VerticalAlignment="Top" Width="340"/>
+            <Button Content="Connexion" Height="42" Margin="342,342,342,66" Width="116" Click="Button_Click"/>
         </Grid>
     </Grid>
 </Window>
