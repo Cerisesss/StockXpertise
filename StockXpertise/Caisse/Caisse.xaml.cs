@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -14,10 +16,13 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AForge.Video;
+using AForge.Video.DirectShow;
 using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI.Common;
 using StockXpertise.Connection;
 using StockXpertise.Stock;
+using ZXing;
 
 namespace StockXpertise.Caisse
 {
@@ -28,6 +33,8 @@ namespace StockXpertise.Caisse
     {
         List<ImageInfo> listeImages = new List<ImageInfo>();
         List<Article> listeArticles = new List<Article>();
+        private FilterInfoCollection filterInfoCollection;
+        private VideoCaptureDevice videoCaptureDevice;
 
         public Caisse()
         {
@@ -184,6 +191,93 @@ namespace StockXpertise.Caisse
             public string CodeBarre { get; set; }
             public int Quantite { get; set; }
             public int QuantiteEnStock { get; set; }
+        }
+
+        private void btnScanner_Click(object sender, RoutedEventArgs e)
+        {
+            filterInfoCollection = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+            videoCaptureDevice = new VideoCaptureDevice(filterInfoCollection[0].MonikerString);
+            videoCaptureDevice.NewFrame += VideoCaptureDevice_NewFrame;
+            videoCaptureDevice.Start();
+        }
+
+        private void VideoCaptureDevice_NewFrame(object sender, NewFrameEventArgs eventArgs)
+        {
+            try
+            {
+                using (Bitmap bitmap = (Bitmap)eventArgs.Frame.Clone())
+                {
+                    BarcodeReader reader = new BarcodeReader();
+                    reader.AutoRotate = true;
+                    reader.Options.TryInverted = true;
+                    reader.Options.TryHarder = true;
+
+                    reader.Options = new ZXing.Common.DecodingOptions
+                    {
+                        PossibleFormats = new List<BarcodeFormat> { BarcodeFormat.All_1D }
+                    };
+
+                    //lit le code barre et le stock dans result
+                    var result = reader.Decode(bitmap);
+
+                    //si result est different de null alors on affiche le code barre dans le textbox
+                    if (result != null)
+                    {
+                        //Dispatcher.Invoke permet d'executer du code dans le thread de l'interface utilisateur (methode object de wpf provenant de dispatcher)
+                        text_code_barre.Dispatcher.Invoke(() =>
+                        {
+                            // Afficher le code barre dans le textbox
+                            text_code_barre.Text = result.ToString();
+                        });
+
+                        if (videoCaptureDevice != null && videoCaptureDevice.IsRunning)
+                        {
+                            // Stopp la caméra
+                            videoCaptureDevice.Stop();
+                            videoCaptureDevice = null;
+                        }
+                    }
+
+                    videoScan.Dispatcher.Invoke(() =>
+                    {
+                        // Libérer l'image précédente
+                        if (videoScan.Source is BitmapSource previousBitmapSource)
+                        {
+                            //freez l'image
+                            previousBitmapSource.Freeze();
+
+                            // Libérer la mémoire
+                            videoScan.Source = null;
+                        }
+
+                        // Convertit le Bitmap actuel en BitmapSource et l'affiche dans l'interface (image)
+                        videoScan.Source = ConvertBitmapToBitmapSource(bitmap);
+                    });
+
+                    // Force une collecte des objets non référencés, permettant de libérer de la mémoire
+                    GC.Collect();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private BitmapSource ConvertBitmapToBitmapSource(Bitmap bitmap)
+        {
+            var memoryStream = new MemoryStream();
+
+            // Enregistre le Bitmap dans le MemoryStream au format BMP
+            bitmap.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Bmp);
+
+            // Initialise le BitmapImage avec le MemoryStream contenant l'image BMP
+            var bitmapImage = new BitmapImage();
+            bitmapImage.BeginInit();
+            bitmapImage.StreamSource = new MemoryStream(memoryStream.ToArray());
+            bitmapImage.EndInit();
+
+            return bitmapImage;
         }
     }
 }
