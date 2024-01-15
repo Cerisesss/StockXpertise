@@ -29,6 +29,8 @@ namespace StockXpertise.Stock
         int id_fournisseur;
         int id_emplacement;
         int id_produit;
+        string imagePath;
+
 
         public Query_Stock(int quantite, string emplacement, int id_produit) : this(0, "", "", 0, 0, 0, "", "", quantite, "", "", "")
         {
@@ -36,8 +38,9 @@ namespace StockXpertise.Stock
             this.id_produit = id_produit;
         }
 
-        public Query_Stock(int id_article, string nom, string famille, int prixHT, int prixTTC, string description, int quantite) : this(id_article, nom, famille, prixHT, prixTTC, 0, description, "", quantite, "", "", "")
+        public Query_Stock(int id_article, string nom, string famille, int prixHT, int prixTTC, string description, string code_barre, int quantite, string imagePath) : this(id_article, nom, famille, prixHT, prixTTC, 0, description, code_barre, quantite, "", "", "")
         {
+            this.imagePath = imagePath;
         }
 
         public Query_Stock(string nom, string famille, int prixHT, int prixTTC, string description, string code_barre, int quantite) : this(0, nom, famille, prixHT, prixTTC, 0, description, code_barre, quantite, "", "", "")
@@ -165,7 +168,7 @@ namespace StockXpertise.Stock
                 */
 
                 //modif 
-                string query = "UPDATE produit SET quantite_stock = @Quantite WHERE id_articles = @Id_Article AND ;";
+                string query = "UPDATE produit SET quantite_stock = @Quantite WHERE id_articles = @Id_Article ;";
 
                 // Crée une commande SQL avec la requête et la connexion
                 MySqlCommand commande = new MySqlCommand(query, ConnectionDB());
@@ -216,6 +219,50 @@ namespace StockXpertise.Stock
 
                 // Ajoute les paramètres à la commande pour eviter les injections SQL
                 commande.Parameters.AddWithValue("@PrixTTC", prixTTC);
+                commande.Parameters.AddWithValue("@Id_Article", id_article);
+
+                // Exécute la commande
+                commande.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error in ConnectionDB: {ex.Message}");
+            }
+        }
+
+        public void Update_CodeBarre()
+        {
+            try
+            {
+                string query = "UPDATE articles SET code_barre = @CodeBarre WHERE id_articles = @Id_Article;";
+
+                // Crée une commande SQL avec la requête et la connexion
+                MySqlCommand commande = new MySqlCommand(query, ConnectionDB());
+
+                // Ajoute les paramètres à la commande pour eviter les injections SQL
+                commande.Parameters.AddWithValue("@CodeBarre", code_barre);
+                commande.Parameters.AddWithValue("@Id_Article", id_article);
+
+                // Exécute la commande
+                commande.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error in ConnectionDB: {ex.Message}");
+            }
+        }
+
+        public void Update_ImagePath()
+        {
+            try
+            {
+                string query = "UPDATE articles SET image = @ImagePath WHERE id_articles = @Id_Article;";
+
+                // Crée une commande SQL avec la requête et la connexion
+                MySqlCommand commande = new MySqlCommand(query, ConnectionDB());
+
+                // Ajoute les paramètres à la commande pour eviter les injections SQL
+                commande.Parameters.AddWithValue("@ImagePath", imagePath);
                 commande.Parameters.AddWithValue("@Id_Article", id_article);
 
                 // Exécute la commande

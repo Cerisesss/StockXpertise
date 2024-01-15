@@ -55,20 +55,19 @@
         <Label Content="Quantité" FontWeight="Bold" HorizontalAlignment="Left" Height="34" Margin="218,430,0,0" VerticalAlignment="Top" Width="64"/>
         <Label Content="Prix HT" FontWeight="Bold" HorizontalAlignment="Left" Height="26" Margin="218,494,0,0" VerticalAlignment="Top" Width="74"/>
         <Label Content="Prix TTC" FontWeight="Bold" HorizontalAlignment="Left" Height="40" Margin="218,542,0,0" VerticalAlignment="Top" Width="64"/>
-        <Label Content="Nom" FontWeight="Bold" HorizontalAlignment="Left" Height="31" Margin="665,180,0,0" VerticalAlignment="Top" Width="51"/>
-        <Label Content="Famille" FontWeight="Bold" HorizontalAlignment="Left" Height="32" Margin="664,234,0,0" VerticalAlignment="Top" Width="50"/>
-        <Label Content="Code barre" FontWeight="Bold" HorizontalAlignment="Left" Height="30" Margin="665,298,0,0" VerticalAlignment="Top" Width="80"/>
-        <Label Content="Description" FontWeight="Bold" HorizontalAlignment="Left" Height="25" Margin="664,353,0,0" VerticalAlignment="Top" Width="76"/>
-        <Label Content="Quantité" FontWeight="Bold" HorizontalAlignment="Left" Height="30" Margin="664,429,0,0" VerticalAlignment="Top" Width="62"/>
-        <Label Content="Prix HT" FontWeight="Bold" HorizontalAlignment="Left" Height="30" Margin="665,494,0,0" VerticalAlignment="Top" Width="52"/>
-        <Label Content="Prix TTC" FontWeight="Bold" HorizontalAlignment="Left" Height="25" Margin="665,542,0,0" VerticalAlignment="Top" Width="56"/>
-        <TextBox x:Name="nom_apres" HorizontalAlignment="Left" Height="21" Margin="793,189,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132"/>
-        <TextBox x:Name="famille_apres" HorizontalAlignment="Left" Height="21" Margin="793,234,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132"/>
-        <TextBlock x:Name="code_barre_apres" TextAlignment="Center" HorizontalAlignment="Left" Height="14" Margin="798,305,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="127"/>
-        <TextBox x:Name="description_apres" HorizontalAlignment="Left" Height="48" Margin="793,362,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132"/>
-        <TextBox x:Name="quantite_apres" HorizontalAlignment="Left" Height="19" Margin="793,436,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132"/>
-        <TextBox x:Name="prix_HT_apres" HorizontalAlignment="Left" Height="18" Margin="793,499,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132"/>
-        <TextBox x:Name="prix_TTC_apres" HorizontalAlignment="Left" Height="19" Margin="791,548,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="134"/>
+        <Label Content="Nom" FontWeight="Bold" HorizontalAlignment="Left" Height="32" Margin="634,170,0,0" VerticalAlignment="Top" Width="63"/>
+        <Label Content="Famille" FontWeight="Bold" HorizontalAlignment="Left" Height="32" Margin="634,202,0,0" VerticalAlignment="Top" Width="63" RenderTransformOrigin="0.522,0.331"/>
+        <Label Content="Code barre" FontWeight="Bold" HorizontalAlignment="Left" Height="30" Margin="634,235,0,0" VerticalAlignment="Top" Width="94"/>
+        <Label Content="Description" FontWeight="Bold" HorizontalAlignment="Left" Height="24" Margin="634,440,0,0" VerticalAlignment="Top" Width="76"/>
+        <Label Content="Quantité" FontWeight="Bold" HorizontalAlignment="Left" Height="30" Margin="634,497,0,0" VerticalAlignment="Top" Width="62"/>
+        <Label Content="Prix HT" FontWeight="Bold" HorizontalAlignment="Left" Height="30" Margin="634,532,0,0" VerticalAlignment="Top" Width="52"/>
+        <Label Content="Prix TTC" FontWeight="Bold" HorizontalAlignment="Left" Height="26" Margin="634,569,0,0" VerticalAlignment="Top" Width="56"/>
+        <TextBox x:Name="nom_apres" HorizontalAlignment="Left" Height="21" Margin="737,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="224"/>
+        <TextBox x:Name="famille_apres" HorizontalAlignment="Left" Height="21" Margin="737,207,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="224"/>
+        <TextBox x:Name="description_apres" HorizontalAlignment="Left" Height="48" Margin="737,440,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="224"/>
+        <TextBox x:Name="quantite_apres" HorizontalAlignment="Left" Height="20" Margin="737,502,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="224"/>
+        <TextBox x:Name="prix_HT_apres" HorizontalAlignment="Left" Height="18" Margin="737,538,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="224"/>
+        <TextBox x:Name="prix_TTC_apres" HorizontalAlignment="Left" Height="20" Margin="737,572,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="224"/>
         <TextBlock x:Name="nom_avant" TextAlignment="Center" HorizontalAlignment="Left" Height="21" Margin="378,189,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116"/>
         <TextBlock x:Name="famille_avant" TextAlignment="Center" HorizontalAlignment="Left" Height="14" Margin="378,253,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116"/>
         <TextBlock x:Name="code_barre_avant" TextAlignment="Center" HorizontalAlignment="Left" Height="14" Margin="378,308,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116"/>
@@ -85,5 +84,8 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
+        <TextBox x:Name="code_barre_apres" HorizontalAlignment="Left" Height="21" Margin="737,405,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="224"/>
+        <Image x:Name="videoScan" HorizontalAlignment="Left" Height="128" Margin="737,266,0,0" VerticalAlignment="Top" Width="224"/>
+        <Button x:Name="btnScanner" Content="Scanner" HorizontalAlignment="Left" Height="20" Margin="737,238,0,0" VerticalAlignment="Top" Width="224" Click="btnScanner_Click"/>
     </Grid>
 </Page>
