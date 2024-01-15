@@ -162,6 +162,8 @@ namespace StockXpertise.Stock
                     query_Update.Update_ImagePath();
                 }
 
+                MessageBox.Show("Modification effectuée avec succès", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
+
                 // Retourner à la page Stock après avoir enregistrer les modifications
                 affichage_stock stock_display = new affichage_stock();
                 Window parentWindow = Window.GetWindow(this);
