@@ -31,6 +31,10 @@ namespace StockXpertise.Stock
         int id_produit;
         string imagePath;
 
+        public Query_Stock(int id_article, int quantite, string emplacement) : this(id_article, "", "", 0, 0, 0, "", "", quantite, emplacement, "", "")
+        {
+            this.emplacement = emplacement;
+        }
 
         public Query_Stock(int quantite, string emplacement, int id_produit) : this(0, "", "", 0, 0, 0, "", "", quantite, "", "", "")
         {
@@ -38,9 +42,11 @@ namespace StockXpertise.Stock
             this.id_produit = id_produit;
         }
 
-        public Query_Stock(int id_article, string nom, string famille, int prixHT, int prixTTC, string description, string code_barre, int quantite, string imagePath) : this(id_article, nom, famille, prixHT, prixTTC, 0, description, code_barre, quantite, "", "", "")
+        public Query_Stock(int id_article, string nom, string famille, int prixHT, int prixTTC, string description, string code_barre, int quantite, string imagePath, string emplacement, int id_emplacement) : this(id_article, nom, famille, prixHT, prixTTC, 0, description, code_barre, quantite, "", "", "")
         {
             this.imagePath = imagePath;
+            this.emplacement = emplacement;
+            this.id_emplacement = id_emplacement;
         }
 
         public Query_Stock(string nom, string famille, int prixHT, int prixTTC, string description, string code_barre, int quantite) : this(0, nom, famille, prixHT, prixTTC, 0, description, code_barre, quantite, "", "", "")
@@ -155,20 +161,8 @@ namespace StockXpertise.Stock
         {
             try
             {
-                /*
-                 * on ne peut pas savoir le bon id produit car il y a plusieurs produit avec le meme id article
-                 * il faudrait le determiner avec id_emplacement mais comment savoir? 
-                 * //recupere l'id produit
-                string query = "SELECT * FROM produit WHERE  quantite_stock = @Quantite WHERE id_articles = @Id_Article AND ;";
-                MySqlCommand commande = new MySqlCommand(query, ConnectionDB());
-                commande.Parameters.AddWithValue("@Quantite", quantite);
-                commande.Parameters.AddWithValue("@Id_Article", id_article);
-
-                commande.ExecuteReader();
-                */
-
                 //modif 
-                string query = "UPDATE produit SET quantite_stock = @Quantite WHERE id_articles = @Id_Article ;";
+                string query = "UPDATE produit SET quantite_stock = @Quantite WHERE id_articles = @Id_Article AND id_emplacement = @Id_Emplacement ;";
 
                 // Crée une commande SQL avec la requête et la connexion
                 MySqlCommand commande = new MySqlCommand(query, ConnectionDB());
@@ -176,6 +170,7 @@ namespace StockXpertise.Stock
                 // Ajoute les paramètres à la commande pour eviter les injections SQL
                 commande.Parameters.AddWithValue("@Quantite", quantite);
                 commande.Parameters.AddWithValue("@Id_Article", id_article);
+                commande.Parameters.AddWithValue("@Id_Emplacement", id_emplacement);
 
                 // Exécute la commande
                 commande.ExecuteReader();
@@ -272,6 +267,106 @@ namespace StockXpertise.Stock
             {
                 MessageBox.Show($"Error in ConnectionDB: {ex.Message}");
             }
+        }
+
+        public void Update_Emplacement()
+        {
+            MySqlDataReader reader;
+            MySqlDataReader reader_id_emplacement;
+            int IdEmplacement = 0;
+
+
+            try
+            {
+                //recup id_emplacement
+                string query_emplacement = "SELECT * FROM emplacement WHERE code = @Emplacement;";
+
+                MySqlCommand command = new MySqlCommand(query_emplacement, ConnectionDB());
+
+                command.Parameters.AddWithValue("@Emplacement", emplacement);
+
+                reader = command.ExecuteReader();
+
+                if (!reader.HasRows)
+                {
+                    //ajout du nouveau emplacement
+                    string query_add_emplacement = "INSERT INTO emplacement (code) VALUES (@Emplacement)";
+                    MySqlCommand commande_sql = new MySqlCommand(query_add_emplacement, ConnectionDB());
+
+                    commande_sql.Parameters.AddWithValue("@Emplacement", emplacement);
+
+                    commande_sql.ExecuteReader();
+
+                    MessageBox.Show("L'emplacement n'existe pas, il a été ajouté.");
+
+                    //recup l'id de l'emplacement
+
+                    string query_id_emplacement = "SELECT * FROM emplacement WHERE code = @Emplacement ;";
+
+                    MySqlCommand query_sql = new MySqlCommand(query_id_emplacement, ConnectionDB());
+
+                    query_sql.Parameters.AddWithValue("@Emplacement", emplacement);
+
+                    reader_id_emplacement = query_sql.ExecuteReader();
+
+                    while (reader_id_emplacement.Read())
+                    {
+                        IdEmplacement = Convert.ToInt32(reader_id_emplacement["id_emplacement"]);
+                    }
+
+                }
+                else
+                {
+                    while (reader.Read())
+                    {
+                         IdEmplacement = Convert.ToInt32(reader["id_emplacement"]);
+                    }
+                }
+
+                string query = "UPDATE produit SET id_emplacement = @IdEmplacement WHERE id_articles = @Id_Article AND quantite_stock = @Quantite;";
+
+                // Crée une commande SQL avec la requête et la connexion
+                MySqlCommand commande = new MySqlCommand(query, ConnectionDB());
+
+                // Ajoute les paramètres à la commande pour eviter les injections SQL
+                commande.Parameters.AddWithValue("@IdEmplacement", IdEmplacement);
+                commande.Parameters.AddWithValue("@Id_Article", id_article);
+                commande.Parameters.AddWithValue("@Quantite", quantite);
+
+
+                // Exécute la commande
+                commande.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error in ConnectionDB: {ex.Message}");
+            }
+        }
+
+        public int Count_IdEmplacement()
+        { 
+            MySqlDataReader reader;
+            int count = 0;
+
+            try
+            {
+                string query = "SELECT id_emplacement FROM emplacement DESC;";
+
+                MySqlCommand commande = new MySqlCommand(query, ConnectionDB());
+
+                reader = commande.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    count = Convert.ToInt32(reader["id_emplacement"]);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error in ConnectionDB: {ex.Message}");
+            }
+
+            return count + 1;
         }
 
 
