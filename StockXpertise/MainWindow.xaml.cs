@@ -24,7 +24,8 @@ namespace StockXpertise
         {
             ConfigurationDB.ActualisationDB();
             InitializeComponent();
-            
+            SetFullScreen();
+
             string nomemployes = "SELECT nom FROM employes"; 
             
             ConfigurationDB.ExecuteQuery(nomemployes);
@@ -48,7 +49,10 @@ namespace StockXpertise
             commande.Parameters.AddWithValue("@Password", password);
             commande.ExecuteReader();
         }
-
+        private void SetFullScreen()
+        {
+            WindowState = WindowState.Maximized;
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             gridMainWidow.Visibility = Visibility.Collapsed;
