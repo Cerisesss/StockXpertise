@@ -26,6 +26,7 @@
                     </LinearGradientBrush>
                 </Border.Background>
             </Border>
+
             <TextBlock Text="Fournisseurs" HorizontalAlignment="Left" FontSize="24" Margin="404,66,0,554" Width="149" FontWeight="Bold"/>
             <Rectangle HorizontalAlignment="Left" Height="36" Margin="258,151,0,0" Stroke="Transparent" VerticalAlignment="Top" Width="167" RenderTransformOrigin="0.527,0.493">
                 <Rectangle.Fill>
@@ -36,9 +37,17 @@
                     </LinearGradientBrush>
                 </Rectangle.Fill>
             </Rectangle>
+            <Button x:Name="addStock" Content="Ajouter fournisseur" HorizontalAlignment="Left" Height="30" Margin="713,156,0,0" VerticalAlignment="Top" Width="133" Click="Add_New_Stock">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFAEAEAE" Offset="0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
             <ComboBox x:Name="comboBoxAffichage" HorizontalAlignment="Left" Height="36" Margin="425,151,0,0" VerticalAlignment="Top" Width="253" SelectionChanged="ComboBox_SelectionChanged_affichage"/>
             <Label Content="Affichage" HorizontalAlignment="Left" Height="36" Margin="280,156,0,0" VerticalAlignment="Top" Width="122"/>
-            <DataGrid x:Name="MyDataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Height="317" Width="788" Margin="84,285,0,0"
+            <DataGrid x:Name="MyDataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Height="364" Width="788" Margin="84,238,0,0"
           AutoGenerateColumns="True"
           AlternatingRowBackground="#F0F0F0"
           GridLinesVisibility="None"
