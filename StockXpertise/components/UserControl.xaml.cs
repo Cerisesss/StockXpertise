@@ -84,6 +84,17 @@ namespace StockXpertise.components
             }
         }
 
+        private void b3_Click(object sender, RoutedEventArgs e)
+        {
+            Caisse.Caisse caisse = new Caisse.Caisse();
+            Window parentWindow = Window.GetWindow(this);
+
+            if (parentWindow != null)
+            {
+                parentWindow.Content = caisse;
+            }
+        }
+
         private void b8_Click(object sender, RoutedEventArgs e)
         {
             if (Application.Current.Properties["role"].ToString() == "Admin" || Application.Current.Properties["role"].ToString() == "admin")
