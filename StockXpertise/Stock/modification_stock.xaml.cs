@@ -72,6 +72,7 @@ namespace StockXpertise.Stock
             quantite_avant.Text = selectedData.Quantite.ToString();
             prix_HT_avant.Text = selectedData.PrixHT.ToString();
             prix_TTC_avant.Text = selectedData.PrixTTC.ToString();
+            code_emplacement_avant.Text = selectedData.Code_emplacement.ToString();
 
             string imagePath = selectedData.Image;
 
@@ -101,6 +102,9 @@ namespace StockXpertise.Stock
             string nouveauPrixHT = prix_HT_apres.Text;
             string nouveauPrixTTC = prix_TTC_apres.Text;
             string code_barre = code_barre_apres.Text;
+            string code_emplacement = code_emplacement_apres.Text;
+            int id_emplacement = selectedData.Id_emplacement;
+            int quantite_avant = selectedData.Quantite;
 
             if (string.IsNullOrEmpty(code_barre) && string.IsNullOrEmpty(nouveauNom) && string.IsNullOrEmpty(nouvelleFamille) && string.IsNullOrEmpty(nouvelledescription) && string.IsNullOrEmpty(nouvelleQuantite) && string.IsNullOrEmpty(nouveauPrixHT) && string.IsNullOrEmpty(nouveauPrixTTC) && string.IsNullOrEmpty(imagePath))
             {
@@ -113,9 +117,14 @@ namespace StockXpertise.Stock
                 Int32.TryParse(nouveauPrixTTC, out var prixTTC);
                 Int32.TryParse(nouvelleQuantite, out var quantite);
 
-                Query_Stock query_Update = new Query_Stock(selectedData.Id, nouveauNom, nouvelleFamille, prixHT, prixTTC, nouvelledescription, code_barre, quantite, imagePath);
+                Query_Stock query_Update = new Query_Stock(selectedData.Id, nouveauNom, nouvelleFamille, prixHT, prixTTC, nouvelledescription, code_barre, quantite, imagePath, code_emplacement, id_emplacement);
 
                 // Vérifier si les TextBoxs ne sont pas vides pour enregistrer que les données qui ont été modifiées
+                if (!string.IsNullOrEmpty(code_emplacement))
+                {
+                    Query_Stock query_Update_emplacement = new Query_Stock(selectedData.Id, quantite_avant, code_emplacement);
+                    query_Update_emplacement.Update_Emplacement();
+                }
                 if (!string.IsNullOrEmpty(nouveauNom))
                 {
                     query_Update.Update_Name();
@@ -144,6 +153,7 @@ namespace StockXpertise.Stock
                 {
                     query_Update.Update_CodeBarre();
                 }
+                
 
                 // Si l'utilisateur a supprimé l'image existante et a ajouté une nouvelle image
                 if (initialImagePath != imagePath)
