@@ -10,15 +10,27 @@
 
     <Grid Background="White">
         <local:UserControl1/>
-        <Rectangle Height="26" Margin="171,56,272,368" Stroke="#FFACACAC" Fill="#FFACACAC"/>
-        <Rectangle Height="26" Margin="171,118,349,306" Stroke="#FFACACAC" Fill="#FFACACAC"/>
-        <Rectangle Height="26" Margin="171,87,382,337" Stroke="#FFACACAC" Width="247" Fill="#FFACACAC"/>
-        <Rectangle Margin="547,56,20,66" Stroke="#FFACACAC" Fill="White"/>
-        <Rectangle Height="26" Margin="423,87,272,337" Stroke="#FFACACAC" Fill="#FFACACAC"/>
-        <Rectangle Height="26" Margin="456,118,272,306" Stroke="#FFACACAC" Fill="#FFACACAC"/>
-        <Rectangle Margin="171,149,272,81" Stroke="#FFACACAC" Fill="#FFACACAC"/>
-        <Rectangle Height="26" Margin="171,383,272,41" Stroke="#FFACACAC" Fill="#FFACACAC"/>
-
-
+        <Rectangle Margin="165,44,384,365" Stroke="#FFACACAC" Fill="#FFACACAC" Height="40" Width="250"/>
+        <Rectangle Margin="422,44,272,366" Stroke="#FFACACAC" Fill="#FFACACAC" Height="40" Width="100"/>
+        <Rectangle Margin="165,130,272,94" Stroke="#FFACACAC" Fill="#FFACACAC" Height="225" Width="360"/>
+        <Label Content="Code" Height="27" Margin="178,51,551,372" Width="71"/>
+        <Label Content="Qté" Height="27" Margin="422,51,338,372" Width="40"/>
+        <Button Content="Ajouter" Height="27" Margin="166,93,350,330" Width="285" Click="Button_Click_ajouter_article"/>
+        <Button Content="Scan" Height="27" Margin="456,93,272,330" Width="72"/>
+        <TextBox x:Name="text_code_barre" Height="27" Margin="242,50,400,372" TextWrapping="Wrap" Width="160"/>
+        <TextBox x:Name="text_quantite" Height="27" Margin="457,50,284,372" TextWrapping="Wrap" Width="59"/>
+        <ListBox x:Name="listBoxImages" Height="199" Margin="178,144,284,108" Width="338">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <Image Source="{Binding image_path}" Width="100" Height="100"/>
+                        <TextBlock Text="{Binding nom_article}" HorizontalAlignment="Center" />
+                        <TextBlock Text="{Binding quantite}" HorizontalAlignment="Center" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button Content="Valider" Height="26" Margin="166,367,274,57" Click="Button_Click_Valider" Width="360"/>
+        <Label x:Name="info_cassier" HorizontalAlignment="Left" Height="29" Margin="572,120,0,0" VerticalAlignment="Top" Width="186"/>
     </Grid>
 </Page>
