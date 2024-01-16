@@ -11,8 +11,12 @@
     <Grid>
         <local:UserControl1/>
         <Grid>
-            <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="507" VerticalAlignment="Top" Width="901" AutoGenerateColumns="True" Margin="232,149,0,0" />
-            <Button x:Name="excelgenerate" Content="générer le excel" HorizontalAlignment="Left" Height="42" Margin="466,60,0,0" VerticalAlignment="Top" Width="134" Click="create_excel" BorderBrush="#FFE4E77A" BorderThickness="2" RenderTransformOrigin="0.5,0.5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="791*"/>
+                <ColumnDefinition Width="409*"/>
+            </Grid.ColumnDefinitions>
+            <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="507" VerticalAlignment="Top" Width="901" AutoGenerateColumns="True" Margin="232,149,0,0" Grid.ColumnSpan="2" />
+            <Button x:Name="excelgenerate" Content="Exporter" HorizontalAlignment="Left" Height="42" Margin="466,60,0,0" VerticalAlignment="Top" Width="134" Click="create_excel" BorderBrush="#FFABADB3" BorderThickness="2" RenderTransformOrigin="0.5,0.5" Background="#FFFFDDCC">
                 <Button.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -21,14 +25,8 @@
                         <TranslateTransform X="0"/>
                     </TransformGroup>
                 </Button.RenderTransform>
-                <Button.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#FFAEAEAE" Offset="0"/>
-                        <GradientStop Color="White" Offset="1"/>
-                    </LinearGradientBrush>
-                </Button.Background>
             </Button>
-            <TextBox Name="cheminexcel"  HorizontalAlignment="Left" Margin="643,68,0,0" TextWrapping="Wrap" Text="Chemin d'accès fichier" VerticalAlignment="Top" Width="353" Height="26"/>
+            <TextBox Name="cheminexcel"  HorizontalAlignment="Left" Margin="643,68,0,0" TextWrapping="Wrap" Text="Chemin d'accès fichier" VerticalAlignment="Top" Width="353" Height="26" Grid.ColumnSpan="2"/>
         </Grid>
     </Grid>
 </Page>

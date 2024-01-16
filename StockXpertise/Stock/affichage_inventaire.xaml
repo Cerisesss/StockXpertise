@@ -5,36 +5,24 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:StockXpertise.components"
       mc:Ignorable="d" 
-      d:DesignHeight="800" d:DesignWidth="1200"
+      d:DesignHeight="800" d:DesignWidth="1400"
       Title="affichage_inventaire">
 
     <Grid>
         <local:UserControl1/>
         <Frame x:Name="StockInventaireFrame" NavigationUIVisibility="Hidden" Margin="104,39,-104,-39"/>
-        <Grid x:Name="gridStock" Margin="104,39,-104,-39">
-            <Border BorderThickness="2" Margin="127,41,0,0" CornerRadius="10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="77" Width="935">
-                <Border.BorderBrush>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#FFF19494"/>
-                        <GradientStop Color="#FFDAFD00" Offset="1"/>
-                    </LinearGradientBrush>
-                </Border.BorderBrush>
-                <Border.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#FFF19494"/>
-                        <GradientStop Color="#FFDAFD00" Offset="1"/>
-                    </LinearGradientBrush>
-                </Border.Background>
+        <Grid x:Name="gridStock" Margin="202,-2,32,2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="0*"/>
+            </Grid.ColumnDefinitions>
+            <Border BorderThickness="2" Margin="127,41,0,0" CornerRadius="10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="77" Width="935" Background="#FFFFB996">
+                <Border.Effect>
+                    <DropShadowEffect/>
+                </Border.Effect>
             </Border>
-            <TextBlock Text="Inventaire" HorizontalAlignment="Left" FontSize="24" Margin="522,54,0,566" Width="194" FontWeight="Bold"/>
-            <Button x:Name="button" Content="PDF" HorizontalAlignment="Left" Height="37" Margin="537,659,0,0" VerticalAlignment="Top" Width="94" RenderTransformOrigin="0.743,1.834" BorderBrush="{Binding Visibility.Hidden, ElementName=button}" Click="generation_pdf">
-                <Button.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#FFAEAEAE" Offset="0"/>
-                        <GradientStop Color="White" Offset="1"/>
-                    </LinearGradientBrush>
-                </Button.Background>
-            </Button>
+            <TextBlock Text="Inventaire" HorizontalAlignment="Left" FontSize="24" Margin="520,54,0,682" Width="136" FontWeight="Bold"/>
+            <Button x:Name="button" Content="PDF" HorizontalAlignment="Left" Height="37" Margin="537,659,0,0" VerticalAlignment="Top" Width="94" RenderTransformOrigin="0.743,1.834" Click="generation_pdf" Background="#FFFFDDCC" BorderBrush="Black"/>
             <DataGrid x:Name="MyDataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Height="434" Width="914" Margin="127,189,0,0"
           AutoGenerateColumns="True"
           AlternatingRowBackground="#F0F0F0"

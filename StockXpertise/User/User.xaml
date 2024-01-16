@@ -5,25 +5,26 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:StockXpertise.components"
       mc:Ignorable="d" 
-      d:DesignHeight="800" d:DesignWidth="1200"
+      d:DesignHeight="800" d:DesignWidth="1400"
       Title="User">
 
     <Grid x:Name="gridUser" Background="White">
         <local:UserControl1/>
         <Frame x:Name="user" NavigationUIVisibility="Hidden"/>
 
-        <Rectangle HorizontalAlignment="Left" Height="36" Margin="255,146,0,0" Stroke="#FFACACAC" VerticalAlignment="Top" Width="137" RenderTransformOrigin="0.527,0.493">
-            <Rectangle.Fill>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FFACACAC"/>
-                    <GradientStop Color="White" Offset="1"/>
-                    <GradientStop Color="#FFAEAEAE" Offset="0"/>
-                </LinearGradientBrush>
-            </Rectangle.Fill>
-        </Rectangle>
-        <ComboBox x:Name="comboBoxAffichage" HorizontalAlignment="Left" Height="36" Margin="392,146,0,0" VerticalAlignment="Top" Width="365" SelectionChanged="ComboBox_SelectionChanged_affichage"/>
-        <Label Content="Affichage" HorizontalAlignment="Left" Height="30" Margin="277,149,0,0" VerticalAlignment="Top" Width="122"/>
-        <DataGrid x:Name="MyDataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Height="475" Width="869" Margin="255,211,0,0"
+        <Grid Margin="223,-18,44,0">
+            <Rectangle HorizontalAlignment="Left" Height="36" Margin="107,180,0,0" Stroke="#FFACACAC" VerticalAlignment="Top" Width="137" RenderTransformOrigin="0.527,0.493">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFACACAC"/>
+                        <GradientStop Color="White" Offset="1"/>
+                        <GradientStop Color="#FFAEAEAE" Offset="0"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <ComboBox x:Name="comboBoxAffichage" HorizontalAlignment="Left" Height="36" Margin="244,180,0,0" VerticalAlignment="Top" Width="365" SelectionChanged="ComboBox_SelectionChanged_affichage"/>
+            <Label Content="Affichage" HorizontalAlignment="Left" Height="30" Margin="129,183,0,0" VerticalAlignment="Top" Width="122"/>
+            <DataGrid x:Name="MyDataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Height="491" Width="997" Margin="107,242,0,0"
             AutoGenerateColumns="True"
             AlternatingRowBackground="#F0F0F0"
             GridLinesVisibility="None"
@@ -32,24 +33,31 @@
             SelectionMode="Single"
             RowHeight="40" SelectionChanged="MyDataGrid_SelectionChanged">
 
-            <!-- Style des colonnes -->
-            <DataGrid.Resources>
-                <Style TargetType="DataGridCell">
-                    <Setter Property="BorderThickness" Value="0"/>
-                    <Setter Property="Padding" Value="10"/>
-                    <Setter Property="TextBlock.TextAlignment" Value="Center"/>
-                    <Setter Property="VerticalContentAlignment" Value="Center"/>
-                </Style>
-                <Style TargetType="DataGridColumnHeader">
-                    <Setter Property="Background" Value="#FFD2D2D2"/>
-                    <Setter Property="Foreground" Value="Black"/>
-                    <Setter Property="FontWeight" Value="Bold"/>
-                    <Setter Property="BorderThickness" Value="0"/>
-                    <Setter Property="Padding" Value="15,10"/>
-                    <Setter Property="TextBlock.TextAlignment" Value="Center"/>
-                </Style>
-            </DataGrid.Resources>
-        </DataGrid>
-        <Button Content="Ajouter" HorizontalAlignment="Left" Height="36" Margin="987,146,0,0" VerticalAlignment="Top" Width="94" Click="Button_Click"/>
+                <!-- Style des colonnes -->
+                <DataGrid.Resources>
+                    <Style TargetType="DataGridCell">
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="Padding" Value="10"/>
+                        <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+                    </Style>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="Background" Value="#FFD2D2D2"/>
+                        <Setter Property="Foreground" Value="Black"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="Padding" Value="15,10"/>
+                        <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                    </Style>
+                </DataGrid.Resources>
+            </DataGrid>
+            <Button Content="Ajouter" HorizontalAlignment="Left" Height="36" Margin="1010,178,0,0" VerticalAlignment="Top" Width="94" Click="Button_Click" Background="#FFFFDDCC" BorderBrush="Black"/>
+            <Border BorderThickness="2" Margin="95,64,0,0" CornerRadius="10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="77" Width="1027" Background="#FFFFB996">
+                <Border.Effect>
+                    <DropShadowEffect/>
+                </Border.Effect>
+            </Border>
+            <TextBlock Text="Utilisateur" HorizontalAlignment="Left" FontSize="24" Margin="540,80,0,674" Width="138" FontWeight="Bold"/>
+        </Grid>
     </Grid>
 </Page>

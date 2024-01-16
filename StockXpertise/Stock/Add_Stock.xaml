@@ -5,16 +5,16 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:StockXpertise.components"
       mc:Ignorable="d" 
-      d:DesignHeight="800" d:DesignWidth="1200"
+      d:DesignHeight="800" d:DesignWidth="1400"
       Title="Add_Stock">
 
     <Grid x:Name="griAddStock" Background="White">
         <local:UserControl1/>
         <Frame x:Name="addStock" NavigationUIVisibility="Hidden"/>
 
-        <Rectangle Margin="342,84,183,157" Stroke="#FFACACAC" Fill="#FFACACAC"/>
-        <Button Content="Confirmer" Height="27" Margin="496,413,217,10" Width="87" Click="Button_Click" Background="#FFFFB996"/>
-        <Button Content="Annuler" Height="27" Margin="366,413,347,10" Width="87" Click="Button_Click_1" Background="#FFD9EDBF"/>
+        <Rectangle Margin="416,163,255,217" Stroke="#FFACACAC" Fill="#FFEBF3E8"/>
+        <Button Content="Valider" Height="28" Margin="807,609,503,156" Width="90" Click="Button_Click" Background="#FFEBF3E8"/>
+        <Button Content="Annuler" Height="28" Margin="653,609,657,156" Width="90" Click="Button_Click_1" Background="#FFFFDDCC"/>
 
         <Label Content="Nom" Height="23" Margin="198,31,514,396" Width="88"/>
         <Label Content="Famille" Height="23" Margin="198,66,514,361" Width="88"/>
@@ -41,9 +41,9 @@
         <ListBox x:Name="FournisseurListBox" Height="85" Margin="496,89,39,276" Width="265" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="ListBox_SelectionChanged"/>
         <Rectangle Height="100" Margin="353,284,347,66" Width="100" Stroke="White" Fill="White"/>
         <Image Height="100" Margin="353,284,347,66" Width="100"/>
-        <Button Content="Ajouter" Height="20" Margin="275,284,460,146" Width="65" RenderTransformOrigin="0.438,-0.611"/>
+        <Button Content="+" Height="18" Margin="610,459,765,316" Width="25" RenderTransformOrigin="0.438,-0.611" Background="#FFFDF7E4"/>
 
         <Image x:Name="videoScan" Height="130" Margin="496,220,38,100" Width="265"/>
-        <Button x:Name="btnScanner" Content="Scanner" Height="23" Margin="584,186,51,241" Width="165" Click="btnScanner_Click"/>
+        <Button x:Name="btnScanner" Content="Scanner" Height="23" Margin="584,186,51,241" Width="165" Click="btnScanner_Click" Background="#FFFDF7E4" BorderBrush="Black"/>
     </Grid>
 </Page>

@@ -5,44 +5,34 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:StockXpertise.Stock"
       mc:Ignorable="d" 
-      d:DesignHeight="800" d:DesignWidth="1200"
+      d:DesignHeight="800" d:DesignWidth="1400"
       Title="inventaire">
 
     <Grid>
-        <Border BorderThickness="2" Margin="406,104,0,0" CornerRadius="10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="77" Width="700">
-            <Border.BorderBrush>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FFF19494"/>
-                    <GradientStop Color="#FFDAFD00" Offset="1"/>
-                </LinearGradientBrush>
-            </Border.BorderBrush>
-            <Border.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FFF19494"/>
-                    <GradientStop Color="#FFDAFD00" Offset="1"/>
-                </LinearGradientBrush>
-            </Border.Background>
+        <Border BorderThickness="2" Margin="406,104,0,0" CornerRadius="10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="77" Width="700" Background="#FFFFB996">
+            <Border.Effect>
+                <DropShadowEffect/>
+            </Border.Effect>
         </Border>
         <TextBlock Text="Inventaire" HorizontalAlignment="Left" FontSize="24" Margin="689,119,0,501" Width="138" FontWeight="Bold"/>
         <TextBlock Text="Affiche toi correctement please" x:Name="nom_item" HorizontalAlignment="Left" FontSize="18" FontWeight="Bold" Margin="703,234,0,391" Width="280"/>
-        <Rectangle Stroke="Black" Fill="#FFD5F3B5" Margin="436,309,0,0" HorizontalAlignment="Left" Height="168" VerticalAlignment="Top" Width="267"/>
+        <Rectangle Stroke="Black" Fill="#FFEBF3E8" Margin="436,309,0,0" HorizontalAlignment="Left" Height="168" VerticalAlignment="Top" Width="267"/>
         <Rectangle HorizontalAlignment="Left" Height="0" Margin="194,358,0,0" Stroke="Black" VerticalAlignment="Top" Width="150"/>
-        <Rectangle HorizontalAlignment="Left" Height="168" Margin="805,309,0,0" Stroke="#FFEBDBDB" VerticalAlignment="Top" Width="267" Fill="#FFCE8080"/>
-        <Button Content="Sauvegarder" HorizontalAlignment="Left" Height="34" Margin="933,563,0,0" VerticalAlignment="Top" Width="128" BorderBrush="{Binding Visibility.Hidden.Hidden, ElementName=button}" Click="Sauvegarder">
+        <Rectangle HorizontalAlignment="Left" Height="168" Margin="805,309,0,0" Stroke="Black" VerticalAlignment="Top" Width="267" Fill="#FFFFDDCC"/>
+        <Button Content="Valider" HorizontalAlignment="Left" Height="34" Margin="933,563,0,0" VerticalAlignment="Top" Width="128" Click="Sauvegarder">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FFEBF3E8"/>
                     <GradientStop Color="White" Offset="1"/>
-                    <GradientStop Color="#FF6BBE52" Offset="0"/>
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button x:Name="button" Content="Annuler" HorizontalAlignment="Left" Height="34" Margin="443,563,0,0" VerticalAlignment="Top" Width="127" BorderBrush="{Binding Visibility.Hidden, ElementName=button}" Click="Annuler" RenderTransformOrigin="0.915,1.521">
+        <Button x:Name="button" Content="Annuler" HorizontalAlignment="Left" Height="34" Margin="443,563,0,0" VerticalAlignment="Top" Width="127" Click="Annuler" RenderTransformOrigin="0.915,1.521" BorderBrush="Black">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FFAEAEAE"/>
                     <GradientStop Color="White" Offset="1"/>
-                    <GradientStop Color="#FFD7513B" Offset="0"/>
+                    <GradientStop Color="#FFFFDDCC" Offset="0"/>
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
