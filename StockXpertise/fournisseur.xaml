@@ -12,19 +12,10 @@
         <local:UserControl1/>
         <Frame x:Name="StockFrame" NavigationUIVisibility="Hidden"/>
         <Grid x:Name="gridStock" Margin="104,39,-104,-39">
-            <Border BorderThickness="2" Margin="120,51,0,0" CornerRadius="10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="77" Width="909">
-                <Border.BorderBrush>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#FFF19494"/>
-                        <GradientStop Color="#FFDAFD00" Offset="1"/>
-                    </LinearGradientBrush>
-                </Border.BorderBrush>
-                <Border.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#FFF19494"/>
-                        <GradientStop Color="#FFDAFD00" Offset="1"/>
-                    </LinearGradientBrush>
-                </Border.Background>
+            <Border BorderThickness="2" Margin="120,51,0,0" CornerRadius="10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="77" Width="909" Background="#FFFFB996">
+                <Border.Effect>
+                    <DropShadowEffect/>
+                </Border.Effect>
             </Border>
 
             <TextBlock Text="Fournisseurs" HorizontalAlignment="Left" FontSize="24" Margin="489,66,0,554" Width="193" FontWeight="Bold"/>
@@ -37,14 +28,7 @@
                     </LinearGradientBrush>
                 </Rectangle.Fill>
             </Rectangle>
-            <Button x:Name="addStock" Content="Ajouter fournisseur" HorizontalAlignment="Left" Height="30" Margin="874,176,0,0" VerticalAlignment="Top" Width="133" Click="Add_New_Stock" BorderBrush="{x:Null}">
-                <Button.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#FFAEAEAE" Offset="0"/>
-                        <GradientStop Color="White" Offset="1"/>
-                    </LinearGradientBrush>
-                </Button.Background>
-            </Button>
+            <Button x:Name="addStock" Content="Ajouter" HorizontalAlignment="Left" Height="30" Margin="914,176,0,0" VerticalAlignment="Top" Width="93" Click="Add_New_Stock" BorderBrush="Black" Background="#FFFFDDCC"/>
             <ComboBox x:Name="comboBoxAffichage" HorizontalAlignment="Left" Height="36" Margin="307,170,0,0" VerticalAlignment="Top" Width="253" SelectionChanged="ComboBox_SelectionChanged_affichage"/>
             <Label Content="Affichage" HorizontalAlignment="Left" Height="36" Margin="162,175,0,0" VerticalAlignment="Top" Width="122"/>
             <DataGrid x:Name="MyDataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Height="463" Width="885" Margin="139,246,0,0"

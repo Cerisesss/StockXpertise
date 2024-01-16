@@ -22,6 +22,7 @@ using AForge.Video.DirectShow;
 using AForge.Video;
 using System.Drawing;
 using ZXing;
+using System.Text.RegularExpressions;
 
 namespace StockXpertise.Stock
 {
@@ -105,6 +106,12 @@ namespace StockXpertise.Stock
             string code_emplacement = code_emplacement_apres.Text;
             int id_emplacement = selectedData.Id_emplacement;
             int quantite_avant = selectedData.Quantite;
+
+            if (!Regex.IsMatch(nouvelleFamille, "^[a-zA-Z]+$"))
+            {
+                MessageBox.Show("La famille doit etre des lettres.");
+                return;
+            }
 
             if (string.IsNullOrEmpty(code_barre) && string.IsNullOrEmpty(nouveauNom) && string.IsNullOrEmpty(nouvelleFamille) && string.IsNullOrEmpty(nouvelledescription) && string.IsNullOrEmpty(nouvelleQuantite) && string.IsNullOrEmpty(nouveauPrixHT) && string.IsNullOrEmpty(nouveauPrixTTC) && string.IsNullOrEmpty(imagePath))
             {

@@ -5,49 +5,44 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:StockXpertise.components"
       mc:Ignorable="d" 
-      d:DesignHeight="800" d:DesignWidth="1200"
+      d:DesignHeight="800" d:DesignWidth="1400"
       Title="Modify_User">
 
     <Grid x:Name="gridModifyUser" Background="White">
         <local:UserControl1/>
         <Frame x:Name="modifyUser" NavigationUIVisibility="Hidden"/>
 
-        <Grid>
-            <Rectangle Height="295" Margin="481,70,24,87" Width="295" Stroke="#FFACACAC" Fill="#FFACACAC"/>
-            <Label Content="Nom" Height="23" Margin="489,92,229,335" Width="82"/>
-            <Label Content="Prénom" Height="23" Margin="489,137,229,290" Width="82"/>
-            <Label Content="Mot de passe" Height="23" Margin="489,182,229,243" Width="82"/>
-            <Label Content="Mail" Height="23" Margin="489,230,229,197" Width="82"/>
-            <Label Content="Status" Height="23" Margin="489,279,229,148" Width="82"/>
+        <Rectangle Height="295" Margin="481,70,24,87" Width="295" Stroke="#FFACACAC" Fill="#FFFFDDCC"/>
+        <Label Content="Nom" Height="23" Margin="489,92,229,335" Width="82"/>
+        <Label Content="Prénom" Height="23" Margin="489,137,229,290" Width="82"/>
+        <Label Content="Mot de passe" Height="23" Margin="489,182,229,243" Width="82"/>
+        <Label Content="Mail" Height="23" Margin="489,230,229,197" Width="82"/>
+        <Label Content="Status" Height="23" Margin="489,279,229,148" Width="82"/>
 
-            <TextBox x:Name="nomTextBox" Height="35" Margin="576,92,38,324" Width="185" TextWrapping="Wrap" Text="" TextChanged="TextBox_TextChanged"/>
-            <TextBox x:Name="prenomTextBox" Height="35" Margin="576,137,38,279" Width="185" TextWrapping="Wrap" Text="" TextChanged="TextBox_TextChanged"/>
-            <TextBox x:Name="mdpTextBox" Height="35" Margin="576,182,38,234" Width="185" TextWrapping="Wrap" Text="" TextChanged="TextBox_TextChanged"/>
-            <TextBox x:Name="mailTextBox" Height="35" Margin="576,230,38,186" Width="185" TextWrapping="Wrap" Text="" TextChanged="TextBox_TextChanged"/>
+        <TextBox x:Name="nomTextBox" Height="35" Margin="576,92,38,324" Width="185" TextWrapping="Wrap" Text="" TextChanged="TextBox_TextChanged"/>
+        <TextBox x:Name="prenomTextBox" Height="35" Margin="576,137,38,279" Width="185" TextWrapping="Wrap" Text="" TextChanged="TextBox_TextChanged"/>
+        <TextBox x:Name="mdpTextBox" Height="35" Margin="576,182,38,234" Width="185" TextWrapping="Wrap" Text="" TextChanged="TextBox_TextChanged"/>
+        <TextBox x:Name="mailTextBox" Height="35" Margin="576,230,38,186" Width="185" TextWrapping="Wrap" Text="" TextChanged="TextBox_TextChanged"/>
 
-            <Rectangle Height="58" Margin="576,279,38,113" Width="185" Stroke="White" Fill="White"/>
-            <RadioButton x:Name="radioAdmin" Content="Admin" Height="15" Margin="589,285,131,150" Width="80" Checked="RadioButton_Checked" GroupName="radioRole"/>
-            <RadioButton x:Name="radioPersonnel" Content="Personnel" Height="15" Margin="589,300,131,135" Width="80" Checked="RadioButton_Checked" GroupName="radioRole"/>
-            <RadioButton x:Name="radioCaissier" Content="Caissier" Height="15" Margin="589,315,131,120" Width="80" Checked="RadioButton_Checked" GroupName="radioRole"/>
-        </Grid>
+        <Rectangle Height="58" Margin="576,279,38,113" Width="185" Stroke="#FFABADB3" Fill="White"/>
+        <RadioButton x:Name="radioAdmin" Content="Admin" Height="15" Margin="589,285,131,150" Width="80" Checked="RadioButton_Checked" GroupName="radioRole"/>
+        <RadioButton x:Name="radioPersonnel" Content="Personnel" Height="15" Margin="589,300,131,135" Width="80" Checked="RadioButton_Checked" GroupName="radioRole"/>
+        <RadioButton x:Name="radioCaissier" Content="Caissier" Height="15" Margin="589,315,131,120" Width="80" Checked="RadioButton_Checked" GroupName="radioRole"/>
 
-        <Grid>
-            <Rectangle  Height="295" Margin="175,70,335,87" Width="295" Stroke="#FFACACAC" Fill="#FFACACAC"/>
-            <Label Content="Nom" Height="23" Margin="183,92,528,335" Width="82"/>
-            <Label Content="Prénom" Height="23" Margin="183,137,528,290" Width="82"/>
-            <Label Content="Mot de passe" Height="23" Margin="186,183,532,232" Width="82"/>
-            <Label Content="Mail" Height="23" Margin="183,230,528,197" Width="82"/>
-            <Label Content="Status" Height="23" Margin="183,279,528,148" Width="82"/>
+        <Rectangle  Height="295" Margin="175,70,335,87" Width="295" Stroke="#FFACACAC" Fill="#FFFFDDCC"/>
+        <Label Content="Nom" Height="23" Margin="183,92,528,335" Width="82"/>
+        <Label Content="Prénom" Height="23" Margin="183,137,528,290" Width="82"/>
+        <Label Content="Mot de passe" Height="23" Margin="186,183,532,232" Width="82"/>
+        <Label Content="Mail" Height="23" Margin="183,230,528,197" Width="82"/>
+        <Label Content="Status" Height="23" Margin="183,279,528,148" Width="82"/>
 
-            <Label x:Name="labelNom" Content="" Height="29" Margin="279,91,350,330" Width="175"/>
-            <Label x:Name="labelPrenom" Content="" Height="29" Margin="279,137,350,284" Width="175"/>
-            <Label x:Name="labelMdp" Content="" Height="29" Margin="279,188,346,232" Width="175"/>
-            <Label x:Name="labelMail" Content="" Height="29" Margin="279,230,350,191" Width="175"/>
-            <Label x:Name="labelRole" Content="" Height="29" Margin="279,279,350,142" Width="175"/>
-        </Grid>
-
-        <Button Content="Supprimer" Height="27" Margin="175,381,538,42" Width="87" Click="Button_Supprimer" Background="#FFFF7A7A"/>
-        <Button Content="Confirmer" Height="27" Margin="369,381,344,42" Width="87" Click="Button_Click" Background="#FFA9F987"/>
-        <Button Content="Annuler" Height="27" Margin="494,381,219,42" Width="87" Click="Button_Click_1" Background="#FFFF7A7A"/>
+        <Label x:Name="labelNom" Content="" Height="29" Margin="279,91,350,330" Width="175"/>
+        <Label x:Name="labelPrenom" Content="" Height="29" Margin="279,137,350,284" Width="175"/>
+        <Label x:Name="labelMdp" Content="" Height="29" Margin="279,188,346,232" Width="175"/>
+        <Label x:Name="labelMail" Content="" Height="29" Margin="279,230,350,191" Width="175"/>
+        <Label x:Name="labelRole" Content="" Height="29" Margin="279,279,350,142" Width="175"/>
+        <Button Content="Supprimer" Height="26" Margin="969,192,341,573" Width="90" Click="Button_Supprimer" Background="#FFFFDDCC"/>
+        <Button Content="Valider" Height="26" Margin="795,565,515,200" Width="90" Click="Button_Click" Background="#FFEBF3E8" BorderBrush="Black" RenderTransformOrigin="0.506,0.719"/>
+        <Button Content="Annuler" Height="26" Margin="662,565,648,200" Width="90" Click="Button_Click_1" Background="#FFFFDDCC"/>
     </Grid>
 </Page>

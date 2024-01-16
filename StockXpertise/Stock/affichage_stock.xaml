@@ -5,40 +5,24 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:StockXpertise.components"
       mc:Ignorable="d" 
-      d:DesignHeight="800" d:DesignWidth="1200"
+      d:DesignHeight="800" d:DesignWidth="1500"
       Title="affichage_stock">
 
     <Grid>
         <local:UserControl1/>
         <Frame x:Name="StockFrame" NavigationUIVisibility="Hidden"/>
-        <Grid x:Name="gridStock" Margin="141,0,-141,0">
+        <Grid x:Name="gridStock" Margin="181,-18,10,0">
             <Grid.Background>
                 <ImageBrush/>
             </Grid.Background>
-            <Border BorderThickness="2" Margin="120,51,0,0" CornerRadius="10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="77" Width="864">
-                <Border.BorderBrush>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#FFF19494"/>
-                        <GradientStop Color="#FFDAFD00" Offset="1"/>
-                    </LinearGradientBrush>
-                </Border.BorderBrush>
-                <Border.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#FFF19494"/>
-                        <GradientStop Color="#FFDAFD00" Offset="1"/>
-                    </LinearGradientBrush>
-                </Border.Background>
+            <Border BorderThickness="2" Margin="0,51,0,0" CornerRadius="10" VerticalAlignment="Top" HorizontalAlignment="Center" Height="77" Width="1247" Background="#FFFFB996">
+                <Border.Effect>
+                    <DropShadowEffect/>
+                </Border.Effect>
             </Border>
-            <TextBlock Text="Stock" HorizontalAlignment="Left" FontSize="24" Margin="514,64,0,652" Width="80" FontWeight="Bold" RenderTransformOrigin="0.189,0.5"/>
-            <Button x:Name="button" Content="PDF" HorizontalAlignment="Left" Height="30" Margin="912,181,0,0" VerticalAlignment="Top" Width="72" RenderTransformOrigin="0.743,1.834" BorderBrush="{Binding Visibility.Hidden, ElementName=button}" Click="generation_pdf">
-                <Button.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#FFAEAEAE" Offset="0"/>
-                        <GradientStop Color="White" Offset="1"/>
-                    </LinearGradientBrush>
-                </Button.Background>
-            </Button>
-            <DataGrid x:Name="MyDataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Height="500" Width="910" Margin="95,251,0,0"
+            <TextBlock Text="Stock" HorizontalAlignment="Center" FontSize="24" Margin="0,66,0,687" Width="64" FontWeight="Bold" RenderTransformOrigin="0.189,0.5"/>
+            <Button x:Name="button" Content="PDF" Height="30" Margin="1016,181,45,589" Width="72" RenderTransformOrigin="0.743,1.834" BorderBrush="Black" Click="generation_pdf" Background="#FFFFDDCC"/>
+            <DataGrid x:Name="MyDataGrid" HorizontalAlignment="Center" VerticalAlignment="Top" Height="500" Width="1247" Margin="0,251,0,0"
                 AutoGenerateColumns="True"
           AlternatingRowBackground="#F0F0F0"
           GridLinesVisibility="None"
@@ -72,7 +56,7 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid>
-            <TextBox x:Name="Search_TextBox" HorizontalAlignment="Left" Height="30" Margin="95,181,0,0" Text="Search ..." TextWrapping="Wrap" VerticalAlignment="Top" Width="151">
+            <TextBox x:Name="Search_TextBox" Height="30" Margin="46,181,383,589" Text="Search ..." TextWrapping="Wrap" Width="705">
                 <TextBox.Template>
                     <ControlTemplate TargetType="{x:Type TextBox}">
                         <Grid>
@@ -84,14 +68,7 @@
                     </ControlTemplate>
                 </TextBox.Template>
             </TextBox>
-            <Button x:Name="addStock" Content="Ajouter" HorizontalAlignment="Left" Height="30" Margin="799,181,0,0" VerticalAlignment="Top" Width="72" Click="Add_New_Stock" BorderBrush="{x:Null}">
-                <Button.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#FFAEAEAE" Offset="0"/>
-                        <GradientStop Color="White" Offset="1"/>
-                    </LinearGradientBrush>
-                </Button.Background>
-            </Button>
+            <Button x:Name="addStock" Content="Ajouter" Height="30" Margin="920,181,141,589" Width="72" Click="Add_New_Stock" BorderBrush="Black" Background="#FFFFDDCC" RenderTransformOrigin="1.31,0.427"/>
         </Grid>
     </Grid>
 </Page>

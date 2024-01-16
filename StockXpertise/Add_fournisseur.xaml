@@ -12,9 +12,9 @@
         <local:UserControl1/>
         <Frame x:Name="addStock" NavigationUIVisibility="Hidden"/>
 
-        <Rectangle Margin="397,206,228,260" Stroke="#FFACACAC" Fill="#FFACACAC"/>
-        <Button Content="Confirmer" Height="27" Margin="356,394,357,29" Width="87" Click="Button_Click"/>
-        <Button Content="Annuler" Height="27" Margin="524,394,189,29" Width="87" Click="Button_Click_1"/>
+        <Rectangle Margin="397,206,228,260" Stroke="#FFACACAC" Fill="#FFFFDDCC"/>
+        <Button Content="Valider" Height="27" Margin="768,569,346,204" Width="87" Click="Button_Click" Background="#FFEBF3E8"/>
+        <Button Content="Annuler" Height="27" Margin="585,569,528,204" Width="87" Click="Button_Click_1" Background="#FFFFDDCC"/>
 
         <Label Content="Nom" Height="23" Margin="276,60,436,367" Width="88"/>
 

@@ -29,7 +29,7 @@
             <!--<local:UserControl1/>-->
 
             <Image Source="/Images/LogoWithShadow.png" HorizontalAlignment="Center" Height="405" Margin="0,112,0,0" VerticalAlignment="Top" Width="434"/>
-            <Button Content="Connexion" HorizontalAlignment="Center" Height="51" Margin="0,520,0,0" VerticalAlignment="Top" Width="116" Click="Button_Click"/>
+            <Button Content="Connexion" HorizontalAlignment="Center" Height="51" Margin="0,520,0,0" VerticalAlignment="Top" Width="116" Click="Button_Click" Foreground="Black" Opacity="0.8" Background="White"/>
         </Grid>
     </Grid>
 </Window>

@@ -12,7 +12,7 @@
     <Grid x:Name="gridProfile" Background="White">
         <local:UserControl1/>
         <Frame x:Name="profile" NavigationUIVisibility="Hidden"/>
-        
+
         <Grid Height="250" Width="250" Margin="338,42,212,158">
             <Image Source="/Images/Logo.png" Stretch="UniformToFill" Margin="0,0,11,23" >
                 <Image.Clip>
@@ -20,24 +20,16 @@
                 </Image.Clip>
             </Image>
         </Grid>
-        <Rectangle Height="111" Margin="221,266,67,73" Stroke="#FFACACAC" Width="512">
-            <Rectangle.Fill>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="Black"/>
-                    <GradientStop Color="White" Offset="1"/>
-                    <GradientStop Color="#FFA7A7A7" Offset="0"/>
-                </LinearGradientBrush>
-            </Rectangle.Fill>
-        </Rectangle>
+        <Rectangle Height="111" Margin="221,266,67,73" Stroke="#FFABADB3" Width="512" Fill="#FFFFDDCC"/>
         <Label Content="Nom" Height="28" Margin="251,273,471,154" Width="78"/>
         <Label Content="Prénom" Height="28" Margin="251,297,471,130" Width="78"/>
         <Label Content="Mail" Height="28" Margin="251,323,471,104" Width="78"/>
         <Label Content="Status" Height="28" Margin="251,346,471,81" Width="78"/>
-        <Rectangle Height="111" Margin="338,266,100,73" Stroke="#FFACACAC" Width="362" Fill="White"/>
+        <Rectangle Height="111" Margin="338,266,100,73" Stroke="#FFABADB3" Width="362" Fill="White"/>
         <Label x:Name="ProfileFirstName" Content="Nom " Height="28" Margin="357,273,119,154" Width="324"/>
         <Label x:Name="ProfileLastName" Content="Prénom" Height="28" Margin="357,297,119,130" Width="324"/>
         <Label x:Name="ProfileMail" Content="Mail" Height="28" Margin="357,323,119,104" Width="324"/>
         <Label x:Name="ProfileStatus" Content="Status" Height="28" Margin="357,346,119,81" Width="324"/>
-        <Button Content="Déconnexion" Height="30" Margin="429,396,281,24" Width="90" Click="Button_Click"/>
+        <Button Content="Déconnexion" Height="30" Margin="429,396,281,24" Width="90" Click="Button_Click" Background="#FFFFDDCC" BorderBrush="Black"/>
     </Grid>
 </Page>

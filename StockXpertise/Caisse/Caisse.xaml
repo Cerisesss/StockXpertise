@@ -11,13 +11,13 @@
 
     <Grid Background="White">
         <local:UserControl1/>
-        <Rectangle Height="50" Margin="229,175,607,573" Width="360" Stroke="#FFACACAC" Fill="#FFACACAC"/>
-        <Rectangle Height="50" Margin="607,175,448,573" Width="140" Stroke="#FFACACAC" Fill="#FFACACAC"/>
-        <Rectangle Margin="230,285,447,134" Width="524" Stroke="#FFACACAC" Fill="#FFACACAC"/>
+        <Rectangle Height="50" Margin="229,175,607,573" Width="360" Stroke="#FFACACAC" Fill="#FFFFDDCC"/>
+        <Rectangle Height="50" Margin="607,175,448,573" Width="140" Stroke="#FFACACAC" Fill="#FFFFDDCC"/>
+        <Rectangle Margin="230,285,447,134" Width="524" Stroke="#FFACACAC" Fill="#FFFFDDCC"/>
         <Label Content="Code" Height="34" Margin="247,184,893,582" Width="60"/>
         <Label Content="Qté" Height="34" Margin="612,184,547,582" Width="30"/>
-        <Button Content="Ajouter" Margin="231,238,559,528" Width="410" Click="Button_Click_ajouter_article"/>
-        <Button Content="Scan" Margin="654,238,446,528" Width="100" Click="btnScanner_Click"/>
+        <Button Content="Ajouter" Margin="231,238,559,528" Width="410" Click="Button_Click_ajouter_article" Background="#FFFDF7E4"/>
+        <Button Content="Scan" Margin="654,238,446,528" Width="100" Click="btnScanner_Click" Background="#FFFDF7E4"/>
         <TextBox x:Name="text_code_barre" Height="35" Margin="321,183,628,583" TextWrapping="Wrap" Width="250"/>
         <TextBox x:Name="text_quantite" Height="35" Margin="653,183,462,583" TextWrapping="Wrap" Width="85"/>
         <ListBox x:Name="listBoxImages" Height="340" Margin="247,303,462,151" Width="490">
@@ -31,7 +31,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button Content="Valider" Margin="231,686,449,82" Width="520" Click="Button_Click_Valider"/>
+        <Button Content="Valider" Margin="231,686,449,82" Width="520" Click="Button_Click_Valider" Background="#FFEBF3E8"/>
         <Label x:Name="info_cassier" HorizontalAlignment="Left" Height="38" Margin="530,48,0,0" VerticalAlignment="Top" Width="270"/>
         <Image x:Name="videoScan" Margin="821,341,66,251"/>
     </Grid>
