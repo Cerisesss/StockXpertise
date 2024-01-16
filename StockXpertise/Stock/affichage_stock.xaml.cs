@@ -49,6 +49,12 @@ namespace StockXpertise.Stock
 
         private void remplissage_donnees(MySqlDataReader reader)
         {
+            // Vide la collection Items du DataGrid
+            MyDataGrid.Items.Clear();
+
+            // Vide la liste d'articles
+            articlesDataList.Clear();
+
             // Rempli la liste d'Article
             while (reader.Read())
             {
@@ -56,6 +62,7 @@ namespace StockXpertise.Stock
                 {
                     Id = Convert.ToInt32(reader["id_articles"]),
                     Id_emplacement = Convert.ToInt32(reader["id_emplacement"]),
+                    ImagePath = reader["image"].ToString(),
                     Code_emplacement = reader["code"].ToString(),
                     Nom = reader["nom"].ToString(),
                     Famille = reader["famille"].ToString(),
@@ -180,7 +187,7 @@ namespace StockXpertise.Stock
         {
             string motRecherche = Search_TextBox.Text;
 
-            string query = "SELECT articles.id_articles, articles.image, articles.nom, articles.famille, articles.code_barre, articles.description, articles.prix_ht, articles.prix_ttc, produit.quantite_stock, produit.id_emplacement, emplacement.code FROM articles JOIN produit ON articles.id_articles = produit.id_articles JOIN emplacement ON produit.id_emplacement = emplacement.id_emplacement";
+            string query = "SELECT articles.id_articles, articles.nom, articles.famille, articles.code_barre, articles.description, articles.prix_ht, articles.prix_ttc, produit.quantite_stock, produit.id_emplacement, emplacement.code FROM articles JOIN produit ON articles.id_articles = produit.id_articles JOIN emplacement ON produit.id_emplacement = emplacement.id_emplacement";
 
             // Si un mot de recherche est saisi, ajuste la requête et exécute la recherche
             if (!string.IsNullOrEmpty(motRecherche))
@@ -189,11 +196,15 @@ namespace StockXpertise.Stock
                 query = query.Replace("@motRecherche", "'" + "%" + motRecherche + "%" + "'");
                 MySqlDataReader reader = ConfigurationDB.ExecuteQuery(query);
 
+                MyDataGrid.ItemsSource = null;
+
                 // Appel de la méthode remplissage_donnees avec le lecteur retourné et le mot de recherche
                 remplissage_donnees(reader, motRecherche);
             }
             else
             {
+                MyDataGrid.ItemsSource = null;
+
                 // Si aucun mot de recherche n'est saisi, exécute la méthode sans l'argument supplémentaire
                 MySqlDataReader reader = ConfigurationDB.ExecuteQuery(query);
 

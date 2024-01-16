@@ -64,6 +64,13 @@
                         <Setter Property="TextBlock.TextAlignment" Value="Center"/>
                     </Style>
                 </DataGrid.Resources>
+                <DataGridTemplateColumn Header="Image">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding ImagePath}" Width="50" Height="50" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid>
             <TextBox x:Name="Search_TextBox" HorizontalAlignment="Left" Height="30" Margin="95,181,0,0" Text="Search ..." TextWrapping="Wrap" VerticalAlignment="Top" Width="151">
                 <TextBox.Template>

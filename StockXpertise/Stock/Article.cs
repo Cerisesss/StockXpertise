@@ -10,6 +10,7 @@ namespace StockXpertise.Stock
     {
         public int Id { get; set; }
         public int Id_emplacement { get; set; }
+        public string ImagePath { get; set; }
         public string Code_emplacement { get; set; }
         public string Nom { get; set; }
         public string Description { get; set; }
