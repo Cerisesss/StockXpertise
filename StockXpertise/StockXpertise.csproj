@@ -368,6 +368,24 @@
     <Resource Include="Images\image7.jpg" />
     <Resource Include="Images\image8.jpg" />
     <Resource Include="Images\image9.jpg" />
+    <Content Include="Images\caisse.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\fournisseur.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\inventaire.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\stat.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\stock.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\utilisateur.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="txttoexcel.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

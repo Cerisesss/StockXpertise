@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
-             d:DesignHeight="700" d:DesignWidth="1024"
+             d:DesignHeight="800" d:DesignWidth="1280"
              >
 
     <UserControl.Resources>
@@ -26,17 +26,9 @@
 
     </UserControl.Resources>
     <UserControl.Background>
-        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" Opacity="1">
-            <LinearGradientBrush.RelativeTransform>
-                <TransformGroup>
-                    <ScaleTransform CenterY="0.5" CenterX="0.5"/>
-                    <SkewTransform CenterX="0.5" CenterY="0.5"/>
-                    <RotateTransform Angle="-582.274" CenterX="0.5" CenterY="0.5"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </LinearGradientBrush.RelativeTransform>
-            <GradientStop Color="#FFFFB996" Offset="0.7"/>
-            <GradientStop Color="#FFD9EDBF" Offset="0.15"/>
+        <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+            <GradientStop Color="#FFEFF353" Offset="1"/>
+            <GradientStop Color="White"/>
         </LinearGradientBrush>
     </UserControl.Background>
 
@@ -44,40 +36,47 @@
         <DataTemplate>
             <Grid>
                 <StackPanel>
-                    <Grid Height="703">
+                    <Grid Height="802">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="7*"/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Rectangle Name="bar" HorizontalAlignment="Left" Stroke="Transparent" Width="150">
+                        <Rectangle Name="bar" HorizontalAlignment="Left" Stroke="Transparent" Width="171">
                             <Rectangle.Fill>
                                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                    <GradientStop Color="#FFFF9393"/>
-                                    <GradientStop Color="#FFE4F76C" Offset="1"/>
+                                    <GradientStop Color="#FFF19494"/>
+                                    <GradientStop Color="#FFDAFD00" Offset="1"/>
                                 </LinearGradientBrush>
                             </Rectangle.Fill>
                         </Rectangle>
                         <StackPanel HorizontalAlignment="Left" Width="150" Height="933" AutomationProperties.AutomationId="">
-                            <Button x:Name="b1" Content="Stock" HorizontalAlignment="Left" Height="42" VerticalAlignment="Top" Width="150" Margin="0,15,0,0" Background="{Binding Visibility.Hidden, ElementName=button}" BorderBrush="{Binding Visibility.Hidden, ElementName=button}" Click="b1_Click"/>
-                            <Separator Height="25" Style="{StaticResource CustomSeparator}"/>
-                            <Button x:Name="inventaire" Content="Inventaire" HorizontalAlignment="Left" Height="42" VerticalAlignment="Top" Width="150" Background="{Binding Visibility.Hidden, ElementName=button}" BorderBrush="{Binding Visibility.Hidden, ElementName=button}" Click="inventaire_Click"/>
-                            <Separator Height="25" Style="{StaticResource CustomSeparator}"/>
-                            <Button x:Name="b2" Content="Fournisseur" HorizontalAlignment="Left" Height="42" VerticalAlignment="Top" Width="150" Background="{Binding Visibility.Hidden, ElementName=button}" BorderBrush="{Binding Visibility.Hidden, ElementName=button}" Click="b2_Click"/>
-                            <Separator Height="25" Style="{StaticResource CustomSeparator}"/>
-                            <Button x:Name="b3" Content="Caisse" Height="50" Width="150" Background="{Binding Visibility.Hidden, ElementName=button}" BorderBrush="{Binding Visibility.Hidden, ElementName=button}" Click="b3_Click"/>
-                            <Separator Height="25" Style="{StaticResource CustomSeparator}"/>
-                            <Button x:Name="b4" Content="Statistique" HorizontalAlignment="Left" Height="42" VerticalAlignment="Top" Width="150" Background="{Binding Visibility.Hidden, ElementName=button}" BorderBrush="{Binding Visibility.Hidden, ElementName=button}" Click="b4_Click"/>
-                            <Separator Height="25" Style="{StaticResource CustomSeparator}"/>
+                            <Button x:Name="b1" Content="           Stock" HorizontalAlignment="Stretch" Margin="0,0,0,0" Height="65" Width="170" Background="{Binding Visibility.Hidden, ElementName=button}" BorderBrush="{Binding Visibility.Hidden, ElementName=button}" Click="b1_Click" FontWeight="Bold" FontSize="16"/>
+                            <Separator Height="25" Margin="0,0,-20,0" Style="{StaticResource CustomSeparator}"/>
+                            <Button x:Name="inventaire" Content="            Inventaire" HorizontalAlignment="Left" Margin="0,0,0,0" Height="65" Width="170" Background="{Binding Visibility.Hidden, ElementName=button}" BorderBrush="{Binding Visibility.Hidden, ElementName=button}" Click="inventaire_Click" FontWeight="Bold" FontSize="16"/>
+                            <Separator Height="25" Margin="0,0,-20,0" Style="{StaticResource CustomSeparator}"/>
+                            <Button x:Name="b2" Content="          Fournisseur" HorizontalAlignment="Left" Margin="0,0,0,0" Height="65" Width="170" Background="{Binding Visibility.Hidden, ElementName=button}" BorderBrush="{Binding Visibility.Hidden, ElementName=button}" Click="b2_Click" FontSize="16" FontWeight="Bold"/>
+                            <Separator Height="25" Margin="0,0,-20,0" Style="{StaticResource CustomSeparator}"/>
+                            <Button x:Name="b3" Content="          Caisse" Margin="0,0,0,0" Height="65" Width="170" Background="{Binding Visibility.Hidden, ElementName=button}" BorderBrush="{Binding Visibility.Hidden, ElementName=button}" Click="b3_Click" FontWeight="Bold" FontSize="16"/>
+                            <Separator Height="25" Margin="0,0,-20,0" Style="{StaticResource CustomSeparator}"/>
+                            <Button x:Name="b4" Content="           Statistique" HorizontalAlignment="Left" Margin="0,0,0,0" Height="65" Width="170" Background="{Binding Visibility.Hidden, ElementName=button}" BorderBrush="{Binding Visibility.Hidden, ElementName=button}" Click="b4_Click" FontSize="16" FontWeight="Bold"/>
+                            <Separator Height="25" Margin="0,0,-20,0" Style="{StaticResource CustomSeparator}"/>
                             <!--<Button x:Name="b5" Content="Historique" HorizontalAlignment="Left" Height="42" VerticalAlignment="Top" Width="150" Background="{Binding Visibility.Hidden, ElementName=button}" BorderBrush="{Binding Visibility.Hidden, ElementName=button}"/>
 							<Separator Height="25" Style="{StaticResource CustomSeparator}"/>-->
-                            <Button x:Name="b6" Content="Profil" HorizontalAlignment="Left" Height="42" VerticalAlignment="Top" Width="150" Background="{Binding Visibility.Hidden, ElementName=button}" BorderBrush="{Binding Visibility.Hidden, ElementName=button}" Click="b6_Click"/>
-                            <Separator Height="25" Style="{StaticResource CustomSeparator}"/>
-                            <Button x:Name="b8" Content="Utilisateur" HorizontalAlignment="Left" Height="42" VerticalAlignment="Top" Width="150" Background="{Binding Visibility.Hidden, ElementName=button}" BorderBrush="{Binding Visibility.Hidden, ElementName=button}" Click="b8_Click"/>
-                            <Separator Height="25" Style="{StaticResource CustomSeparator}"/>
-                            <Button x:Name="b7" HorizontalAlignment="Left" Height="150" VerticalAlignment="Top" Width="150" Background="{Binding Visibility.Hidden, ElementName=button}" BorderBrush="{Binding Visibility.Hidden, ElementName=button}">
+                            <Button x:Name="b6" Content="          Profil" HorizontalAlignment="Left" Margin="0,0,0,0" Height="65" Width="170" Background="{Binding Visibility.Hidden, ElementName=button}" BorderBrush="{Binding Visibility.Hidden, ElementName=button}" Click="b6_Click" FontSize="16" FontWeight="Bold"/>
+                            <Separator Height="25" Margin="0,0,-20,0" Style="{StaticResource CustomSeparator}"/>
+                            <Button x:Name="b8" Content="           Utilisateur" HorizontalAlignment="Left" Height="65" Margin="0,0,0,0" Width="170" Background="{Binding Visibility.Hidden, ElementName=button}" BorderBrush="{Binding Visibility.Hidden, ElementName=button}" Click="b8_Click" FontSize="16" FontWeight="Bold"/>
+                            <Separator Height="25" Margin="0,0,-20,0" Style="{StaticResource CustomSeparator}"/>
+                            <Button x:Name="b7" Margin="10,0,0,0"  HorizontalAlignment="Left" Height="150" VerticalAlignment="Top" Width="150" Background="{Binding Visibility.Hidden, ElementName=button}" BorderBrush="{Binding Visibility.Hidden, ElementName=button}">
                                 <Image Height="150" Source="./logoVnoir.png" Width="150"/>
                             </Button>
                         </StackPanel>
+                        <Image Source="/Images/stock.png" HorizontalAlignment="Left" Height="45" Margin="17,15,0,0" VerticalAlignment="Top" Width="44"/>
+                        <Image Source="/Images/inventaire.png" HorizontalAlignment="Left" Height="45" Margin="17,100,0,0" VerticalAlignment="Top" Width="45"/>
+                        <Image Source="/Images/fournisseur.png" HorizontalAlignment="Left" Height="45" Margin="17,190,0,0" VerticalAlignment="Top" Width="45"/>
+                        <Image Source="/Images/caisse.png" HorizontalAlignment="Left" Height="45" Margin="17,275,0,0" VerticalAlignment="Top" Width="45"/>
+                        <Image Source="/Images/stat.png" HorizontalAlignment="Left" Height="45" Margin="17,365,0,0" VerticalAlignment="Top" Width="45"/>
+                        <Image Source="/Images/Logo.png" HorizontalAlignment="Left" Height="60" Margin="10,455,0,0" VerticalAlignment="Top" Width="60"/>
+                        <Image Source="/Images/utilisateur.png" HorizontalAlignment="Left" Height="55" Margin="13,545,0,0" VerticalAlignment="Top" Width="55"/>
 
                     </Grid>
                 </StackPanel>

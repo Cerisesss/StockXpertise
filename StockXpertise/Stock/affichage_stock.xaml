@@ -5,17 +5,17 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:StockXpertise.components"
       mc:Ignorable="d" 
-      d:DesignHeight="700" d:DesignWidth="1024"
+      d:DesignHeight="800" d:DesignWidth="1200"
       Title="affichage_stock">
 
     <Grid>
         <local:UserControl1/>
         <Frame x:Name="StockFrame" NavigationUIVisibility="Hidden"/>
-        <Grid x:Name="gridStock" Margin="104,39,-104,-39">
+        <Grid x:Name="gridStock" Margin="141,0,-141,0">
             <Grid.Background>
                 <ImageBrush/>
             </Grid.Background>
-            <Border BorderThickness="2" Margin="120,51,0,0" CornerRadius="10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="77" Width="700">
+            <Border BorderThickness="2" Margin="120,51,0,0" CornerRadius="10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="77" Width="864">
                 <Border.BorderBrush>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="#FFF19494"/>
@@ -29,8 +29,8 @@
                     </LinearGradientBrush>
                 </Border.Background>
             </Border>
-            <TextBlock Text="Stock" HorizontalAlignment="Left" FontSize="24" Margin="404,66,0,554" Width="138" FontWeight="Bold"/>
-            <Button x:Name="button" Content="PDF" HorizontalAlignment="Left" Height="30" Margin="810,181,0,0" VerticalAlignment="Top" Width="72" RenderTransformOrigin="0.743,1.834" BorderBrush="{Binding Visibility.Hidden, ElementName=button}" Click="generation_pdf">
+            <TextBlock Text="Stock" HorizontalAlignment="Left" FontSize="24" Margin="514,64,0,652" Width="80" FontWeight="Bold" RenderTransformOrigin="0.189,0.5"/>
+            <Button x:Name="button" Content="PDF" HorizontalAlignment="Left" Height="30" Margin="912,181,0,0" VerticalAlignment="Top" Width="72" RenderTransformOrigin="0.743,1.834" BorderBrush="{Binding Visibility.Hidden, ElementName=button}" Click="generation_pdf">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="#FFAEAEAE" Offset="0"/>
@@ -38,8 +38,8 @@
                     </LinearGradientBrush>
                 </Button.Background>
             </Button>
-            <DataGrid x:Name="MyDataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Height="367" Width="787" Margin="95,251,0,0"
-          AutoGenerateColumns="True"
+            <DataGrid x:Name="MyDataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Height="500" Width="910" Margin="95,251,0,0"
+                AutoGenerateColumns="True"
           AlternatingRowBackground="#F0F0F0"
           GridLinesVisibility="None"
           CanUserResizeColumns="True"
@@ -84,7 +84,7 @@
                     </ControlTemplate>
                 </TextBox.Template>
             </TextBox>
-            <Button x:Name="addStock" Content="Ajouter" HorizontalAlignment="Left" Height="30" Margin="717,181,0,0" VerticalAlignment="Top" Width="72" Click="Add_New_Stock">
+            <Button x:Name="addStock" Content="Ajouter" HorizontalAlignment="Left" Height="30" Margin="799,181,0,0" VerticalAlignment="Top" Width="72" Click="Add_New_Stock" BorderBrush="{x:Null}">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="#FFAEAEAE" Offset="0"/>

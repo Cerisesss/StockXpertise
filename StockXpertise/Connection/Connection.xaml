@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:StockXpertise.Connection"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="800" d:DesignWidth="1280"
       Title="Connection">
     <Page.Resources>
         <Color x:Key="GradientStopColor1">White</Color>
@@ -29,7 +29,7 @@
                     <GradientStop Color="#FFD9EDBF" Offset="0.15"/>
                 </LinearGradientBrush>
             </Grid.Background>
-            <Image Source="/Images/Logo.png" Height="190" Margin="296,17,296,243"/>
+            <Image Source="/Images/Logo.png" Margin="262,91,262,396"/>
             <Rectangle Height="35" Margin="167,225,515,190" Stroke="#FF2E2E2E" Width="118">
                 <Rectangle.Fill>
                     <SolidColorBrush Color="White" Opacity="0.8"/>
