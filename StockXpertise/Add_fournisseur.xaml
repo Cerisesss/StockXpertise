@@ -5,14 +5,14 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:StockXpertise.components"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="800" d:DesignWidth="1200"
       Title="Add_Stock">
 
     <Grid x:Name="griAddStock" Background="White">
         <local:UserControl1/>
         <Frame x:Name="addStock" NavigationUIVisibility="Hidden"/>
 
-        <Rectangle Margin="179,29,25,71" Stroke="#FFACACAC" Fill="#FFACACAC"/>
+        <Rectangle Margin="397,206,228,260" Stroke="#FFACACAC" Fill="#FFACACAC"/>
         <Button Content="Confirmer" Height="27" Margin="356,394,357,29" Width="87" Click="Button_Click"/>
         <Button Content="Annuler" Height="27" Margin="524,394,189,29" Width="87" Click="Button_Click_1"/>
 
@@ -20,13 +20,13 @@
 
 
         <TextBox x:Name="nomfournisseur" Height="25" Margin="477,58,128,367" TextWrapping="Wrap" Text="" Width="195" />
-        <Label Content="prenom" Height="23" Margin="276,123,436,304" Width="88"/>
+        <Label Content="Prenom" Height="23" Margin="276,123,436,304" Width="88"/>
         <TextBox x:Name="prenomfournisseur" Height="25" Margin="477,121,128,304" TextWrapping="Wrap" Text="" Width="195" />
-        <Label Content="numero" Height="23" Margin="276,181,436,246" Width="88"/>
+        <Label Content="Numero" Height="23" Margin="276,181,436,246" Width="88"/>
         <TextBox x:Name="numerofournisseur" Height="25" Margin="477,179,128,246" TextWrapping="Wrap" Text="" Width="195" />
-        <Label Content="mail" Height="23" Margin="276,244,436,183" Width="88"/>
+        <Label Content="Mail" Height="23" Margin="276,244,436,183" Width="88"/>
         <TextBox x:Name="mailfournisseur" Height="25" Margin="477,242,128,183" TextWrapping="Wrap" Text="" Width="195" />
-        <Label Content="adresse" Height="23" Margin="276,310,436,117" Width="88"/>
+        <Label Content="Adresse" Height="23" Margin="276,310,436,117" Width="88"/>
         <TextBox x:Name="adressefournisseur" Height="25" Margin="477,308,128,117" TextWrapping="Wrap" Text="" Width="195" />
     </Grid>
 </Page>

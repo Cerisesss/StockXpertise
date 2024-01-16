@@ -5,22 +5,22 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:StockXpertise.components"
       mc:Ignorable="d" 
-      d:DesignHeight="780" d:DesignWidth="1280"
+      d:DesignHeight="800" d:DesignWidth="1200"
 
       Title="Caisse">
 
     <Grid Background="White">
         <local:UserControl1/>
-        <Rectangle Margin="165,44,384,365" Stroke="#FFACACAC" Fill="#FFACACAC" Height="40" Width="250"/>
-        <Rectangle Margin="422,44,272,366" Stroke="#FFACACAC" Fill="#FFACACAC" Height="40" Width="100"/>
-        <Rectangle Margin="165,130,272,94" Stroke="#FFACACAC" Fill="#FFACACAC" Height="225" Width="360"/>
-        <Label Content="Code" Height="27" Margin="178,51,551,372" Width="71"/>
-        <Label Content="Qté" Height="27" Margin="422,51,338,372" Width="40"/>
-        <Button Content="Ajouter" Height="27" Margin="166,93,350,330" Width="285" Click="Button_Click_ajouter_article"/>
-        <Button x:Name="btnScanner" Content="Scan" Height="27" Margin="456,93,272,330" Width="72" Click="btnScanner_Click"/>
-        <TextBox x:Name="text_code_barre" Height="27" Margin="242,50,400,372" TextWrapping="Wrap" Width="160"/>
-        <TextBox x:Name="text_quantite" Height="27" Margin="457,50,284,372" TextWrapping="Wrap" Width="59"/>
-        <ListBox x:Name="listBoxImages" Height="199" Margin="178,144,284,108" Width="338">
+        <Rectangle Height="50" Margin="229,175,607,573" Width="360" Stroke="#FFACACAC" Fill="#FFACACAC"/>
+        <Rectangle Height="50" Margin="607,175,448,573" Width="140" Stroke="#FFACACAC" Fill="#FFACACAC"/>
+        <Rectangle Margin="230,285,447,134" Width="524" Stroke="#FFACACAC" Fill="#FFACACAC"/>
+        <Label Content="Code" Height="34" Margin="247,184,893,582" Width="60"/>
+        <Label Content="Qté" Height="34" Margin="612,184,547,582" Width="30"/>
+        <Button Content="Ajouter" Margin="231,238,559,528" Width="410" Click="Button_Click_ajouter_article"/>
+        <Button Content="Scan" Margin="654,238,446,528" Width="100" Click="btnScanner_Click"/>
+        <TextBox x:Name="text_code_barre" Height="35" Margin="321,183,628,583" TextWrapping="Wrap" Width="250"/>
+        <TextBox x:Name="text_quantite" Height="35" Margin="653,183,462,583" TextWrapping="Wrap" Width="85"/>
+        <ListBox x:Name="listBoxImages" Height="340" Margin="247,303,462,151" Width="490">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
@@ -31,8 +31,8 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button Content="Valider" Height="26" Margin="166,367,274,57" Click="Button_Click_Valider" Width="360"/>
-        <Label x:Name="info_cassier" HorizontalAlignment="Left" Height="29" Margin="572,120,0,0" VerticalAlignment="Top" Width="186"/>
-        <Image x:Name="videoScan" Height="350" Margin="545,45,15,55" Width="240"/>
+        <Button Content="Valider" Margin="231,686,449,82" Width="520" Click="Button_Click_Valider"/>
+        <Label x:Name="info_cassier" HorizontalAlignment="Left" Height="38" Margin="530,48,0,0" VerticalAlignment="Top" Width="270"/>
+        <Image x:Name="videoScan" Margin="821,341,66,251"/>
     </Grid>
 </Page>

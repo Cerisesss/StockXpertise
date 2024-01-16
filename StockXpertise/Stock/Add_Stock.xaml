@@ -5,14 +5,14 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:StockXpertise.components"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="800" d:DesignWidth="1200"
       Title="Add_Stock">
 
     <Grid x:Name="griAddStock" Background="White">
         <local:UserControl1/>
         <Frame x:Name="addStock" NavigationUIVisibility="Hidden"/>
 
-        <Rectangle Margin="178,14,26,49" Stroke="#FFACACAC" Fill="#FFACACAC"/>
+        <Rectangle Margin="342,84,183,157" Stroke="#FFACACAC" Fill="#FFACACAC"/>
         <Button Content="Confirmer" Height="27" Margin="496,413,217,10" Width="87" Click="Button_Click" Background="#FFFFB996"/>
         <Button Content="Annuler" Height="27" Margin="366,413,347,10" Width="87" Click="Button_Click_1" Background="#FFD9EDBF"/>
 

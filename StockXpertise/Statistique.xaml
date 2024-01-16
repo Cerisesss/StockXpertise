@@ -5,10 +5,11 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:StockXpertise.components"
       mc:Ignorable="d"
+      d:DesignHeight="800" d:DesignWidth="1200"
       Title="Statistique">
-	<Grid Loaded="Grid_Loaded">
-		<local:UserControl1/>
-        <Border BorderThickness="2" Margin="200,51,0,0" CornerRadius="10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="77" Width="700">
+    <Grid Loaded="Grid_Loaded">
+        <local:UserControl1/>
+        <Border BorderThickness="2" Margin="231,51,0,0" CornerRadius="10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="77" Width="885">
             <Border.BorderBrush>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FFF19494"/>
@@ -22,36 +23,36 @@
                 </LinearGradientBrush>
             </Border.Background>
         </Border>
-        <TextBlock Text="Statistiques" HorizontalAlignment="Left" FontSize="24" Margin="480,66,0,554" Width="149" FontWeight="Bold"/>
-        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
-        <Rectangle HorizontalAlignment="Left" Height="31" Margin="216,150,0,0" Stroke="Transparent" VerticalAlignment="Top" Width="110" RenderTransformOrigin="0.527,0.493">
-			<Rectangle.Fill>
-				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-					<GradientStop Color="#FFACACAC"/>
-					<GradientStop Color="White" Offset="1"/>
-					<GradientStop Color="#FFAEAEAE" Offset="0"/>
-				</LinearGradientBrush>
-			</Rectangle.Fill>
-		</Rectangle>
-		<ComboBox x:Name="comboBoxAffichage" HorizontalAlignment="Left" Height="31" Margin="326,150,0,0" VerticalAlignment="Top" Width="166" SelectionChanged="ComboBox_SelectionChanged_affichage"/>
-		<Label Content="Trier par" HorizontalAlignment="Left" Height="36" Margin="232,150,0,0" VerticalAlignment="Top" Width="80"/>
-		<Rectangle HorizontalAlignment="Left" Height="176" Margin="216,229,0,0" Stroke="Transparent" VerticalAlignment="Top" Width="312" RenderTransformOrigin="0.527,0.493">
-			<Rectangle.Fill>
-				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-					<GradientStop Color="#FFACACAC"/>
-					<GradientStop Color="White" Offset="1"/>
-					<GradientStop Color="#FFAEAEAE" Offset="0"/>
-				</LinearGradientBrush>
-			</Rectangle.Fill>
-		</Rectangle>
-		<Label Content="Statistique" HorizontalAlignment="Left" Height="36" Margin="231,246,0,0" VerticalAlignment="Top" Width="80"/>
-		<TextBlock HorizontalAlignment="Left" Margin="338,253,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="white" Height="132" Width="154" Text=""/>
-        <CheckBox x:Name="checkboxPrixAchat" Content="Prix d'achat" HorizontalAlignment="Left" Margin="344,259,0,0" VerticalAlignment="Top" Height="18" Width="130"/>
-        <CheckBox x:Name="checkboxPrixVente" Content="Prix de vente" HorizontalAlignment="Left" Margin="344,277,0,0" VerticalAlignment="Top" Height="18" Width="130"/>
-        <CheckBox x:Name="checkboxArticlesVendus" Content="Articles vendus" HorizontalAlignment="Left" Margin="344,295,0,0" VerticalAlignment="Top" Height="18" Width="130"/>
-        <CheckBox x:Name="checkboxMarge" Content="Marge" HorizontalAlignment="Left" Margin="344,313,0,0" VerticalAlignment="Top" Height="18" Width="130"/>
-        <CheckBox x:Name="checkboxTop10Produits" Content="Top 10 produits" HorizontalAlignment="Left" Margin="344,331,0,0" VerticalAlignment="Top" Height="18" Width="130"/>
-        <CheckBox x:Name="checkboxStockNegatif" Content="Stock low" HorizontalAlignment="Left" Margin="344,349,0,0" VerticalAlignment="Top" Height="18" Width="130"/>
+        <TextBlock Text="Statistiques" HorizontalAlignment="Left" FontSize="24" Margin="599,64,0,556" Width="149" FontWeight="Bold"/>
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Margin="0,-72,0,72"/>
+        <Rectangle HorizontalAlignment="Left" Height="31" Margin="252,155,0,0" Stroke="Transparent" VerticalAlignment="Top" Width="110" RenderTransformOrigin="0.527,0.493">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFACACAC"/>
+                    <GradientStop Color="White" Offset="1"/>
+                    <GradientStop Color="#FFAEAEAE" Offset="0"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <ComboBox x:Name="comboBoxAffichage" HorizontalAlignment="Left" Height="31" Margin="362,155,0,0" VerticalAlignment="Top" Width="296" SelectionChanged="ComboBox_SelectionChanged_affichage"/>
+        <Label Content="Trier par" HorizontalAlignment="Left" Height="36" Margin="268,155,0,0" VerticalAlignment="Top" Width="80"/>
+        <Rectangle HorizontalAlignment="Left" Height="191" Margin="300,231,0,0" Stroke="Transparent" VerticalAlignment="Top" Width="330" RenderTransformOrigin="0.527,0.493">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFACACAC"/>
+                    <GradientStop Color="White" Offset="1"/>
+                    <GradientStop Color="#FFAEAEAE" Offset="0"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Label Content="Statistique" HorizontalAlignment="Left" Height="40" Margin="316,249,0,0" VerticalAlignment="Top" Width="84"/>
+        <TextBlock HorizontalAlignment="Left" Margin="428,257,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="white" Height="143" Width="164" Text=""/>
+        <CheckBox x:Name="checkboxPrixAchat" Content="Prix d'achat" HorizontalAlignment="Left" Margin="434,264,0,0" VerticalAlignment="Top" Height="19" Width="138"/>
+        <CheckBox x:Name="checkboxPrixVente" Content="Prix de vente" HorizontalAlignment="Left" Margin="434,283,0,0" VerticalAlignment="Top" Height="20" Width="138"/>
+        <CheckBox x:Name="checkboxArticlesVendus" Content="Articles vendus" HorizontalAlignment="Left" Margin="434,303,0,0" VerticalAlignment="Top" Height="19" Width="138"/>
+        <CheckBox x:Name="checkboxMarge" Content="Marge" HorizontalAlignment="Left" Margin="434,322,0,0" VerticalAlignment="Top" Height="20" Width="138"/>
+        <CheckBox x:Name="checkboxTop10Produits" Content="Top 10 produits" HorizontalAlignment="Left" Margin="434,342,0,0" VerticalAlignment="Top" Height="19" Width="138"/>
+        <CheckBox x:Name="checkboxStockNegatif" Content="Stock low" HorizontalAlignment="Left" Margin="434,361,0,0" VerticalAlignment="Top" Height="20" Width="138"/>
         <Button x:Name="button" Content="prévisualiser" HorizontalAlignment="Left" Height="31" Margin="886,150,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="0.743,1.834" BorderBrush="{Binding Visibility.Hidden, ElementName=button}" Click="generation_pdf">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -61,5 +62,5 @@
             </Button.Background>
         </Button>
         <Frame x:Name="framePrincipal" NavigationUIVisibility="Hidden" Navigated="framePrincipal_Navigated"/>
-	</Grid>
+    </Grid>
 </Page>
