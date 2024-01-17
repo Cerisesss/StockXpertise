@@ -124,6 +124,9 @@ namespace StockXpertise.Stock
                 bool convertPrixTTC = Int32.TryParse(nouveauPrixTTC, out var prixTTC);
                 bool convertQuantite = Int32.TryParse(nouvelleQuantite, out var quantite);
 
+                Query_Stock verif = new Query_Stock(code_barre);
+                bool verif_code_barre = verif.Verif_Code_Barre();
+
                 if (!string.IsNullOrEmpty(nouveauPrixHT) && !convertPrixHT)
                 {
                     MessageBox.Show("Le prix HT doit etre numerique.");
@@ -139,6 +142,12 @@ namespace StockXpertise.Stock
                     MessageBox.Show("La quantite doit etre numerique.");
                     return;
                 }
+                if (!string.IsNullOrEmpty(code_barre) && verif_code_barre)
+                {
+                    MessageBox.Show("Le code barre existe deja.");
+                    return;
+                }
+
 
                 Query_Stock query_Update = new Query_Stock(selectedData.Id, nouveauNom, nouvelleFamille, prixHT, prixTTC, nouvelledescription, code_barre, quantite, imagePath, code_emplacement, id_emplacement);
 

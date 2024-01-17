@@ -31,6 +31,10 @@ namespace StockXpertise.Stock
         int id_produit;
         string imagePath;
 
+        public Query_Stock(string code_barre) : this(0, "", "", 0, 0, 0, "", code_barre, 0, "", "", "")
+        {
+        }
+
         public Query_Stock(int id_article, int quantite, string emplacement) : this(id_article, "", "", 0, 0, 0, "", "", quantite, emplacement, "", "")
         {
             this.emplacement = emplacement;
@@ -706,6 +710,38 @@ namespace StockXpertise.Stock
             catch (Exception ex)
             {
                 MessageBox.Show($"Error in ConnectionDB: {ex.Message}");
+            }
+        }
+
+        //***********************************************************************************  verif code barre  ********************************************************************************************************\\
+
+        public bool Verif_Code_Barre()
+        {
+            MySqlDataReader reader;
+
+            //supprimer de la table vente
+            try
+            {
+                string query_getIDProduit = "SELECT * FROM articles WHERE code_barre = @CodeBarre ;";
+                MySqlCommand commande = new MySqlCommand(query_getIDProduit, ConnectionDB());
+
+                commande.Parameters.AddWithValue("@CodeBarre", code_barre);
+
+                reader = commande.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error in ConnectionDB: {ex.Message}");
+                return true;
             }
         }
     }
