@@ -65,92 +65,95 @@ namespace StockXpertise.Caisse
                     MySqlDataReader result = query_select.Compare_Quantite();
 
                     // Vérifie s'il y a des lignes de résultat
-                    if (result.Read())
+                    if (result.HasRows)
                     {
-                        int quantiteEnStock = result.GetInt32(0);
-
-                        if (int.TryParse(quantite, out int quantiteSaisieInt) && quantiteSaisieInt <= quantiteEnStock)
+                        while (result.Read())
                         {
-                            // Liste cumulative des images
-                            List<ImageInfo> newListeImages = new List<ImageInfo>();
+                            int quantiteEnStock = Convert.ToInt32(result["quantite_stock"]);
 
-                            // Recherche de l'article dans la liste
-                            Article existingArticle = listeArticles.FirstOrDefault(a => a.CodeBarre == code_barre);
-
-                            if (existingArticle != null)
+                            if (int.TryParse(quantite, out int quantiteSaisieInt) && quantiteSaisieInt <= quantiteEnStock)
                             {
-                                // Si l'article existe déjà, ajoutez simplement la quantité, mais vérifiez la limite
-                                int totalQuantite = existingArticle.Quantite + quantiteSaisieInt;
+                                // Liste cumulative des images
+                                List<ImageInfo> newListeImages = new List<ImageInfo>();
 
-                                if (totalQuantite <= existingArticle.QuantiteEnStock)
+                                // Recherche de l'article dans la liste
+                                Article existingArticle = listeArticles.FirstOrDefault(a => a.CodeBarre == code_barre);
+
+                                if (existingArticle != null)
                                 {
-                                    existingArticle.Quantite = totalQuantite;
-                                    MessageBox.Show($"Quantité mise à jour : x{totalQuantite}, code barre : {code_barre}", "Réussi", MessageBoxButton.OK, MessageBoxImage.Information);
+                                    // Si l'article existe déjà, ajoutez simplement la quantité, mais vérifiez la limite
+                                    int totalQuantite = existingArticle.Quantite + quantiteSaisieInt;
 
-                                    foreach (var existing_Article in listeArticles)
+                                    if (totalQuantite <= existingArticle.QuantiteEnStock)
                                     {
-                                        string existingQuery = "SELECT nom, image FROM articles WHERE code_barre = '" + existing_Article.CodeBarre + "'";
-                                        MySqlDataReader existingReader = ConfigurationDB.ExecuteQuery(existingQuery);
+                                        existingArticle.Quantite = totalQuantite;
+                                        MessageBox.Show($"Quantité mise à jour : x{totalQuantite}, code barre : {code_barre}", "Réussi", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                                        while (existingReader.Read())
+                                        foreach (var existing_Article in listeArticles)
                                         {
-                                            var existingImageArticle = new ImageInfo()
-                                            {
-                                                nom_article = existingReader["nom"].ToString(),
-                                                image_path = existingReader["image"].ToString().Replace(newChar: '/', oldChar: '\\'),
-                                                quantite = existing_Article.Quantite // Utilise la quantité spécifique de l'article existant
-                                            };
+                                            string existingQuery = "SELECT nom, image FROM articles WHERE code_barre = '" + existing_Article.CodeBarre + "'";
+                                            MySqlDataReader existingReader = ConfigurationDB.ExecuteQuery(existingQuery);
 
-                                            newListeImages.Add(existingImageArticle);
+                                            while (existingReader.Read())
+                                            {
+                                                var existingImageArticle = new ImageInfo()
+                                                {
+                                                    nom_article = existingReader["nom"].ToString(),
+                                                    image_path = existingReader["image"].ToString().Replace(newChar: '/', oldChar: '\\'),
+                                                    quantite = existing_Article.Quantite // Utilise la quantité spécifique de l'article existant
+                                                };
+
+                                                newListeImages.Add(existingImageArticle);
+                                            }
                                         }
+                                        // Assigne la liste cumulative à la source de données de la ListBox
+                                        listBoxImages.ItemsSource = newListeImages;
                                     }
-                                    // Assigne la liste cumulative à la source de données de la ListBox
-                                    listBoxImages.ItemsSource = newListeImages;
+                                    else
+                                    {
+                                        MessageBox.Show("La quantité totale dépasse la limite autorisée.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                                    }
                                 }
                                 else
                                 {
-                                    MessageBox.Show("La quantité totale dépasse la limite autorisée.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                                    // Ajout de l'article à la liste d'articles
+                                    var article = new Article()
+                                    {
+                                        CodeBarre = code_barre,
+                                        Quantite = quantiteSaisieInt,
+                                        QuantiteEnStock = quantiteEnStock
+                                    };
+                                    listeArticles.Add(article);
+
+                                    foreach (var existing_Article in listeArticles)
+                                    {
+                                        // Ajout de l'article nouvellement ajouté dans la liste d'images
+                                        string newQuery = "SELECT nom, image FROM articles WHERE code_barre = '" + existing_Article.CodeBarre + "'";
+                                        MySqlDataReader newReader = ConfigurationDB.ExecuteQuery(newQuery);
+
+                                        while (newReader.Read())
+                                        {
+                                            var newImageArticle = new ImageInfo()
+                                            {
+                                                nom_article = newReader["nom"].ToString(),
+                                                image_path = newReader["image"].ToString().Replace(newChar: '/', oldChar: '\\'),
+                                                quantite = existing_Article.Quantite
+                                            };
+                                            newListeImages.Add(newImageArticle);
+                                        }
+                                    }
+
+                                    // Assigne la liste cumulative à la source de données de la ListBox
+                                    listBoxImages.ItemsSource = newListeImages;
+
+                                    // Affiche un message de confirmation
+                                    MessageBox.Show($"Article ajouté à la liste de course : x{quantiteSaisieInt}, code barre : {code_barre}", "Réussi", MessageBoxButton.OK, MessageBoxImage.Information);
                                 }
                             }
                             else
                             {
-                                // Ajout de l'article à la liste d'articles
-                                var article = new Article()
-                                {
-                                    CodeBarre = code_barre,
-                                    Quantite = quantiteSaisieInt,
-                                    QuantiteEnStock = quantiteEnStock
-                                };
-                                listeArticles.Add(article);
-
-                                foreach (var existing_Article in listeArticles)
-                                {
-                                    // Ajout de l'article nouvellement ajouté dans la liste d'images
-                                    string newQuery = "SELECT nom, image FROM articles WHERE code_barre = '" + existing_Article.CodeBarre + "'";
-                                    MySqlDataReader newReader = ConfigurationDB.ExecuteQuery(newQuery);
-
-                                    while (newReader.Read())
-                                    {
-                                        var newImageArticle = new ImageInfo()
-                                        {
-                                            nom_article = newReader["nom"].ToString(),
-                                            image_path = newReader["image"].ToString().Replace(newChar: '/', oldChar: '\\'),
-                                            quantite = existing_Article.Quantite
-                                        };
-                                        newListeImages.Add(newImageArticle);
-                                    }
-                                }
-
-                                // Assigne la liste cumulative à la source de données de la ListBox
-                                listBoxImages.ItemsSource = newListeImages;
-
-                                // Affiche un message de confirmation
-                                MessageBox.Show($"Article ajouté à la liste de course : x{quantiteSaisieInt}, code barre : {code_barre}", "Réussi", MessageBoxButton.OK, MessageBoxImage.Information);
+                                MessageBox.Show("Rupture de Stock, nombre de produit en stock : " + quantiteEnStock + ".", "Oups", MessageBoxButton.OK, MessageBoxImage.Error);
                             }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Rupture de Stock, nombre de produit en stock : " + quantiteEnStock + ".", "Oups", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                     }
                     else

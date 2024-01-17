@@ -40,23 +40,23 @@ INSERT INTO `emplacement` (`code`, `capacite`) VALUES
 INSERT INTO `articles` (`id_fournisseur`, `nom`, `famille`, `prix_ht`, `prix_ttc`, `prix_vente`, `prix_achat`, `description`, `code_barre`, `image`) VALUES
 (1, 'Ordinateur Portable', 'Informatique', 800, 960, 1200, 600, 'Ordinateur portable haut de gamme', '012345678901', '/Images/image0.jpg'),
 (2, 'Smartphone', 'Téléphonie', 600, 720, 950, 500, 'Smartphone dernière génération', '234567890123', '/Images/image1.jpg'),
-(3, 'Tablette', 'Informatique', 400, 480, 650, 350, 'Tablette légère et performante', '345678901234', '/Images/image2.jpg'),
-(4, 'Imprimante', 'Informatique', 200, 240, 300, 150, 'Imprimante multifonction', '456789012345', '/Images/image3.jpg'),
-(5, 'Caméra de Surveillance', 'Électronique', 150, 180, 250, 120, 'Caméra de surveillance WiFi', '567890123456', '/Images/image4.jpg'),
-(1, 'Casque Audio', 'Audio', 100, 120, 150, 70, 'Casque audio sans fil', '678901234567', '/Images/image5.jpg'),
-(2, 'Montre Connectée', 'Électronique', 300, 360, 450, 250, 'Montre connectée étanche', '789012345678', '/Images/image6.jpg'),
-(3, 'Aspirateur Robot', 'Électroménager', 250, 300, 400, 200, 'Aspirateur robot intelligent', '890123456789', '/Images/image7.jpg'),
-(4, 'Lampadaire LED', 'Éclairage', 80, 96, 120, 60, 'Lampadaire LED avec variateur', '901234567890', '/Images/image8.jpg'),
-(5, 'Enceinte Bluetooth', 'Audio', 50, 60, 80, 40, 'Enceinte Bluetooth portable', '012345678912', '/Images/image9.jpg'),
+(3, 'Tablette', 'Informatique', 400, 480, 650, 350, 'Tablette légère et performante', '762240566753', '/Images/image2.jpg'),
+(4, 'Imprimante', 'Informatique', 200, 240, 300, 150, 'Imprimante multifonction', '456784012345', '/Images/image3.jpg'),
+(5, 'Caméra de Surveillance', 'Électronique', 150, 180, 250, 120, 'Caméra de surveillance WiFi', '3061990143808', '/Images/image4.jpg'),
+(1, 'Casque Audio', 'Audio', 100, 120, 150, 70, 'Casque audio sans fil', '678901634567', '/Images/image5.jpg'),
+(2, 'Montre Connectée', 'Électronique', 300, 360, 450, 250, 'Montre connectée étanche', '789212345678', '/Images/image6.jpg'),
+(3, 'Aspirateur Robot', 'Électroménager', 250, 300, 400, 200, 'Aspirateur robot intelligent', '7622400006753', '/Images/image7.jpg'),
+(4, 'Lampadaire LED', 'Éclairage', 80, 96, 120, 60, 'Lampadaire LED avec variateur', '901234567490', '/Images/image8.jpg'),
+(5, 'Enceinte Bluetooth', 'Audio', 50, 60, 80, 40, 'Enceinte Bluetooth portable', '012345668912', '/Images/image9.jpg'),
 (3, 'Clavier Sans Fil', 'Informatique', 50, 60, 80, 30, 'Clavier sans fil avec pavé numérique', '123456789012', '/Images/image10.jpg'),
-(4, 'Scanner Document', 'Informatique', 120, 144, 180, 90, 'Scanner de documents haute résolution', '234567890123', '/Images/image11.jpg'),
+(4, 'Scanner Document', 'Informatique', 120, 144, 180, 90, 'Scanner de documents haute résolution', '234567690123', '/Images/image11.jpg'),
 (2, 'Écouteurs Bluetooth', 'Audio', 30, 36, 50, 20, 'Écouteurs Bluetooth sans fil', '345678901234', '/Images/image12.jpg'),
 (5, 'Console de Jeu', 'Jeux Vidéo', 300, 360, 450, 200, 'Console de jeu avec capacités haute performance', '456789012345', '/Images/image13.jpg'),
 (1, 'Disque Dur Externe', 'Informatique', 80, 96, 120, 50, 'Disque dur externe de grande capacité', '567890123456', '/Images/image14.jpg'),
 (3, 'Imprimante 3D', 'Informatique', 250, 300, 400, 150, 'Imprimante 3D pour la création de prototypes', '678901234567', '/Images/image15.jpg'),
 (4, 'Téléviseur 4K', 'Électronique', 700, 840, 1000, 500, 'Téléviseur 4K avec technologie HDR', '789012345678', '/Images/image16.jpg'),
 (2, 'Enceinte Smart', 'Audio', 100, 120, 150, 70, 'Enceinte intelligente avec assistant vocal', '890123456789', '/Images/image17.jpg'),
-(5, 'Souris Gaming', 'Informatique', 40, 48, 60, 25, 'Souris gaming avec rétroéclairage RGB', '901234567890', '/Images/image18.jpg'),
+(5, 'Souris Gaming', 'Informatique', 40, 48, 60, 25, 'Souris gaming avec rétroéclairage RGB', '750165010074', '/Images/image18.jpg'),
 (1, 'Appareil Photo Reflex', 'Photographie', 600, 720, 900, 450, 'Appareil photo reflex professionnel', '012345678912', '/Images/image19.jpg');
 
 -- Inserts for produit table
@@ -70,7 +70,18 @@ INSERT INTO `produit` (`id_emplacement`, `id_articles`, `quantite_stock`, `quant
 (7, 7, 35, 0),
 (8, 8, 50, 0),
 (9, 9, 30, 0),
-(10, 10, 40, 0);
+(10, 10, 40, 0),
+(1, 11, 20, 0),
+(2, 12, 30, 0),
+(3, 13, 40, 0),
+(4, 14, 50, 0),
+(5, 15, 60, 0),
+(6, 16, 70, 0),
+(7, 17, 10, 0),
+(8, 18, 80, 0),
+(9, 19, 90, 0),
+(10, 20, 20, 0);
+
 
 -- Inserts for mouvement table
 INSERT INTO `mouvement` (`id_employes`) VALUES
