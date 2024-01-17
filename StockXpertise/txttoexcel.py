@@ -3,7 +3,7 @@ import pandas as pd
 from pathlib import Path
 import sys
 
-# Récupère les arguments passés au script
+# Rï¿½cupï¿½re les arguments passï¿½s au script
 args = sys.argv
 
 if len(args) > 1:
@@ -11,7 +11,7 @@ if len(args) > 1:
 
 def txt_to_excel(input_path, output_path):
     # Lecture du fichier texte avec Pandas
-    dataframe = pd.read_csv(input_path, encoding='UTF-8')
+    dataframe = pd.read_csv(input_path, encoding='latin-1')
 
     # Export du DataFrame vers un fichier Excel
     dataframe.to_excel(output_path, index=False)  # index=False pour ne pas inclure l'index dans le fichier Excel
