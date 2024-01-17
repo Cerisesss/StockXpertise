@@ -297,7 +297,7 @@ namespace StockXpertise.Stock
 
                     commande_sql.ExecuteReader();
 
-                    MessageBox.Show("L'emplacement n'existe pas, il a été ajouté.");
+                    MessageBox.Show("L'emplacement n'existe pas, il a été ajouté.", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
 
                     //recup l'id de l'emplacement
 
@@ -569,7 +569,7 @@ namespace StockXpertise.Stock
                 reader = commande.ExecuteReader();
 
                 //message de confirmation
-                MessageBox.Show("Ajouté avec succès.");
+                MessageBox.Show("Ajouté avec succès.", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception ex)
             {
@@ -701,7 +701,7 @@ namespace StockXpertise.Stock
                 commande.ExecuteReader();
 
                 //message de confirmation
-                MessageBox.Show("Supprimé avec succès.");
+                MessageBox.Show("Supprimé avec succès.", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception ex)
             {

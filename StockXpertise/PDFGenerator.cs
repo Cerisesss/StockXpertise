@@ -54,7 +54,7 @@ namespace StockXpertise
                     }
                     document.Close();
 
-                    MessageBox.Show("Le fichier PDF a été généré avec succès !");
+                    MessageBox.Show("Le fichier PDF a été généré avec succès !", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
 
                     // Ouvre le fichier avec l'application par défaut après la génération
                     Process.Start(fileName);

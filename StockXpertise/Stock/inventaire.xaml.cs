@@ -59,7 +59,7 @@ namespace StockXpertise.Stock
 
             if(string.IsNullOrEmpty(emplacementReel) && string.IsNullOrEmpty(stockReel))
             {
-                MessageBox.Show("Veuillez remplir au moins un champ");
+                MessageBox.Show("Veuillez remplir au moins un champ", "Oups", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             else

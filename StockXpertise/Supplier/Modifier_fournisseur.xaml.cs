@@ -59,7 +59,7 @@ namespace StockXpertise.Supplier
                 else
                 {
                     // La conversion a échoué, numero ne contient pas une valeur entière valide
-                    MessageBox.Show("Le numéro ne peut contenir que des chiffres.");
+                    MessageBox.Show("Le numéro ne peut contenir que des chiffres.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
             }
@@ -68,7 +68,7 @@ namespace StockXpertise.Supplier
             {
                 if (!Regex.IsMatch(nomTextBox.Text, "^[a-zA-Z]+$"))
                 {
-                    MessageBox.Show("Le nom et prénom doit etre des lettres.");
+                    MessageBox.Show("Le nom et prénom ne peuvent contenir que des lettres.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
                 else
@@ -81,7 +81,7 @@ namespace StockXpertise.Supplier
             {
                 if (!Regex.IsMatch(prenomTextBox.Text, "^[a-zA-Z]+$"))
                 {
-                    MessageBox.Show("Le nom et prénom doit etre des lettres.");
+                    MessageBox.Show("Le nom et prénom ne peuvent contenir que des lettres.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
                 else

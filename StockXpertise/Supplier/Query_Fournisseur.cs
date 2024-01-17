@@ -78,7 +78,7 @@ namespace StockXpertise
                 reader = commande.ExecuteReader();
 
                 //message de confirmation
-                MessageBox.Show("Ajouté avec succès.");
+                MessageBox.Show("Ajouté avec succès.", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception ex)
             {
@@ -112,7 +112,7 @@ namespace StockXpertise
                 reader = commande.ExecuteReader();
 
                 //message de confirmation
-                MessageBox.Show("Modifié avec succès.");
+                MessageBox.Show("Modifié avec succès.", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception ex)
             {
@@ -144,7 +144,7 @@ namespace StockXpertise
                 reader = command.ExecuteReader();
 
                 //message de confirmation
-                MessageBox.Show("Supprimé avec succès.");
+                MessageBox.Show("Supprimé avec succès.", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
 
             }
             catch (Exception ex)
