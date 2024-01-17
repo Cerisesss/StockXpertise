@@ -107,12 +107,6 @@ namespace StockXpertise.Stock
             int id_emplacement = selectedData.Id_emplacement;
             int quantite_avant = selectedData.Quantite;
 
-            if (!Regex.IsMatch(nouvelleFamille, "^[a-zA-Z]+$"))
-            {
-                MessageBox.Show("La famille doit etre des lettres.");
-                return;
-            }
-
             if (string.IsNullOrEmpty(code_barre) && string.IsNullOrEmpty(nouveauNom) && string.IsNullOrEmpty(nouvelleFamille) && string.IsNullOrEmpty(nouvelledescription) && string.IsNullOrEmpty(nouvelleQuantite) && string.IsNullOrEmpty(nouveauPrixHT) && string.IsNullOrEmpty(nouveauPrixTTC) && string.IsNullOrEmpty(imagePath))
             {
                 MessageBox.Show("Veuillez remplir au moins un champ");
@@ -120,9 +114,31 @@ namespace StockXpertise.Stock
             }
             else
             {
-                Int32.TryParse(nouveauPrixHT, out var prixHT);
-                Int32.TryParse(nouveauPrixTTC, out var prixTTC);
-                Int32.TryParse(nouvelleQuantite, out var quantite);
+                if (!string.IsNullOrEmpty(nouvelleFamille) && !Regex.IsMatch(nouvelleFamille, "^[a-zA-Z]+$"))
+                {
+                    MessageBox.Show("La famille doit etre des lettres.");
+                    return;
+                }
+
+                bool convertPrixHT = Int32.TryParse(nouveauPrixHT, out var prixHT);
+                bool convertPrixTTC = Int32.TryParse(nouveauPrixTTC, out var prixTTC);
+                bool convertQuantite = Int32.TryParse(nouvelleQuantite, out var quantite);
+
+                if (!string.IsNullOrEmpty(nouveauPrixHT) && !convertPrixHT)
+                {
+                    MessageBox.Show("Le prix HT doit etre numerique.");
+                    return;
+                }
+                if (!string.IsNullOrEmpty(nouveauPrixTTC) && !convertPrixTTC)
+                {
+                    MessageBox.Show("Le prix TTC doit etre numerique.");
+                    return;
+                }
+                if (!string.IsNullOrEmpty(nouvelleQuantite) && !convertQuantite)
+                {
+                    MessageBox.Show("La quantite doit etre numerique.");
+                    return;
+                }
 
                 Query_Stock query_Update = new Query_Stock(selectedData.Id, nouveauNom, nouvelleFamille, prixHT, prixTTC, nouvelledescription, code_barre, quantite, imagePath, code_emplacement, id_emplacement);
 
