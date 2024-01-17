@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:StockXpertise.components"
       mc:Ignorable="d"
-      d:DesignHeight="800" d:DesignWidth="1200"
+      d:DesignHeight="800" d:DesignWidth="1500"
       Title="Statg�n�rate">
 
     <Grid>
@@ -15,7 +15,7 @@
                 <ColumnDefinition Width="791*"/>
                 <ColumnDefinition Width="409*"/>
             </Grid.ColumnDefinitions>
-            <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="507" VerticalAlignment="Top" Width="901" AutoGenerateColumns="True" Margin="232,149,0,0" Grid.ColumnSpan="2" />
+            <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="508" VerticalAlignment="Center" Width="901" AutoGenerateColumns="True" Margin="369,0,0,0" Grid.ColumnSpan="2" />
             <Button x:Name="excelgenerate" Content="Exporter" HorizontalAlignment="Left" Height="42" Margin="466,60,0,0" VerticalAlignment="Top" Width="134" Click="create_excel" BorderBrush="#FFABADB3" BorderThickness="2" RenderTransformOrigin="0.5,0.5" Background="#FFFFDDCC">
                 <Button.RenderTransform>
                     <TransformGroup>

@@ -192,7 +192,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Add_fournisseur.xaml.cs">
+    <Compile Include="Supplier\Add_fournisseur.xaml.cs">
       <DependentUpon>Add_fournisseur.xaml</DependentUpon>
     </Compile>
     <Compile Include="Caisse\Caisse.xaml.cs">
@@ -201,8 +201,8 @@
     <Compile Include="Caisse\Query_Caisse.cs" />
     <Compile Include="Connection\Query_Connection.cs" />
     <Compile Include="donnees_articles.cs" />
-    <Compile Include="Fournisseur.cs" />
-    <Compile Include="fournisseur.xaml.cs">
+    <Compile Include="Supplier\Fournisseur.cs" />
+    <Compile Include="Supplier\fournisseur.xaml.cs">
       <DependentUpon>fournisseur.xaml</DependentUpon>
     </Compile>
     <Compile Include="ImageInfo.cs" />
@@ -210,7 +210,10 @@
     <Compile Include="Profile\Profile.xaml.cs">
       <DependentUpon>Profile.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Query_Fournisseur.cs" />
+    <Compile Include="Supplier\Modifier_fournisseur.xaml.cs">
+      <DependentUpon>Modifier_fournisseur.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Supplier\Query_Fournisseur.cs" />
     <Compile Include="Statgénérate.xaml.cs">
       <DependentUpon>Statgénérate.xaml</DependentUpon>
     </Compile>
@@ -246,7 +249,7 @@
     <Compile Include="User\User.xaml.cs">
       <DependentUpon>User.xaml</DependentUpon>
     </Compile>
-    <Page Include="Add_fournisseur.xaml">
+    <Page Include="Supplier\Add_fournisseur.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -262,7 +265,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="fournisseur.xaml">
+    <Page Include="Supplier\fournisseur.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -314,6 +317,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Stock\modification_stock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Supplier\Modifier_fournisseur.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

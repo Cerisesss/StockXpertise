@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using StockXpertise.Stock;
+using StockXpertise.User;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -16,7 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace StockXpertise
+namespace StockXpertise.Supplier
 {
     /// <summary>
     /// Logique d'interaction pour fournisseur.xaml
@@ -37,6 +38,16 @@ namespace StockXpertise
 
             // Assigne les données au DataGrid
             MyDataGrid.ItemsSource = reader;
+
+            if (Application.Current.Properties["role"].ToString() == "Admin" || Application.Current.Properties["role"].ToString() == "admin")
+            {
+                BtnAddSupplier.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                BtnAddSupplier.Visibility = Visibility.Hidden;
+            }
+            
         }
 
         private void ComboBox_SelectionChanged_affichage(object sender, SelectionChangedEventArgs e)
@@ -78,6 +89,33 @@ namespace StockXpertise
             if (parentWindow != null)
             {
                 parentWindow.Content = newfournisseur;
+            }
+        }
+
+        private void MyDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (MyDataGrid.SelectedItem != null)
+            {
+                //pour un type dynamique (sans classe)
+                dynamic selectedPerson = (dynamic)MyDataGrid.SelectedItem;
+
+                //stocke les valeurs de la ligne selectionnée dans des variables "globales" pour pouvoir les utiliser dans une autre page
+                Application.Current.Properties["Id_Fournisseur_DataGrid"] = selectedPerson.GetInt32(0);
+                Application.Current.Properties["Nom_Founisseur_DataGrid"] = selectedPerson.GetString(1);
+                Application.Current.Properties["Prenom_Founisseur_DataGrid"] = selectedPerson.GetString(2);
+                Application.Current.Properties["Numero_Founisseur_DataGrid"] = selectedPerson.GetInt32(3);
+                Application.Current.Properties["Mail_Founisseur_DataGrid"] = selectedPerson.GetString(4);
+                Application.Current.Properties["Adresse_Founisseur_DataGrid"] = selectedPerson.GetString(5);
+
+                //creer une nouvelle page 
+                Modifier_fournisseur modifierFournisseur = new Modifier_fournisseur();
+                Window parentWindow = Window.GetWindow(this);
+
+                //affiche le contenu de la page suivante
+                if (parentWindow != null)
+                {
+                    parentWindow.Content = modifierFournisseur;
+                }
             }
         }
     }

@@ -13,8 +13,8 @@
         <Frame x:Name="addUser" NavigationUIVisibility="Hidden"/>
 
         <Rectangle Margin="570,160,373,337" Stroke="#FFACACAC" Fill="#FFFFDDCC"/>
-        <Button Content="Valider" Height="30" Margin="832,478,478,292" Width="90" Click="Button_Click" Background="#FFEBF3E8" BorderBrush="Black"/>
-        <Button Content="Annuler" Height="30" Margin="678,478,632,292" Width="90" Click="Button_Click_1" BorderBrush="Black" Background="#FFFFDDCC"/>
+        <Button Content="Valider" Margin="832,478,478,285" Width="90" Click="Button_Click" Background="#FFEBF3E8" BorderBrush="Black"/>
+        <Button Content="Annuler" Margin="678,478,632,285" Width="90" Click="Button_Click_1" BorderBrush="Black" Background="#FFFFDDCC"/>
 
         <Label Content="Nom" Height="23" Margin="334,41,378,386" Width="88"/>
         <Label Content="Prénom" Height="23" Margin="334,79,378,348" Width="88"/>
@@ -32,7 +32,7 @@
         <RadioButton x:Name="radioPersonnel" Content="Personnel" Height="15" Margin="434,206,286,229" Width="80" Checked="RadioButton_Checked" GroupName="radioRole"/>
         <RadioButton x:Name="radioCaissier" Content="Caissier" Height="15" Margin="434,221,286,214" Width="80" Checked="RadioButton_Checked" GroupName="radioRole"/>
 
-        <ProgressBar x:Name="ConnexionProgressBar" Height="10" Margin="548,528,352,262" Minimum="0" Maximum="100" Background="White" BorderBrush="#FFBCBCBC">
+        <ProgressBar x:Name="ConnexionProgressBar" Margin="548,528,352,253" Minimum="0" Maximum="100" Background="White" BorderBrush="#FFBCBCBC">
             <ProgressBar.Foreground>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FFD9EDBF"/>

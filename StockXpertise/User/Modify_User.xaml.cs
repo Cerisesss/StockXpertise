@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Google.Protobuf.WellKnownTypes;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace StockXpertise.User
 {
@@ -27,6 +30,8 @@ namespace StockXpertise.User
         string password;
         string mail;
         string role;
+
+        private DispatcherTimer timer;
 
         public Modify_User()
         {
@@ -46,20 +51,50 @@ namespace StockXpertise.User
             password = Application.Current.Properties["MdpDataGrid"].ToString();
             mail = Application.Current.Properties["MailDataGrid"].ToString();
             role = Application.Current.Properties["RoleDataGrid"].ToString();
+
+            ConnexionProgressBar.Visibility = Visibility.Hidden;
+
+            ConnexionProgressBar.Value = 0;
+
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromMilliseconds(100);
+            timer.Tick += Timer_Tick;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            // Incrémentez la barre de progression
+            ConnexionProgressBar.Value += (200.0 / (3000 / timer.Interval.TotalMilliseconds));
+        }
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
             //conditions pour verifier si les champs sont vides et si les données sont differentes de celles de la ligne selectionnée
             //si c'est le cas alors on affecte les nouvelles données aux variables
             if ((string)labelNom.Content != nomTextBox.Text && !string.IsNullOrEmpty(nomTextBox.Text))
             {
-                nom = nomTextBox.Text;
+                if (!Regex.IsMatch(nomTextBox.Text, "^[a-zA-Z]+$"))
+                {
+                    MessageBox.Show("Le nom et prénom doit etre des lettres.");
+                    return;
+                }
+                else
+                {
+                    nom = nomTextBox.Text;
+                }
             }
 
             if ((string)labelPrenom.Content != prenomTextBox.Text && !string.IsNullOrEmpty(prenomTextBox.Text))
             {
-                prenom = prenomTextBox.Text;
+                if (!Regex.IsMatch(prenomTextBox.Text, "^[a-zA-Z]+$"))
+                {
+                    MessageBox.Show("Le nom et prénom doit etre des lettres.");
+                    return;
+                }
+                else
+                {
+                    prenom = prenomTextBox.Text;
+                }
             }
 
             if ((string)labelMdp.Content != mdpTextBox.Text && !string.IsNullOrEmpty(mdpTextBox.Text))
@@ -85,6 +120,13 @@ namespace StockXpertise.User
                 role = radioCaissier.Content.ToString();
             }
 
+            //barre de progression
+            ConnexionProgressBar.Visibility = Visibility.Visible;
+
+            timer.Start();
+
+            await Task.Delay(2000);
+
             //generation du sel
             string salt = BCrypt.Net.BCrypt.GenerateSalt(15);
 
@@ -95,6 +137,9 @@ namespace StockXpertise.User
             Query_User query_modify = new Query_User(id, nom, prenom, password, mail, role);
             query_modify.Update_User();
 
+            ConnexionProgressBar.Value = 100;
+            timer.Stop();
+
             //redirection vers la page User.xaml
             User user = new User();
             Window parentWindow = Window.GetWindow(this);
@@ -103,9 +148,6 @@ namespace StockXpertise.User
             {
                 parentWindow.Content = user;
             }
-
-            //gridModifyUser.Visibility = Visibility.Collapsed;
-            //modifyUser.Navigate(new Uri("/User/User.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

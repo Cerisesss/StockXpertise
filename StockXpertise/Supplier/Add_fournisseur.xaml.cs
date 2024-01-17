@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -43,7 +44,11 @@ namespace StockXpertise
             adresse = adressefournisseur.Text;
             //string image;
 
-
+            if (!Regex.IsMatch(nom, "^[a-zA-Z]+$") || !Regex.IsMatch(prenom, "^[a-zA-Z]+$"))
+            {
+                MessageBox.Show("Le nom et prénom doit etre des lettres.");
+                return;
+            }
 
             //condition pour verifier si les champs sont vides
             //si c'est le cas alors on affiche un message
@@ -61,7 +66,7 @@ namespace StockXpertise
                     query_insert.Insert_Founisseur();
 
                     //redirection vers la page affichage_stock.xaml
-                    fournisseur stock = new fournisseur();
+                    Supplier.fournisseur stock = new Supplier.fournisseur();
                     Window parentWindow = Window.GetWindow(this);
 
                     if (parentWindow != null)
@@ -80,7 +85,7 @@ namespace StockXpertise
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             //redirection vers la page affichage_stock.xaml
-            fournisseur fournisseur = new fournisseur();
+            Supplier.fournisseur fournisseur = new Supplier.fournisseur();
             Window parentWindow = Window.GetWindow(this);
 
             if (parentWindow != null)

@@ -5,15 +5,15 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:StockXpertise.components"
       mc:Ignorable="d" 
-      d:DesignHeight="800" d:DesignWidth="1400"
+      d:DesignHeight="800" d:DesignWidth="1500"
       Title="User">
 
     <Grid x:Name="gridUser" Background="White">
         <local:UserControl1/>
         <Frame x:Name="user" NavigationUIVisibility="Hidden"/>
 
-        <Grid Margin="223,-18,44,0">
-            <Rectangle HorizontalAlignment="Left" Height="36" Margin="107,180,0,0" Stroke="#FFACACAC" VerticalAlignment="Top" Width="137" RenderTransformOrigin="0.527,0.493">
+        <Grid Margin="248,-16,19,-2">
+            <Rectangle HorizontalAlignment="Left" Height="36" Margin="110,197,0,0" Stroke="#FFACACAC" VerticalAlignment="Top" Width="137" RenderTransformOrigin="0.527,0.493">
                 <Rectangle.Fill>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="#FFACACAC"/>
@@ -22,9 +22,9 @@
                     </LinearGradientBrush>
                 </Rectangle.Fill>
             </Rectangle>
-            <ComboBox x:Name="comboBoxAffichage" HorizontalAlignment="Left" Height="36" Margin="244,180,0,0" VerticalAlignment="Top" Width="365" SelectionChanged="ComboBox_SelectionChanged_affichage"/>
-            <Label Content="Affichage" HorizontalAlignment="Left" Height="30" Margin="129,183,0,0" VerticalAlignment="Top" Width="122"/>
-            <DataGrid x:Name="MyDataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Height="491" Width="997" Margin="107,242,0,0"
+            <ComboBox x:Name="comboBoxAffichage" HorizontalAlignment="Left" Height="36" Margin="247,197,0,0" VerticalAlignment="Top" Width="365" SelectionChanged="ComboBox_SelectionChanged_affichage"/>
+            <Label Content="Affichage" HorizontalAlignment="Left" Height="30" Margin="132,200,0,0" VerticalAlignment="Top" Width="122"/>
+            <DataGrid x:Name="MyDataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Height="491" Width="997" Margin="110,259,0,0"
             AutoGenerateColumns="True"
             AlternatingRowBackground="#F0F0F0"
             GridLinesVisibility="None"
@@ -51,13 +51,13 @@
                     </Style>
                 </DataGrid.Resources>
             </DataGrid>
-            <Button Content="Ajouter" HorizontalAlignment="Left" Height="36" Margin="1010,178,0,0" VerticalAlignment="Top" Width="94" Click="Button_Click" Background="#FFFFDDCC" BorderBrush="Black"/>
-            <Border BorderThickness="2" Margin="95,64,0,0" CornerRadius="10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="77" Width="1027" Background="#FFFFB996">
+            <Button Content="Ajouter" HorizontalAlignment="Left" Height="36" Margin="1013,195,0,0" VerticalAlignment="Top" Width="94" Click="Button_Click" Background="#FFFFDDCC" BorderBrush="Black"/>
+            <Border BorderThickness="2" Margin="10,65,0,0" CornerRadius="10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="77" Width="1176" Background="#FFD9EDBF">
                 <Border.Effect>
                     <DropShadowEffect/>
                 </Border.Effect>
             </Border>
-            <TextBlock Text="Utilisateur" HorizontalAlignment="Left" FontSize="24" Margin="540,80,0,674" Width="138" FontWeight="Bold"/>
+            <TextBlock Text="Utilisateur" HorizontalAlignment="Center" FontSize="24" Margin="0,78,0,676" Width="138" FontWeight="Bold" RenderTransformOrigin="0.404,0.489"/>
         </Grid>
     </Grid>
 </Page>

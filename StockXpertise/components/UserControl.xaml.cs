@@ -74,7 +74,7 @@ namespace StockXpertise.components
 
         private void b2_Click(object sender, RoutedEventArgs e)
         {
-            fournisseur fournisseur = new fournisseur();
+            Supplier.fournisseur fournisseur = new Supplier.fournisseur();
 
             Window parentWindow = Window.GetWindow(this);
 
