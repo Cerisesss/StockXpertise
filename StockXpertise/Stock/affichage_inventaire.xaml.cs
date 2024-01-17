@@ -60,13 +60,9 @@ namespace StockXpertise.Stock
                     Code_reel = reader["code_reel"].ToString()
                 };
 
-                if(articleData.Quantite_stock_reel == 0)
+                if((articleData.Quantite_stock_reel == 0) || (articleData.Code_reel == null))
                 {
                     Console.WriteLine("test");
-                }
-                else if(articleData.Code_reel == null)
-                {
-                    Console.WriteLine("test2");
                 }
                 else if ((articleData.Quantite_stock != articleData.Quantite_stock_reel || articleData.Code != articleData.Code_reel))
                 {

@@ -66,7 +66,7 @@ namespace StockXpertise.Connection
 
             if (reader == null)
             {
-                MessageBox.Show("Connexion échouée. Le mail ou le mot de passe est incorrect.");
+                MessageBox.Show("Connexion échouée. Le mail ou le mot de passe est incorrect.", "Oups !", MessageBoxButton.OK, MessageBoxImage.Error);
 
                 ConnexionProgressBar.Visibility = Visibility.Hidden;
                 ConnexionProgressBar.Value = 0;

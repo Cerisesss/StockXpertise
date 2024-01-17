@@ -46,7 +46,7 @@ namespace StockXpertise
 
             if (!Regex.IsMatch(nom, "^[a-zA-Z]+$") || !Regex.IsMatch(prenom, "^[a-zA-Z]+$"))
             {
-                MessageBox.Show("Le nom et prénom doit etre des lettres.");
+                MessageBox.Show("Le nom et prénom doit etre des lettres.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -55,7 +55,7 @@ namespace StockXpertise
             //sinon on execute la requete
             if (string.IsNullOrEmpty(nom) || string.IsNullOrEmpty(prenom) || string.IsNullOrEmpty(numero) || string.IsNullOrEmpty(mail) || string.IsNullOrEmpty(adresse))
             {
-                MessageBox.Show("Veuillez remplir tous les champs.");
+                MessageBox.Show("Veuillez remplir tous les champs.", "Oups !", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
@@ -77,7 +77,7 @@ namespace StockXpertise
                 else
                 {
                     // La conversion a échoué, numero ne contient pas une valeur entière valide
-                    MessageBox.Show("Le numéro ne peut contenir que des chiffres.");
+                    MessageBox.Show("Le numéro ne peut contenir que des chiffres.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }

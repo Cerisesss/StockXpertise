@@ -72,7 +72,7 @@ namespace StockXpertise.User
                 reader = commande.ExecuteReader();
 
                 //message de confirmation
-                MessageBox.Show("Modifié avec succès.");
+                MessageBox.Show("Modifié avec succès.", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception ex)
             {
@@ -207,8 +207,7 @@ namespace StockXpertise.User
                 reader = command.ExecuteReader();
 
                 //message de confirmation
-                MessageBox.Show("Supprimé avec succès.");
-
+                MessageBox.Show("Supprimé avec succès.", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception ex)
             {
@@ -232,7 +231,7 @@ namespace StockXpertise.User
 
                 if (reader_verif.HasRows)
                 {
-                    MessageBox.Show("Mail déjà utilisé.");
+                    MessageBox.Show("Mail déjà utilisé.", "Attention", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
                 else
                 {
@@ -253,7 +252,7 @@ namespace StockXpertise.User
                     reader = commande.ExecuteReader();
 
                     //message de confirmation
-                    MessageBox.Show("Ajouté avec succès.");
+                    MessageBox.Show("Ajouté avec succès.", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
             catch (Exception ex)

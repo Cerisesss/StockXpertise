@@ -83,7 +83,7 @@ namespace StockXpertise.User
             //verification pour savoir si le nom et prenom sont des lettres et si le mail est bien un mail
             if (!Regex.IsMatch(nom, "^[a-zA-Z]+$") || !Regex.IsMatch(prenom, "^[a-zA-Z]+$"))
             {
-                MessageBox.Show("Le nom et prénom doit etre des lettres.");
+                MessageBox.Show("Le nom et prénom doit etre des lettres.", "Attention", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
@@ -106,7 +106,7 @@ namespace StockXpertise.User
             //sinon on execute la requete d'ajout d'un utilisateur
             if (string.IsNullOrEmpty(nom) || string.IsNullOrEmpty(prenom) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(mail)|| role == null)
             {
-                MessageBox.Show("Veuillez remplir tous les champs.");
+                MessageBox.Show("Veuillez remplir tous les champs.", "Attention", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             else
             {

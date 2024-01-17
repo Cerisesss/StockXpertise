@@ -49,14 +49,14 @@ namespace StockXpertise.Caisse
             //si les champs sont vides, on affiche un message d'erreur
             if (string.IsNullOrEmpty(code_barre) || string.IsNullOrEmpty(quantite))
             {
-                MessageBox.Show("Veuillez remplir tous les champs");
+                MessageBox.Show("Veuillez remplir tous les champs", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
                 // Vérifie que la quantité soit positive et qu'il y en a assez dans la bdd
                 if (!IsValidQuantite(quantite))
                 {
-                    MessageBox.Show("Veuillez entrer une quantité valide et positive");
+                    MessageBox.Show("Veuillez entrer une quantité valide et positive", "Oups", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
                 else
@@ -85,7 +85,7 @@ namespace StockXpertise.Caisse
                                 if (totalQuantite <= existingArticle.QuantiteEnStock)
                                 {
                                     existingArticle.Quantite = totalQuantite;
-                                    MessageBox.Show($"Quantité mise à jour : x{totalQuantite}, code barre : {code_barre}");
+                                    MessageBox.Show($"Quantité mise à jour : x{totalQuantite}, code barre : {code_barre}", "Réussi", MessageBoxButton.OK, MessageBoxImage.Information);
 
                                     foreach (var existing_Article in listeArticles)
                                     {
@@ -109,7 +109,7 @@ namespace StockXpertise.Caisse
                                 }
                                 else
                                 {
-                                    MessageBox.Show("La quantité totale dépasse la limite autorisée.");
+                                    MessageBox.Show("La quantité totale dépasse la limite autorisée.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                                 }
                             }
                             else
@@ -145,17 +145,17 @@ namespace StockXpertise.Caisse
                                 listBoxImages.ItemsSource = newListeImages;
 
                                 // Affiche un message de confirmation
-                                MessageBox.Show($"Article ajouté à la liste de course : x{quantiteSaisieInt}, code barre : {code_barre}");
+                                MessageBox.Show($"Article ajouté à la liste de course : x{quantiteSaisieInt}, code barre : {code_barre}", "Réussi", MessageBoxButton.OK, MessageBoxImage.Information);
                             }
                         }
                         else
                         {
-                            MessageBox.Show("Rupture de Stock, nombre de produit en stock : " + quantiteEnStock + ".");
+                            MessageBox.Show("Rupture de Stock, nombre de produit en stock : " + quantiteEnStock + ".", "Oups", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Code barre introuvable.");
+                        MessageBox.Show("Code barre introuvable.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
             }
@@ -180,7 +180,7 @@ namespace StockXpertise.Caisse
             }
 
             // Affichez le message de confirmation
-            MessageBox.Show("Liste de course validée !");
+            MessageBox.Show("Liste de course validée !", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
 
             // Effacez la liste d'articles après validation
             listeArticles.Clear();
