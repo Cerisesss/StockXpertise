@@ -60,17 +60,36 @@ namespace StockXpertise.Stock
                     Code_reel = reader["code_reel"].ToString()
                 };
 
-                if((articleData.Quantite_stock_reel == 0) || (articleData.Code_reel == null))
+                /*if((articleData.Quantite_stock_reel == 0) || (articleData.Code_reel == null))
                 {
                     Console.WriteLine("test");
+                }*/
+                Console.WriteLine("code :" + articleData.Code);
+                Console.WriteLine("code_reel :" + articleData.Code_reel);
+
+                Console.WriteLine("quantite_stock :" + articleData.Quantite_stock);
+                Console.WriteLine("quantite_stock_reel :" + articleData.Quantite_stock_reel);
+                if (articleData.Quantite_stock_reel == 0 && articleData.Code_reel == null)
+                {
+                    Console.WriteLine("code :" + articleData.Code);
+                    Console.WriteLine("code_reel :" + articleData.Code_reel);
                 }
-                else if ((articleData.Quantite_stock != articleData.Quantite_stock_reel || articleData.Code != articleData.Code_reel))
+                else if (articleData.Quantite_stock_reel == 0 && articleData.Code_reel == "")
+                {
+                    Console.WriteLine("code :" + articleData.Code);
+                    Console.WriteLine("code_reel :" + articleData.Code_reel);
+                }
+                /*else if ((articleData.Quantite_stock != articleData.Quantite_stock_reel) || (articleData.Code != articleData.Code_reel))
                 {
                     redIds.Add(articleData.Id_produit);
-                }
+                }*/
                 else if (articleData.Quantite_stock == articleData.Quantite_stock_reel && articleData.Code == articleData.Code_reel)
                 {
                     greenIds.Add(articleData.Id_produit);
+                }
+                else
+                {
+                    redIds.Add(articleData.Id_produit);
                 }
 
                 articlesDataList.Add(articleData);
