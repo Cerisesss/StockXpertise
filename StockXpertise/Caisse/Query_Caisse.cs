@@ -28,15 +28,12 @@ namespace StockXpertise.Caisse
 
             return ConnectionDB;
         }
-        
+
         public MySqlDataReader Compare_Quantite()
         {
             try
             {
-                string query = "SELECT p.quantite_stock " +
-               "FROM produit p " +
-               "JOIN articles a ON p.id_articles = a.id_articles " +
-               "WHERE a.code_barre = @CodeBarre";
+                string query = "SELECT * FROM produit p JOIN articles a ON p.id_articles = a.id_articles WHERE code_barre = @CodeBarre";
 
                 MySqlCommand commande = new MySqlCommand(query, ConnectionDB());
                 commande.Parameters.AddWithValue("@CodeBarre", code_barre);
