@@ -12,7 +12,7 @@
         <local:UserControl1/>
         <Frame x:Name="StockFrame" NavigationUIVisibility="Hidden"/>
         <Grid x:Name="gridStock" Margin="206,0,47,10">
-            <Border BorderThickness="2" Margin="28,51,0,0" CornerRadius="10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="77" Width="1209" Background="#FFFFB996">
+            <Border BorderThickness="2" Margin="28,51,0,0" CornerRadius="10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="77" Width="1209" Background="#f3c9a2">
                 <Border.Effect>
                     <DropShadowEffect/>
                 </Border.Effect>
