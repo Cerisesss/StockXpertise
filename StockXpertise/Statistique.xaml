@@ -11,7 +11,7 @@
         <local:UserControl1/>
 
         <Grid Margin="181,0,10,0">
-            <Border BorderThickness="2" Margin="0,51,0,0" CornerRadius="10" VerticalAlignment="Top" HorizontalAlignment="Center" Height="77" Width="1158" Background="#EFD595">
+            <Border BorderThickness="2" Margin="0,51,0,0" CornerRadius="10" VerticalAlignment="Top" HorizontalAlignment="Center" Height="77" Width="1158" Background="#ebd4ac">
                 <Border.Effect>
                     <DropShadowEffect/>
                 </Border.Effect>

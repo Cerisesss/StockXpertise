@@ -15,7 +15,7 @@
             <Grid.Background>
                 <ImageBrush/>
             </Grid.Background>
-            <Border BorderThickness="2" Margin="0,51,0,0" CornerRadius="10" VerticalAlignment="Top" HorizontalAlignment="Center" Height="77" Width="1247" Background="#FFFFB996">
+            <Border BorderThickness="2" Margin="0,51,0,0" CornerRadius="10" VerticalAlignment="Top" HorizontalAlignment="Center" Height="77" Width="1247" Background="#feba97">
                 <Border.Effect>
                     <DropShadowEffect/>
                 </Border.Effect>
