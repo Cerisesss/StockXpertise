@@ -99,9 +99,18 @@ namespace StockXpertise.Stock
                 bool result_prixAchat = Int32.TryParse(prixAchat_string, out var prixAchat);
                 bool result_quantite = Int32.TryParse(quantite_string, out var quantite);
 
+                Query_Stock verif = new Query_Stock(code_barre);
+                bool verif_code_barre = verif.Verif_Code_Barre();
+
                 if (!Regex.IsMatch(famille, "^[a-zA-Z]+$"))
                 {
                     MessageBox.Show("La famille doit etre des lettres.");
+                }
+
+                if (!string.IsNullOrEmpty(code_barre) && verif_code_barre)
+                {
+                    MessageBox.Show("Le code barre existe deja.");
+                    return;
                 }
 
                 if (!result_prixHT || !result_prixTTC || !result_prixAchat || !result_quantite)
