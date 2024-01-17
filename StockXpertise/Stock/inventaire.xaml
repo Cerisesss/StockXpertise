@@ -5,11 +5,11 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:StockXpertise.Stock"
       mc:Ignorable="d" 
-      d:DesignHeight="800" d:DesignWidth="1400"
+      d:DesignHeight="800" d:DesignWidth="1500"
       Title="inventaire">
 
     <Grid>
-        <Border BorderThickness="2" Margin="406,104,0,0" CornerRadius="10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="77" Width="700" Background="#FFFFB996">
+        <Border BorderThickness="2" Margin="0,104,0,0" CornerRadius="10" VerticalAlignment="Top" HorizontalAlignment="Center" Height="77" Width="963" Background="#FFFFB996">
             <Border.Effect>
                 <DropShadowEffect/>
             </Border.Effect>

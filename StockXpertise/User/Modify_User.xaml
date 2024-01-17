@@ -5,14 +5,14 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:StockXpertise.components"
       mc:Ignorable="d" 
-      d:DesignHeight="800" d:DesignWidth="1400"
+      d:DesignHeight="800" d:DesignWidth="1500"
       Title="Modify_User">
 
     <Grid x:Name="gridModifyUser" Background="White">
         <local:UserControl1/>
         <Frame x:Name="modifyUser" NavigationUIVisibility="Hidden"/>
 
-        <Rectangle Height="295" Margin="481,70,24,87" Width="295" Stroke="#FFACACAC" Fill="#FFFFDDCC"/>
+        <Rectangle Height="295" Margin="481,70,24,87" Width="295" Stroke="#FFACACAC" Fill="#FFEBF3E8"/>
         <Label Content="Nom" Height="23" Margin="489,92,229,335" Width="82"/>
         <Label Content="Prénom" Height="23" Margin="489,137,229,290" Width="82"/>
         <Label Content="Mot de passe" Height="23" Margin="489,182,229,243" Width="82"/>
@@ -41,8 +41,16 @@
         <Label x:Name="labelMdp" Content="" Height="29" Margin="279,188,346,232" Width="175"/>
         <Label x:Name="labelMail" Content="" Height="29" Margin="279,230,350,191" Width="175"/>
         <Label x:Name="labelRole" Content="" Height="29" Margin="279,279,350,142" Width="175"/>
-        <Button Content="Supprimer" Height="26" Margin="969,192,341,573" Width="90" Click="Button_Supprimer" Background="#FFFFDDCC"/>
-        <Button Content="Valider" Height="26" Margin="795,565,515,200" Width="90" Click="Button_Click" Background="#FFEBF3E8" BorderBrush="Black" RenderTransformOrigin="0.506,0.719"/>
-        <Button Content="Annuler" Height="26" Margin="662,565,648,200" Width="90" Click="Button_Click_1" Background="#FFFFDDCC"/>
+        <Button Content="Supprimer" Margin="1019,184,391,578" Width="90" Click="Button_Supprimer" Background="#FFFFDDCC"/>
+        <Button Content="Valider" Margin="845,570,565,193" Width="90" Click="Button_Click" Background="#FFEBF3E8" BorderBrush="Black" RenderTransformOrigin="0.506,0.719"/>
+        <Button Content="Annuler" Margin="712,570,698,193" Width="90" Click="Button_Click_1" Background="#FFFFDDCC"/>
+        <ProgressBar x:Name="ConnexionProgressBar" Margin="578,622,422,160" Minimum="0" Maximum="100" Background="White" BorderBrush="#FFBCBCBC">
+            <ProgressBar.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFD9EDBF"/>
+                    <GradientStop Color="#FFADF056" Offset="1"/>
+                </LinearGradientBrush>
+            </ProgressBar.Foreground>
+        </ProgressBar>
     </Grid>
 </Page>

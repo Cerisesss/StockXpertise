@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:StockXpertise.components"
       mc:Ignorable="d" 
-      d:DesignHeight="800" d:DesignWidth="1200"
+      d:DesignHeight="800" d:DesignWidth="1500"
 
       Title="Caisse">
 
@@ -33,6 +33,12 @@
         </ListBox>
         <Button Content="Valider" Margin="231,686,449,82" Width="520" Click="Button_Click_Valider" Background="#FFEBF3E8"/>
         <Label x:Name="info_cassier" HorizontalAlignment="Left" Height="38" Margin="530,48,0,0" VerticalAlignment="Top" Width="270"/>
-        <Image x:Name="videoScan" Margin="821,341,66,251"/>
+        <Image x:Name="videoScan" Margin="946,341,66,251"/>
+        <Border BorderThickness="2" Margin="213,45,0,0" CornerRadius="10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="77" Width="1248" Background="#EFD595">
+            <Border.Effect>
+                <DropShadowEffect/>
+            </Border.Effect>
+        </Border>
+        <TextBlock Text="Caisse" HorizontalAlignment="Left" FontSize="24" Margin="800,60,0,675" Width="69" FontWeight="Bold" RenderTransformOrigin="0.189,0.5"/>
     </Grid>
 </Page>

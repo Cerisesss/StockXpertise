@@ -99,6 +99,10 @@ namespace StockXpertise.Stock
                 bool result_prixAchat = Int32.TryParse(prixAchat_string, out var prixAchat);
                 bool result_quantite = Int32.TryParse(quantite_string, out var quantite);
 
+                if (!Regex.IsMatch(famille, "^[a-zA-Z]+$"))
+                {
+                    MessageBox.Show("La famille doit etre des lettres.");
+                }
 
                 if (!result_prixHT || !result_prixTTC || !result_prixAchat || !result_quantite)
                 {
