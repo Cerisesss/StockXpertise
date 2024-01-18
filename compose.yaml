@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  mariadb-database:
+    image: mariadb:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: 
+      MYSQL_DATABASE: stockxpertise
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql
+      - ./StockXpertise/Configuration/config_Default.xml:/config.xml
+
+  stockxpertise-app:
+    build:
+      context: ./StockXpertise
+      dockerfile: Dockerfile
+    depends_on:
+      - mariadb-database
+    volumes:
+      - ./schema.sql:/app/out/schema.sql
+      - ./StockXpertise/Configuration/config_Default.xml:/app/out/config.xml\
+    platform: windows/amd64 
