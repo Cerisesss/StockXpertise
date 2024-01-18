@@ -61,7 +61,7 @@ namespace StockXpertise.Stock
                 var articleData = new Article
                 {
                     Id = Convert.ToInt32(reader["id_articles"]),
-                    Id_emplacement = Convert.ToInt32(reader["id_emplacement"]),
+                    //Id_emplacement = Convert.ToInt32(reader["id_emplacement"]),
                     ImagePath = reader["image"].ToString(),
                     Code_emplacement = reader["code"].ToString(),
                     Nom = reader["nom"].ToString(),
@@ -90,7 +90,7 @@ namespace StockXpertise.Stock
                 var articleData = new Article
                 {
                     Id = Convert.ToInt32(reader["id_articles"]),
-                    Id_emplacement = Convert.ToInt32(reader["id_emplacement"]),
+                    //Id_emplacement = Convert.ToInt32(reader["id_emplacement"]),
                     Code_emplacement = reader["code"].ToString(),
                     Nom = reader["nom"].ToString(),
                     Famille = reader["famille"].ToString(),
@@ -155,7 +155,7 @@ namespace StockXpertise.Stock
                 iText.Layout.Element.Table table = new iText.Layout.Element.Table(8);
 
                 table.AddHeaderCell("ID Articles");
-                table.AddHeaderCell("ID Emplacement");
+                //table.AddHeaderCell("ID Emplacement");
                 table.AddHeaderCell("Code emplacement");
                 table.AddHeaderCell("Nom");
                 table.AddHeaderCell("Famille");
@@ -168,7 +168,7 @@ namespace StockXpertise.Stock
                 foreach (var data in articlesDataList)
                 {
                     table.AddCell(data.Id.ToString());
-                    table.AddCell(data.Id_emplacement.ToString());
+                    //table.AddCell(data.Id_emplacement.ToString());
                     table.AddCell(data.Code_emplacement.ToString());
                     table.AddCell(data.Nom);
                     table.AddCell(data.Famille);

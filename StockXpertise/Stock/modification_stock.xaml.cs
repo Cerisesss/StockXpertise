@@ -68,7 +68,6 @@ namespace StockXpertise.Stock
             nom_avant.Text = selectedData.Nom;
             famille_avant.Text = selectedData.Famille;
             code_barre_avant.Text = selectedData.CodeBarre;
-            code_barre_apres.Text = selectedData.CodeBarre;
             description_avant.Text = selectedData.Description;
             quantite_avant.Text = selectedData.Quantite.ToString();
             prix_HT_avant.Text = selectedData.PrixHT.ToString();
@@ -104,7 +103,7 @@ namespace StockXpertise.Stock
             string nouveauPrixTTC = prix_TTC_apres.Text;
             string code_barre = code_barre_apres.Text;
             string code_emplacement = code_emplacement_apres.Text;
-            int id_emplacement = selectedData.Id_emplacement;
+            //int id_emplacement = selectedData.Id_emplacement;
             int quantite_avant = selectedData.Quantite;
 
             if (string.IsNullOrEmpty(code_barre) && string.IsNullOrEmpty(nouveauNom) && string.IsNullOrEmpty(nouvelleFamille) && string.IsNullOrEmpty(nouvelledescription) && string.IsNullOrEmpty(nouvelleQuantite) && string.IsNullOrEmpty(nouveauPrixHT) && string.IsNullOrEmpty(nouveauPrixTTC) && string.IsNullOrEmpty(imagePath))
@@ -148,8 +147,8 @@ namespace StockXpertise.Stock
                     return;
                 }
 
-
-                Query_Stock query_Update = new Query_Stock(selectedData.Id, nouveauNom, nouvelleFamille, prixHT, prixTTC, nouvelledescription, code_barre, quantite, imagePath, code_emplacement, id_emplacement);
+                //Query_Stock query_Update = new Query_Stock(selectedData.Id, nouveauNom, nouvelleFamille, prixHT, prixTTC, nouvelledescription, code_barre, quantite, imagePath, code_emplacement, id_emplacement);
+                Query_Stock query_Update = new Query_Stock(selectedData.Id, nouveauNom, nouvelleFamille, prixHT, prixTTC, nouvelledescription, code_barre, quantite, imagePath, code_emplacement);
 
                 // Vérifier si les TextBoxs ne sont pas vides pour enregistrer que les données qui ont été modifiées
                 if (!string.IsNullOrEmpty(code_emplacement))

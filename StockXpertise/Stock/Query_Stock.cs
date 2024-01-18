@@ -9,6 +9,7 @@ using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 using System.Windows;
 using Org.BouncyCastle.Pqc.Crypto.Lms;
 using System.Collections;
+using ZXing;
 
 namespace StockXpertise.Stock
 {
@@ -46,11 +47,17 @@ namespace StockXpertise.Stock
             this.id_produit = id_produit;
         }
 
-        public Query_Stock(int id_article, string nom, string famille, int prixHT, int prixTTC, string description, string code_barre, int quantite, string imagePath, string emplacement, int id_emplacement) : this(id_article, nom, famille, prixHT, prixTTC, 0, description, code_barre, quantite, "", "", "")
+        /*public Query_Stock(int id_article, string nom, string famille, int prixHT, int prixTTC, string description, string code_barre, int quantite, string imagePath, string emplacement, int id_emplacement) : this(id_article, nom, famille, prixHT, prixTTC, 0, description, code_barre, quantite, "", "", "")
         {
             this.imagePath = imagePath;
             this.emplacement = emplacement;
             this.id_emplacement = id_emplacement;
+        }*/
+
+        public Query_Stock(int id_article, string nom, string famille, int prixHT, int prixTTC, string description, string code_barre, int quantite, string imagePath, string emplacement) : this(id_article, nom, famille, prixHT, prixTTC, 0, description, code_barre, quantite, "", "", "")
+        {
+            this.imagePath = imagePath;
+            this.emplacement = emplacement;
         }
 
         public Query_Stock(string nom, string famille, int prixHT, int prixTTC, string description, string code_barre, int quantite) : this(0, nom, famille, prixHT, prixTTC, 0, description, code_barre, quantite, "", "", "")
@@ -79,8 +86,8 @@ namespace StockXpertise.Stock
 
 
         //***********************************************************************************  connection DB  ********************************************************************************************************\\
-       
-        
+
+
         public MySqlConnection ConnectionDB()
         {
             // Connexion à la database
@@ -143,7 +150,7 @@ namespace StockXpertise.Stock
         {
             try
             {
-                string query = "UPDATE articles SET description = @Description WHERE id_articles = @Id_Article;" ;
+                string query = "UPDATE articles SET description = @Description WHERE id_articles = @Id_Article;";
 
                 // Crée une commande SQL avec la requête et la connexion
                 MySqlCommand commande = new MySqlCommand(query, ConnectionDB());
@@ -163,21 +170,36 @@ namespace StockXpertise.Stock
 
         public void Update_Quantite()
         {
+            MySqlDataReader reader;
+
             try
             {
+                string recup_id_emplacement = "SELECT * FROM emplacement WHERE code = @Emplacement ;";
+
+                MySqlCommand commande = new MySqlCommand(recup_id_emplacement, ConnectionDB());
+
+                commande.Parameters.AddWithValue("@Emplacement", emplacement);
+
+                reader = commande.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    id_emplacement = Convert.ToInt32(reader["id_emplacement"]);
+                }
+
                 //modif 
                 string query = "UPDATE produit SET quantite_stock = @Quantite WHERE id_articles = @Id_Article AND id_emplacement = @Id_Emplacement ;";
 
                 // Crée une commande SQL avec la requête et la connexion
-                MySqlCommand commande = new MySqlCommand(query, ConnectionDB());
+                MySqlCommand commande_sql = new MySqlCommand(query, ConnectionDB());
 
                 // Ajoute les paramètres à la commande pour eviter les injections SQL
-                commande.Parameters.AddWithValue("@Quantite", quantite);
-                commande.Parameters.AddWithValue("@Id_Article", id_article);
-                commande.Parameters.AddWithValue("@Id_Emplacement", id_emplacement);
+                commande_sql.Parameters.AddWithValue("@Quantite", quantite);
+                commande_sql.Parameters.AddWithValue("@Id_Article", id_article);
+                commande_sql.Parameters.AddWithValue("@Id_Emplacement", id_emplacement);
 
                 // Exécute la commande
-                commande.ExecuteReader();
+                commande_sql.ExecuteReader();
             }
             catch (Exception ex)
             {
@@ -323,7 +345,7 @@ namespace StockXpertise.Stock
                 {
                     while (reader.Read())
                     {
-                         IdEmplacement = Convert.ToInt32(reader["id_emplacement"]);
+                        IdEmplacement = Convert.ToInt32(reader["id_emplacement"]);
                     }
                 }
 
@@ -348,7 +370,7 @@ namespace StockXpertise.Stock
         }
 
         public int Count_IdEmplacement()
-        { 
+        {
             MySqlDataReader reader;
             int count = 0;
 
@@ -413,7 +435,7 @@ namespace StockXpertise.Stock
 
                 reader = command.ExecuteReader();
 
-                while(reader.Read())
+                while (reader.Read())
                 {
                     id_emplacement = Convert.ToInt32(reader["id_emplacement"]);
                 }
