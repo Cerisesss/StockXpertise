@@ -19,7 +19,8 @@ using System.Diagnostics;
 using System.IO;
 using StockXpertise.User;
 using Microsoft.Win32;
-
+using iText.IO.Image;
+using System.Windows.Forms;
 
 namespace StockXpertise
 {
@@ -100,7 +101,7 @@ namespace StockXpertise
 
         public void GenerateTable()
         {
-            string query="SELECT ";
+            string query="SELECT nom, ";
             if (PrixAchat)
             {
                 query += "prix_achat, ";
@@ -121,7 +122,7 @@ namespace StockXpertise
            // query += "(select sum(quantite_stock) from produit where id_articles = id_produit) as stock, ";  attendre qu'il y ai du peuplement, parce que il ne peut pas ne pas y avoir de stock sinon la commande bug
             if (!PrixAchat && !PrixVente && !ArticlesVendus && !Marge)
             {
-                query += "nom, famille, prix_ht ,prix_ttc ,prix_vente ,prix_achat ,description ,code_barre, ";
+                query += "famille, prix_ht ,prix_ttc ,prix_vente ,prix_achat ,description ,code_barre, ";
             }
 
             if (query.Length >= 2)
@@ -229,6 +230,27 @@ namespace StockXpertise
             toexcel();
         }
 
+
+
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            using (var folderBrowserDialog = new FolderBrowserDialog())
+            {
+                // Définissez le dossier initial (laissez-le vide pour utiliser le dossier Mes Documents par défaut)
+                folderBrowserDialog.SelectedPath = "";
+
+                // Affichez la boîte de dialogue et vérifiez le résultat
+                DialogResult result = folderBrowserDialog.ShowDialog();
+
+                if (result == System.Windows.Forms.DialogResult.OK && !string.IsNullOrWhiteSpace(folderBrowserDialog.SelectedPath))
+                {
+                    // Enregistrez le chemin du dossier sélectionné
+                    string selectedFolderPath = folderBrowserDialog.SelectedPath;
+                    cheminexcel.Text = selectedFolderPath;
+                }
+            }
+        }
     }
 
 }
