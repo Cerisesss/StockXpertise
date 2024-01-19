@@ -50,6 +50,7 @@ namespace StockXpertise.Supplier
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+
             if ((string)labelNum.Content != numTextBox.Text && !string.IsNullOrEmpty(numTextBox.Text))
             {
                 if (Int32.TryParse(numTextBox.Text, out var numConverted))
@@ -93,6 +94,11 @@ namespace StockXpertise.Supplier
             if ((string)labelMail.Content != mailTextBox.Text && !string.IsNullOrEmpty(mailTextBox.Text))
             {
                 mail = mailTextBox.Text;
+            }
+            if (!mail.Contains("@"))
+            {
+                MessageBox.Show("Votre adresse mail semble incorrecte");
+                return;
             }
 
             if ((string)labelAdresse.Content != adresseTextBox.Text && !string.IsNullOrEmpty(adresseTextBox.Text))

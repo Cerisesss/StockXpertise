@@ -10,7 +10,7 @@
 
     <Grid x:Name="griAddStock" Background="White">
         <local:UserControl1/>
-        <Frame x:Name="addStock" NavigationUIVisibility="Hidden"/>
+        <Frame x:Name="addStock" NavigationUIVisibility="Hidden" Navigated="addStock_Navigated"/>
 
         <Rectangle Margin="560,144,372,275" Stroke="#FFACACAC" Fill="#FFFFDDCC"/>
         <Button Content="Valider" Margin="891,552,519,207" Width="90" Click="Button_Click" Background="#FFEBF3E8"/>

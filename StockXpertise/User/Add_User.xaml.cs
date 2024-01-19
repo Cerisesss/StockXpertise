@@ -80,6 +80,8 @@ namespace StockXpertise.User
                 role = radioCaissier.Content.ToString();
             }
 
+
+
             //verification pour savoir si le nom et prenom sont des lettres et si le mail est bien un mail
             if (!Regex.IsMatch(nom, "^[a-zA-Z]+$") || !Regex.IsMatch(prenom, "^[a-zA-Z]+$"))
             {
@@ -107,6 +109,11 @@ namespace StockXpertise.User
             if (string.IsNullOrEmpty(nom) || string.IsNullOrEmpty(prenom) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(mail)|| role == null)
             {
                 MessageBox.Show("Veuillez remplir tous les champs.", "Attention", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            if (!mail.Contains("@"))
+            {
+                MessageBox.Show("Votre adresse mail semble incorrecte");
+                return;
             }
             else
             {
