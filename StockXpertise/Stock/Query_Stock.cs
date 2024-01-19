@@ -10,6 +10,7 @@ using System.Windows;
 using Org.BouncyCastle.Pqc.Crypto.Lms;
 using System.Collections;
 using ZXing;
+using iText.Barcodes.Dmcode;
 
 namespace StockXpertise.Stock
 {
@@ -422,32 +423,18 @@ namespace StockXpertise.Stock
 
         public void Update_Code_Reel()
         {
-            MySqlDataReader reader;
-
             try
             {
-                //recup id_emplacement
-                string query_emplacement = "SELECT id_emplacement FROM produit WHERE id_produit = @Id_Produit;";
+                string query = "UPDATE produit SET code_reel = @Emplacement WHERE id_produit = @Id_Produit;";
 
-                MySqlCommand command = new MySqlCommand(query_emplacement, ConnectionDB());
-
-                command.Parameters.AddWithValue("@Id_Produit", id_produit);
-
-                reader = command.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    id_emplacement = Convert.ToInt32(reader["id_emplacement"]);
-                }
-
-                //modif
-                string query = "UPDATE emplacement SET code_reel = @Emplacement WHERE id_emplacement = @Id_Emplacement;";
-
+                // Crée une commande SQL avec la requête et la connexion
                 MySqlCommand commande = new MySqlCommand(query, ConnectionDB());
 
+                // Ajoute les paramètres à la commande pour eviter les injections SQL
                 commande.Parameters.AddWithValue("@Emplacement", emplacement);
-                commande.Parameters.AddWithValue("@Id_Emplacement", id_emplacement);
+                commande.Parameters.AddWithValue("@Id_Produit", id_produit);
 
+                // Exécute la commande
                 commande.ExecuteReader();
             }
             catch (Exception ex)

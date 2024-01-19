@@ -22,6 +22,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.Linq;
 using MySqlX.XDevAPI.Relational;
+using System.IO.Packaging;
 
 namespace StockXpertise.Stock
 {
@@ -36,7 +37,7 @@ namespace StockXpertise.Stock
         {
             InitializeComponent();
 
-            string query = "SELECT produit.id_produit, produit.quantite_stock, produit.quantite_stock_reel, articles.nom, emplacement.code, emplacement.code_reel FROM produit INNER JOIN articles ON produit.id_articles = articles.id_articles INNER JOIN emplacement ON produit.id_emplacement = emplacement.id_emplacement;";
+            string query = "SELECT produit.id_produit, produit.quantite_stock, produit.quantite_stock_reel, articles.nom, emplacement.code, produit.code_reel FROM produit INNER JOIN articles ON produit.id_articles = articles.id_articles INNER JOIN emplacement ON produit.id_emplacement = emplacement.id_emplacement;";
             MySqlDataReader reader = ConfigurationDB.ExecuteQuery(query);
 
             remplissage_donnees(reader);
@@ -60,29 +61,16 @@ namespace StockXpertise.Stock
                     Code_reel = reader["code_reel"].ToString()
                 };
 
-                /*if((articleData.Quantite_stock_reel == 0) || (articleData.Code_reel == null))
-                {
-                    Console.WriteLine("test");
-                }*/
-                Console.WriteLine("code :" + articleData.Code);
-                Console.WriteLine("code_reel :" + articleData.Code_reel);
-
-                Console.WriteLine("quantite_stock :" + articleData.Quantite_stock);
-                Console.WriteLine("quantite_stock_reel :" + articleData.Quantite_stock_reel);
-                if (articleData.Quantite_stock_reel == 0 && articleData.Code_reel == null)
+                if ((articleData.Quantite_stock_reel == 0 && articleData.Code_reel == "") || (articleData.Quantite_stock_reel == 0 && articleData.Code_reel == null))
                 {
                     Console.WriteLine("code :" + articleData.Code);
                     Console.WriteLine("code_reel :" + articleData.Code_reel);
                 }
-                else if (articleData.Quantite_stock_reel == 0 && articleData.Code_reel == "")
-                {
-                    Console.WriteLine("code :" + articleData.Code);
-                    Console.WriteLine("code_reel :" + articleData.Code_reel);
-                }
-                /*else if ((articleData.Quantite_stock != articleData.Quantite_stock_reel) || (articleData.Code != articleData.Code_reel))
+                else if ((articleData.Quantite_stock != articleData.Quantite_stock_reel) || (articleData.Code != articleData.Code_reel))
                 {
                     redIds.Add(articleData.Id_produit);
-                }*/
+
+                }
                 else if (articleData.Quantite_stock == articleData.Quantite_stock_reel && articleData.Code == articleData.Code_reel)
                 {
                     greenIds.Add(articleData.Id_produit);
