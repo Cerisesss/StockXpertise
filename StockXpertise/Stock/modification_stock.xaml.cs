@@ -47,7 +47,7 @@ namespace StockXpertise.Stock
             InitializeComponent();
 
             // Initialise initialImagePath avec le chemin de l'image existante dans votre contrôle Image au chargement initial
-            initialImagePath = selectedData.Image;
+            initialImagePath = selectedData.ImagePath;
 
             this.selectedData = selectedData;
             LoadData();
@@ -74,7 +74,7 @@ namespace StockXpertise.Stock
             prix_TTC_avant.Text = selectedData.PrixTTC.ToString();
             code_emplacement_avant.Text = selectedData.Code_emplacement.ToString();
 
-            string imagePath = selectedData.Image;
+            string imagePath = selectedData.ImagePath;
 
             if (!string.IsNullOrEmpty(imagePath))
             {
@@ -300,6 +300,7 @@ namespace StockXpertise.Stock
             }
         }
 
+        //code du code barre
         private void btnScanner_Click(object sender, RoutedEventArgs e)
         {
             filterInfoCollection = new FilterInfoCollection(FilterCategory.VideoInputDevice);
@@ -386,6 +387,5 @@ namespace StockXpertise.Stock
 
             return bitmapImage;
         }
-
     }
 }

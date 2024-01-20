@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 
 namespace StockXpertise.Stock
 {
@@ -17,7 +18,6 @@ namespace StockXpertise.Stock
         public int Quantite { get; set; }
         public string Famille { get; set; }
         public string CodeBarre { get; set; }
-        public string Image { get; set; }
         public int PrixHT { get; set; }
         public int PrixTTC { get; set; }
     }

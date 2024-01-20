@@ -61,7 +61,6 @@ namespace StockXpertise.Stock
                 var articleData = new Article
                 {
                     Id = Convert.ToInt32(reader["id_articles"]),
-                    //Id_emplacement = Convert.ToInt32(reader["id_emplacement"]),
                     ImagePath = reader["image"].ToString(),
                     Code_emplacement = reader["code"].ToString(),
                     Nom = reader["nom"].ToString(),
@@ -72,7 +71,7 @@ namespace StockXpertise.Stock
                     PrixHT = Convert.ToInt32(reader["prix_ht"]),
                     PrixTTC = Convert.ToInt32(reader["prix_ttc"])
                 };
-
+                Console.WriteLine(articleData.ImagePath);
                 articlesDataList.Add(articleData);
             }
 
@@ -90,7 +89,6 @@ namespace StockXpertise.Stock
                 var articleData = new Article
                 {
                     Id = Convert.ToInt32(reader["id_articles"]),
-                    //Id_emplacement = Convert.ToInt32(reader["id_emplacement"]),
                     Code_emplacement = reader["code"].ToString(),
                     Nom = reader["nom"].ToString(),
                     Famille = reader["famille"].ToString(),

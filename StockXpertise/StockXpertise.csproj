@@ -192,6 +192,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Stock\ImagePathConverter.cs" />
     <Compile Include="Supplier\Add_fournisseur.xaml.cs">
       <DependentUpon>Add_fournisseur.xaml</DependentUpon>
     </Compile>
@@ -351,12 +352,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Content Include="Images\image0.jpg">
+    <Resource Include="Images\image0.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\image1.jpg">
+    </Resource>
+    <Resource Include="Images\image1.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </Resource>
     <Resource Include="Images\image10.jpg" />
     <Resource Include="Images\image11.jpg" />
     <Resource Include="Images\image12.jpg" />
