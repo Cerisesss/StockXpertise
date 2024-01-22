@@ -86,18 +86,26 @@ namespace StockXpertise.components
 
         private void b3_Click(object sender, RoutedEventArgs e)
         {
-            Caisse.Caisse caisse = new Caisse.Caisse();
-            Window parentWindow = Window.GetWindow(this);
-
-            if (parentWindow != null)
+            if (Application.Current.Properties["role"].ToString() == "Admin" || Application.Current.Properties["role"].ToString() == "Caissier")
             {
-                parentWindow.Content = caisse;
+                Caisse.Caisse caisse = new Caisse.Caisse();
+                Window parentWindow = Window.GetWindow(this);
+
+                if (parentWindow != null)
+                {
+                    parentWindow.Content = caisse;
+                }
+            }
+
+            else
+            {
+                MessageBox.Show("Vous n'avez pas les droits pour accéder à cette page.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         private void b8_Click(object sender, RoutedEventArgs e)
         {
-            if (Application.Current.Properties["role"].ToString() == "Admin" || Application.Current.Properties["role"].ToString() == "admin")
+            if (Application.Current.Properties["role"].ToString() == "Admin")
             {
                 User.User user = new User.User();
 
@@ -110,7 +118,7 @@ namespace StockXpertise.components
             }
             else
             {
-                MessageBox.Show("Vous n'avez pas les droits pour accéder à cette page.");
+                MessageBox.Show("Vous n'avez pas les droits pour accéder à cette page.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }
