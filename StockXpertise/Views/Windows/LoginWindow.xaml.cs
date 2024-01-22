@@ -1,18 +1,10 @@
-﻿using StockXpertise.ViewModels.Pages;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using Microsoft.Extensions.DependencyInjection;
+using StockXpertise.Models;
+using StockXpertise.ViewModels.Pages;
+using StockXpertise.ViewModels.Windows;
+using System.IO;
 using Wpf.Ui.Controls;
+using Wpf.Ui.Services;
 
 namespace StockXpertise.Views.Windows
 {
@@ -21,6 +13,9 @@ namespace StockXpertise.Views.Windows
     /// </summary>
     public partial class LoginWindow : INavigableView<LoginViewModel>
     {
+        public string? Email { get; set; }
+        public string? Password { get; set; }
+
         public LoginViewModel ViewModel { get; }
 
         public LoginWindow(LoginViewModel viewModel)
@@ -31,6 +26,27 @@ namespace StockXpertise.Views.Windows
             DataContext = this;
 
             InitializeComponent();
+
+            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Configuration\", "config.xml");
+            DBConfig config = DBConfig.LoadFromXml(path);
+
+            Console.WriteLine(config.ToString());
+        }
+
+        public void LoginClick(object sender, RoutedEventArgs e)
+        {
+            //MainWindowViewModel mainWindowViewModel = new();
+
+            //IServiceProvider serviceProvider = new ServiceCollection().BuildServiceProvider();
+            //INavigationService navigationService = new NavigationService(serviceProvider);
+            //ISnackbarService snackbarService = new SnackbarService();
+            //IContentDialogService contentDialogService = new ContentDialogService();
+
+            //MainWindow mainWindow = new (mainWindowViewModel, navigationService, serviceProvider, snackbarService, contentDialogService);
+            //mainWindow.Show();
+
+            //this.Close(); 
+
         }
     }
 }

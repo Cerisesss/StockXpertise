@@ -10,7 +10,7 @@ namespace StockXpertise.Views.Windows
 {
     public partial class MainWindow
     {
-        public MainWindowViewModel ViewModel { get; }
+        public MainWindowViewModel? ViewModel { get; }
 
         public MainWindow(
             MainWindowViewModel viewModel,

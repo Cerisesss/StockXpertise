@@ -13,6 +13,7 @@ using StockXpertise.Views.Pages;
 using StockXpertise.Views.Windows;
 using System.IO;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Windows.Threading;
 
 namespace StockXpertise
@@ -22,6 +23,16 @@ namespace StockXpertise
     /// </summary>
     public partial class App
     {
+        [DllImport("kernel32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        static extern bool AllocConsole();
+
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            AllocConsole(); 
+            base.OnStartup(e);
+        }
+
         // The.NET Generic Host provides dependency injection, configuration, logging, and other services.
         // https://docs.microsoft.com/dotnet/core/extensions/generic-host
         // https://docs.microsoft.com/dotnet/core/extensions/dependency-injection
@@ -34,8 +45,8 @@ namespace StockXpertise
             {
                 services.AddHostedService<ApplicationHostService>();
 
-                services.AddSingleton<MainWindow>();
-                services.AddSingleton<MainWindowViewModel>();
+                services.AddSingleton<LoginWindow>();
+                services.AddSingleton<LoginViewModel>();
                 services.AddSingleton<INavigationService, NavigationService>();
                 services.AddSingleton<ISnackbarService, SnackbarService>();
                 services.AddSingleton<IContentDialogService, ContentDialogService>();

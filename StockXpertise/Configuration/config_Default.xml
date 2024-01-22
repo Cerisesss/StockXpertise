@@ -1,7 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <configuration>
-	<connectionStrings>
-		<add name="MyDbConnection"
-			 connectionString="Server=localhost;Database=stockxpertise;User ID=root;Password=polo;" />
-	</connectionStrings>
+	<connections>
+		<mysql>
+			<add name="server" value="localhost" />
+			<add name="database" value="stockxpertise" />
+			<add name="user_id" value="root" />
+			<add name="password" value="polo" />
+		</mysql>
+	</connections>
 </configuration>

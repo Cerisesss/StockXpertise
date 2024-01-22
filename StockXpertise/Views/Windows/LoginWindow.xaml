@@ -4,50 +4,49 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:StockXpertise.Views.Windows"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-        Title="Login"
-        d:DataContext="{d:DesignInstance local:LoginWindow,
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml" xmlns:pages="clr-namespace:StockXpertise.ViewModels.Pages"
+                 Title="Login"
+                 d:DataContext="{d:DesignInstance local:LoginWindow,
                                          IsDesignTimeCreatable=False}"
-        d:DesignHeight="450"
-        d:DesignWidth="800"
-        ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
-        ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-        Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-        mc:Ignorable="d">
+                 d:DesignHeight="450"
+                 d:DesignWidth="800"
+                 ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
+                 ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                 Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                 mc:Ignorable="d">
 
     <Grid ShowGridLines="True">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="32"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="32" />
+            <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
 
         <!-- Header -->
         <StackPanel
-           HorizontalAlignment="Center"
-           VerticalAlignment="Center">
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
 
             <!-- Placeholder -->
             <ui:Button
-               Icon="Fluent24"
-               Content="Click me!"
-            />
+                Icon="Fluent24"
+                Content="Click me!" />
         </StackPanel>
 
         <!-- Body -->
         <StackPanel
-           Grid.Row="2"
-           HorizontalAlignment="Center"
-           VerticalAlignment="Center">
+            Grid.Row="2"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
 
             <Grid Width="256" Height="auto">
                 <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
                 </Grid.RowDefinitions>
 
                 <StackPanel
@@ -58,8 +57,8 @@
 
                     <Grid Width="256" Height="auto">
                         <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
+                            <RowDefinition />
+                            <RowDefinition />
                         </Grid.RowDefinitions>
 
                         <ui:TextBlock
@@ -68,17 +67,15 @@
                             FontWeight="DemiBold"
                             Text="Mail"
                             TextAlignment="Left"
-                            TextWrapping="Wrap"
-                        />
+                            TextWrapping="Wrap" />
 
                         <ui:TextBox
                             Grid.Row="1"
                             Height="28"
-                            Text="{Binding Mail, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                        />
+                            Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     </Grid>
                 </StackPanel>
-                
+
                 <StackPanel
                     Margin="0,0,0,16"
                     Grid.Row="1"
@@ -87,23 +84,22 @@
 
                     <Grid Width="256" Height="auto">
                         <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
+                            <RowDefinition />
+                            <RowDefinition />
                         </Grid.RowDefinitions>
 
                         <ui:TextBlock
-                           Margin="0,0,0,4"
-                           Grid.Row="0"
-                           FontWeight="DemiBold"
-                           Text="Password"
-                           TextAlignment="Left"
-                           TextWrapping="Wrap"
-                        />
+                            Margin="0,0,0,4"
+                            Grid.Row="0"
+                            FontWeight="DemiBold"
+                            Text="Password"
+                            TextAlignment="Left"
+                            TextWrapping="Wrap" />
 
                         <ui:TextBox
                             Grid.Row="1"
                             Height="28"
-                            Text="{Binding Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                         />
                     </Grid>
                 </StackPanel>
@@ -117,7 +113,8 @@
                         Padding="16, 4"
                         Icon="Fluent24"
                         Content="Login FDP"
-                        FontSize="12"
+                        FontSize="12" 
+                        Click="LoginClick"
                     />
                 </StackPanel>
             </Grid>
