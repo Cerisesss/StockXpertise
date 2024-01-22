@@ -34,8 +34,8 @@ namespace StockXpertise
             {
                 services.AddHostedService<ApplicationHostService>();
 
-                services.AddSingleton<LoginWindow>();
-                services.AddSingleton<LoginViewModel>();
+                services.AddSingleton<MainWindow>();
+                services.AddSingleton<MainWindowViewModel>();
                 services.AddSingleton<INavigationService, NavigationService>();
                 services.AddSingleton<ISnackbarService, SnackbarService>();
                 services.AddSingleton<IContentDialogService, ContentDialogService>();

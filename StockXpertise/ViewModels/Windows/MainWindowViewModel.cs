@@ -19,7 +19,7 @@ namespace StockXpertise.ViewModels.Windows
         {
             new NavigationViewItem()
             {
-                Content = "Homme",
+                Content = "Home",
                 Icon = new SymbolIcon { Symbol = SymbolRegular.Home24 },
                 TargetPageType = typeof(Views.Pages.DashboardPage)
             },

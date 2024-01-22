@@ -47,9 +47,9 @@ namespace StockXpertise.Services
         {
             await Task.CompletedTask;
 
-            if (!Application.Current.Windows.OfType<LoginWindow>().Any())
+            if (!Application.Current.Windows.OfType<MainWindow>().Any())
             {
-                var navigationWindow = _serviceProvider.GetRequiredService<LoginWindow>();
+                var navigationWindow = _serviceProvider.GetRequiredService<MainWindow>();
                 navigationWindow.Loaded += OnNavigationWindowLoaded;
                 navigationWindow.Show();
             }

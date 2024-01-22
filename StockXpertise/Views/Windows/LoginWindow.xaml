@@ -14,40 +14,112 @@
         ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
         Foreground="{DynamicResource TextFillColorPrimaryBrush}"
         mc:Ignorable="d">
-    <ui:FluentWindow.InputBindings>
-        <KeyBinding
-            Key="F"
-            Command="{Binding ElementName=AutoSuggestBox, Path=FocusCommand}"
-            Modifiers="Control" />
-    </ui:FluentWindow.InputBindings>
-    <Grid>
-        <StackPanel>
-            <Grid>
-                <ui:TitleBar
-                    x:Name="TitleBar"
-                    Title="{Binding ViewModel.ApplicationTitle}"
-                    Grid.Row="0"
-                    CloseWindowByDoubleClickOnIcon="True">
-                    <ui:TitleBar.Icon>
-                        <ui:ImageIcon Source="pack://application:,,,/Assets/wpfui-icon-256.png" />
-                    </ui:TitleBar.Icon>
-                </ui:TitleBar>
-            </Grid>
-            <Grid VerticalAlignment="Top">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <ui:TextBox Grid.Column="1" Text="{Binding ViewModel.Password, Mode=OneWay}" Margin="360,248,-96,102" />
-                <ui:TextBox Grid.Column="1" Text="{Binding ViewModel.Mail, Mode=OneWay}" Margin="360,208,-96,142" />
-                <ui:TextBlock Grid.Column="1" Text="Password" Margin="259,248,85,102" />
-                <ui:TextBlock Grid.Column="1" Text="Mail" Margin="259,208,85,142"  />
 
-                <ui:Button
-            Grid.Column="1"
-            Command="{Binding ViewModel.CounterIncrementCommand, Mode=OneWay}"
-            Content="Click me!"
-            Icon="Fluent24" Margin="360,300,0,0" VerticalAlignment="Top" />
+    <Grid ShowGridLines="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <StackPanel
+           HorizontalAlignment="Center"
+           VerticalAlignment="Center">
+
+            <!-- Placeholder -->
+            <ui:Button
+               Icon="Fluent24"
+               Content="Click me!"
+            />
+        </StackPanel>
+
+        <!-- Body -->
+        <StackPanel
+           Grid.Row="2"
+           HorizontalAlignment="Center"
+           VerticalAlignment="Center">
+
+            <Grid Width="256" Height="auto">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <StackPanel
+                    Margin="0,0,0,16"
+                    Grid.Row="0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+
+                    <Grid Width="256" Height="auto">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <ui:TextBlock
+                            Margin="0,0,0,4"
+                            Grid.Row="0"
+                            FontWeight="DemiBold"
+                            Text="Mail"
+                            TextAlignment="Left"
+                            TextWrapping="Wrap"
+                        />
+
+                        <ui:TextBox
+                            Grid.Row="1"
+                            Height="28"
+                            Text="{Binding Mail, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        />
+                    </Grid>
+                </StackPanel>
+                
+                <StackPanel
+                    Margin="0,0,0,16"
+                    Grid.Row="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+
+                    <Grid Width="256" Height="auto">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <ui:TextBlock
+                           Margin="0,0,0,4"
+                           Grid.Row="0"
+                           FontWeight="DemiBold"
+                           Text="Password"
+                           TextAlignment="Left"
+                           TextWrapping="Wrap"
+                        />
+
+                        <ui:TextBox
+                            Grid.Row="1"
+                            Height="28"
+                            Text="{Binding Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        />
+                    </Grid>
+                </StackPanel>
+
+                <StackPanel
+                    Grid.Row="2"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+
+                    <ui:Button
+                        Padding="16, 4"
+                        Icon="Fluent24"
+                        Content="Login FDP"
+                        FontSize="12"
+                    />
+                </StackPanel>
             </Grid>
         </StackPanel>
     </Grid>
