@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StockXpertise.ViewModels.Pages.PageStock;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,16 +13,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Wpf.Ui.Controls;
 
 namespace StockXpertise.Views.Pages.PageStock
 {
     /// <summary>
     /// Logique d'interaction pour affichage_stock.xaml
     /// </summary>
-    public partial class affichage_stock : Page
+    public partial class affichage_stock : INavigableView<affichage_stockViewModel>
     {
-        public affichage_stock()
+        public affichage_stockViewModel ViewModel { get; }
+
+        public affichage_stock(affichage_stockViewModel viewModel)
         {
+            ViewModel = viewModel;
+            DataContext = this;
+
             InitializeComponent();
         }
     }

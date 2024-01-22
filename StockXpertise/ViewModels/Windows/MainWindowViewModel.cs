@@ -19,15 +19,15 @@ namespace StockXpertise.ViewModels.Windows
         {
             new NavigationViewItem()
             {
-                Content = "Stock",
+                Content = "Homme",
                 Icon = new SymbolIcon { Symbol = SymbolRegular.Home24 },
                 TargetPageType = typeof(Views.Pages.DashboardPage)
             },
             new NavigationViewItem()
             {
-                Content = "Inventaire",
-                Icon = new SymbolIcon { Symbol = SymbolRegular.DataHistogram24 },
-                TargetPageType = typeof(Views.Pages.DataPage)
+                Content = "Stock",
+                Icon = new SymbolIcon { Symbol = SymbolRegular.Archive32 },
+                TargetPageType = typeof(Views.Pages.PageStock.affichage_stock)
             },
             new NavigationViewItem()
             {
