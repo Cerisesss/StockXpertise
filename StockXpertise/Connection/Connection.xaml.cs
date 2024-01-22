@@ -70,6 +70,7 @@ namespace StockXpertise.Connection
 
                 ConnexionProgressBar.Visibility = Visibility.Hidden;
                 ConnexionProgressBar.Value = 0;
+                timer.Stop();
 
                 return;
             }
@@ -89,6 +90,7 @@ namespace StockXpertise.Connection
                     Application.Current.Properties["prenom"] = user_connected.GetPrenom();
                     Application.Current.Properties["mail"] = reader["mail"].ToString();
                     Application.Current.Properties["role"] = reader["role"].ToString();
+                    Application.Current.Properties["mdp"] = reader["mot_de_passe"].ToString();
                 }
 
                 // envoie vers la page d'accueil

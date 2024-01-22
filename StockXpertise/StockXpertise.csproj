@@ -192,6 +192,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Profile\Modify_Profile.xaml.cs">
+      <DependentUpon>Modify_Profile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Profile\Query_Profile.cs" />
     <Compile Include="Supplier\Add_fournisseur.xaml.cs">
       <DependentUpon>Add_fournisseur.xaml</DependentUpon>
     </Compile>
@@ -249,6 +253,10 @@
     <Compile Include="User\User.xaml.cs">
       <DependentUpon>User.xaml</DependentUpon>
     </Compile>
+    <Page Include="Profile\Modify_Profile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Supplier\Add_fournisseur.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
