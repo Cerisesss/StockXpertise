@@ -1,6 +1,8 @@
 ﻿using StockXpertise.Connection;
+using StockXpertise.User;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,6 +32,7 @@ namespace StockXpertise.Profile
             ProfileLastName.Content = Application.Current.Properties["prenom"];
             ProfileMail.Content = Application.Current.Properties["mail"];
             ProfileStatus.Content = Application.Current.Properties["role"];
+            ProfileMdp.Content = Application.Current.Properties["mdp"];
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -44,6 +47,7 @@ namespace StockXpertise.Profile
                 Application.Current.Properties["mot_de_passe"] = null;
                 Application.Current.Properties["mail"] = null;
                 Application.Current.Properties["role"] = null;
+                Application.Current.Properties["mdp"] = null;
 
                 Connection.Connection connection = new Connection.Connection();
                 Window parentWindow = Window.GetWindow(this);
@@ -57,5 +61,18 @@ namespace StockXpertise.Profile
                 profile.Navigate(new Uri("/Connection/Connection.xaml", UriKind.RelativeOrAbsolute));
             }
         }
+
+        private void Button_Modifier(object sender, RoutedEventArgs e)
+        {
+            //redirection vers la page User.xaml
+            Modify_Profile modifyProfile = new Modify_Profile();
+            Window parentWindow = Window.GetWindow(this);
+
+            if (parentWindow != null)
+            {
+                parentWindow.Content = modifyProfile;
+            }
+        }
+
     }
 }
