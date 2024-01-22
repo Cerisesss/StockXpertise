@@ -23,7 +23,7 @@
         <TextBox x:Name="nomTextBox" Height="35" Margin="576,92,38,324" Width="185" TextWrapping="Wrap" Text="" TextChanged="TextBox_TextChanged"/>
         <TextBox x:Name="prenomTextBox" Height="35" Margin="576,137,38,279" Width="185" TextWrapping="Wrap" Text="" TextChanged="TextBox_TextChanged"/>
         <TextBox x:Name="numTextBox" Height="35" Margin="576,182,38,234" Width="185" TextWrapping="Wrap" Text="" TextChanged="TextBox_TextChanged"/>
-        <TextBox x:Name="mailTextBox" Height="35" Margin="576,230,38,186" Width="185" TextWrapping="Wrap" Text="" TextChanged="TextBox_TextChanged"/>
+        <TextBox x:Name="mailTextBox" Height="35" Margin="926,408,388,356" Width="185" TextWrapping="Wrap" Text="" TextChanged="TextBox_TextChanged"/>
         <TextBox x:Name="adresseTextBox" Margin="926,454,388,288" Width="185" TextWrapping="Wrap" Text="" TextChanged="TextBox_TextChanged"/>
 
         <Rectangle  Height="295" Margin="175,70,335,87" Width="295" Stroke="#FFACACAC" Fill="#FFFFDDCC"/>

@@ -127,6 +127,12 @@ namespace StockXpertise.User
 
             await Task.Delay(2000);
 
+            if (!mail.Contains("@"))
+            {
+                MessageBox.Show("Votre adresse mail semble incorrecte");
+                return;
+            }
+
             //generation du sel
             string salt = BCrypt.Net.BCrypt.GenerateSalt(15);
 
