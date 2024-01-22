@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StockXpertise.ViewModels.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,16 +12,24 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Wpf.Ui.Controls;
 
 namespace StockXpertise.Views.Windows
 {
     /// <summary>
     /// Logique d'interaction pour LoginWindow.xaml
     /// </summary>
-    public partial class LoginWindow : Window
+    public partial class LoginWindow : INavigableView<LoginViewModel>
     {
-        public LoginWindow()
+        public LoginViewModel ViewModel { get; }
+
+        public LoginWindow(LoginViewModel viewModel)
         {
+            Wpf.Ui.Appearance.Watcher.Watch(this);
+
+            ViewModel = viewModel;
+            DataContext = this;
+
             InitializeComponent();
         }
     }

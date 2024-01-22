@@ -34,8 +34,8 @@ namespace StockXpertise
             {
                 services.AddHostedService<ApplicationHostService>();
 
-                services.AddSingleton<MainWindow>();
-                services.AddSingleton<MainWindowViewModel>();
+                services.AddSingleton<LoginWindow>();
+                services.AddSingleton<LoginViewModel>();
                 services.AddSingleton<INavigationService, NavigationService>();
                 services.AddSingleton<ISnackbarService, SnackbarService>();
                 services.AddSingleton<IContentDialogService, ContentDialogService>();
@@ -64,11 +64,7 @@ namespace StockXpertise
         /// </summary>
         private void OnStartup(object sender, StartupEventArgs e)
         {
-            _host.Start();
-            var loginWindow = new LoginWindow(); 
-
-            // Affichez la fenêtre de connexion
-            loginWindow.Show();
+            _host.Start(); 
         }
 
         /// <summary>
