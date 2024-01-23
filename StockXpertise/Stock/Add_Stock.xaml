@@ -28,20 +28,20 @@
         <Label Content="Image" Height="25" Margin="198,279,514,143" Width="88"/>
         <Label Content="Fournisseur" Height="23" Margin="496,66,216,361" Width="88" RenderTransformOrigin="0.505,0.348"/>
 
-        <TextBox x:Name="nomStock" Height="25" Margin="275,30,330,395" TextWrapping="Wrap" Text="" Width="195" TextChanged="TextBox_TextChanged"/>
-        <TextBox x:Name="familleStock" Height="25" Margin="275,66,330,359" TextWrapping="Wrap" Text="" Width="195" TextChanged="TextBox_TextChanged"/>
-        <TextBox x:Name="prixHtStock" Height="25" Margin="275,102,330,323" TextWrapping="Wrap" Text="" Width="195" TextChanged="TextBox_TextChanged"/>
-        <TextBox x:Name="prixTtcStock" Height="25" Margin="275,139,330,286" TextWrapping="Wrap" Text="" Width="195" TextChanged="TextBox_TextChanged"/>
-        <TextBox x:Name="prixAchatStock" Height="25" Margin="275,177,330,248" TextWrapping="Wrap" Text="" Width="195" TextChanged="TextBox_TextChanged"/>
-        <TextBox x:Name="descriptionStock" Height="25" Margin="275,211,330,214" TextWrapping="Wrap" Text="" Width="195" TextChanged="TextBox_TextChanged"/>
-        <TextBox x:Name="CodeBarreStock" Height="25" Margin="522,359,64,66" TextWrapping="Wrap" Text="" Width="195" TextChanged="TextBox_TextChanged"/>
-        <TextBox x:Name="quantiteStock" Height="25" Margin="275,249,330,176" TextWrapping="Wrap" Text="" Width="195" TextChanged="TextBox_TextChanged"/>
-        <TextBox x:Name="emplacementStock" Height="25" Margin="584,30,51,395" TextWrapping="Wrap" Text="" Width="165" TextChanged="TextBox_TextChanged"/>
+        <TextBox x:Name="nomStock" Height="25" Margin="275,30,330,395" TextWrapping="Wrap" Text="" Width="195"/>
+        <TextBox x:Name="familleStock" Height="25" Margin="275,66,330,359" TextWrapping="Wrap" Text="" Width="195"/>
+        <TextBox x:Name="prixHtStock" Height="25" Margin="275,102,330,323" TextWrapping="Wrap" Text="" Width="195"/>
+        <TextBox x:Name="prixTtcStock" Height="25" Margin="275,139,330,286" TextWrapping="Wrap" Text="" Width="195"/>
+        <TextBox x:Name="prixAchatStock" Height="25" Margin="275,177,330,248" TextWrapping="Wrap" Text="" Width="195"/>
+        <TextBox x:Name="descriptionStock" Height="25" Margin="275,211,330,214" TextWrapping="Wrap" Text="" Width="195"/>
+        <TextBox x:Name="CodeBarreStock" Height="25" Margin="522,359,64,66" TextWrapping="Wrap" Text="" Width="195"/>
+        <TextBox x:Name="quantiteStock" Height="25" Margin="275,249,330,176" TextWrapping="Wrap" Text="" Width="195"/>
+        <TextBox x:Name="emplacementStock" Height="25" Margin="584,30,51,395" TextWrapping="Wrap" Text="" Width="165"/>
 
         <ListBox x:Name="FournisseurListBox" Height="85" Margin="496,89,39,276" Width="265" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="ListBox_SelectionChanged"/>
         <Rectangle Height="100" Margin="353,284,347,66" Width="100" Stroke="White" Fill="White"/>
-        <Image Height="100" Margin="353,284,347,66" Width="100"/>
-        <Button Content="+" Height="18" Margin="610,459,765,316" Width="25" RenderTransformOrigin="0.438,-0.611" Background="#FFFDF7E4"/>
+        <Image x:Name="Image" Height="100" Margin="353,284,347,66" Width="100" RenderTransformOrigin="1,1"/>
+        <Button Content="+" Height="18" Margin="610,459,765,316" Width="25" RenderTransformOrigin="0.438,-0.611" Background="#FFFDF7E4" Click="ajouterImage"/>
 
         <Image x:Name="videoScan" Height="130" Margin="496,220,38,100" Width="265"/>
         <Button x:Name="btnScanner" Content="Scanner" Height="23" Margin="584,186,51,241" Width="165" Click="btnScanner_Click" Background="#FFFDF7E4" BorderBrush="Black"/>
