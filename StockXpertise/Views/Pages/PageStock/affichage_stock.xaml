@@ -18,23 +18,18 @@
 
     <Grid VerticalAlignment="Top">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" MinWidth="0" />
+            <ColumnDefinition Width="Auto" MinWidth="650" />
         </Grid.ColumnDefinitions>
 
-        <ui:DataGrid
-            x:Name="dataGrid"
-            Grid.Column="0"
-            AutoGenerateColumns="False"
-            CanUserAddRows="False"
-            CanUserDeleteRows="False"
-            CanUserReorderColumns="False"
-            CanUserResizeColumns="False"
+        <ui:DataGrid  x:Name="MyDataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Height="300" Width="500" Margin="150,103,0,0"
+            AutoGenerateColumns="True"
+            AlternatingRowBackground="#F0F0F0"
+            GridLinesVisibility="None"
+            CanUserResizeColumns="True"
             CanUserResizeRows="False"
-            CanUserSortColumns="False"
-            ItemsSource="{Binding Stocks}"
-            SelectedItem="{Binding SelectedStock}"
             SelectionMode="Single"
-             />
+            RowHeight="40" Grid.Column="1"/>
+
     </Grid>
 </Page>

@@ -3,6 +3,7 @@
 // Copyright (C) Leszek Pomianowski and WPF UI Contributors.
 // All Rights Reserved.
 
+using StockXpertise.Models;
 using StockXpertise.ViewModels.Windows;
 using Wpf.Ui.Controls;
 
@@ -32,6 +33,13 @@ namespace StockXpertise.Views.Windows
             contentDialogService.SetContentPresenter(RootContentDialog);
 
             NavigationView.SetServiceProvider(serviceProvider);
+
+            IEnumerable<Article> articles = Article.GetAllArticles();
+
+            foreach (Article article in articles)
+            {
+                Console.WriteLine(article.Description);
+            }
         }
     }
 }

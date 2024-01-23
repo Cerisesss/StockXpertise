@@ -6,6 +6,11 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MySql.Data.MySqlClient;
+using SqlKata;
+using SqlKata.Compilers;
+using SqlKata.Execution;
+using StockXpertise.Models;
 using StockXpertise.Services;
 using StockXpertise.ViewModels.Pages;
 using StockXpertise.ViewModels.Windows;
@@ -15,6 +20,8 @@ using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Threading;
+
+
 
 namespace StockXpertise
 {
@@ -40,13 +47,28 @@ namespace StockXpertise
         // https://docs.microsoft.com/dotnet/core/extensions/logging
         private static readonly IHost _host = Host
             .CreateDefaultBuilder()
-            .ConfigureAppConfiguration(c => { c.SetBasePath(Path.GetDirectoryName(Assembly.GetEntryAssembly()!.Location)); })
-            .ConfigureServices((context, services) =>
+            .ConfigureAppConfiguration(c => { 
+                c.SetBasePath(Path.GetDirectoryName(Assembly.GetEntryAssembly()!.Location)); 
+            }).ConfigureServices((context, services) =>
             {
                 services.AddHostedService<ApplicationHostService>();
 
+                string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Configuration\", "config.xml");
+                DBConfig config = DBConfig.LoadFromXml(path);
+
+                var conn = new MySqlConnection(config.ToString());
+                var compiler = new MySqlCompiler();
+
+                var queryBuilder = new QueryFactory(conn, compiler);
+                services = services.AddSingleton(queryBuilder);
+
+                // ici c'est la ou la DI enregistre les classes 
+                // ( ce que on fait dans login window c'est de la duplication, faut les recup instead of les re-initializer ) (resolve)
+                services.AddSingleton<MainWindow>();
+                services.AddSingleton<MainWindowViewModel>();
                 services.AddSingleton<LoginWindow>();
                 services.AddSingleton<LoginViewModel>();
+
                 services.AddSingleton<INavigationService, NavigationService>();
                 services.AddSingleton<ISnackbarService, SnackbarService>();
                 services.AddSingleton<IContentDialogService, ContentDialogService>();

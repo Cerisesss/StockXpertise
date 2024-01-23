@@ -26,27 +26,14 @@ namespace StockXpertise.Views.Windows
             DataContext = this;
 
             InitializeComponent();
-
-            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Configuration\", "config.xml");
-            DBConfig config = DBConfig.LoadFromXml(path);
-
-            Console.WriteLine(config.ToString());
         }
 
         public void LoginClick(object sender, RoutedEventArgs e)
         {
-            //MainWindowViewModel mainWindowViewModel = new();
+            MainWindow main = App.GetService<MainWindow>();
+            main.Show();
 
-            //IServiceProvider serviceProvider = new ServiceCollection().BuildServiceProvider();
-            //INavigationService navigationService = new NavigationService(serviceProvider);
-            //ISnackbarService snackbarService = new SnackbarService();
-            //IContentDialogService contentDialogService = new ContentDialogService();
-
-            //MainWindow mainWindow = new (mainWindowViewModel, navigationService, serviceProvider, snackbarService, contentDialogService);
-            //mainWindow.Show();
-
-            //this.Close(); 
-
+            this.Close(); 
         }
     }
 }

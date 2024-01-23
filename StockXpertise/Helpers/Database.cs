@@ -10,5 +10,17 @@ namespace StockXpertise.Helpers
         // - other stuff related to the database in general
 
         MySqlConnection? instance = null;
+
+        public MySqlConnection? Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new MySqlConnection();
+                }
+                return instance;
+            }
+        }
     }
 }

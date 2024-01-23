@@ -8,7 +8,6 @@ namespace StockXpertise.Models
         public string? Database { get; set; }
         public string? UserID { get; set; }
         public string? Password { get; set; }
-        public string? eggs { get; set;}   
 
 
         // should get elements inside configurations.connections.mysql and set config fields
@@ -51,7 +50,7 @@ namespace StockXpertise.Models
 
             try
             {
-                var connection = xConfig.Element("connections")?.Element("mysql");
+                var connection = xConfig.Element("connection");
 
                 if (connection != null)
                 {
