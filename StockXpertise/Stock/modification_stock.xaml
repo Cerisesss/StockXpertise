@@ -17,20 +17,9 @@
         <Button x:Name="button" Content="Annuler" HorizontalAlignment="Left" Height="34" Margin="574,718,0,0" VerticalAlignment="Top" Width="126" BorderBrush="Black" Click="annuler" RenderTransformOrigin="0.915,1.521" Background="#FFFFDDCC"/>
         <Label Content="Image" FontWeight="Bold" HorizontalAlignment="Left" Height="40" Margin="358,134,0,0" VerticalAlignment="Top" Width="71"/>
         <Label Content="Image" FontWeight="Bold" HorizontalAlignment="Left" Height="30" Margin="774,134,0,0" VerticalAlignment="Top" Width="52"/>
-        <Image x:Name="image_avant" HorizontalAlignment="Left" Height="48" Margin="514,129,0,0" VerticalAlignment="Top" Width="58">
-            <Image.Effect>
-                <BlurEffect/>
-            </Image.Effect>
-            <Image.OpacityMask>
-                <ImageBrush/>
-            </Image.OpacityMask>
-        </Image>
-        <Image x:Name="image_apres" HorizontalAlignment="Left" Height="49" Margin="792,66,0,0" VerticalAlignment="Top" Width="58">
-            <Image.OpacityMask>
-                <ImageBrush/>
-            </Image.OpacityMask>
-        </Image>
-        <Button Content="+" HorizontalAlignment="Left" Height="51" Margin="950,115,0,0" VerticalAlignment="Top" Width="49" Click="Ajouter_image" Background="#FFFDF7E4"/>
+        <Image x:Name="image_avant" Height="50"  Width="50" Source="{Binding Image}" Margin="492,130,858,622"/>
+        <Image x:Name="image_apres" Height="50"  Width="50" Source="{Binding Image}" Margin="992,130,358,622"/>
+        <Button Content="+" HorizontalAlignment="Left" Height="30" Margin="1084,134,0,0" VerticalAlignment="Top" Width="25" Click="Ajouter_image" Background="#FFFDF7E4"/>
         <Button Content="x" HorizontalAlignment="Left" Height="20" Margin="1029,129,0,0" VerticalAlignment="Top" Width="15" Click="Supprimer_image" RenderTransformOrigin="1.84,0.73" Background="#FFFDF7E4"/>
         <Label Content="Nom" FontWeight="Bold" HorizontalAlignment="Left" Height="34" Margin="358,196,0,0" VerticalAlignment="Top" Width="50"/>
         <Label Content="Famille" FontWeight="Bold" HorizontalAlignment="Left" Height="38" Margin="358,222,0,0" VerticalAlignment="Top" Width="64"/>

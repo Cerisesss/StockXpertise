@@ -33,16 +33,16 @@ namespace StockXpertise.Stock
         int id_produit;
         string imagePath;
 
-        public Query_Stock(string code_barre) : this(0, "", "", 0, 0, 0, "", code_barre, 0, "", "", "")
+        public Query_Stock(string code_barre) : this(0, "", "", 0, 0, 0, "", code_barre, 0, "", "", "", "")
         {
         }
 
-        public Query_Stock(int id_article, int quantite, string emplacement) : this(id_article, "", "", 0, 0, 0, "", "", quantite, emplacement, "", "")
+        public Query_Stock(int id_article, int quantite, string emplacement) : this(id_article, "", "", 0, 0, 0, "", "", quantite, emplacement, "", "", "")
         {
             this.emplacement = emplacement;
         }
 
-        public Query_Stock(int quantite, string emplacement, int id_produit) : this(0, "", "", 0, 0, 0, "", "", quantite, "", "", "")
+        public Query_Stock(int quantite, string emplacement, int id_produit) : this(0, "", "", 0, 0, 0, "", "", quantite, "", "", "", "")
         {
             this.emplacement = emplacement;
             this.id_produit = id_produit;
@@ -55,21 +55,21 @@ namespace StockXpertise.Stock
             this.id_emplacement = id_emplacement;
         }*/
 
-        public Query_Stock(int id_article, string nom, string famille, int prixHT, int prixTTC, string description, string code_barre, int quantite, string imagePath, string emplacement) : this(id_article, nom, famille, prixHT, prixTTC, 0, description, code_barre, quantite, "", "", "")
+        public Query_Stock(int id_article, string nom, string famille, int prixHT, int prixTTC, string description, string code_barre, int quantite, string emplacement, string imagePath) : this(id_article, nom, famille, prixHT, prixTTC, 0, description, code_barre, quantite, "", "", "", "")
         {
             this.imagePath = imagePath;
             this.emplacement = emplacement;
         }
 
-        public Query_Stock(string nom, string famille, int prixHT, int prixTTC, string description, string code_barre, int quantite) : this(0, nom, famille, prixHT, prixTTC, 0, description, code_barre, quantite, "", "", "")
+        public Query_Stock(string nom, string famille, int prixHT, int prixTTC, string description, string code_barre, int quantite) : this(0, nom, famille, prixHT, prixTTC, 0, description, code_barre, quantite, "", "", "", "")
         {
         }
 
-        public Query_Stock(string nom, string famille, int prixHT, int prixTTC, int prixAchat, string description, string code_barre, int quantite, string emplacement, string nomFournisseur, string prenomFournisseur) : this(0, nom, famille, prixHT, prixTTC, prixAchat, description, code_barre, quantite, emplacement, nomFournisseur, prenomFournisseur)
+        public Query_Stock(string nom, string famille, int prixHT, int prixTTC, int prixAchat, string description, string code_barre, int quantite, string emplacement, string nomFournisseur, string prenomFournisseur, string imagePath) : this(0, nom, famille, prixHT, prixTTC, prixAchat, description, code_barre, quantite, emplacement, nomFournisseur, prenomFournisseur, imagePath)
         {
         }
 
-        public Query_Stock(int id_article, string nom, string famille, int prixHT, int prixTTC, int prixAchat, string description, string code_barre, int quantite, string emplacement, string nomFournisseur, string prenomFournisseur)
+        public Query_Stock(int id_article, string nom, string famille, int prixHT, int prixTTC, int prixAchat, string description, string code_barre, int quantite, string emplacement, string nomFournisseur, string prenomFournisseur, string imagePath)
         {
             this.id_article = id_article;
             this.nom = nom;
@@ -83,6 +83,7 @@ namespace StockXpertise.Stock
             this.emplacement = emplacement;
             this.nomFournisseur = nomFournisseur;
             this.prenomFournisseur = prenomFournisseur;
+            this.imagePath = imagePath;
         }
 
 
@@ -285,6 +286,27 @@ namespace StockXpertise.Stock
 
                 // Ajoute les paramètres à la commande pour eviter les injections SQL
                 commande.Parameters.AddWithValue("@ImagePath", imagePath);
+                commande.Parameters.AddWithValue("@Id_Article", id_article);
+
+                // Exécute la commande
+                commande.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error in ConnectionDB: {ex.Message}");
+            }
+        }
+
+        public void Update_ImagePath(string newPath)
+        {
+            try
+            {
+                string query = "UPDATE articles SET image = @ImagePath WHERE id_articles = @Id_Article;";
+
+                // Crée une commande SQL avec la requête et la connexion
+                MySqlCommand commande = new MySqlCommand(query, ConnectionDB());
+
+                commande.Parameters.AddWithValue("@ImagePath", newPath);
                 commande.Parameters.AddWithValue("@Id_Article", id_article);
 
                 // Exécute la commande
@@ -557,7 +579,7 @@ namespace StockXpertise.Stock
             try
             {
                 // Requête SQL paramétrée
-                string query = "INSERT INTO articles (id_fournisseur, nom, famille, prix_ht, prix_ttc, prix_achat, description, code_barre) VALUES (@IdFournisseur, @Nom, @Famille, @PrixHT, @PrixTTC, @PrixAchat, @Description, @CodeBarre);" +
+                string query = "INSERT INTO articles (id_fournisseur, nom, famille, prix_ht, prix_ttc, prix_achat, description, code_barre, image) VALUES (@IdFournisseur, @Nom, @Famille, @PrixHT, @PrixTTC, @PrixAchat, @Description, @CodeBarre, @Image);" +
                                "INSERT INTO produit (id_articles, id_emplacement, quantite_stock) VALUES (@IdArticles, @IdEmplacement, @Quantite);";
 
                 // Crée une commande SQL avec la requête et la connexion
@@ -572,6 +594,7 @@ namespace StockXpertise.Stock
                 commande.Parameters.AddWithValue("@PrixAchat", prixAchat);
                 commande.Parameters.AddWithValue("@Description", description);
                 commande.Parameters.AddWithValue("@CodeBarre", code_barre);
+                commande.Parameters.AddWithValue("@Image", imagePath);
 
                 commande.Parameters.AddWithValue("@IdArticles", id_article);
                 commande.Parameters.AddWithValue("@IdEmplacement", id_emplacement);

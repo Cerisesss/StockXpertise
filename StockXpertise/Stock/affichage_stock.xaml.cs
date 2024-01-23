@@ -19,6 +19,8 @@ using System.Data;
 using MySql.Data.MySqlClient;
 using Org.BouncyCastle.Asn1.X509;
 using StockXpertise.Connection;
+using iText.IO.Image;
+using System.IO;
 
 namespace StockXpertise.Stock
 {
@@ -58,11 +60,12 @@ namespace StockXpertise.Stock
             // Rempli la liste d'Article
             while (reader.Read())
             {
+                var imagePath = reader["image"].ToString().Replace('\\', '/');
+
                 var articleData = new Article
                 {
                     Id = Convert.ToInt32(reader["id_articles"]),
-                    //Id_emplacement = Convert.ToInt32(reader["id_emplacement"]),
-                    ImagePath = reader["image"].ToString(),
+                    Image = new BitmapImage(new Uri("C:/Users/pitsy/Desktop/stockxpertise/StockXpertise" + imagePath)),
                     Code_emplacement = reader["code"].ToString(),
                     Nom = reader["nom"].ToString(),
                     Famille = reader["famille"].ToString(),
@@ -72,7 +75,6 @@ namespace StockXpertise.Stock
                     PrixHT = Convert.ToInt32(reader["prix_ht"]),
                     PrixTTC = Convert.ToInt32(reader["prix_ttc"])
                 };
-
                 articlesDataList.Add(articleData);
             }
 
@@ -90,7 +92,6 @@ namespace StockXpertise.Stock
                 var articleData = new Article
                 {
                     Id = Convert.ToInt32(reader["id_articles"]),
-                    //Id_emplacement = Convert.ToInt32(reader["id_emplacement"]),
                     Code_emplacement = reader["code"].ToString(),
                     Nom = reader["nom"].ToString(),
                     Famille = reader["famille"].ToString(),
@@ -154,23 +155,19 @@ namespace StockXpertise.Stock
 
                 iText.Layout.Element.Table table = new iText.Layout.Element.Table(8);
 
-                table.AddHeaderCell("ID Articles");
-                //table.AddHeaderCell("ID Emplacement");
-                table.AddHeaderCell("Code emplacement");
                 table.AddHeaderCell("Nom");
+                table.AddHeaderCell("Emplacement");
                 table.AddHeaderCell("Famille");
                 table.AddHeaderCell("Code barre");
                 table.AddHeaderCell("Description");
-                table.AddHeaderCell("Prix HT");
-                table.AddHeaderCell("Prix TTC");
+                table.AddHeaderCell("HT");
+                table.AddHeaderCell("TTC");
                 table.AddHeaderCell("Quantité en stock");
 
                 foreach (var data in articlesDataList)
                 {
-                    table.AddCell(data.Id.ToString());
-                    //table.AddCell(data.Id_emplacement.ToString());
-                    table.AddCell(data.Code_emplacement.ToString());
                     table.AddCell(data.Nom);
+                    table.AddCell(data.Code_emplacement.ToString());
                     table.AddCell(data.Famille);
                     table.AddCell(data.CodeBarre);
                     table.AddCell(data.Description);
