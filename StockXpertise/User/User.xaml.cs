@@ -28,7 +28,7 @@ namespace StockXpertise.User
     public partial class User : Page
     {
         List<UserConnected> Users = new List<UserConnected>();
-
+        
         public User()
         {
             InitializeComponent();

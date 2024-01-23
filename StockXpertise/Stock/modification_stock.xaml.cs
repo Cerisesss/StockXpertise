@@ -23,6 +23,8 @@ using AForge.Video;
 using System.Drawing;
 using ZXing;
 using System.Text.RegularExpressions;
+using System.Globalization;
+using StockXpertise.User;
 
 namespace StockXpertise.Stock
 {
@@ -31,7 +33,6 @@ namespace StockXpertise.Stock
     /// </summary>
     public partial class modification_stock : Page
     {
-
         private Article selectedData;
         // Stock le chemin de l'image
         private string imagePath;
@@ -39,15 +40,13 @@ namespace StockXpertise.Stock
         private bool supprimerImageClicked = false;
         // Stock le chemin initial de l'image
         private string initialImagePath;
+        private string selectedImagePath;
         private FilterInfoCollection filterInfoCollection;
         private VideoCaptureDevice videoCaptureDevice;
 
         public modification_stock(Article selectedData)
         {
             InitializeComponent();
-
-            // Initialise initialImagePath avec le chemin de l'image existante dans votre contrôle Image au chargement initial
-            initialImagePath = selectedData.Image;
 
             this.selectedData = selectedData;
             LoadData();
@@ -73,23 +72,8 @@ namespace StockXpertise.Stock
             prix_HT_avant.Text = selectedData.PrixHT.ToString();
             prix_TTC_avant.Text = selectedData.PrixTTC.ToString();
             code_emplacement_avant.Text = selectedData.Code_emplacement.ToString();
-
-            string imagePath = selectedData.Image;
-
-            if (!string.IsNullOrEmpty(imagePath))
-            {
-                // Crée une instance de BitmapImage
-                BitmapImage bitmap = new BitmapImage();
-
-                // Source de l'image grâce au chemin
-                bitmap.BeginInit();
-                bitmap.UriSource = new Uri(imagePath, UriKind.Absolute);
-                bitmap.EndInit();
-
-                // Image affecté au contrôle Image
-                image_avant.Source = bitmap;
-                image_apres.Source = bitmap;
-            }
+            image_avant.Source = selectedData.Image;
+            image_apres.Source = selectedData.Image;
         }
 
         private void enregistrer_modification(object sender, RoutedEventArgs e)
@@ -103,19 +87,18 @@ namespace StockXpertise.Stock
             string nouveauPrixTTC = prix_TTC_apres.Text;
             string code_barre = code_barre_apres.Text;
             string code_emplacement = code_emplacement_apres.Text;
-            //int id_emplacement = selectedData.Id_emplacement;
             int quantite_avant = selectedData.Quantite;
 
             if (string.IsNullOrEmpty(code_barre) && string.IsNullOrEmpty(nouveauNom) && string.IsNullOrEmpty(nouvelleFamille) && string.IsNullOrEmpty(nouvelledescription) && string.IsNullOrEmpty(nouvelleQuantite) && string.IsNullOrEmpty(nouveauPrixHT) && string.IsNullOrEmpty(nouveauPrixTTC) && string.IsNullOrEmpty(imagePath))
             {
-                MessageBox.Show("Veuillez remplir au moins un champ");
+                MessageBox.Show("Veuillez remplir au moins un champ", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             else
             {
                 if (!string.IsNullOrEmpty(nouvelleFamille) && !Regex.IsMatch(nouvelleFamille, "^[a-zA-Z]+$"))
                 {
-                    MessageBox.Show("La famille doit etre des lettres.");
+                    MessageBox.Show("Famille ne contient que des lettres.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
 
@@ -128,29 +111,28 @@ namespace StockXpertise.Stock
 
                 if (!string.IsNullOrEmpty(nouveauPrixHT) && !convertPrixHT)
                 {
-                    MessageBox.Show("Le prix HT doit etre numerique.");
+                    MessageBox.Show("Le prix HT doit etre numérique.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
                 if (!string.IsNullOrEmpty(nouveauPrixTTC) && !convertPrixTTC)
                 {
-                    MessageBox.Show("Le prix TTC doit etre numerique.");
+                    MessageBox.Show("Le prix TTC doit etre numerique.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
                 if (!string.IsNullOrEmpty(nouvelleQuantite) && !convertQuantite)
                 {
-                    MessageBox.Show("La quantite doit etre numerique.");
+                    MessageBox.Show("La quantité doit être numérique.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
                 if (!string.IsNullOrEmpty(code_barre) && verif_code_barre)
                 {
-                    MessageBox.Show("Le code barre existe deja.");
+                    MessageBox.Show("Le code barre existe déjà.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
 
-                //Query_Stock query_Update = new Query_Stock(selectedData.Id, nouveauNom, nouvelleFamille, prixHT, prixTTC, nouvelledescription, code_barre, quantite, imagePath, code_emplacement, id_emplacement);
-                Query_Stock query_Update = new Query_Stock(selectedData.Id, nouveauNom, nouvelleFamille, prixHT, prixTTC, nouvelledescription, code_barre, quantite, imagePath, code_emplacement);
+                Query_Stock query_Update = new Query_Stock(selectedData.Id, nouveauNom, nouvelleFamille, prixHT, prixTTC, nouvelledescription, code_barre, quantite, code_emplacement, imagePath);
 
-                // Vérifier si les TextBoxs ne sont pas vides pour enregistrer que les données qui ont été modifiées
+                // Si les TextBoxs ne sont pas vides, n'enregistrer que les données qui ont été modifiées
                 if (!string.IsNullOrEmpty(code_emplacement))
                 {
                     Query_Stock query_Update_emplacement = new Query_Stock(selectedData.Id, quantite_avant, code_emplacement);
@@ -184,13 +166,39 @@ namespace StockXpertise.Stock
                 {
                     query_Update.Update_CodeBarre();
                 }
-                
 
                 // Si l'utilisateur a supprimé l'image existante et a ajouté une nouvelle image
                 if (initialImagePath != imagePath)
                 {
                     // Mettre à jour le chemin de l'image dans la base de données
                     query_Update.Update_ImagePath();
+                }
+
+                // Copier le fichier sélectionné vers l'emplacement de destination
+                if (!string.IsNullOrEmpty(selectedImagePath))
+                {
+                    // Emplacement de destination pour télécharger l'image
+                    string destinationFolderPath = @"C:\Users\pitsy\Desktop\stockxpertise\StockXpertise\";
+
+                    // Obtenez le nom du fichier à partir du chemin complet
+                    string fileName = System.IO.Path.GetFileName(selectedImagePath);
+
+                    string randomFileName;
+                    string destinationFilePath;
+
+                    // Générer un nom de fichier aléatoire et vérifier s'il existe déjà
+                    do
+                    {
+                        randomFileName = "Images\\" + Guid.NewGuid().ToString() + System.IO.Path.GetExtension(fileName);
+                        destinationFilePath = System.IO.Path.Combine(destinationFolderPath, randomFileName);
+                    } while (File.Exists(destinationFilePath));
+
+                    // Copier le fichier vers la destination
+                    File.Copy(selectedImagePath, destinationFilePath, true);
+
+                    // Mettre à jour le chemin de l'image dans la base de données avec le nom de fichier aléatoire
+                    randomFileName = "\\" + randomFileName;
+                    query_Update.Update_ImagePath(randomFileName);
                 }
 
                 MessageBox.Show("Modification effectuée avec succès", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -220,7 +228,7 @@ namespace StockXpertise.Stock
 
         private void Ajouter_image(object sender, RoutedEventArgs e)
         {
-            // Ajouter une image à l'article que si l'ulisateur à supprimer l'image actuelle
+            // Ajouter une image à l'article que si l'utilisateur a supprimé l'image actuelle
 
             // Si l'utilisateur a appuyé sur le bouton Supprimer_image
             if (supprimerImageClicked)
@@ -232,25 +240,13 @@ namespace StockXpertise.Stock
 
                 if (openFileDialog.ShowDialog() == true)
                 {
-                    string selectedImagePath = openFileDialog.FileName;
-
-                    // Emplacement de destination pour télécgarger l'image
-                    string destinationFolderPath = @"C:\Users\pitsy\Desktop\stockxpertise\StockXpertise\Images\";
-
-                    // Générer un nom de fichier unique pour éviter les collisions
-                    string uniqueFileName = Guid.NewGuid().ToString() + System.IO.Path.GetExtension(selectedImagePath);
-
-                    // Copier le fichier sélectionné vers l'emplacement de destination
-                    string destinationFilePath = System.IO.Path.Combine(destinationFolderPath, uniqueFileName);
-                    File.Copy(selectedImagePath, destinationFilePath, true);
-
-                    // Enregistrer le chemin de l'image sélectionnée
-                    imagePath = destinationFilePath;
+                    // Mettre à jour le chemin du fichier sélectionné
+                    selectedImagePath = openFileDialog.FileName;
 
                     // Mettre à jour l'image dans le contrôle Image
-                    if (!string.IsNullOrEmpty(imagePath))
+                    if (!string.IsNullOrEmpty(selectedImagePath))
                     {
-                        Uri uri = new Uri(imagePath);
+                        Uri uri = new Uri(selectedImagePath);
                         image_apres.Source = new BitmapImage(uri);
                     }
                 }
@@ -281,10 +277,10 @@ namespace StockXpertise.Stock
             string quantite_string = selectedData.Quantite.ToString();
             string prix_HT_string = selectedData.PrixHT.ToString();
             string prix_TTC_string = selectedData.PrixTTC.ToString();
-
             int quantite = Convert.ToInt32(quantite_string);
             int prix_HT = Convert.ToInt32(prix_HT_string);
             int prix_TTC = Convert.ToInt32(prix_TTC_string);
+            //BitmapImage image = selectedData.Image;
 
             // requete pour ajouter un article
             Query_Stock query_insert = new Query_Stock(nom, famille, prix_HT, prix_TTC, description, code_barre, quantite);
@@ -386,6 +382,5 @@ namespace StockXpertise.Stock
 
             return bitmapImage;
         }
-
     }
 }

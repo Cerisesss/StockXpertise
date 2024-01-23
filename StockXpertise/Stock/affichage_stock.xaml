@@ -23,13 +23,36 @@
             <TextBlock Text="Stock" HorizontalAlignment="Center" FontSize="24" Margin="0,66,0,687" Width="64" FontWeight="Bold" RenderTransformOrigin="0.189,0.5"/>
             <Button x:Name="button" Content="PDF" Height="30" Margin="1016,181,45,589" Width="72" RenderTransformOrigin="0.743,1.834" BorderBrush="Black" Click="generation_pdf" Background="#FFFFDDCC"/>
             <DataGrid x:Name="MyDataGrid" HorizontalAlignment="Center" VerticalAlignment="Top" Height="500" Width="1247" Margin="0,251,0,0"
-                AutoGenerateColumns="True"
-          AlternatingRowBackground="#F0F0F0"
-          GridLinesVisibility="None"
-          CanUserResizeColumns="True"
-          CanUserResizeRows="False"
-          SelectionMode="Single"
-          RowHeight="40" SelectionChanged="DataGrid_SelectionChanged">
+    AlternatingRowBackground="#F0F0F0"
+    GridLinesVisibility="None"
+    CanUserResizeColumns="True"
+    CanUserResizeRows="False"
+    SelectionMode="Single"
+    RowHeight="40"
+    AutoGenerateColumns="False"
+    SelectionChanged="DataGrid_SelectionChanged">
+                <!-- Désactiver AutoGenerateColumns -->
+
+                <!-- Définition des colonnes manuellement -->
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                    <DataGridTextColumn Header="Nom" Binding="{Binding Nom}"/>
+                    <!-- Colonne d'image -->
+                    <DataGridTemplateColumn Header="Image">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding Image}" Width="50" Height="50"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="Famille" Binding="{Binding Famille}"/>
+                    <DataGridTextColumn Header="Emplacement" Binding="{Binding Code_emplacement}"/>
+                    <DataGridTextColumn Header="Quantité" Binding="{Binding Quantite}"/>
+                    <DataGridTextColumn Header="Code barre" Binding="{Binding CodeBarre}"/>
+                    <DataGridTextColumn Header="Description" Binding="{Binding Description}"/>
+                    <DataGridTextColumn Header="Prix HT" Binding="{Binding PrixHT}"/>
+                    <DataGridTextColumn Header="Prix TTC" Binding="{Binding PrixTTC}"/>
+                </DataGrid.Columns>
 
                 <!-- Style des colonnes -->
                 <DataGrid.Resources>
@@ -48,13 +71,6 @@
                         <Setter Property="TextBlock.TextAlignment" Value="Center"/>
                     </Style>
                 </DataGrid.Resources>
-                <DataGridTemplateColumn Header="Image">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Image Source="{Binding ImagePath}" Width="50" Height="50" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
             </DataGrid>
             <TextBox x:Name="Search_TextBox" Height="30" Margin="46,181,383,589" Text="Search ..." TextWrapping="Wrap" Width="705">
                 <TextBox.Template>
