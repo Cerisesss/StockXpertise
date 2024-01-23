@@ -36,6 +36,8 @@ namespace StockXpertise.Stock
     {
         List<Fournisseur> fournisseurs = new List<Fournisseur>();
 
+        private string selectedImagePath;
+
         string nom;
         string famille;
         string prixHT_string;
@@ -47,6 +49,7 @@ namespace StockXpertise.Stock
         string emplacement;
         string nomFournisseur;
         string prenomFournisseur;
+        string randomFileName;
 
         FilterInfoCollection filterInfoCollection;
         VideoCaptureDevice videoCaptureDevice;
@@ -81,16 +84,13 @@ namespace StockXpertise.Stock
             code_barre = CodeBarreStock.Text;
             quantite_string = quantiteStock.Text;
             emplacement = emplacementStock.Text;
-            //string image;
-
-
 
             //condition pour verifier si les champs sont vides
             //si c'est le cas alors on affiche un message
             //sinon on execute la requete
-            if (string.IsNullOrEmpty(nom) || string.IsNullOrEmpty(famille) || string.IsNullOrEmpty(code_barre) || string.IsNullOrEmpty(description) || string.IsNullOrEmpty(quantite_string) || string.IsNullOrEmpty(emplacement) || FournisseurListBox.SelectedIndex < 0 || string.IsNullOrEmpty(prixHT_string) || string.IsNullOrEmpty(prixTTC_string) || string.IsNullOrEmpty(prixAchat_string))
+            if (string.IsNullOrEmpty(nom) || string.IsNullOrEmpty(famille) || string.IsNullOrEmpty(code_barre) || string.IsNullOrEmpty(description) || string.IsNullOrEmpty(quantite_string) || string.IsNullOrEmpty(emplacement) || FournisseurListBox.SelectedIndex < 0 || string.IsNullOrEmpty(prixHT_string) || string.IsNullOrEmpty(prixTTC_string) || string.IsNullOrEmpty(prixAchat_string) || string.IsNullOrEmpty(selectedImagePath))
             {
-                MessageBox.Show("Veuillez remplir tous les champs.");
+                MessageBox.Show("Veuillez remplir tous les champs.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
@@ -104,33 +104,65 @@ namespace StockXpertise.Stock
 
                 if (!Regex.IsMatch(famille, "^[a-zA-Z]+$"))
                 {
-                    MessageBox.Show("La famille doit etre des lettres.");
+                    MessageBox.Show("La famille doit être en lettres.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
                 }
 
                 if (!string.IsNullOrEmpty(code_barre) && verif_code_barre)
                 {
-                    MessageBox.Show("Le code barre existe deja.");
+                    MessageBox.Show("Le code barre existe déjà.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
 
                 if (!result_prixHT || !result_prixTTC || !result_prixAchat || !result_quantite)
                 {
-                    MessageBox.Show("Le prix HT, TTC, achat et la quantité doivent être numérique !");
+                    MessageBox.Show("Le prix HT, TTC, achat et la quantité doivent être numérique !", "Attention", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(selectedImagePath))
+                {
+                    MessageBox.Show("Veuillez ajouter une image.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
                 }
                 else
                 {
-                    // requete pour ajouter un article
-                    Query_Stock query_insert = new Query_Stock(nom, famille, prixHT, prixTTC, prixAchat, description, code_barre, quantite, emplacement, nomFournisseur, prenomFournisseur);
-                    query_insert.Insert_Stock();
+                    // Pour copier le fichier sélectionné vers l'emplacement de destination
 
-                    //redirection vers la page affichage_stock.xaml
-                    affichage_stock stock = new affichage_stock();
-                    Window parentWindow = Window.GetWindow(this);
+                    // Emplacement de destination pour télécharger l'image
+                    string destinationFolderPath = @"C:\Users\pitsy\Desktop\stockxpertise\StockXpertise\";
 
-                    if (parentWindow != null)
+                    // Nom du fichier à partir du chemin complet
+                    string fileName = System.IO.Path.GetFileName(selectedImagePath);
+
+                    string destinationFilePath;
+
+                    // Générer le nom du fichier aléatoirement et vérifie s'il existe déjà
+                    do
                     {
-                        parentWindow.Content = stock;
-                    }
+                        randomFileName = "Images\\" + Guid.NewGuid().ToString() + System.IO.Path.GetExtension(fileName);
+                        destinationFilePath = System.IO.Path.Combine(destinationFolderPath, randomFileName);
+                    } while (File.Exists(destinationFilePath));
+
+                    // Copie le fichier vers la destination
+                    File.Copy(selectedImagePath, destinationFilePath, true);
+
+                    // Maj du chemin de l'image dans la base de données avec le nom de fichier aléatoire
+                    randomFileName = "\\" + randomFileName;
+                    //query_Update.Update_ImagePath(randomFileName);
+                }
+
+                // requete pour ajouter un article
+                Query_Stock query_insert = new Query_Stock(nom, famille, prixHT, prixTTC, prixAchat, description, code_barre, quantite, emplacement, nomFournisseur, prenomFournisseur, randomFileName);
+                query_insert.Insert_Stock();
+
+                //redirection vers la page affichage_stock.xaml
+                affichage_stock stock = new affichage_stock();
+                Window parentWindow = Window.GetWindow(this);
+
+                if (parentWindow != null)
+                {
+                    parentWindow.Content = stock;
                 }
             }
         }
@@ -158,11 +190,6 @@ namespace StockXpertise.Stock
                 nomFournisseur = selectedFournisseur.getNom();
                 prenomFournisseur = selectedFournisseur.getPrenom();
             }
-        }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
         }
 
         private void btnScanner_Click(object sender, EventArgs e)
@@ -251,5 +278,31 @@ namespace StockXpertise.Stock
 
             return bitmapImage;
         }
+
+        private void ajouterImage(object sender, RoutedEventArgs e)
+        {
+            // Ajouter une image à l'article
+            Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog();
+
+            // Filtre pour les fichiers image
+            openFileDialog.Filter = "Fichiers images (*.jpg, *.jpeg, *.png, *.gif) | *.jpg; *.jpeg; *.png; *.gif";
+
+            // Utiliser la propriété DialogResult de l'objet OpenFileDialog
+            bool? result = openFileDialog.ShowDialog();
+
+            if (result.HasValue && result.Value)
+            {
+                // Maj du chemin du fichier sélectionné
+                selectedImagePath = openFileDialog.FileName;
+
+                // Maj de l'image dans le contrôle Image
+                if (!string.IsNullOrEmpty(selectedImagePath))
+                {
+                    Uri uri = new Uri(selectedImagePath);
+                    Image.Source = new BitmapImage(uri);
+                }
+            }
+        }
+
     }
 }
