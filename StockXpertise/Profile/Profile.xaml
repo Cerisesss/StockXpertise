@@ -14,25 +14,25 @@
         <Frame x:Name="profile" NavigationUIVisibility="Hidden"/>
 
         <Grid Height="250" Width="250" Margin="338,42,212,158">
-            <Image Source="/Images/Logo.png" Stretch="UniformToFill" Margin="0,0,11,23" >
+            <Image Source="/Images/LogoVBlanc.png" Stretch="UniformToFill" Margin="0,0,11,23" OpacityMask="Black" >
                 <Image.Clip>
                     <EllipseGeometry Center="150,150" RadiusX="135" RadiusY="135"/>
                 </Image.Clip>
             </Image>
         </Grid>
-        <Rectangle Margin="571,441,417,218" Stroke="#FFABADB3" Width="512" Fill="#FFFFDDCC"/>
-        <Label Content="Nom" Height="28" Margin="251,273,471,154" Width="78"/>
-        <Label Content="Prénom" Height="28" Margin="251,297,471,130" Width="78"/>
-        <Label Content="Mail" Height="28" Margin="251,323,471,104" Width="78"/>
-        <Label Content="Status" Height="28" Margin="251,346,471,81" Width="78"/>
-        <Rectangle Margin="688,441,450,218" Stroke="#FFABADB3" Width="362" Fill="White"/>
-        <Label x:Name="ProfileFirstName" Content="Nom " Height="28" Margin="357,273,119,154" Width="324"/>
-        <Label x:Name="ProfileLastName" Content="Prénom" Height="28" Margin="357,297,119,130" Width="324"/>
-        <Label x:Name="ProfileMail" Content="Mail" Height="28" Margin="357,323,119,104" Width="324"/>
-        <Label x:Name="ProfileStatus" Content="Status" Height="28" Margin="357,346,119,81" Width="324"/>
-        <Label Content="Mot de passe" Height="28" Margin="601,546,817,226"/>
-        <Label x:Name="ProfileMdp" Content="Mot de passe" Height="28" Margin="707,546,469,226" Width="324"/>
-        <Button Content="Déconnexion" Height="35" Margin="848,595,562,170" Width="90" Click="Button_Click" Background="#FFFFDDCC" BorderBrush="Black"/>
-        <Button Content="Modifier" Height="35" Margin="707,595,703,170" Width="90" Click="Button_Modifier" Background="#FFFFDDCC" BorderBrush="Black"/>
+        <Rectangle Margin="557,441,431,218" Stroke="#FFABADB3" Width="512" Fill="#FFFFDDCC"/>
+        <Label Content="Nom" Height="28" Margin="587,446,835,326" Width="78"/>
+        <Label Content="Prénom" Height="28" Margin="587,470,835,302" Width="78"/>
+        <Label Content="Mail" Height="28" Margin="587,496,835,276" Width="78"/>
+        <Label Content="Status" Height="28" Margin="587,518,835,254" Width="78"/>
+        <Rectangle Margin="674,441,464,218" Stroke="#FFABADB3" Width="362" Fill="White"/>
+        <Label x:Name="ProfileFirstName" Content="Nom " Height="28" Margin="693,446,483,326" Width="324"/>
+        <Label x:Name="ProfileLastName" Content="Prénom" Height="28" Margin="693,470,483,302" Width="324"/>
+        <Label x:Name="ProfileMail" Content="Mail" Height="28" Margin="693,496,483,276" Width="324"/>
+        <Label x:Name="ProfileStatus" Content="Status" Height="28" Margin="693,518,483,254" Width="324"/>
+        <Label Content="Mot de passe" Height="28" Margin="587,546,831,226"/>
+        <Label x:Name="ProfileMdp" Content="Mot de passe" Height="28" Margin="693,546,483,226" Width="324"/>
+        <Button Content="Déconnexion" Margin="826,595,584,165" Width="90" Click="Button_Click" Background="#FFFFDDCC" BorderBrush="White"/>
+        <Button Content="Modifier" Margin="693,595,717,165" Width="90" Click="Button_Modifier" Background="#FFFFDDCC" BorderBrush="White"/>
     </Grid>
 </Page>

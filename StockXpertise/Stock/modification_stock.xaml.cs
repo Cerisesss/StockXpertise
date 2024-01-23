@@ -382,5 +382,23 @@ namespace StockXpertise.Stock
 
             return bitmapImage;
         }
+
+        private void code_barre_apres_TextChanged(object sender, KeyEventArgs e)
+        {
+            // Vérifier si la touche appuyée est la touche "Entrer"
+            if (e.Key != Key.Enter)
+            {
+                return;
+            }
+
+            // Récupérer le code à barres saisi
+            string codeBarre = code_barre_apres.Text;
+
+            // select all text in textbox
+            code_barre_apres.SelectAll();
+
+            // Empêcher le caractère "Entrer" d'être ajouté au TextBox
+            e.Handled = true;
+        }
     }
 }

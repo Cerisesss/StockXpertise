@@ -11,27 +11,19 @@
     <Grid>
         <local:UserControl1/>
         <Frame x:Name="StockFrame" NavigationUIVisibility="Hidden"/>
-        <Grid x:Name="gridStock" Margin="206,0,47,10">
-            <Border BorderThickness="2" Margin="28,51,0,0" CornerRadius="10" VerticalAlignment="Top" HorizontalAlignment="Left" Height="77" Width="1209" Background="#f3c9a2">
+        <Grid x:Name="gridStock" Margin="173,-2,0,2">
+            <Border BorderThickness="2" Margin="0,51,0,0" CornerRadius="10" VerticalAlignment="Top" HorizontalAlignment="Center" Height="77" Width="1247" Background="#f3c9a2">
                 <Border.Effect>
                     <DropShadowEffect/>
                 </Border.Effect>
             </Border>
 
-            <TextBlock Text="Fournisseurs" HorizontalAlignment="Left" FontSize="24" Margin="558,66,0,662" Width="153" FontWeight="Bold"/>
-            <Rectangle HorizontalAlignment="Left" Height="36" Margin="118,170,0,0" Stroke="Transparent" VerticalAlignment="Top" Width="150" RenderTransformOrigin="0.527,0.493">
-                <Rectangle.Fill>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#FFACACAC"/>
-                        <GradientStop Color="White" Offset="1"/>
-                        <GradientStop Color="#FFAEAEAE" Offset="0"/>
-                    </LinearGradientBrush>
-                </Rectangle.Fill>
-            </Rectangle>
-            <Button x:Name="BtnAddSupplier" Content="Ajouter" HorizontalAlignment="Left" Height="30" Margin="1023,166,0,0" VerticalAlignment="Top" Width="93" Click="Add_New_Stock" BorderBrush="Black" Background="#FFFFDDCC"/>
-            <ComboBox x:Name="comboBoxAffichage" HorizontalAlignment="Left" Height="36" Margin="268,170,0,0" VerticalAlignment="Top" Width="330" SelectionChanged="ComboBox_SelectionChanged_affichage"/>
-            <Label Content="Affichage" HorizontalAlignment="Left" Height="36" Margin="138,175,0,0" VerticalAlignment="Top" Width="109"/>
-            <DataGrid x:Name="MyDataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Height="485" Width="1049" Margin="110,246,0,0"
+            <TextBlock Text="Fournisseur" HorizontalAlignment="Center" FontSize="24" Margin="0,72,0,692" Width="134" FontWeight="Bold" Foreground="#FF303030"/>
+            <Rectangle HorizontalAlignment="Left" Margin="123,171,0,0" Stroke="Transparent" VerticalAlignment="Top" Width="68" RenderTransformOrigin="0.527,0.493" Height="40" Fill="#FFFFDDCC"/>
+            <Button x:Name="BtnAddSupplier" Content="Ajouter" HorizontalAlignment="Left" Margin="1162,171,0,0" VerticalAlignment="Top" Width="72" Click="Add_New_Stock" BorderBrush="White" Background="#FFFFDDCC" Height="40"/>
+            <ComboBox x:Name="comboBoxAffichage" HorizontalAlignment="Left" Margin="191,171,0,0" VerticalAlignment="Top" Width="330" SelectionChanged="ComboBox_SelectionChanged_affichage" BorderBrush="{x:Null}" Height="40"/>
+            <Label Content="Trier" HorizontalAlignment="Left" Margin="136,178,0,0" VerticalAlignment="Top" Width="42"/>
+            <DataGrid x:Name="MyDataGrid" HorizontalAlignment="Center" VerticalAlignment="Top" Height="500" Width="1247" Margin="0,251,0,0"
           AutoGenerateColumns="True"
           AlternatingRowBackground="#F0F0F0"
           GridLinesVisibility="None"

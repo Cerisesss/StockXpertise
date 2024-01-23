@@ -5,26 +5,27 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:StockXpertise.components"
       mc:Ignorable="d" 
-      d:DesignHeight="800" d:DesignWidth="1400"
+      d:DesignHeight="800" d:DesignWidth="1500"
       Title="affichage_inventaire">
 
     <Grid>
         <local:UserControl1/>
-        <Frame x:Name="StockInventaireFrame" NavigationUIVisibility="Hidden" Margin="104,39,-104,-39"/>
-        <Grid x:Name="gridStock" Margin="202,-2,32,2">
+        <Frame x:Name="StockInventaireFrame" NavigationUIVisibility="Hidden"/>
+        <Grid x:Name="gridStock" Margin="173,-2,0,2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="0*"/>
             </Grid.ColumnDefinitions>
-            <Border BorderThickness="2" Margin="0,41,0,0" CornerRadius="10" VerticalAlignment="Top" HorizontalAlignment="Center" Height="77" Width="1074" Background="#f8c39e">
+            <Border BorderThickness="2" Margin="0,51,0,0" CornerRadius="10" VerticalAlignment="Top" HorizontalAlignment="Center" Height="77" Width="1247" Background="#f8c39e">
                 <Border.Effect>
                     <DropShadowEffect/>
                 </Border.Effect>
             </Border>
-            <TextBlock Text="Inventaire" HorizontalAlignment="Left" FontSize="24" Margin="520,54,0,682" Width="136" FontWeight="Bold"/>
-            <Button x:Name="button" Content="PDF" HorizontalAlignment="Left" Height="37" Margin="562,662,0,0" VerticalAlignment="Top" Width="94" RenderTransformOrigin="0.743,1.834" Click="generation_pdf" Background="#FFFFDDCC" BorderBrush="Black"/>
-            <DataGrid x:Name="MyDataGrid" HorizontalAlignment="Left" VerticalAlignment="Center" Height="434" Width="914" Margin="159,0,0,0"
-          AutoGenerateColumns="True"
+            <TextBlock Text="Inventaire" HorizontalAlignment="Center" FontSize="24" Margin="0,71,0,685" Width="116" FontWeight="Bold" RenderTransformOrigin="0.189,0.5" Foreground="#FF303030"/>
+            <Button x:Name="button" Content="PDF" HorizontalAlignment="Left"  Margin="1130,172,117,588" VerticalAlignment="Top" Width="80
+                    " RenderTransformOrigin="0.743,1.834" Click="generation_pdf" Background="#FFFFDDCC" BorderBrush="White" Foreground="#FF303030" Height="35"/>
+            <DataGrid x:Name="MyDataGrid" HorizontalAlignment="Center" VerticalAlignment="Top" Height="500" Width="1247" Margin="0,251,0,0"
+                AutoGenerateColumns="True"
           AlternatingRowBackground="#F0F0F0"
           GridLinesVisibility="None"
           CanUserResizeColumns="True"
