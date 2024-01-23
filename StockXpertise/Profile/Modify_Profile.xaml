@@ -14,10 +14,10 @@
 
         <Rectangle Margin="531,236,374,380" Stroke="#FFACACAC" Fill="#FFEBF3E8"/>
         <Label Content="Mot de passe actuel" Margin="547,255,782,511"/>
-        <TextBox x:Name="mdpTextBox" Height="35" Margin="733,255,388,510" TextWrapping="Wrap" Text=""/>
+        <TextBox x:Name="mdpTextBox" Margin="733,255,388,510" TextWrapping="Wrap" Text=""/>
         <Label Content="Nouveau mot de passe" Margin="547,310,782,456"/>
-        <Button Content="Valider" Margin="858,459,552,304" Width="90" Click="Button_Valider" Background="#FFEBF3E8" BorderBrush="Black" RenderTransformOrigin="0.506,0.719"/>
-        <Button Content="Annuler" Margin="708,459,702,304" Width="90" Click="Button_Annuler" Background="#FFFFDDCC"/>
+        <Button Content="Valider" Margin="861,459,549,301" Width="90" Click="Button_Valider" Background="#FFEBF3E8" BorderBrush="White" RenderTransformOrigin="0.506,0.719"/>
+        <Button Content="Annuler" Margin="705,459,705,301" Width="90" Click="Button_Annuler" Background="#FFFFDDCC" BorderBrush="White"/>
 
         <ProgressBar x:Name="ConnexionProgressBar" Margin="578,519,422,263" Minimum="0" Maximum="100" Background="White" BorderBrush="#FFBCBCBC">
             <ProgressBar.Foreground>
@@ -28,7 +28,7 @@
             </ProgressBar.Foreground>
         </ProgressBar>
         <Label Content="Confirmation le mot de passe" Margin="547,366,782,400"/>
-        <TextBox x:Name="NouveauMdp" Height="35" Margin="733,309,388,456" TextWrapping="Wrap" Text=""/>
-        <TextBox x:Name="ConfirmationMdp" Height="35" Margin="733,366,388,399" TextWrapping="Wrap" Text=""/>
+        <TextBox x:Name="NouveauMdp" Margin="733,309,388,456" TextWrapping="Wrap" Text=""/>
+        <TextBox x:Name="ConfirmationMdp" Margin="733,366,388,399" TextWrapping="Wrap" Text=""/>
     </Grid>
 </Page>

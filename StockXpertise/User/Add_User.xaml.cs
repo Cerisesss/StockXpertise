@@ -48,11 +48,6 @@ namespace StockXpertise.User
             ConnexionProgressBar.Value += (200.0 / (3500 / timer.Interval.TotalMilliseconds));
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
         }
@@ -80,21 +75,27 @@ namespace StockXpertise.User
                 role = radioCaissier.Content.ToString();
             }
 
-
-
-            //verification pour savoir si le nom et prenom sont des lettres et si le mail est bien un mail
+            //verification pour savoir si le nom et prenom sont des lettres
             if (!Regex.IsMatch(nom, "^[a-zA-Z]+$") || !Regex.IsMatch(prenom, "^[a-zA-Z]+$"))
             {
                 MessageBox.Show("Le nom et prénom doit etre des lettres.", "Attention", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
-            /*le regex ne marche pas
-             * if (!Regex.IsMatch(mail, @"^\S+@\S+\.\S+$"))
+            //condition pour verifier si les champs sont vides
+            //si c'est le cas alors on affiche un message
+            //sinon on execute la requete d'ajout d'un utilisateur
+            if (string.IsNullOrEmpty(nom) || string.IsNullOrEmpty(prenom) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(mail) || role == null)
             {
-                MessageBox.Show("Ce mail n'est pas valide");
+                MessageBox.Show("Veuillez remplir tous les champs.", "Attention", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
-            }*/
+            }
+
+            if (!mail.Contains("@"))
+            {
+                MessageBox.Show("Votre adresse mail semble incorrecte", "Attention", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
 
             //barre de progression
             ConnexionProgressBar.Visibility = Visibility.Visible;
@@ -103,41 +104,26 @@ namespace StockXpertise.User
 
             await Task.Delay(2500);
 
-            //condition pour verifier si les champs sont vides
-            //si c'est le cas alors on affiche un message
-            //sinon on execute la requete d'ajout d'un utilisateur
-            if (string.IsNullOrEmpty(nom) || string.IsNullOrEmpty(prenom) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(mail)|| role == null)
+            //generation du sel
+            string salt = BCrypt.Net.BCrypt.GenerateSalt(15);
+
+            //hash le mot de passe avec le sel
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password, salt);
+
+            // requete pour ajouter un utilisateur
+            Query_User query_insert = new Query_User(nom, prenom, hashedPassword, mail, role);
+            query_insert.Insert_User();
+
+            ConnexionProgressBar.Value = 100;
+            timer.Stop();
+
+            //redirection vers la page User.xaml
+            User user = new User();
+            Window parentWindow = Window.GetWindow(this);
+
+            if (parentWindow != null)
             {
-                MessageBox.Show("Veuillez remplir tous les champs.", "Attention", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
-            if (!mail.Contains("@"))
-            {
-                MessageBox.Show("Votre adresse mail semble incorrecte");
-                return;
-            }
-            else
-            {
-                //generation du sel
-                string salt = BCrypt.Net.BCrypt.GenerateSalt(15);
-
-                //hash le mot de passe avec le sel
-                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password, salt);
-
-                // requete pour ajouter un utilisateur
-                Query_User query_insert = new Query_User(nom, prenom, hashedPassword, mail, role);
-                query_insert.Insert_User();
-
-                ConnexionProgressBar.Value = 100;
-                timer.Stop();
-
-                //redirection vers la page User.xaml
-                User user = new User();
-                Window parentWindow = Window.GetWindow(this);
-
-                if (parentWindow != null)
-                {
-                    parentWindow.Content = user;
-                }
+                parentWindow.Content = user;
             }
         }
 
@@ -155,6 +141,5 @@ namespace StockXpertise.User
             //griAddUser.Visibility = Visibility.Collapsed;
             //addUser.Navigate(new Uri("/User/User.xaml", UriKind.RelativeOrAbsolute));
         }
-
     }
 }

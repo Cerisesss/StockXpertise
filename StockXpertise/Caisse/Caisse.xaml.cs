@@ -282,5 +282,23 @@ namespace StockXpertise.Caisse
 
             return bitmapImage;
         }
+
+        private void text_code_barre_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            // Vérifier si la touche appuyée est la touche "Entrer"
+            if (e.Key != Key.Enter)
+            {
+                return;
+            }
+
+            // Récupérer le code à barres saisi
+            string codeBarre = text_code_barre.Text;
+
+            // select all text in textbox
+            text_code_barre.SelectAll();
+
+            // Empêcher le caractère "Entrer" d'être ajouté au TextBox
+            e.Handled = true;
+        }
     }
 }

@@ -11,7 +11,7 @@
     <Grid>
         <local:UserControl1/>
         <Frame x:Name="StockFrame" NavigationUIVisibility="Hidden"/>
-        <Grid x:Name="gridStock" Margin="181,-18,10,0">
+        <Grid x:Name="gridStock" Margin="173,-2,0,2">
             <Grid.Background>
                 <ImageBrush/>
             </Grid.Background>
@@ -20,8 +20,8 @@
                     <DropShadowEffect/>
                 </Border.Effect>
             </Border>
-            <TextBlock Text="Stock" HorizontalAlignment="Center" FontSize="24" Margin="0,66,0,687" Width="64" FontWeight="Bold" RenderTransformOrigin="0.189,0.5"/>
-            <Button x:Name="button" Content="PDF" Height="30" Margin="1016,181,45,589" Width="72" RenderTransformOrigin="0.743,1.834" BorderBrush="Black" Click="generation_pdf" Background="#FFFFDDCC"/>
+            <TextBlock Text="Stock" HorizontalAlignment="Center" FontSize="24" Margin="0,71,0,695" Width="64" FontWeight="Bold" RenderTransformOrigin="0.189,0.5" Foreground="#FF303030"/>
+            <Button x:Name="button" Content="PDF" Margin="1130,172,117,588" Width="80" RenderTransformOrigin="0.743,1.834" BorderBrush="White" Click="generation_pdf" Background="#FFFFDDCC" Foreground="#FF303030"/>
             <DataGrid x:Name="MyDataGrid" HorizontalAlignment="Center" VerticalAlignment="Top" Height="500" Width="1247" Margin="0,251,0,0"
     AlternatingRowBackground="#F0F0F0"
     GridLinesVisibility="None"
@@ -72,19 +72,19 @@
                     </Style>
                 </DataGrid.Resources>
             </DataGrid>
-            <TextBox x:Name="Search_TextBox" Height="30" Margin="46,181,383,589" Text="Search ..." TextWrapping="Wrap" Width="705">
+            <Button x:Name="addStock" Content="Ajouter" Margin="1018,172,237,588" Width="72" Click="Add_New_Stock" BorderBrush="White" Background="#FFFFDDCC" RenderTransformOrigin="1.31,0.427" Foreground="#FF303030"/>
+            <TextBox x:Name="Search_TextBox" Margin="133,172,469,588" Text="Search ..." TextWrapping="Wrap">
                 <TextBox.Template>
                     <ControlTemplate TargetType="{x:Type TextBox}">
                         <Grid>
                             <Border CornerRadius="10" BorderBrush="Black" BorderThickness="1" Background="White">
                                 <ScrollViewer x:Name="PART_ContentHost" Padding="5" Margin="5"/>
                             </Border>
-                            <Button Content="🔍" HorizontalAlignment="Right" VerticalAlignment="Center" Width="30" Margin="-35,0,5,0" BorderBrush="{x:Null}" Click="Search_TextBox_TextChanged" Background="White"/>
+                            <Button Content="🔍" HorizontalAlignment="Right" VerticalAlignment="Center" Width="40" Margin="-35,0,5,0" BorderBrush="{x:Null}" Click="Search_TextBox_TextChanged" Background="White"/>
                         </Grid>
                     </ControlTemplate>
                 </TextBox.Template>
             </TextBox>
-            <Button x:Name="addStock" Content="Ajouter" Height="30" Margin="920,181,141,589" Width="72" Click="Add_New_Stock" BorderBrush="Black" Background="#FFFFDDCC" RenderTransformOrigin="1.31,0.427"/>
         </Grid>
     </Grid>
 </Page>

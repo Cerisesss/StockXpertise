@@ -3,46 +3,48 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:StockXpertise.Stock"
+      xmlns:local="clr-namespace:StockXpertise.components"
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="1500"
       Title="inventaire">
 
     <Grid>
-        <Border BorderThickness="2" Margin="0,104,0,0" CornerRadius="10" VerticalAlignment="Top" HorizontalAlignment="Center" Height="77" Width="963" Background="#FFFFB996">
-            <Border.Effect>
-                <DropShadowEffect/>
-            </Border.Effect>
-        </Border>
-        <TextBlock Text="Inventaire" HorizontalAlignment="Left" FontSize="24" Margin="689,119,0,501" Width="138" FontWeight="Bold"/>
-        <TextBlock Text="Affiche toi correctement please" x:Name="nom_item" HorizontalAlignment="Left" FontSize="18" FontWeight="Bold" Margin="703,234,0,391" Width="280"/>
-        <Rectangle Stroke="Black" Fill="#FFEBF3E8" Margin="436,309,0,0" HorizontalAlignment="Left" Height="168" VerticalAlignment="Top" Width="267"/>
-        <Rectangle HorizontalAlignment="Left" Height="0" Margin="194,358,0,0" Stroke="Black" VerticalAlignment="Top" Width="150"/>
-        <Rectangle HorizontalAlignment="Left" Height="168" Margin="805,309,0,0" Stroke="Black" VerticalAlignment="Top" Width="267" Fill="#FFFFDDCC"/>
-        <Button Content="Valider" HorizontalAlignment="Left" Height="34" Margin="933,563,0,0" VerticalAlignment="Top" Width="128" Click="Sauvegarder">
-            <Button.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FFEBF3E8"/>
-                    <GradientStop Color="White" Offset="1"/>
-                </LinearGradientBrush>
-            </Button.Background>
-        </Button>
-        <Button x:Name="button" Content="Annuler" HorizontalAlignment="Left" Height="34" Margin="443,563,0,0" VerticalAlignment="Top" Width="127" Click="Annuler" RenderTransformOrigin="0.915,1.521" BorderBrush="Black">
-            <Button.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FFAEAEAE"/>
-                    <GradientStop Color="White" Offset="1"/>
-                    <GradientStop Color="#FFFFDDCC" Offset="0"/>
-                </LinearGradientBrush>
-            </Button.Background>
-        </Button>
-        <Label Content="Stock actuel" HorizontalAlignment="Left" Height="30" Margin="463,341,0,0" VerticalAlignment="Top" Width="75"/>
-        <Label Content="Stock réel" HorizontalAlignment="Left" Height="30" Margin="835,339,0,0" VerticalAlignment="Top" Width="75"/>
-        <TextBlock x:Name="stock_actuel" TextAlignment="Center" HorizontalAlignment="Left" Height="14" Margin="569,349,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116"/>
-        <TextBlock x:Name="emplacement_actuel" TextAlignment="Center" HorizontalAlignment="Left" Height="16" Margin="569,409,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116"/>
-        <Label Content="Emplacement" HorizontalAlignment="Left" Height="30" Margin="463,403,0,0" VerticalAlignment="Top" Width="91"/>
-        <Label Content="Emplacement" HorizontalAlignment="Left" Height="30" Margin="835,401,0,0" VerticalAlignment="Top" Width="92"/>
-        <TextBox x:Name="emplacement_reel" HorizontalAlignment="Left" Height="20" Margin="933,406,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
-        <TextBox x:Name="stock_reel" HorizontalAlignment="Left" Height="20" Margin="933,345,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
+        <local:UserControl1/>
+        <Grid Margin="173,-2,0,2">
+            <Border BorderThickness="2" Margin="0,188,0,0" CornerRadius="10" VerticalAlignment="Top" HorizontalAlignment="Center" Height="69" Width="739" Background="#FFFFB996">
+                <Border.Effect>
+                    <DropShadowEffect/>
+                </Border.Effect>
+            </Border>
+            <TextBlock Text="Affiche toi correctement please" x:Name="nom_item" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Margin="0,206,0,0" Width="703" VerticalAlignment="Top" TextAlignment="Center" Height="43" Foreground="#FF303030"/>
+            <Rectangle Stroke="Black" Fill="#FFEBF3E8" Margin="347,307,0,0" HorizontalAlignment="Left" Height="168" VerticalAlignment="Top" Width="267"/>
+            <Rectangle HorizontalAlignment="Left" Height="0" Margin="194,358,0,0" Stroke="Black" VerticalAlignment="Top" Width="150"/>
+            <Rectangle HorizontalAlignment="Left" Height="168" Margin="716,307,0,0" Stroke="Black" VerticalAlignment="Top" Width="267" Fill="#FFFFDDCC"/>
+            <Button Content="Valider" HorizontalAlignment="Left" Height="40" Margin="786,528,0,0" VerticalAlignment="Top" Width="128" Click="Sauvegarder" BorderBrush="White">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFEBF3E8"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Button x:Name="button" Content="Annuler" HorizontalAlignment="Left" Height="40" Margin="416,528,0,0" VerticalAlignment="Top" Width="128" Click="Annuler" RenderTransformOrigin="0.915,1.521" BorderBrush="White">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFAEAEAE"/>
+                        <GradientStop Color="White" Offset="1"/>
+                        <GradientStop Color="#FFFFDDCC" Offset="0"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Label Content="Stock actuel" HorizontalAlignment="Left" Height="30" Margin="374,339,0,0" VerticalAlignment="Top" Width="75"/>
+            <Label Content="Stock réel" HorizontalAlignment="Left" Height="30" Margin="746,337,0,0" VerticalAlignment="Top" Width="75"/>
+            <TextBlock x:Name="stock_actuel" TextAlignment="Center" HorizontalAlignment="Left" Height="14" Margin="480,347,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116"/>
+            <TextBlock x:Name="emplacement_actuel" TextAlignment="Center" HorizontalAlignment="Left" Height="16" Margin="480,407,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116"/>
+            <Label Content="Emplacement" HorizontalAlignment="Left" Height="30" Margin="374,401,0,0" VerticalAlignment="Top" Width="91"/>
+            <Label Content="Emplacement" HorizontalAlignment="Left" Height="30" Margin="746,399,0,0" VerticalAlignment="Top" Width="92"/>
+            <TextBox x:Name="emplacement_reel" HorizontalAlignment="Left" Height="20" Margin="844,404,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
+            <TextBox x:Name="stock_reel" HorizontalAlignment="Left" Height="20" Margin="844,343,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
+        </Grid>
     </Grid>
 </Page>

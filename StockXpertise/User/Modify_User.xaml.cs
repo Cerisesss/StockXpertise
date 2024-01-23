@@ -120,18 +120,18 @@ namespace StockXpertise.User
                 role = radioCaissier.Content.ToString();
             }
 
+            if (!mail.Contains("@"))
+            {
+                MessageBox.Show("Votre adresse mail semble incorrecte");
+                return;
+            }
+
             //barre de progression
             ConnexionProgressBar.Visibility = Visibility.Visible;
 
             timer.Start();
 
             await Task.Delay(2000);
-
-            if (!mail.Contains("@"))
-            {
-                MessageBox.Show("Votre adresse mail semble incorrecte");
-                return;
-            }
 
             //generation du sel
             string salt = BCrypt.Net.BCrypt.GenerateSalt(15);

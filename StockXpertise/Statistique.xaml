@@ -7,39 +7,30 @@
       mc:Ignorable="d"
       d:DesignHeight="800" d:DesignWidth="1500"
       Title="Statistique">
+
     <Grid Loaded="Grid_Loaded">
         <local:UserControl1/>
 
-        <Grid Margin="181,0,10,0">
-            <Border BorderThickness="2" Margin="0,51,0,0" CornerRadius="10" VerticalAlignment="Top" HorizontalAlignment="Center" Height="77" Width="1158" Background="#ebd4ac">
+        <Grid Margin="173,-2,0,2">
+            <Border BorderThickness="2" Margin="0,51,0,0" CornerRadius="10" VerticalAlignment="Top" HorizontalAlignment="Center" Height="77" Width="1247" Background="#ebd4ac">
                 <Border.Effect>
                     <DropShadowEffect/>
                 </Border.Effect>
             </Border>
-            <TextBlock Text="Statistiques" HorizontalAlignment="Left" FontSize="24" Margin="599,64,0,672" Width="149" FontWeight="Bold"/>
-            <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Margin="0,10,0,-10"/>
-            <Rectangle HorizontalAlignment="Left" Height="31" Margin="252,155,0,0" Stroke="Transparent" VerticalAlignment="Top" Width="110" RenderTransformOrigin="0.527,0.493">
-                <Rectangle.Fill>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#FFACACAC"/>
-                        <GradientStop Color="White" Offset="1"/>
-                        <GradientStop Color="#FFAEAEAE" Offset="0"/>
-                    </LinearGradientBrush>
-                </Rectangle.Fill>
-            </Rectangle>
-            <ComboBox x:Name="comboBoxAffichage" HorizontalAlignment="Left" Height="31" Margin="362,155,0,0" VerticalAlignment="Top" Width="421" SelectionChanged="ComboBox_SelectionChanged_affichage"/>
-            <Label Content="Trier par" HorizontalAlignment="Left" Height="36" Margin="268,155,0,0" VerticalAlignment="Top" Width="80"/>
-            <Rectangle HorizontalAlignment="Left" Height="240" Margin="332,231,0,0" Stroke="#FFACACAC" VerticalAlignment="Top" Width="380" RenderTransformOrigin="0.527,0.493" Fill="#FFFFDDCC"/>
-            <Label Content="Statistique" HorizontalAlignment="Left" Height="50" Margin="350,254,0,0" VerticalAlignment="Top" Width="97"/>
-            <TextBlock HorizontalAlignment="Left" Margin="479,264,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="white" Height="180" Width="189" Text=""/>
-            <CheckBox x:Name="checkboxPrixAchat" Content="Prix d'achat" HorizontalAlignment="Left" Margin="486,273,0,0" VerticalAlignment="Top" Height="23" Width="159"/>
-            <CheckBox x:Name="checkboxPrixVente" Content="Prix de vente" HorizontalAlignment="Left" Margin="486,296,0,0" VerticalAlignment="Top" Height="26" Width="159"/>
-            <CheckBox x:Name="checkboxArticlesVendus" Content="Articles vendus" HorizontalAlignment="Left" Margin="486,322,0,0" VerticalAlignment="Top" Height="23" Width="159"/>
-            <CheckBox x:Name="checkboxMarge" Content="Marge" HorizontalAlignment="Left" Margin="486,345,0,0" VerticalAlignment="Top" Height="26" Width="159"/>
-            <CheckBox x:Name="checkboxTop10Produits" Content="Top 10 produits" HorizontalAlignment="Left" Margin="486,371,0,0" VerticalAlignment="Top" Height="23" Width="159"/>
-            <CheckBox x:Name="checkboxStockNegatif" Content="Stock low" HorizontalAlignment="Left" Margin="486,394,0,0" VerticalAlignment="Top" Height="26" Width="159"/>
-            <Button x:Name="button" Content="Prévisualiser" HorizontalAlignment="Left" Height="31" Margin="886,155,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="0.743,1.834" Click="generation_pdf" Background="#FFFFDDCC" BorderBrush="#FF050505"/>
-            <Frame x:Name="framePrincipal" NavigationUIVisibility="Hidden" Navigated="framePrincipal_Navigated" Margin="10,0,-10,10"/>
+            <TextBlock Text="Statistiques" HorizontalAlignment="Center" FontSize="24" Margin="0,72,0,693" Width="136" FontWeight="Bold" Foreground="#FF303030"/>
+            <Rectangle HorizontalAlignment="Left" Margin="352,171,0,0" Stroke="Transparent" VerticalAlignment="Top" Width="68" RenderTransformOrigin="0.527,0.493" Height="40" Fill="#FFFFDDCC"/>
+            <ComboBox x:Name="comboBoxAffichage" HorizontalAlignment="Left" Margin="420,171,0,0" VerticalAlignment="Top" Width="330" SelectionChanged="ComboBox_SelectionChanged_affichage" BorderBrush="{x:Null}" Height="40"/>
+            <Label Content="Trier" HorizontalAlignment="Left" Margin="365,178,0,0" VerticalAlignment="Top" Width="42"/>
+            <Rectangle HorizontalAlignment="Left" Margin="422,0,0,0" Stroke="#FFACACAC" VerticalAlignment="Center" Width="380" RenderTransformOrigin="0.527,0.493" Fill="#FFFFDDCC" Height="237"/>
+            <Label Content="Statistique" HorizontalAlignment="Left" Margin="440,300,0,0" VerticalAlignment="Top" Width="97"/>
+            <Rectangle HorizontalAlignment="Left" Margin="556,0,0,0" VerticalAlignment="Center" Width="220" Fill="White" Height="193"/>
+            <CheckBox x:Name="checkboxPrixAchat" Content="Prix d'achat" HorizontalAlignment="Left" Margin="576,319,0,0" VerticalAlignment="Top" Width="159"/>
+            <CheckBox x:Name="checkboxPrixVente" Content="Prix de vente" HorizontalAlignment="Left" Margin="576,342,0,0" VerticalAlignment="Top" Width="159"/>
+            <CheckBox x:Name="checkboxArticlesVendus" Content="Articles vendus" HorizontalAlignment="Left" Margin="576,368,0,0" VerticalAlignment="Top" Width="159"/>
+            <CheckBox x:Name="checkboxMarge" Content="Marge" HorizontalAlignment="Left" Margin="576,391,0,0" VerticalAlignment="Top" Width="159"/>
+            <CheckBox x:Name="checkboxTop10Produits" Content="Top 10 produits" HorizontalAlignment="Left" Margin="576,417,0,0" VerticalAlignment="Top" Width="159"/>
+            <CheckBox x:Name="checkboxStockNegatif" Content="En rupture de stock" HorizontalAlignment="Left" Margin="576,440,0,0" VerticalAlignment="Top" Width="159"/>
+            <Button x:Name="button" Content="Prévisualiser" HorizontalAlignment="Left" Height="40" Margin="799,171,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="0.743,1.834" Click="generation_pdf" Background="#FFFFDDCC" BorderBrush="White"/>
         </Grid>
     </Grid>
 </Page>

@@ -24,7 +24,6 @@ namespace StockXpertise
         {
             InitializeComponent();
             Loaded += Statistique_Loaded;
-            MainFrame.Visibility = Visibility.Visible;
             
             comboBoxAffichage.Items.Add("Jour");
             comboBoxAffichage.Items.Add("Semaine");

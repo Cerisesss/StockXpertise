@@ -392,6 +392,7 @@
     <Content Include="Images\inventaire.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Images\LogoVBlanc.png" />
     <Content Include="Images\stat.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
