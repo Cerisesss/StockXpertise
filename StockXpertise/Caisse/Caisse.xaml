@@ -9,7 +9,10 @@
 
       Title="Caisse">
 
-    <Grid Background="White">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush/>
+        </Grid.Background>
         <local:UserControl1/>
         <Grid Margin="173,-2,0,2">
             <Grid.Background>

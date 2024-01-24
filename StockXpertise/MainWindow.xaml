@@ -9,6 +9,13 @@
         Title="StockXpertise"
         Icon="/Images/logoVblanc.ico"
         >
+    <Window.Style>
+        <Style TargetType="Window">
+            <Setter Property="Background" Value="#FF303030"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+    </Window.Style>
+    
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" Opacity="1">

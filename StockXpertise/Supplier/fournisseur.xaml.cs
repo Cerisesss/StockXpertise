@@ -62,10 +62,10 @@ namespace StockXpertise.Supplier
                         query = "SELECT id_fournisseur, nom FROM fournisseur ORDER BY nom;";
                         break;
                     case "Prenom":
-                        query = "SELECT id_fournisseur, Prenom FROM fournisseur ORDER BY Prenom;";
+                        query = "SELECT id_fournisseur, prenom FROM fournisseur ORDER BY prenom;";
                         break;
                     case "Produit":
-                        query = "SELECT id_fournisseur, nom AS nom_fournisseur, \r\n       (SELECT GROUP_CONCAT(nom SEPARATOR ', ') \r\n        FROM articles \r\n        WHERE id_fournisseur = fournisseur.id_fournisseur) AS produits_associes \r\nFROM fournisseur \r\nORDER BY produits_associes;\r\n";
+                        query = "SELECT id_fournisseur, nom AS nom_fournisseur, (SELECT GROUP_CONCAT(nom SEPARATOR ', ') FROM articles WHERE id_fournisseur = fournisseur.id_fournisseur) AS produits_associes FROM fournisseur ORDER BY produits_associes;";
                         break;
 
                     default:

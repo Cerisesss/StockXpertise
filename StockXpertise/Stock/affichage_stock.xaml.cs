@@ -65,7 +65,7 @@ namespace StockXpertise.Stock
                 var articleData = new Article
                 {
                     Id = Convert.ToInt32(reader["id_articles"]),
-                    Image = new BitmapImage(new Uri("C:/Users/paulb/Desktop/travail de fou malade/main/stockxpertise/StockXpertise" + imagePath)),
+                    Image = new BitmapImage(new Uri("C:\\Users\\pitsy\\Desktop\\stockxpertise\\StockXpertise" + imagePath)),
                     Code_emplacement = reader["code"].ToString(),
                     Nom = reader["nom"].ToString(),
                     Famille = reader["famille"].ToString(),
@@ -89,9 +89,12 @@ namespace StockXpertise.Stock
 
             while (reader.Read())
             {
+                var imagePath = reader["image"].ToString().Replace('\\', '/');
+
                 var articleData = new Article
                 {
                     Id = Convert.ToInt32(reader["id_articles"]),
+                    Image = new BitmapImage(new Uri("C:\\Users\\pitsy\\Desktop\\stockxpertise\\StockXpertise" + imagePath)),
                     Code_emplacement = reader["code"].ToString(),
                     Nom = reader["nom"].ToString(),
                     Famille = reader["famille"].ToString(),
@@ -184,29 +187,32 @@ namespace StockXpertise.Stock
         {
             string motRecherche = Search_TextBox.Text;
 
-            string query = "SELECT articles.id_articles, articles.nom, articles.famille, articles.code_barre, articles.description, articles.prix_ht, articles.prix_ttc, produit.quantite_stock, produit.id_emplacement, emplacement.code FROM articles JOIN produit ON articles.id_articles = produit.id_articles JOIN emplacement ON produit.id_emplacement = emplacement.id_emplacement";
+            string query = "SELECT articles.id_articles, articles.nom, articles.image, articles.famille, articles.code_barre, articles.description, articles.prix_ht, articles.prix_ttc, produit.quantite_stock, produit.id_emplacement, emplacement.code FROM articles JOIN produit ON articles.id_articles = produit.id_articles JOIN emplacement ON produit.id_emplacement = emplacement.id_emplacement";
 
-            // Si un mot de recherche est saisi, ajuste la requête et exécute la recherche
             if (!string.IsNullOrEmpty(motRecherche))
             {
                 query += " WHERE articles.id_articles LIKE @motRecherche OR articles.nom LIKE @motRecherche OR articles.famille LIKE @motRecherche OR articles.code_barre LIKE @motRecherche OR articles.description LIKE @motRecherche OR articles.prix_ht LIKE @motRecherche OR articles.prix_ttc LIKE @motRecherche OR produit.quantite_stock LIKE @motRecherche OR produit.id_emplacement LIKE @motRecherche OR emplacement.code LIKE @motRecherche";
-                query = query.Replace("@motRecherche", "'" + "%" + motRecherche + "%" + "'");
-                MySqlDataReader reader = ConfigurationDB.ExecuteQuery(query);
+            }
 
-                MyDataGrid.ItemsSource = null;
+            // Remplace la variable dans la requête après avoir ajouté la clause WHERE, seulement si le motRecherche n'est pas vide
+            query = query.Replace("@motRecherche", !string.IsNullOrEmpty(motRecherche) ? "'" + "%" + motRecherche + "%" + "'" : "@motRecherche");
 
+            MySqlDataReader reader = ConfigurationDB.ExecuteQuery(query);
+
+            MyDataGrid.ItemsSource = null;
+
+            if (!string.IsNullOrEmpty(motRecherche) && reader.HasRows)
+            {
                 // Appel de la méthode remplissage_donnees avec le lecteur retourné et le mot de recherche
                 remplissage_donnees(reader, motRecherche);
             }
+            else if (string.IsNullOrEmpty(motRecherche))
+            {
+                MessageBox.Show("Veuillez entrer un mot de recherche.", "Oups !", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
             else
             {
-                MyDataGrid.ItemsSource = null;
-
-                // Si aucun mot de recherche n'est saisi, exécute la méthode sans l'argument supplémentaire
-                MySqlDataReader reader = ConfigurationDB.ExecuteQuery(query);
-
-                // Appel de la méthode remplissage_donnees sans le deuxième argument
-                remplissage_donnees(reader);
+                MessageBox.Show("Aucun résultat", "Aïe !", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 

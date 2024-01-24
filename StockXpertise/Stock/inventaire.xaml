@@ -20,8 +20,23 @@
             <Rectangle Stroke="Black" Fill="#FFEBF3E8" Margin="347,307,0,0" HorizontalAlignment="Left" Height="168" VerticalAlignment="Top" Width="267"/>
             <Rectangle HorizontalAlignment="Left" Height="0" Margin="194,358,0,0" Stroke="Black" VerticalAlignment="Top" Width="150"/>
             <Rectangle HorizontalAlignment="Left" Height="168" Margin="716,307,0,0" Stroke="Black" VerticalAlignment="Top" Width="267" Fill="#FFFFDDCC"/>
-            <Button Content="Valider" HorizontalAlignment="Left" Height="40" Margin="796,528,0,0" VerticalAlignment="Top" Width="108" Click="Sauvegarder" Style="{StaticResource CustomButtonStyle}" BorderBrush="White" Background="White"/>
-            <Button x:Name="button" Content="Annuler" HorizontalAlignment="Left" Height="40" Margin="427,528,0,0" VerticalAlignment="Top" Width="107" Click="Annuler" Style="{StaticResource CustomButtonStyle}" RenderTransformOrigin="0.915,1.521" BorderBrush="White" Background="White"/>
+            <Button Content="Valider" HorizontalAlignment="Left" Height="40" Margin="786,528,0,0" VerticalAlignment="Top" Width="128" Click="Sauvegarder" BorderBrush="White">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFEBF3E8"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Button x:Name="button" Content="Annuler" HorizontalAlignment="Left" Height="40" Margin="416,528,0,0" VerticalAlignment="Top" Width="128" Click="Annuler" RenderTransformOrigin="0.915,1.521" BorderBrush="White">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFAEAEAE"/>
+                        <GradientStop Color="White" Offset="1"/>
+                        <GradientStop Color="#FFFFDDCC" Offset="0"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
             <Label Content="Stock actuel" HorizontalAlignment="Left" Height="30" Margin="374,339,0,0" VerticalAlignment="Top" Width="75"/>
             <Label Content="Stock réel" HorizontalAlignment="Left" Height="30" Margin="746,337,0,0" VerticalAlignment="Top" Width="75"/>
             <TextBlock x:Name="stock_actuel" TextAlignment="Center" HorizontalAlignment="Left" Height="14" Margin="480,347,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116"/>
