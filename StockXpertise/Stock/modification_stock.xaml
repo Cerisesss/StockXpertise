@@ -17,8 +17,8 @@
         <Button x:Name="button" Content="Annuler" HorizontalAlignment="Left" Height="34" Margin="588,718,0,0" VerticalAlignment="Top" Width="106" BorderBrush="White" Click="annuler" RenderTransformOrigin="0.915,1.521" Background="#FFFFDDCC"/>
         <Label Content="Image" FontWeight="Bold" HorizontalAlignment="Left" Height="40" Margin="358,134,0,0" VerticalAlignment="Top" Width="71"/>
         <Label Content="Image" FontWeight="Bold" HorizontalAlignment="Left" Height="30" Margin="774,134,0,0" VerticalAlignment="Top" Width="52"/>
-        <Image x:Name="image_avant" Height="50"  Width="50" Source="{Binding Image}" Margin="492,130,858,622"/>
-        <Image x:Name="image_apres" Height="50"  Width="50" Source="{Binding Image}" Margin="992,130,358,622"/>
+        <Image x:Name="image_avant" Source="{Binding Image}" Margin="482,130,858,610"/>
+        <Image x:Name="image_apres"  Source="{Binding Image}" Margin="920,130,420,610"/>
         <Button Content="+" HorizontalAlignment="Left" Height="30" Margin="1084,134,0,0" VerticalAlignment="Top" Width="25" Click="Ajouter_image" Background="#FFFDF7E4"/>
         <Button Content="x" HorizontalAlignment="Left" Height="20" Margin="1029,129,0,0" VerticalAlignment="Top" Width="15" Click="Supprimer_image" RenderTransformOrigin="1.84,0.73" Background="#FFFDF7E4"/>
         <Label Content="Nom" FontWeight="Bold" HorizontalAlignment="Left" Height="34" Margin="358,196,0,0" VerticalAlignment="Top" Width="50"/>

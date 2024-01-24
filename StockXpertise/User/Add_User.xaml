@@ -13,25 +13,25 @@
         <Frame x:Name="addUser" NavigationUIVisibility="Hidden"/>
 
         <Grid Margin="173,-2,0,2">
-            <Rectangle Margin="420,169,419,355" Stroke="#FFACACAC" Fill="#FFFFDDCC"/>
+            <Rectangle Margin="427,169,419,307" Stroke="#FFACACAC" Fill="#FFFFDDCC"/>
 
-            <Label Content="Nom" Height="23" Margin="446,192,693,585" Width="88"/>
-            <Label Content="Prénom" Height="23" Margin="446,233,693,544" Width="88"/>
-            <Label Content="Mot de passe" Margin="446,274,693,497" Width="88"/>
-            <Label Content="Mail" Height="23" Margin="446,316,693,461" Width="88"/>
-            <Label Content="Status" Height="23" Margin="446,359,693,418" Width="88"/>
+            <Label Content="Nom" Height="30" Margin="450,204,689,566" Width="88"/>
+            <Label Content="Prénom" Height="30" Margin="450,248,689,522" Width="88"/>
+            <Label Content="Mot de passe" Height="30" Margin="450,293,689,477" Width="88"/>
+            <Label Content="Mail" Height="30" Margin="450,336,689,434" Width="88"/>
+            <Label Content="Status" Height="30" Margin="450,379,689,391" Width="88"/>
 
-            <TextBox x:Name="nomTextBox" Margin="548,192,436,579" TextWrapping="Wrap" Text=""/>
-            <TextBox x:Name="prenomTextBox" Margin="548,233,436,537" TextWrapping="Wrap" Text=""/>
-            <TextBox x:Name="mdpTextBox" Margin="548,274,436,496" TextWrapping="Wrap" Text=""/>
-            <TextBox x:Name="mailTextBox" Margin="548,316,436,453" TextWrapping="Wrap" Text=""/>
+            <TextBox x:Name="nomTextBox" Margin="549,204,438,566" TextWrapping="Wrap" Text="" Width="240"/>
+            <TextBox x:Name="prenomTextBox" Margin="549,248,438,522" TextWrapping="Wrap" Text="" Width="240"/>
+            <TextBox x:Name="mdpTextBox" Margin="549,293,438,477" TextWrapping="Wrap" Text="" Width="240"/>
+            <TextBox x:Name="mailTextBox" Margin="549,336,438,434" TextWrapping="Wrap" Text="" Width="240"/>
 
-            <Rectangle Height="58" Margin="548,359,436,383" Stroke="#FFABADB3" Fill="White"/>
-            <RadioButton x:Name="radioAdmin" Content="Admin" Height="15" Margin="556,367,591,418" Width="80" Checked="RadioButton_Checked" GroupName="radioRole"/>
-            <RadioButton x:Name="radioPersonnel" Content="Personnel" Height="15" Margin="556,383,591,402" Width="80" Checked="RadioButton_Checked" GroupName="radioRole"/>
-            <RadioButton x:Name="radioCaissier" Content="Caissier" Height="15" Margin="556,397,591,388" Width="80" Checked="RadioButton_Checked" GroupName="radioRole"/>
+            <Rectangle Margin="549,380,438,330" Stroke="#FFABADB3" Fill="White" Width="240"/>
+            <RadioButton x:Name="radioAdmin" Content="Admin" Margin="556,388,591,392" Width="80" Checked="RadioButton_Checked" GroupName="radioRole"/>
+            <RadioButton x:Name="radioPersonnel" Content="Personnel" Margin="556,414,591,366" Width="80" Checked="RadioButton_Checked" GroupName="radioRole"/>
+            <RadioButton x:Name="radioCaissier" Content="Caissier" Margin="556,440,591,340" Width="80" Checked="RadioButton_Checked" GroupName="radioRole"/>
 
-            <ProgressBar x:Name="ConnexionProgressBar" Margin="450,552,449,229" Minimum="0" Maximum="100" Background="White" BorderBrush="#FFBCBCBC">
+            <ProgressBar x:Name="ConnexionProgressBar" Margin="450,586,449,195" Minimum="0" Maximum="100" Background="White" BorderBrush="#FFBCBCBC">
                 <ProgressBar.Foreground>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="#FFD9EDBF"/>
@@ -39,8 +39,8 @@
                     </LinearGradientBrush>
                 </ProgressBar.Foreground>
             </ProgressBar>
-            <Button Content="Valider" Margin="624,471,513,289" Width="90" Click="Button_Click" Background="#FFEBF3E8" BorderBrush="White"/>
-            <Button Content="Annuler" Margin="506,471,631,289" Width="90" Click="Button_Click_1" BorderBrush="White" Background="#FFFFDDCC"/>
+            <Button Content="Valider" Margin="624,521,513,239" Width="90" Click="Button_Click" Background="#FFEBF3E8" BorderBrush="White"/>
+            <Button Content="Annuler" Margin="506,521,631,239" Width="90" Click="Button_Click_1" BorderBrush="White" Background="#FFFFDDCC"/>
         </Grid>
     </Grid>
 </Page>

@@ -38,7 +38,7 @@ namespace StockXpertise.Supplier
             // Assigne les données au DataGrid
             MyDataGrid.ItemsSource = reader;
 
-            if (Application.Current.Properties["role"].ToString() == "Admin" || Application.Current.Properties["role"].ToString() == "admin")
+            if (Application.Current.Properties["role"].ToString() == "Admin")
             {
                 BtnAddSupplier.Visibility = Visibility.Visible;
             }

@@ -48,7 +48,7 @@ namespace StockXpertise.Supplier
             labelPrenom.Content = Application.Current.Properties["Prenom_Founisseur_DataGrid"].ToString();
             labelNum.Content = Application.Current.Properties["Numero_Founisseur_DataGrid"].ToString();
             labelMail.Content = Application.Current.Properties["Mail_Founisseur_DataGrid"].ToString();
-            labelAdresse.Content = Application.Current.Properties["Adresse_Founisseur_DataGrid"].ToString();
+            labelAdresse.Content = Application.Current.Properties["Adresse_Founisseur_DataGrid"].ToString();*/
 
             id = Convert.ToInt32(Application.Current.Properties["Id_Fournisseur_DataGrid"].ToString());
             nom = Application.Current.Properties["Nom_Founisseur_DataGrid"].ToString();
@@ -121,6 +121,7 @@ namespace StockXpertise.Supplier
                 }
             }
 
+            
             if ((string)labelMail.Content != mailTextBox.Text && !string.IsNullOrEmpty(mailTextBox.Text))
             {
                 if (!mailTextBox.Text.Contains("@"))

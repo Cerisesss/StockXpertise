@@ -38,7 +38,7 @@ INSERT INTO `emplacement` (`code`, `capacite`) VALUES
 
 -- Inserts for articles table
 INSERT INTO `articles` (`id_fournisseur`, `nom`, `famille`, `prix_ht`, `prix_ttc`, `prix_vente`, `prix_achat`, `description`, `code_barre`, `image`) VALUES
-(1, 'Ordinateur Portable', 'Informatique', 800, 960, 1200, 600, 'Ordinateur portable haut de gamme', '012345678901', '/Images/image0.jpg'),
+(1, 'Ordinateur Portable', 'Informatique', 800, 960, 1200, 600, 'Ordinateur portable haut de gamme', 'HZ2019QB23L37517', '/Images/image0.jpg'),
 (2, 'Smartphone', 'Téléphonie', 600, 720, 950, 500, 'Smartphone dernière génération', '234567890123', '/Images/image1.jpg'),
 (3, 'Tablette', 'Informatique', 400, 480, 650, 350, 'Tablette légère et performante', '762240566753', '/Images/image2.jpg'),
 (4, 'Imprimante', 'Informatique', 200, 240, 300, 150, 'Imprimante multifonction', '456784012345', '/Images/image3.jpg'),
@@ -56,7 +56,7 @@ INSERT INTO `articles` (`id_fournisseur`, `nom`, `famille`, `prix_ht`, `prix_ttc
 (3, 'Imprimante 3D', 'Informatique', 250, 300, 400, 150, 'Imprimante 3D pour la création de prototypes', '678901234567', '/Images/image15.jpg'),
 (4, 'Téléviseur 4K', 'Électronique', 700, 840, 1000, 500, 'Téléviseur 4K avec technologie HDR', '789012345678', '/Images/image16.jpg'),
 (2, 'Enceinte Smart', 'Audio', 100, 120, 150, 70, 'Enceinte intelligente avec assistant vocal', '890123456789', '/Images/image17.jpg'),
-(5, 'Souris Gaming', 'Informatique', 40, 48, 60, 25, 'Souris gaming avec rétroéclairage RGB', '750165010074', '/Images/image18.jpg'),
+(5, 'Souris Gaming', 'Informatique', 40, 48, 60, 25, 'Souris gaming avec rétroéclairage RGB', '0707443237931', '/Images/image18.jpg'),
 (1, 'Appareil Photo Reflex', 'Photographie', 600, 720, 900, 450, 'Appareil photo reflex professionnel', '012345678912', '/Images/image19.jpg');
 
 -- Inserts for produit table

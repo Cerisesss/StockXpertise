@@ -88,8 +88,9 @@ namespace StockXpertise.Stock
             string code_barre = code_barre_apres.Text;
             string code_emplacement = code_emplacement_apres.Text;
             int quantite_avant = selectedData.Quantite;
+            BitmapImage image = selectedData.Image;
 
-            if (string.IsNullOrEmpty(code_barre) && string.IsNullOrEmpty(nouveauNom) && string.IsNullOrEmpty(nouvelleFamille) && string.IsNullOrEmpty(nouvelledescription) && string.IsNullOrEmpty(nouvelleQuantite) && string.IsNullOrEmpty(nouveauPrixHT) && string.IsNullOrEmpty(nouveauPrixTTC) && string.IsNullOrEmpty(imagePath))
+            if (string.IsNullOrEmpty(code_barre) && string.IsNullOrEmpty(nouveauNom) && string.IsNullOrEmpty(nouvelleFamille) && string.IsNullOrEmpty(nouvelledescription) && string.IsNullOrEmpty(nouvelleQuantite) && string.IsNullOrEmpty(nouveauPrixHT) && string.IsNullOrEmpty(nouveauPrixTTC) && image == null)
             {
                 MessageBox.Show("Veuillez remplir au moins un champ", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;

@@ -82,6 +82,12 @@ namespace StockXpertise.User
                 return;
             }
 
+            if (!mail.Contains("@"))
+            {
+                MessageBox.Show("Votre adresse mail semble incorrecte");
+                return;
+            }
+
             //condition pour verifier si les champs sont vides
             //si c'est le cas alors on affiche un message
             //sinon on execute la requete d'ajout d'un utilisateur

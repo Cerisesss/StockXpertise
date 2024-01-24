@@ -104,7 +104,15 @@ namespace StockXpertise.User
 
             if ((string)labelMail.Content != mailTextBox.Text && !string.IsNullOrEmpty(mailTextBox.Text))
             {
-                mail = mailTextBox.Text;
+                if (mailTextBox.Text.Contains("@"))
+                {
+                    mail = mailTextBox.Text;
+                }
+                else
+                {
+                    MessageBox.Show("Votre adresse mail semble incorrecte");
+                    return;
+                }
             }
 
             if (radioAdmin.IsChecked == true)
