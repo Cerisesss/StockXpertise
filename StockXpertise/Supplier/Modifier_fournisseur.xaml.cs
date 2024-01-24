@@ -123,13 +123,14 @@ namespace StockXpertise.Supplier
 
             if ((string)labelMail.Content != mailTextBox.Text && !string.IsNullOrEmpty(mailTextBox.Text))
             {
+                if (!mailTextBox.Text.Contains("@"))
+                {
+                    MessageBox.Show("Votre adresse mail semble incorrecte");
+                    return;
+                }
                 mail = mailTextBox.Text;
             }
-            if (!mail.Contains("@"))
-            {
-                MessageBox.Show("Votre adresse mail semble incorrecte");
-                return;
-            }
+
 
             if ((string)labelAdresse.Content != adresseTextBox.Text && !string.IsNullOrEmpty(adresseTextBox.Text))
             {
