@@ -14,7 +14,7 @@ namespace StockXpertise.Models
         
         // Properties representing table columns
         public int id_articles { get; set; }
-        public int id_fournisseur { get; set; }
+        public ForeignKey<Fournisseur> id_fournisseur { get; set; }
         public string Nom { get; set; }
         public string Famille { get; set; }
         public int PrixHt { get; set; }

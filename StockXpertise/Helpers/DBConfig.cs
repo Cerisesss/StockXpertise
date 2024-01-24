@@ -1,6 +1,6 @@
 ﻿using System.Xml.Linq;
 
-namespace StockXpertise.Models
+namespace StockXpertise.Helpers
 {
     public class DBConfig
     {
@@ -35,7 +35,7 @@ namespace StockXpertise.Models
             foreach (var key in keysMapping.Keys)
             {
 
-                string? value = this.GetType().GetProperty(keysMapping[key])?.GetValue(this, null)?.ToString();
+                string? value = GetType().GetProperty(keysMapping[key])?.GetValue(this, null)?.ToString();
                 string _key = keysMapping[key];
                 result += $"{_key}={value};";
             }
