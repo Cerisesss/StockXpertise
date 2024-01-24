@@ -44,18 +44,17 @@ namespace StockXpertise.Supplier
             labelMail.Content = sqlconvert("mail");
             labelAdresse.Content = sqlconvert("adresse");
 
-/*
+            /*labelNom.Content = Application.Current.Properties["Nom_Founisseur_DataGrid"].ToString();
             labelPrenom.Content = Application.Current.Properties["Prenom_Founisseur_DataGrid"].ToString();
             labelNum.Content = Application.Current.Properties["Numero_Founisseur_DataGrid"].ToString();
             labelMail.Content = Application.Current.Properties["Mail_Founisseur_DataGrid"].ToString();
-            labelAdresse.Content = Application.Current.Properties["Adresse_Founisseur_DataGrid"].ToString();
+            labelAdresse.Content = Application.Current.Properties["Adresse_Founisseur_DataGrid"].ToString();*/
 
-            id = Convert.ToInt32(Application.Current.Properties["Id_Fournisseur_DataGrid"].ToString());
-            nom = Application.Current.Properties["Nom_Founisseur_DataGrid"].ToString();
-            prenom = Application.Current.Properties["Prenom_Founisseur_DataGrid"].ToString();
-            num = Convert.ToInt32(Application.Current.Properties["Numero_Founisseur_DataGrid"].ToString());
-            mail = Application.Current.Properties["Mail_Founisseur_DataGrid"].ToString();
-            adresse = Application.Current.Properties["Adresse_Founisseur_DataGrid"].ToString();*/
+            nom = labelNom.Content.ToString();
+            prenom = labelPrenom.Content.ToString();
+            num = Convert.ToInt32(labelNum.Content);
+            mail = labelMail.Content.ToString();
+            adresse = labelAdresse.Content.ToString();
         }
 
         private string sqlconvert(string columnName)
@@ -122,15 +121,20 @@ namespace StockXpertise.Supplier
                 }
             }
 
+            
             if ((string)labelMail.Content != mailTextBox.Text && !string.IsNullOrEmpty(mailTextBox.Text))
             {
-                mail = mailTextBox.Text;
+                if (mailTextBox.Text.Contains("@"))
+                {
+                    mail = mailTextBox.Text;
+                }
+                else
+                {
+                    MessageBox.Show("Votre adresse mail semble incorrecte");
+                    return;
+                }
             }
-            if (!mail.Contains("@"))
-            {
-                MessageBox.Show("Votre adresse mail semble incorrecte");
-                return;
-            }
+            
 
             if ((string)labelAdresse.Content != adresseTextBox.Text && !string.IsNullOrEmpty(adresseTextBox.Text))
             {

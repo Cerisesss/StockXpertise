@@ -65,7 +65,7 @@ namespace StockXpertise.Stock
                 var articleData = new Article
                 {
                     Id = Convert.ToInt32(reader["id_articles"]),
-                    Image = new BitmapImage(new Uri("C:/Users/paulb/Desktop/travail de fou malade/main/stockxpertise/StockXpertise" + imagePath)),
+                    Image = new BitmapImage(new Uri("C:\\Users\\cding\\Documents\\Celive\\Cours Intech\\Informatique\\S3\\0PI\\stockxpertise\\StockXpertise" + imagePath)),
                     Code_emplacement = reader["code"].ToString(),
                     Nom = reader["nom"].ToString(),
                     Famille = reader["famille"].ToString(),

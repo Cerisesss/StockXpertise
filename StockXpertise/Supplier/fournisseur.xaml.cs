@@ -38,7 +38,7 @@ namespace StockXpertise.Supplier
             // Assigne les données au DataGrid
             MyDataGrid.ItemsSource = reader;
 
-            if (Application.Current.Properties["role"].ToString() == "Admin" || Application.Current.Properties["role"].ToString() == "admin")
+            if (Application.Current.Properties["role"].ToString() == "Admin")
             {
                 BtnAddSupplier.Visibility = Visibility.Visible;
             }
@@ -102,6 +102,8 @@ namespace StockXpertise.Supplier
 
                 //stocke les valeurs de la ligne selectionnée dans des variables "globales" pour pouvoir les utiliser dans une autre page
                 Application.Current.Properties["Id_Fournisseur_DataGrid"] = selectedPerson.GetInt32(0);
+                
+
 
                 //creer une nouvelle page 
                 Modifier_fournisseur modifierFournisseur = new Modifier_fournisseur();
