@@ -21,17 +21,16 @@
                 </Border.Effect>
             </Border>
             <TextBlock Text="Stock" HorizontalAlignment="Center" FontSize="24" Margin="0,66,0,687" Width="64" FontWeight="Bold" RenderTransformOrigin="0.189,0.5"/>
-            <Button x:Name="button" Content="PDF" Height="30" Margin="1016,181,45,589" Width="72" RenderTransformOrigin="0.743,1.834" BorderBrush="Black" Click="generation_pdf" Background="#FFFFDDCC"/>
-            <DataGrid x:Name="MyDataGrid" HorizontalAlignment="Center" VerticalAlignment="Top" Height="500" Width="1247" Margin="0,251,0,0"
-    AlternatingRowBackground="#F0F0F0"
+            <Button x:Name="button" Content="PDF" Height="30" Margin="1206,175,31,613" Width="72" RenderTransformOrigin="0.743,1.834" BorderBrush="Black" Click="generation_pdf" Background="#FFFFDDCC"/>
+            <DataGrid x:Name="MyDataGrid" HorizontalAlignment="Center" VerticalAlignment="Top" Height="500" Width="1247" Margin="0,251,0,0" RowHeight="40"
+    Background="Transparent"
+    BorderBrush="Transparent"
     GridLinesVisibility="None"
     CanUserResizeColumns="True"
     CanUserResizeRows="False"
     SelectionMode="Single"
-    RowHeight="40"
     AutoGenerateColumns="False"
     SelectionChanged="DataGrid_SelectionChanged">
-                <!-- Désactiver AutoGenerateColumns -->
 
                 <!-- Définition des colonnes manuellement -->
                 <DataGrid.Columns>
@@ -54,29 +53,52 @@
                     <DataGridTextColumn Header="Prix TTC" Binding="{Binding PrixTTC}"/>
                 </DataGrid.Columns>
 
-                <!-- Style des colonnes -->
+                <!-- Style des colonnes et des lignes -->
                 <DataGrid.Resources>
                     <Style TargetType="DataGridCell">
                         <Setter Property="BorderThickness" Value="0"/>
-                        <Setter Property="Padding" Value="10"/>
+                        <Setter Property="Padding" Value="0"/>
                         <Setter Property="TextBlock.TextAlignment" Value="Center"/>
                         <Setter Property="VerticalContentAlignment" Value="Center"/>
                     </Style>
+                    <Style TargetType="DataGridRow">
+                        <Setter Property="Height" Value="Auto"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="DataGridRow">
+                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10" Margin="0,5">
+                                        <SelectiveScrollingGrid>
+                                            <SelectiveScrollingGrid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </SelectiveScrollingGrid.ColumnDefinitions>
+                                            <SelectiveScrollingGrid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                            </SelectiveScrollingGrid.RowDefinitions>
+                                            <DataGridCellsPresenter Grid.Column="1" ItemsPanel="{TemplateBinding ItemsPanel}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                        </SelectiveScrollingGrid>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
                     <Style TargetType="DataGridColumnHeader">
-                        <Setter Property="Background" Value="#FFD2D2D2"/>
+                        <Setter Property="Background" Value="Transparent"/>
                         <Setter Property="Foreground" Value="Black"/>
                         <Setter Property="FontWeight" Value="Bold"/>
-                        <Setter Property="BorderThickness" Value="0"/>
                         <Setter Property="Padding" Value="15,10"/>
                         <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                        <Setter Property="BorderBrush" Value="Transparent"/>
+                        <!-- Couleur de la bordure transparente -->
                     </Style>
+                    
                 </DataGrid.Resources>
             </DataGrid>
-            <TextBox x:Name="Search_TextBox" Height="30" Margin="46,181,383,589" Text="Search ..." TextWrapping="Wrap" Width="705">
+            <TextBox x:Name="Search_TextBox" Height="30" Margin="31,175,573,613" Text="Search ..." TextWrapping="Wrap" Width="705">
                 <TextBox.Template>
                     <ControlTemplate TargetType="{x:Type TextBox}">
                         <Grid>
-                            <Border CornerRadius="10" BorderBrush="Black" BorderThickness="1" Background="White">
+                            <Border CornerRadius="15" BorderBrush="Black" BorderThickness="1" Background="WhiteSmoke">
                                 <ScrollViewer x:Name="PART_ContentHost" Padding="5" Margin="5"/>
                             </Border>
                             <Button Content="🔍" HorizontalAlignment="Right" VerticalAlignment="Center" Width="30" Margin="-35,0,5,0" BorderBrush="{x:Null}" Click="Search_TextBox_TextChanged" Background="White"/>
@@ -84,7 +106,7 @@
                     </ControlTemplate>
                 </TextBox.Template>
             </TextBox>
-            <Button x:Name="addStock" Content="Ajouter" Height="30" Margin="920,181,141,589" Width="72" Click="Add_New_Stock" BorderBrush="Black" Background="#FFFFDDCC" RenderTransformOrigin="1.31,0.427"/>
+            <Button x:Name="addStock" Content="Ajouter" Height="30" Margin="1039,175,198,613" Width="72" Click="Add_New_Stock" BorderBrush="Black" Background="#FFFFDDCC" RenderTransformOrigin="1.31,0.427"/>
         </Grid>
     </Grid>
 </Page>
