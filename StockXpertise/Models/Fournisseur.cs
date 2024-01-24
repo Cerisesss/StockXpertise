@@ -9,7 +9,7 @@ namespace StockXpertise.Models
 {
     public class Fournisseur : BaseModel<Fournisseur>
     {
-        protected override string TableName => "fournisseur";
+        public override string TableName => "fournisseur";
 
         public int id_fournisseur { get; set; }
         public string nom { get; set; }

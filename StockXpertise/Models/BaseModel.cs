@@ -6,7 +6,7 @@ namespace StockXpertise.Models
     {
         protected static QueryFactory QueryBuilder => App.GetService<QueryFactory>();
 
-        protected virtual string TableName => typeof(T).Name.ToLower();
+        public virtual string TableName => typeof(T).Name.ToLower();
 
         public static T Insert(T entity)
         {
@@ -14,11 +14,16 @@ namespace StockXpertise.Models
             return entity;
         }
 
-
         public static IEnumerable<T> GetAll()
         {
             var instance = new T();
             return QueryBuilder.Query(instance.TableName).Get<T>();
+        }
+
+        public static T GetBy(string column, object value)
+        {
+            var instance = new T();
+            return QueryBuilder.Query(instance.TableName).Where(column, value).FirstOrDefault<T>();
         }
     }
 }

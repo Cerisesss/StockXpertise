@@ -10,7 +10,7 @@ namespace StockXpertise.Models
 {
     public class Article : BaseModel<Article>
     {
-        protected override string TableName => "articles"; // Override table name
+        public override string TableName => "articles"; // Override table name
         
         // Properties representing table columns
         public int id_articles { get; set; }

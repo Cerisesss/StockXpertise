@@ -9,7 +9,7 @@ namespace StockXpertise.Models
 {
     public class Achat : BaseModel<Achat>
     {
-        protected override string TableName => "achat";
+        public override string TableName => "achat";
 
         public int id_achat { get; set; }
         public int id_produit { get; set; }

@@ -9,7 +9,7 @@ namespace StockXpertise.Models
 {
     public class Emplacement : BaseModel<Emplacement>
     {
-        protected override string TableName => "emplacement";
+        public override string TableName => "emplacement";
 
         public int id_emplacement { get; set; }
         public string code { get; set; }

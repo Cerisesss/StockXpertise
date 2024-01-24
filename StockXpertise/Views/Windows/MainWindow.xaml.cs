@@ -34,20 +34,12 @@ namespace StockXpertise.Views.Windows
 
             NavigationView.SetServiceProvider(serviceProvider);
 
-            var articles = Article.GetAll();
+            var produits = Produit.GetAll();
 
-            foreach (Article article in articles)
+            foreach (Produit produit in produits)
             {
-                Console.WriteLine(article.Description);
+                Console.WriteLine(produit.id_articles.ResolveEntity().id_fournisseur.ResolveEntity().nom);
             }
-            var employes = Employes.GetAll();
-
-            foreach (Employes employe in employes)
-            {
-                Console.WriteLine(employe.nom + " " + employe.prenom);
-            }
-
-
         }
     }
 }
