@@ -27,8 +27,7 @@ namespace StockXpertise.Supplier
         public fournisseur()
         {
             InitializeComponent();
-
-            comboBoxAffichage.Items.Add(" ");
+            comboBoxAffichage.Items.Add("");
             comboBoxAffichage.Items.Add("Nom");
             comboBoxAffichage.Items.Add("Prenom");
             comboBoxAffichage.Items.Add("Produit");
@@ -60,19 +59,21 @@ namespace StockXpertise.Supplier
                 switch (selectedValue)
                 {
                     case "Nom":
-                        query = "SELECT nom FROM fournisseur ORDER BY nom;";
+                        query = "SELECT id_fournisseur, nom FROM fournisseur ORDER BY nom;";
                         break;
                     case "Prenom":
-                        query = "SELECT Prenom FROM fournisseur ORDER BY Prenom;";
+                        query = "SELECT id_fournisseur, Prenom FROM fournisseur ORDER BY Prenom;";
                         break;
                     case "Produit":
-                        query = "SELECT nom AS nom_fournisseur, \r\n       (SELECT GROUP_CONCAT(nom SEPARATOR ', ') \r\n        FROM articles \r\n        WHERE id_fournisseur = fournisseur.id_fournisseur) AS produits_associes \r\nFROM fournisseur \r\nORDER BY produits_associes;\r\n";
+                        query = "SELECT id_fournisseur, nom AS nom_fournisseur, \r\n       (SELECT GROUP_CONCAT(nom SEPARATOR ', ') \r\n        FROM articles \r\n        WHERE id_fournisseur = fournisseur.id_fournisseur) AS produits_associes \r\nFROM fournisseur \r\nORDER BY produits_associes;\r\n";
                         break;
 
                     default:
-                        query = "SELECT * from fournisseur";
+                        query = "SELECT * from fournisseur ORDER BY nom";
                         break;
                 }
+
+                
                 MySqlDataReader reader = ConfigurationDB.ExecuteQuery(query);
 
                 // Assigne les données au DataGrid
@@ -101,11 +102,6 @@ namespace StockXpertise.Supplier
 
                 //stocke les valeurs de la ligne selectionnée dans des variables "globales" pour pouvoir les utiliser dans une autre page
                 Application.Current.Properties["Id_Fournisseur_DataGrid"] = selectedPerson.GetInt32(0);
-                Application.Current.Properties["Nom_Founisseur_DataGrid"] = selectedPerson.GetString(1);
-                Application.Current.Properties["Prenom_Founisseur_DataGrid"] = selectedPerson.GetString(2);
-                Application.Current.Properties["Numero_Founisseur_DataGrid"] = selectedPerson.GetInt32(3);
-                Application.Current.Properties["Mail_Founisseur_DataGrid"] = selectedPerson.GetString(4);
-                Application.Current.Properties["Adresse_Founisseur_DataGrid"] = selectedPerson.GetString(5);
 
                 //creer une nouvelle page 
                 Modifier_fournisseur modifierFournisseur = new Modifier_fournisseur();
