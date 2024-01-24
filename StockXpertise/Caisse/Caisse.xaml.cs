@@ -39,6 +39,8 @@ namespace StockXpertise.Caisse
         public Caisse()
         {
             InitializeComponent();
+
+            text_quantite.Text = "1";
         }
 
         private void Button_Click_ajouter_article(object sender, RoutedEventArgs e)
@@ -293,6 +295,7 @@ namespace StockXpertise.Caisse
 
             // Récupérer le code à barres saisi
             string codeBarre = text_code_barre.Text;
+            Button_Click_ajouter_article(sender, e);
 
             // select all text in textbox
             text_code_barre.SelectAll();
