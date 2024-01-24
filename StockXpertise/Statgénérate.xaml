@@ -10,13 +10,13 @@
 
     <Grid>
         <local:UserControl1/>
-        <Grid>
+        <Grid Margin="173,-2,0,2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="791*"/>
                 <ColumnDefinition Width="409*"/>
             </Grid.ColumnDefinitions>
-            <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="508" VerticalAlignment="Center" Width="901" AutoGenerateColumns="True" Margin="369,0,0,0" Grid.ColumnSpan="2" />
-            <Button x:Name="excelgenerate" Content="Exporter" HorizontalAlignment="Left" Height="42" Margin="466,60,0,0" VerticalAlignment="Top" Width="134" Click="create_excel" BorderBrush="#FFABADB3" BorderThickness="2" RenderTransformOrigin="0.5,0.5" Background="#FFFFDDCC">
+            <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Width="901" AutoGenerateColumns="True" Margin="213,182,0,0" Grid.ColumnSpan="2" Height="512" />
+            <Button x:Name="excelgenerate" Content="Exporter" HorizontalAlignment="Left" Height="40" Margin="81,73,0,0" VerticalAlignment="Top" Width="113" Click="create_excel" BorderBrush="White" BorderThickness="2" RenderTransformOrigin="0.5,0.5" Background="#FFFFDDCC" Grid.Column="1">
                 <Button.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -26,8 +26,8 @@
                     </TransformGroup>
                 </Button.RenderTransform>
             </Button>
-            <TextBox Name="cheminexcel"  HorizontalAlignment="Left" Margin="643,68,0,0" TextWrapping="Wrap" Text="Chemin d'accès fichier" VerticalAlignment="Top" Width="353" Height="26" Grid.ColumnSpan="2"/>
-            <Button Grid.Column="1" Content="Button" HorizontalAlignment="Left" Height="32" Margin="87,70,0,0" VerticalAlignment="Top" Width="128" Click="Button_Click"/>
+            <TextBox Name="cheminexcel"  HorizontalAlignment="Left" Margin="243,74,0,0" TextWrapping="Wrap" Text="Chemin d'accès fichier" VerticalAlignment="Top" Width="421" Height="39"/>
+            <Button Content="Ouvrir" HorizontalAlignment="Left" Height="40" Margin="669,73,0,0" VerticalAlignment="Top" Width="63" Click="Button_Click" Background="#FFEBF3E8"/>
         </Grid>
     </Grid>
 </Page>

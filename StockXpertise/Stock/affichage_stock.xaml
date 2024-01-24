@@ -11,7 +11,7 @@
     <Grid>
         <local:UserControl1/>
         <Frame x:Name="StockFrame" NavigationUIVisibility="Hidden"/>
-        <Grid x:Name="gridStock" Margin="181,-18,10,0">
+        <Grid x:Name="gridStock" Margin="173,-2,0,2">
             <Grid.Background>
                 <ImageBrush/>
             </Grid.Background>
@@ -20,8 +20,7 @@
                     <DropShadowEffect/>
                 </Border.Effect>
             </Border>
-            <TextBlock Text="Stock" HorizontalAlignment="Center" FontSize="24" Margin="0,66,0,687" Width="64" FontWeight="Bold" RenderTransformOrigin="0.189,0.5"/>
-            <Button x:Name="button" Content="PDF" Height="30" Margin="1206,175,31,613" Width="72" RenderTransformOrigin="0.743,1.834" BorderBrush="Black" Click="generation_pdf" Background="#FFFFDDCC"/>
+            <TextBlock Text="Stock" Foreground="Black" HorizontalAlignment="Center" FontSize="24" Margin="0,66,0,687" Width="64" FontWeight="Bold" RenderTransformOrigin="0.189,0.5"/>
             <DataGrid x:Name="MyDataGrid" HorizontalAlignment="Center" VerticalAlignment="Top" Height="500" Width="1247" Margin="0,251,0,0" RowHeight="40"
     Background="Transparent"
     BorderBrush="Transparent"
@@ -84,71 +83,29 @@
                     </Style>
                     <Style TargetType="DataGridColumnHeader">
                         <Setter Property="Background" Value="Transparent"/>
-                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="Foreground" Value="WhiteSmoke"/>
                         <Setter Property="FontWeight" Value="Bold"/>
                         <Setter Property="Padding" Value="15,10"/>
                         <Setter Property="TextBlock.TextAlignment" Value="Center"/>
                         <Setter Property="BorderBrush" Value="Transparent"/>
                         <!-- Couleur de la bordure transparente -->
                     </Style>
-                    <Style x:Key="ScrollBarThumb" TargetType="Thumb">
-                        <Setter Property="Background" Value="Gray"/>
-                        <!-- Autres setters selon vos préférences -->
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="Thumb">
-                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5"/>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
                 </DataGrid.Resources>
-                <!-- Style de la barre de défilement -->
-                <Style TargetType="ScrollBar">
-                    <Setter Property="Width" Value="10"/>
-                    <Setter Property="BorderThickness" Value="1"/>
-                    <Setter Property="BorderBrush" Value="Transparent"/>
-                    <Setter Property="Background" Value="LightGray"/>
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="ScrollBar">
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition MaxHeight="18"/>
-                                        <RowDefinition Height="0.00001*"/>
-                                        <RowDefinition MaxHeight="18"/>
-                                    </Grid.RowDefinitions>
-                                    <Border Name="Border" Grid.Row="1" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5"/>
-                                    <Track Name="PART_Track" Grid.Row="1">
-                                        <Track.DecreaseRepeatButton>
-                                            <RepeatButton Command="{x:Static ScrollBar.LineUpCommand}" CommandTarget="{Binding Path=PlacementTarget, RelativeSource={RelativeSource AncestorType={x:Type ScrollBar}}}"/>
-                                        </Track.DecreaseRepeatButton>
-                                        <Track.Thumb>
-                                            <Thumb Style="{StaticResource ScrollBarThumb}" Margin="0,-1,0,-1"/>
-                                        </Track.Thumb>
-                                        <Track.IncreaseRepeatButton>
-                                            <RepeatButton Command="{x:Static ScrollBar.LineDownCommand}" CommandTarget="{Binding Path=PlacementTarget, RelativeSource={RelativeSource AncestorType={x:Type ScrollBar}}}"/>
-                                        </Track.IncreaseRepeatButton>
-                                    </Track>
-                                </Grid>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
             </DataGrid>
-            <TextBox x:Name="Search_TextBox" Height="30" Margin="31,175,573,613" Text="Search ..." TextWrapping="Wrap" Width="705">
+            <Button x:Name="addStock" Content="Ajouter" Margin="1018,172,237,588" Width="72" Click="Add_New_Stock" BorderBrush="Black" Background="#FFFFDDCC" RenderTransformOrigin="1.31,0.427" Foreground="#FF303030"/>
+            <TextBox x:Name="Search_TextBox" Margin="133,172,469,588" TextWrapping="Wrap">
                 <TextBox.Template>
                     <ControlTemplate TargetType="{x:Type TextBox}">
                         <Grid>
                             <Border CornerRadius="15" BorderBrush="Black" BorderThickness="1" Background="WhiteSmoke">
                                 <ScrollViewer x:Name="PART_ContentHost" Padding="5" Margin="5"/>
                             </Border>
-                            <Button Content="🔍" HorizontalAlignment="Right" VerticalAlignment="Center" Width="30" Margin="-35,0,5,0" BorderBrush="{x:Null}" Click="Search_TextBox_TextChanged" Background="White"/>
+                            <Button Content="🔍" HorizontalAlignment="Right" VerticalAlignment="Center" Width="40" Margin="-35,0,5,0" BorderBrush="{x:Null}" Click="Search_TextBox_TextChanged" Background="White"/>
                         </Grid>
                     </ControlTemplate>
                 </TextBox.Template>
             </TextBox>
-            <Button x:Name="addStock" Content="Ajouter" Height="30" Margin="1039,175,198,613" Width="72" Click="Add_New_Stock" BorderBrush="Black" Background="#FFFFDDCC" RenderTransformOrigin="1.31,0.427"/>
+            <Button x:Name="button" Content="PDF" Margin="1194,172,61,588" Width="72" RenderTransformOrigin="0.743,1.834" BorderBrush="Black" Click="generation_pdf" Background="#FFFFDDCC"/>
         </Grid>
     </Grid>
 </Page>

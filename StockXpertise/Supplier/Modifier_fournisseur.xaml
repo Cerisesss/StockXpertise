@@ -38,7 +38,7 @@
         <Label x:Name="labelNum" Content="" Height="29" Margin="279,188,346,232" Width="175"/>
         <Label x:Name="labelMail" Content="" Height="29" Margin="279,230,350,191" Width="175"/>
         <Label x:Name="labelAdresse" Content="" Margin="627,454,698,288" Width="175"/>
-        <Button Content="Valider" Height="26" Margin="795,565,515,200" Width="90" Click="Button_Click" Background="#FFEBF3E8" BorderBrush="Black" RenderTransformOrigin="0.506,0.719"/>
-        <Button Content="Annuler" Height="26" Margin="662,565,648,200" Width="90" Click="Button_Click_1" Background="#FFFFDDCC"/>
+        <Button Content="Valider" Margin="845,570,565,190" Width="90" Click="Button_Click" Background="#FFEBF3E8" BorderBrush="White" RenderTransformOrigin="0.506,0.719"/>
+        <Button Content="Annuler" Margin="712,570,698,190" Width="90" Click="Button_Click_1" Background="#FFFFDDCC" BorderBrush="White"/>
     </Grid>
 </Page>

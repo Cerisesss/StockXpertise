@@ -104,7 +104,15 @@ namespace StockXpertise.User
 
             if ((string)labelMail.Content != mailTextBox.Text && !string.IsNullOrEmpty(mailTextBox.Text))
             {
-                mail = mailTextBox.Text;
+                if (mailTextBox.Text.Contains("@"))
+                {
+                    mail = mailTextBox.Text;
+                }
+                else
+                {
+                    MessageBox.Show("Votre adresse mail semble incorrecte");
+                    return;
+                }
             }
 
             if (radioAdmin.IsChecked == true)
@@ -120,18 +128,18 @@ namespace StockXpertise.User
                 role = radioCaissier.Content.ToString();
             }
 
+            if (!mail.Contains("@"))
+            {
+                MessageBox.Show("Votre adresse mail semble incorrecte");
+                return;
+            }
+
             //barre de progression
             ConnexionProgressBar.Visibility = Visibility.Visible;
 
             timer.Start();
 
             await Task.Delay(2000);
-
-            if (!mail.Contains("@"))
-            {
-                MessageBox.Show("Votre adresse mail semble incorrecte");
-                return;
-            }
 
             //generation du sel
             string salt = BCrypt.Net.BCrypt.GenerateSalt(15);

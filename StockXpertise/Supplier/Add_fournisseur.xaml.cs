@@ -50,14 +50,15 @@ namespace StockXpertise
                 return;
             }
 
-            //condition pour verifier si les champs sont vides
-            //si c'est le cas alors on affiche un message
-            //sinon on execute la requete
-            if (!mail.Contains ("@"))
+            if (!mail.Contains("@"))
             {
                 MessageBox.Show("Votre adresse mail semble incorrecte");
                 return;
             }
+
+            //condition pour verifier si les champs sont vides
+            //si c'est le cas alors on affiche un message
+            //sinon on execute la requete
             if (string.IsNullOrEmpty(nom) || string.IsNullOrEmpty(prenom) || string.IsNullOrEmpty(numero) || string.IsNullOrEmpty(mail) || string.IsNullOrEmpty(adresse))
             {
                 MessageBox.Show("Veuillez remplir tous les champs.", "Oups !", MessageBoxButton.OK, MessageBoxImage.Error);

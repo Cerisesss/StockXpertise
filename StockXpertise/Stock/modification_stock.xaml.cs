@@ -88,8 +88,9 @@ namespace StockXpertise.Stock
             string code_barre = code_barre_apres.Text;
             string code_emplacement = code_emplacement_apres.Text;
             int quantite_avant = selectedData.Quantite;
+            BitmapImage image = selectedData.Image;
 
-            if (string.IsNullOrEmpty(code_barre) && string.IsNullOrEmpty(nouveauNom) && string.IsNullOrEmpty(nouvelleFamille) && string.IsNullOrEmpty(nouvelledescription) && string.IsNullOrEmpty(nouvelleQuantite) && string.IsNullOrEmpty(nouveauPrixHT) && string.IsNullOrEmpty(nouveauPrixTTC) && string.IsNullOrEmpty(imagePath))
+            if (string.IsNullOrEmpty(code_barre) && string.IsNullOrEmpty(nouveauNom) && string.IsNullOrEmpty(nouvelleFamille) && string.IsNullOrEmpty(nouvelledescription) && string.IsNullOrEmpty(nouvelleQuantite) && string.IsNullOrEmpty(nouveauPrixHT) && string.IsNullOrEmpty(nouveauPrixTTC) && image == null)
             {
                 MessageBox.Show("Veuillez remplir au moins un champ", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
@@ -381,6 +382,24 @@ namespace StockXpertise.Stock
             bitmapImage.EndInit();
 
             return bitmapImage;
+        }
+
+        private void code_barre_apres_TextChanged(object sender, KeyEventArgs e)
+        {
+            // Vérifier si la touche appuyée est la touche "Entrer"
+            if (e.Key != Key.Enter)
+            {
+                return;
+            }
+
+            // Récupérer le code à barres saisi
+            string codeBarre = code_barre_apres.Text;
+
+            // select all text in textbox
+            code_barre_apres.SelectAll();
+
+            // Empêcher le caractère "Entrer" d'être ajouté au TextBox
+            e.Handled = true;
         }
     }
 }

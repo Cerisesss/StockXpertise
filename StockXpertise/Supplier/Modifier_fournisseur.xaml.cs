@@ -1,5 +1,7 @@
-﻿using StockXpertise.User;
+﻿using MySql.Data.MySqlClient;
+using StockXpertise.User;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -15,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ZXing;
 
 namespace StockXpertise.Supplier
 {
@@ -34,19 +37,46 @@ namespace StockXpertise.Supplier
         {
             InitializeComponent();
 
-            labelNom.Content = Application.Current.Properties["Nom_Founisseur_DataGrid"].ToString();
+            id = Convert.ToInt32(Application.Current.Properties["Id_Fournisseur_DataGrid"]);
+            labelNom.Content = sqlconvert("nom");
+            labelPrenom.Content = sqlconvert("prenom");
+            labelNum.Content = sqlconvert("numero");
+            labelMail.Content = sqlconvert("mail");
+            labelAdresse.Content = sqlconvert("adresse");
+
+            /*labelNom.Content = Application.Current.Properties["Nom_Founisseur_DataGrid"].ToString();
             labelPrenom.Content = Application.Current.Properties["Prenom_Founisseur_DataGrid"].ToString();
             labelNum.Content = Application.Current.Properties["Numero_Founisseur_DataGrid"].ToString();
             labelMail.Content = Application.Current.Properties["Mail_Founisseur_DataGrid"].ToString();
-            labelAdresse.Content = Application.Current.Properties["Adresse_Founisseur_DataGrid"].ToString();
+            labelAdresse.Content = Application.Current.Properties["Adresse_Founisseur_DataGrid"].ToString();*/
 
-            id = Convert.ToInt32(Application.Current.Properties["Id_Fournisseur_DataGrid"].ToString());
-            nom = Application.Current.Properties["Nom_Founisseur_DataGrid"].ToString();
-            prenom = Application.Current.Properties["Prenom_Founisseur_DataGrid"].ToString();
-            num = Convert.ToInt32(Application.Current.Properties["Numero_Founisseur_DataGrid"].ToString());
-            mail = Application.Current.Properties["Mail_Founisseur_DataGrid"].ToString();
-            adresse = Application.Current.Properties["Adresse_Founisseur_DataGrid"].ToString();
+            nom = labelNom.Content.ToString();
+            prenom = labelPrenom.Content.ToString();
+            num = Convert.ToInt32(labelNum.Content);
+            mail = labelMail.Content.ToString();
+            adresse = labelAdresse.Content.ToString();
         }
+
+        private string sqlconvert(string columnName)
+        {
+            // Utiliser des paramètres pour éviter les vulnérabilités SQL comme l'injection
+            string query = "SELECT " + columnName + " FROM fournisseur WHERE id_fournisseur = "+id+";";
+
+            using (MySqlDataReader reader= ConfigurationDB.ExecuteQuery(query))
+            {
+                // Vérifier si le lecteur a des lignes de résultats
+                if (reader.Read())
+                {
+                    // Retourner la valeur de la colonne spécifiée
+                    return reader[columnName].ToString();
+                }
+            }
+
+
+            // Retourner une valeur par défaut si aucune ligne n'est trouvée
+            return string.Empty;
+        }
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -91,15 +121,20 @@ namespace StockXpertise.Supplier
                 }
             }
 
+            
             if ((string)labelMail.Content != mailTextBox.Text && !string.IsNullOrEmpty(mailTextBox.Text))
             {
-                mail = mailTextBox.Text;
+                if (mailTextBox.Text.Contains("@"))
+                {
+                    mail = mailTextBox.Text;
+                }
+                else
+                {
+                    MessageBox.Show("Votre adresse mail semble incorrecte");
+                    return;
+                }
             }
-            if (!mail.Contains("@"))
-            {
-                MessageBox.Show("Votre adresse mail semble incorrecte");
-                return;
-            }
+            
 
             if ((string)labelAdresse.Content != adresseTextBox.Text && !string.IsNullOrEmpty(adresseTextBox.Text))
             {

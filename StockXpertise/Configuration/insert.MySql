@@ -38,26 +38,23 @@ INSERT INTO `emplacement` (`code`, `capacite`) VALUES
 
 -- Inserts for articles table
 INSERT INTO `articles` (`id_fournisseur`, `nom`, `famille`, `prix_ht`, `prix_ttc`, `prix_vente`, `prix_achat`, `description`, `code_barre`, `image`) VALUES
-(1, 'Ordinateur Portable', 'Informatique', 800, 960, 1200, 600, 'Ordinateur portable haut de gamme', '012345678901', '/Images/image0.jpg'),
-(2, 'Smartphone', 'Téléphonie', 600, 720, 950, 500, 'Smartphone dernière génération', '234567890123', '/Images/image1.jpg'),
-(3, 'Tablette', 'Informatique', 400, 480, 650, 350, 'Tablette légère et performante', '762240566753', '/Images/image2.jpg'),
-(4, 'Imprimante', 'Informatique', 200, 240, 300, 150, 'Imprimante multifonction', '456784012345', '/Images/image3.jpg'),
-(5, 'Caméra de Surveillance', 'Électronique', 150, 180, 250, 120, 'Caméra de surveillance WiFi', '3061990143808', '/Images/image4.jpg'),
-(1, 'Casque Audio', 'Audio', 100, 120, 150, 70, 'Casque audio sans fil', '678901634567', '/Images/image5.jpg'),
-(2, 'Montre Connectée', 'Électronique', 300, 360, 450, 250, 'Montre connectée étanche', '789212345678', '/Images/image6.jpg'),
-(3, 'Aspirateur Robot', 'Électroménager', 250, 300, 400, 200, 'Aspirateur robot intelligent', '7622400006753', '/Images/image7.jpg'),
-(4, 'Lampadaire LED', 'Éclairage', 80, 96, 120, 60, 'Lampadaire LED avec variateur', '901234567490', '/Images/image8.jpg'),
-(5, 'Enceinte Bluetooth', 'Audio', 50, 60, 80, 40, 'Enceinte Bluetooth portable', '012345668912', '/Images/image9.jpg'),
-(3, 'Clavier Sans Fil', 'Informatique', 50, 60, 80, 30, 'Clavier sans fil avec pavé numérique', '123456789012', '/Images/image10.jpg'),
-(4, 'Scanner Document', 'Informatique', 120, 144, 180, 90, 'Scanner de documents haute résolution', '234567690123', '/Images/image11.jpg'),
-(2, 'Écouteurs Bluetooth', 'Audio', 30, 36, 50, 20, 'Écouteurs Bluetooth sans fil', '345678901234', '/Images/image12.jpg'),
-(5, 'Console de Jeu', 'Jeux Vidéo', 300, 360, 450, 200, 'Console de jeu avec capacités haute performance', '456789012345', '/Images/image13.jpg'),
-(1, 'Disque Dur Externe', 'Informatique', 80, 96, 120, 50, 'Disque dur externe de grande capacité', '567890123456', '/Images/image14.jpg'),
-(3, 'Imprimante 3D', 'Informatique', 250, 300, 400, 150, 'Imprimante 3D pour la création de prototypes', '678901234567', '/Images/image15.jpg'),
-(4, 'Téléviseur 4K', 'Électronique', 700, 840, 1000, 500, 'Téléviseur 4K avec technologie HDR', '789012345678', '/Images/image16.jpg'),
-(2, 'Enceinte Smart', 'Audio', 100, 120, 150, 70, 'Enceinte intelligente avec assistant vocal', '890123456789', '/Images/image17.jpg'),
-(5, 'Souris Gaming', 'Informatique', 40, 48, 60, 25, 'Souris gaming avec rétroéclairage RGB', '750165010074', '/Images/image18.jpg'),
-(1, 'Appareil Photo Reflex', 'Photographie', 600, 720, 900, 450, 'Appareil photo reflex professionnel', '012345678912', '/Images/image19.jpg');
+(1, 'repère et référence statistique', 'Livre', 20, 22, 26, 15, 'LIVRE', '9782110953902', '/Images/image0.jpg'),
+(2, 'grumeaux numéro 2', 'livre', 7, 8, 10, 6, 'livre', '9782913549715', '/Images/image1.jpg'),
+(3, 'La cybersécurité face au défi de la confiance', 'livre', 20, 21, 23, 18, 'livre cyber', '9782738143679', '/Images/image2.jpg'),
+(4, 'Numérique Responsable', 'livre', 10, 11, 12, 9, 'livre', '0000000', '/Images/image3.jpg'),
+(5, 'Rosa bonheur', 'livre', 8, 9, 10, 7, 'Livre', '3061990143808', '/Images/image4.jpg'),
+(1, 'quand l écologie nous gagne', 'écologie', 16, 17, 19, 15, 'éco livre', '00002', '/Images/image5.jpg'),
+(2, 'Phonétisme et prononciations du français', 'livre', 27, 28, 30, 23, 'livre nathan université', '9782091902906', '/Images/image6.jpg'),
+(3, 'Lamour Dieu', 'livre', 13, 14, 16, 11, 'livre dieu', '9782867446528', '/Images/image7.jpg'),
+(4, 'souris inphic', 'inphic', 33, 35, 40, 30, 'souris', '0707443237931', '/Images/image8.jpg'),
+(1, 'chat', 'chat', 12, 13, 15, 10, 'chat', '9215327655534395500000000066', '/Images/image9.jpg'),
+(2, 'broad noodle chili oil flavor', 'pate', 4, 4, 5, 3, 'pate', '6926410320115', '/Images/image10.jpg'),
+(3, 'ansung noodle', 'pate', 5, 5, 6, 4, 'pate', '8801043157735', '/Images/image11.jpg'),
+(4, 'hot and spicy flavour', 'pate', 5, 5, 6, 4, 'pate', '8850987131264', '/Images/image12.jpg'),
+(1, 'Artificial beef with sauerkraut', 'pate', 5, 5, 6, 4, 'pate', '6935270641698', '/Images/image13.jpg'),
+(2, 'Broad noodle chili oil flavor', 'pate', 4, 4, 5, 3, 'pate', '6926410320115', '/Images/image14.jpg')
+;
+
 
 -- Inserts for produit table
 INSERT INTO `produit` (`id_emplacement`, `id_articles`, `quantite_stock`, `quantite_stock_reel`) VALUES
@@ -70,17 +67,17 @@ INSERT INTO `produit` (`id_emplacement`, `id_articles`, `quantite_stock`, `quant
 (7, 7, 35, 0),
 (8, 8, 50, 0),
 (9, 9, 30, 0),
-(10, 10, 40, 0),
-(1, 11, 20, 0),
-(2, 12, 30, 0),
-(3, 13, 40, 0),
-(4, 14, 50, 0),
-(5, 15, 60, 0),
-(6, 16, 70, 0),
-(7, 17, 10, 0),
-(8, 18, 80, 0),
-(9, 19, 90, 0),
-(10, 20, 20, 0);
+(10, 1, 40, 0),
+(1, 3, 20, 0),
+(2, 9, 30, 0),
+(3, 2, 40, 0),
+(4, 6, 50, 0),
+(5, 9, 60, 0),
+(6, 7, 70, 0),
+(7, 3, 10, 0),
+(8, 4, 80, 0),
+(9, 5, 90, 0),
+(10, 2, 20, 0);
 
 
 -- Inserts for mouvement table

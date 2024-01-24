@@ -31,14 +31,16 @@ namespace StockXpertise.Caisse
     /// </summary>
     public partial class Caisse : Page
     {
-        List<ImageInfo> listeImages = new List<ImageInfo>();
         List<Article> listeArticles = new List<Article>();
         private FilterInfoCollection filterInfoCollection;
         private VideoCaptureDevice videoCaptureDevice;
 
+
         public Caisse()
         {
             InitializeComponent();
+
+            text_quantite.Text = "1";
         }
 
         private void Button_Click_ajouter_article(object sender, RoutedEventArgs e)
@@ -67,9 +69,12 @@ namespace StockXpertise.Caisse
                     // Vérifie s'il y a des lignes de résultat
                     if (result.HasRows)
                     {
+                        int quantiteEnStock = 0;
+
                         while (result.Read())
                         {
-                            int quantiteEnStock = Convert.ToInt32(result["quantite_stock"]);
+                            quantiteEnStock += Convert.ToInt32(result["quantite_stock"]);
+                        }
 
                             if (int.TryParse(quantite, out int quantiteSaisieInt) && quantiteSaisieInt <= quantiteEnStock)
                             {
@@ -87,7 +92,7 @@ namespace StockXpertise.Caisse
                                     if (totalQuantite <= existingArticle.QuantiteEnStock)
                                     {
                                         existingArticle.Quantite = totalQuantite;
-                                        MessageBox.Show($"Quantité mise à jour : x{totalQuantite}, code barre : {code_barre}", "Réussi", MessageBoxButton.OK, MessageBoxImage.Information);
+                                        //MessageBox.Show($"Quantité mise à jour : x{totalQuantite}, code barre : {code_barre}", "Réussi", MessageBoxButton.OK, MessageBoxImage.Information);
 
                                         foreach (var existing_Article in listeArticles)
                                         {
@@ -147,14 +152,14 @@ namespace StockXpertise.Caisse
                                     listBoxImages.ItemsSource = newListeImages;
 
                                     // Affiche un message de confirmation
-                                    MessageBox.Show($"Article ajouté à la liste de course : x{quantiteSaisieInt}, code barre : {code_barre}", "Réussi", MessageBoxButton.OK, MessageBoxImage.Information);
+                                    //MessageBox.Show($"Article ajouté à la liste de course : x{quantiteSaisieInt}, code barre : {code_barre}", "Réussi", MessageBoxButton.OK, MessageBoxImage.Information);
                                 }
                             }
                             else
                             {
                                 MessageBox.Show("Rupture de Stock, nombre de produit en stock : " + quantiteEnStock + ".", "Oups", MessageBoxButton.OK, MessageBoxImage.Error);
                             }
-                        }
+                        //}
                     }
                     else
                     {
@@ -281,6 +286,25 @@ namespace StockXpertise.Caisse
             bitmapImage.EndInit();
 
             return bitmapImage;
+        }
+
+        private void text_code_barre_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            // Vérifier si la touche appuyée est la touche "Entrer"
+            if (e.Key != Key.Enter)
+            {
+                return;
+            }
+
+            // Récupérer le code à barres saisi
+            string codeBarre = text_code_barre.Text;
+            Button_Click_ajouter_article(sender, e);
+
+            // select all text in textbox
+            text_code_barre.SelectAll();
+
+            // Empêcher le caractère "Entrer" d'être ajouté au TextBox
+            e.Handled = true;
         }
     }
 }

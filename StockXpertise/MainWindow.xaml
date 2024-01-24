@@ -6,8 +6,16 @@
         xmlns:local="clr-namespace:StockXpertise.components"
         mc:Ignorable="d"
         d:DesignHeight="800" d:DesignWidth="1280"
-        Title="MainWindow"
+        Title="StockXpertise"
+        Icon="/Images/logoVblanc.ico"
         >
+    <Window.Style>
+        <Style TargetType="Window">
+            <Setter Property="Background" Value="#FF303030"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+    </Window.Style>
+    
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" Opacity="1">
@@ -29,7 +37,7 @@
             <!--<local:UserControl1/>-->
 
             <Image Source="/Images/LogoWithShadow.png" HorizontalAlignment="Center" Height="405" Margin="0,112,0,0" VerticalAlignment="Top" Width="434"/>
-            <Button Content="Connexion" HorizontalAlignment="Center" Height="51" Margin="0,520,0,0" VerticalAlignment="Top" Width="116" Click="Button_Click" Foreground="Black" Opacity="0.8" Background="White"/>
+            <Button Content="Connexion" HorizontalAlignment="Center" Height="50" Margin="0,509,0,0" Width="116" VerticalAlignment="Top" Click="Button_Click" Foreground="Black" Opacity="0.8" Background="White"/>
         </Grid>
     </Grid>
 </Window>

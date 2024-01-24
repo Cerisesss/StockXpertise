@@ -25,6 +25,7 @@ using System.Windows.Shapes;
 using ZXing;
 using ZXing.Common;
 using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
+using KeyEventArgs = System.Windows.Input.KeyEventArgs;
 using MessageBox = System.Windows.MessageBox;
 
 namespace StockXpertise.Stock
@@ -304,5 +305,22 @@ namespace StockXpertise.Stock
             }
         }
 
+        private void TextBox_CodeBarre(object sender, KeyEventArgs e)
+        {
+            // Vérifier si la touche appuyée est la touche "Entrer"
+            if (e.Key != Key.Enter)
+            {
+                return;
+            }
+
+            // Récupérer le code à barres saisi
+            string codeBarre = CodeBarreStock.Text;
+
+            // select all text in textbox
+            CodeBarreStock.SelectAll();
+
+            // Empêcher le caractère "Entrer" d'être ajouté au TextBox
+            e.Handled = true;
+        }
     }
 }
