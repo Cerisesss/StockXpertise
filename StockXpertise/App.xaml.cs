@@ -10,7 +10,7 @@ using MySql.Data.MySqlClient;
 using SqlKata;
 using SqlKata.Compilers;
 using SqlKata.Execution;
-using StockXpertise.Models;
+using StockXpertise.Helpers;
 using StockXpertise.Services;
 using StockXpertise.ViewModels.Pages;
 using StockXpertise.ViewModels.Windows;
