@@ -393,6 +393,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Resource Include="Images\LogoVBlanc.png" />
+    <Content Include="Images\logoVblanc.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\stat.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:StockXpertise.components"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <BitmapImage x:Key="logoVblanc" UriSource="/Images/logoVblanc.ico"/>
     </Application.Resources>
 </Application>

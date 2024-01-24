@@ -31,10 +31,10 @@ namespace StockXpertise.Caisse
     /// </summary>
     public partial class Caisse : Page
     {
-        List<ImageInfo> listeImages = new List<ImageInfo>();
         List<Article> listeArticles = new List<Article>();
         private FilterInfoCollection filterInfoCollection;
         private VideoCaptureDevice videoCaptureDevice;
+
 
         public Caisse()
         {
@@ -69,9 +69,12 @@ namespace StockXpertise.Caisse
                     // Vérifie s'il y a des lignes de résultat
                     if (result.HasRows)
                     {
+                        int quantiteEnStock = 0;
+
                         while (result.Read())
                         {
-                            int quantiteEnStock = Convert.ToInt32(result["quantite_stock"]);
+                            quantiteEnStock += Convert.ToInt32(result["quantite_stock"]);
+                        }
 
                             if (int.TryParse(quantite, out int quantiteSaisieInt) && quantiteSaisieInt <= quantiteEnStock)
                             {
@@ -89,7 +92,7 @@ namespace StockXpertise.Caisse
                                     if (totalQuantite <= existingArticle.QuantiteEnStock)
                                     {
                                         existingArticle.Quantite = totalQuantite;
-                                        MessageBox.Show($"Quantité mise à jour : x{totalQuantite}, code barre : {code_barre}", "Réussi", MessageBoxButton.OK, MessageBoxImage.Information);
+                                        //MessageBox.Show($"Quantité mise à jour : x{totalQuantite}, code barre : {code_barre}", "Réussi", MessageBoxButton.OK, MessageBoxImage.Information);
 
                                         foreach (var existing_Article in listeArticles)
                                         {
@@ -149,14 +152,14 @@ namespace StockXpertise.Caisse
                                     listBoxImages.ItemsSource = newListeImages;
 
                                     // Affiche un message de confirmation
-                                    MessageBox.Show($"Article ajouté à la liste de course : x{quantiteSaisieInt}, code barre : {code_barre}", "Réussi", MessageBoxButton.OK, MessageBoxImage.Information);
+                                    //MessageBox.Show($"Article ajouté à la liste de course : x{quantiteSaisieInt}, code barre : {code_barre}", "Réussi", MessageBoxButton.OK, MessageBoxImage.Information);
                                 }
                             }
                             else
                             {
                                 MessageBox.Show("Rupture de Stock, nombre de produit en stock : " + quantiteEnStock + ".", "Oups", MessageBoxButton.OK, MessageBoxImage.Error);
                             }
-                        }
+                        //}
                     }
                     else
                     {
