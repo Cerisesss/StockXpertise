@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:StockXpertise.Views.Windows"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml" xmlns:pages="clr-namespace:StockXpertise.ViewModels.Pages"
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml" 
+        xmlns:pages="clr-namespace:StockXpertise.ViewModels.Pages"
                  Title="Login"
                  d:DataContext="{d:DesignInstance local:LoginWindow,
                                          IsDesignTimeCreatable=False}"

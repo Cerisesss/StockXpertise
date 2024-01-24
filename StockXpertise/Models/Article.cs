@@ -1,17 +1,11 @@
-﻿using SqlKata.Execution;
-using StockXpertise.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using StockXpertise.Helpers;
 
 namespace StockXpertise.Models
 {
     public class Article : BaseModel<Article>
     {
         public override string TableName => "articles"; // Override table name
-        
+
         // Properties representing table columns
         public int id_articles { get; set; }
         public ForeignKey<Fournisseur> id_fournisseur { get; set; }

@@ -7,7 +7,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MySql.Data.MySqlClient;
-using SqlKata;
 using SqlKata.Compilers;
 using SqlKata.Execution;
 using StockXpertise.Helpers;
@@ -36,7 +35,7 @@ namespace StockXpertise
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            AllocConsole(); 
+            AllocConsole();
             base.OnStartup(e);
         }
 
@@ -47,9 +46,10 @@ namespace StockXpertise
         // https://docs.microsoft.com/dotnet/core/extensions/logging
         private static readonly IHost _host = Host
             .CreateDefaultBuilder()
-            .ConfigureAppConfiguration(c => { 
-                c.SetBasePath(Path.GetDirectoryName(Assembly.GetEntryAssembly()!.Location)); 
-            }).ConfigureServices((context, services) =>
+            .ConfigureAppConfiguration(c =>
+            {
+                 c.SetBasePath(Path.GetDirectoryName(Assembly.GetEntryAssembly()!.Location));
+             }).ConfigureServices((context, services) =>
             {
                 services.AddHostedService<ApplicationHostService>();
 
@@ -73,6 +73,9 @@ namespace StockXpertise
                 services.AddSingleton<ISnackbarService, SnackbarService>();
                 services.AddSingleton<IContentDialogService, ContentDialogService>();
 
+                services.AddSingleton<StockPage>();
+                services.AddSingleton<StockViewModel>();
+
                 services.AddSingleton<DashboardPage>();
                 services.AddSingleton<DashboardViewModel>();
                 services.AddSingleton<DataPage>();
@@ -89,15 +92,15 @@ namespace StockXpertise
         public static T GetService<T>()
             where T : class
         {
-            return _host.Services.GetService(typeof(T)) as T;
-        }
+             return _host.Services.GetService(typeof(T)) as T;
+         }
 
         /// <summary>
         /// Occurs when the application is loading.
         /// </summary>
         private void OnStartup(object sender, StartupEventArgs e)
         {
-            _host.Start(); 
+            _host.Start();
         }
 
         /// <summary>

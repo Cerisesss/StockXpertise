@@ -1,8 +1,6 @@
-using System;
+using MySql.Data.MySqlClient;
 using System.Configuration;
 using System.IO;
-using System.Windows;
-using MySql.Data.MySqlClient;
 
 namespace StockXpertise
 {
@@ -45,8 +43,8 @@ namespace StockXpertise
 
             Configuration config = ConfigurationManager.OpenMappedExeConfiguration(configFileMap, ConfigurationUserLevel.None);
 
-            return config.ConnectionStrings.ConnectionStrings["MyDbConnection"]?.ConnectionString;
-        }
+             return config.ConnectionStrings.ConnectionStrings["MyDbConnection"]?.ConnectionString;
+         }
 
         public static MySqlDataReader ExecuteQuery(string query)
         {
@@ -66,8 +64,8 @@ namespace StockXpertise
             catch (Exception ex)
             {
                 MessageBox.Show($"Error in ConnectionDB: {ex.Message}");
-                return reader = null;
-            }
+                  return reader = null;
+              }
         }
 
         private static void ExecuteSqlScript(MySqlConnection connection, string scriptFilePath)

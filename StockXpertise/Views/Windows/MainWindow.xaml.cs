@@ -13,6 +13,8 @@ namespace StockXpertise.Views.Windows
     {
         public MainWindowViewModel? ViewModel { get; }
 
+        public Employes? CurrentUser { get; set; }
+
         public MainWindow(
             MainWindowViewModel viewModel,
             INavigationService navigationService,
@@ -33,13 +35,11 @@ namespace StockXpertise.Views.Windows
             contentDialogService.SetContentPresenter(RootContentDialog);
 
             NavigationView.SetServiceProvider(serviceProvider);
+        }
 
-            var produits = Produit.GetAll();
-
-            foreach (Produit produit in produits)
-            {
-                Console.WriteLine(produit.id_articles.ResolveEntity().id_fournisseur.ResolveEntity().nom);
-            }
+        public void SetCurrentUser(Employes user)
+        {
+            CurrentUser = user;
         }
     }
 }

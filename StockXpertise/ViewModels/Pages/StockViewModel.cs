@@ -1,19 +1,16 @@
-﻿// This Source Code Form is subject to the terms of the MIT License.
-// If a copy of the MIT was not distributed with this file, You can obtain one at https://opensource.org/licenses/MIT.
-// Copyright (C) Leszek Pomianowski and WPF UI Contributors.
-// All Rights Reserved.
+﻿using StockXpertise.Models;
+using System.Collections.ObjectModel;
 
 namespace StockXpertise.ViewModels.Pages
 {
     public partial class StockViewModel : ObservableObject
     {
-        [ObservableProperty]
-        private int _counter = 0;
+        public ObservableCollection<Article> Articles { get; set; }
 
-        [RelayCommand]
-        private void OnCounterIncrement()
+        public StockViewModel()
         {
-            Counter++;
+            
+
         }
     }
 }

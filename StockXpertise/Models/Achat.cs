@@ -1,11 +1,4 @@
-﻿using SqlKata.Execution;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace StockXpertise.Models
+﻿namespace StockXpertise.Models
 {
     public class Achat : BaseModel<Achat>
     {
@@ -15,8 +8,8 @@ namespace StockXpertise.Models
         public int id_produit { get; set; }
         public int prix_achat { get; set; }
         public DateTime date_achat { get; set; }
-        public string facture { get; set; }
-        public int id_mouvement { get; set; }
+         public string facture { get; set; }
+         public int id_mouvement { get; set; }
     }
 
 }

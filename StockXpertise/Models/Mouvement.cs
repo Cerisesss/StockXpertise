@@ -1,11 +1,4 @@
-﻿using SqlKata.Execution;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace StockXpertise.Models
+﻿namespace StockXpertise.Models
 {
     public class Mouvement : BaseModel<Mouvement>
     {

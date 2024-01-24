@@ -27,7 +27,7 @@ namespace StockXpertise.ViewModels.Windows
             {
                 Content = "Stock",
                 Icon = new SymbolIcon { Symbol = SymbolRegular.Archive32 },
-                TargetPageType = typeof(Views.Pages.StockViewModel)
+                TargetPageType = typeof(Views.Pages.StockPage)
             },
             new NavigationViewItem()
             {
