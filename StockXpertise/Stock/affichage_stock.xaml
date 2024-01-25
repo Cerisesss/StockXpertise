@@ -84,15 +84,57 @@
                     </Style>
                     <Style TargetType="DataGridColumnHeader">
                         <Setter Property="Background" Value="Transparent"/>
-                        <Setter Property="Foreground" Value="Black"/>
+                        <Setter Property="Foreground" Value="White"/>
                         <Setter Property="FontWeight" Value="Bold"/>
                         <Setter Property="Padding" Value="15,10"/>
                         <Setter Property="TextBlock.TextAlignment" Value="Center"/>
                         <Setter Property="BorderBrush" Value="Transparent"/>
                         <!-- Couleur de la bordure transparente -->
                     </Style>
-                    
+                    <Style x:Key="ScrollBarThumb" TargetType="Thumb">
+                        <Setter Property="Background" Value="Gray"/>
+                        <!-- Autres setters selon vos préférences -->
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Thumb">
+                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5"/>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
                 </DataGrid.Resources>
+                <!-- Style de la barre de défilement -->
+                <Style TargetType="ScrollBar">
+                    <Setter Property="Width" Value="10"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <Setter Property="Background" Value="LightGray"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ScrollBar">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition MaxHeight="18"/>
+                                        <RowDefinition Height="0.00001*"/>
+                                        <RowDefinition MaxHeight="18"/>
+                                    </Grid.RowDefinitions>
+                                    <Border Name="Border" Grid.Row="1" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5"/>
+                                    <Track Name="PART_Track" Grid.Row="1">
+                                        <Track.DecreaseRepeatButton>
+                                            <RepeatButton Command="{x:Static ScrollBar.LineUpCommand}" CommandTarget="{Binding Path=PlacementTarget, RelativeSource={RelativeSource AncestorType={x:Type ScrollBar}}}"/>
+                                        </Track.DecreaseRepeatButton>
+                                        <Track.Thumb>
+                                            <Thumb Style="{StaticResource ScrollBarThumb}" Margin="0,-1,0,-1"/>
+                                        </Track.Thumb>
+                                        <Track.IncreaseRepeatButton>
+                                            <RepeatButton Command="{x:Static ScrollBar.LineDownCommand}" CommandTarget="{Binding Path=PlacementTarget, RelativeSource={RelativeSource AncestorType={x:Type ScrollBar}}}"/>
+                                        </Track.IncreaseRepeatButton>
+                                    </Track>
+                                </Grid>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
             </DataGrid>
             <TextBox x:Name="Search_TextBox" Height="30" Margin="31,175,573,613" Text="Search ..." TextWrapping="Wrap" Width="705">
                 <TextBox.Template>
