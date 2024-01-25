@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -45,6 +46,21 @@ namespace StockXpertise.Caisse
 
         private void Button_Click_ajouter_article(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                string path = @"Sounds\bip.mp3";
+
+                // Utilisez MediaPlayer pour jouer le fichier audio
+                MediaPlayer player = new MediaPlayer();
+                player.Open(new Uri(path, UriKind.Relative));
+                player.Play();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+
             string code_barre = text_code_barre.Text;
             string quantite = text_quantite.Text;
 

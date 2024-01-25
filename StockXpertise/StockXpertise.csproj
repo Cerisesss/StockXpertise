@@ -405,6 +405,7 @@
     <Content Include="Images\utilisateur.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Sounds\bip.mp3" />
     <Content Include="txttoexcel.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
