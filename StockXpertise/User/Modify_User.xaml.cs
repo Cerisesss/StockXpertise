@@ -100,6 +100,12 @@ namespace StockXpertise.User
             if ((string)labelMdp.Content != mdpTextBox.Text && !string.IsNullOrEmpty(mdpTextBox.Text))
             {
                 password = mdpTextBox.Text;
+
+                //generation du sel
+                string salt = BCrypt.Net.BCrypt.GenerateSalt(15);
+
+                //hash le mot de passe avec le sel
+                password = BCrypt.Net.BCrypt.HashPassword(password, salt);
             }
 
             if ((string)labelMail.Content != mailTextBox.Text && !string.IsNullOrEmpty(mailTextBox.Text))
@@ -128,12 +134,6 @@ namespace StockXpertise.User
                 role = radioCaissier.Content.ToString();
             }
 
-            if (!mail.Contains("@"))
-            {
-                MessageBox.Show("Votre adresse mail semble incorrecte");
-                return;
-            }
-
             //barre de progression
             ConnexionProgressBar.Visibility = Visibility.Visible;
 
@@ -141,11 +141,15 @@ namespace StockXpertise.User
 
             await Task.Delay(2000);
 
-            //generation du sel
-            string salt = BCrypt.Net.BCrypt.GenerateSalt(15);
-
-            //hash le mot de passe avec le sel
-            password = BCrypt.Net.BCrypt.HashPassword(password, salt);
+            //si la personne modifier est l'utilisateur connecté alors on affecte les nouvelles données aux variables "globales"
+            if (Application.Current.Properties["id_employes"].ToString() == id.ToString())
+            {
+                Application.Current.Properties["nom"] = nom;
+                Application.Current.Properties["prenom"] = prenom;
+                Application.Current.Properties["mot_de_passe"] = password;
+                Application.Current.Properties["mail"] = mail;
+                Application.Current.Properties["role"] = role;
+            }
 
             //requete pour modifier les données de la ligne selectionnée
             Query_User query_modify = new Query_User(id, nom, prenom, password, mail, role);
