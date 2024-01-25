@@ -42,7 +42,7 @@
                 </Rectangle.Fill>
             </Rectangle>
             <Label Content="Mot de passe" Height="26" Margin="185,272,533,152" Width="82"/>
-            <Button Content="Connexion" Margin="582,509,582,241"  Width="116" Click="Button_Click" BorderBrush="Black">
+            <Button x:Name="btnConnection" Content="Connexion" Margin="582,509,582,241"  Width="116" Click="Button_Click" BorderBrush="Black">
                 <Button.Background>
                     <SolidColorBrush Color="White" Opacity="0.8"/>
                 </Button.Background>
