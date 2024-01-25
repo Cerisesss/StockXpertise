@@ -13,8 +13,8 @@
         <Frame x:Name="addStock" NavigationUIVisibility="Hidden" Navigated="addStock_Navigated"/>
 
         <Rectangle Margin="560,144,372,275" Stroke="#FFACACAC" Fill="#FFFFDDCC"/>
-        <Button Content="Valider" Margin="891,552,519,208" Width="90" Click="Button_Click" Background="#FFEBF3E8" BorderBrush="White"/>
-        <Button Content="Annuler" Margin="741,552,669,208" Width="90" Click="Button_Click_1" Background="#FFFFDDCC" BorderBrush="White"/>
+        <Button Content="Valider" Margin="891,552,519,208" Width="90" Click="Button_Click" Style="{StaticResource CustomButtonStyle}" Background="White" BorderBrush="White"/>
+        <Button Content="Annuler" Margin="741,552,669,208" Width="90" Click="Button_Click_1" Style="{StaticResource CustomButtonStyle}" Background="White" BorderBrush="White"/>
 
         <Label Content="Nom" Margin="626,180,786,589" Width="88"/>
 

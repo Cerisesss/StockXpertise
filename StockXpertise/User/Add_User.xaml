@@ -39,8 +39,8 @@
                     </LinearGradientBrush>
                 </ProgressBar.Foreground>
             </ProgressBar>
-            <Button Content="Valider" Margin="624,521,513,239" Width="90" Click="Button_Click" Background="#FFEBF3E8" BorderBrush="White"/>
-            <Button Content="Annuler" Margin="506,521,631,239" Width="90" Click="Button_Click_1" BorderBrush="White" Background="#FFFFDDCC"/>
+            <Button Content="Valider" Margin="624,521,513,239" Width="90" Click="Button_Click" Style="{StaticResource CustomButtonStyle}" Background="White" BorderBrush="White"/>
+            <Button Content="Annuler" Margin="506,521,631,239" Width="90" Click="Button_Click_1" Style="{StaticResource CustomButtonStyle}" BorderBrush="White" Background="White"/>
         </Grid>
     </Grid>
 </Page>

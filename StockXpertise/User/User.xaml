@@ -43,7 +43,7 @@
                     </Style>
                 </DataGrid.Resources>
             </DataGrid>
-            <Button Content="Ajouter" HorizontalAlignment="Left" Margin="1162,171,0,0" VerticalAlignment="Top" Width="72" Click="Button_Click" Background="#FFFFDDCC" BorderBrush="White" Height="33"/>
+            <Button Content="Ajouter" HorizontalAlignment="Left" Margin="1157,171,0,0" VerticalAlignment="Top" Width="77" Click="Button_Click" Style="{StaticResource CustomButtonStyle}" Background="White" BorderBrush="White" Height="40"/>
             <Border BorderThickness="2" Margin="0,51,0,0" CornerRadius="10" VerticalAlignment="Top" HorizontalAlignment="Center" Height="77" Width="1247" Background="#e2e0b5">
                 <Border.Effect>
                     <DropShadowEffect/>

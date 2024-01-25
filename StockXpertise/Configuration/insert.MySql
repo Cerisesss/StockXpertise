@@ -12,16 +12,16 @@ INSERT INTO `fournisseur` (`nom`, `prenom`, `numero`, `mail`, `adresse`) VALUES
 ('Leclerc', 'Sophie', 789654321, 'leclerc.sophie@mail.com', '18 Avenue de la Gare, Rennes');
 
 -- Inserts for employes table
-INSERT INTO `employes` (`nom`, `prenom`, `mot_de_passe`, `mail`, `role`) VALUES
-('Durand', 'Paul', 'mdp2', 'durand.paul@mail.com', 'Vendeur'),
-('Leroy', 'Julie', 'mdp3', 'leroy.julie@mail.com', 'Magasinier'),
-('Girard', 'Philippe', 'mdp4', 'girard.philippe@mail.com', 'Caissier'),
-('Lemoine', 'Sophie', 'mdp5', 'lemoine.sophie@mail.com', 'Responsable Stock'),
-('Smith', 'John', 'mdp6', 'smith.john@mail.com', 'Vendeur'),
-('Dubois', 'Céline', 'mdp7', 'dubois.celine@mail.com', 'Magasinier'),
-('Fournier', 'François', 'mdp8', 'fournier.francois@mail.com', 'Caissier'),
-('Lopez', 'Eva', 'mdp9', 'lopez.eva@mail.com', 'Responsable Stock'),
-('Muller', 'Thomas', 'mdp10', 'muller.thomas@mail.com', 'Vendeur');
+-- INSERT INTO `employes` (`nom`, `prenom`, `mot_de_passe`, `mail`, `role`) VALUES
+-- ('Durand', 'Paul', 'mdp2', 'durand.paul@mail.com', 'Vendeur'),
+-- ('Leroy', 'Julie', 'mdp3', 'leroy.julie@mail.com', 'Magasinier'),
+-- ('Girard', 'Philippe', 'mdp4', 'girard.philippe@mail.com', 'Caissier'),
+-- ('Lemoine', 'Sophie', 'mdp5', 'lemoine.sophie@mail.com', 'Responsable Stock'),
+-- ('Smith', 'John', 'mdp6', 'smith.john@mail.com', 'Vendeur'),
+-- ('Dubois', 'Céline', 'mdp7', 'dubois.celine@mail.com', 'Magasinier'),
+-- ('Fournier', 'François', 'mdp8', 'fournier.francois@mail.com', 'Caissier'),
+-- ('Lopez', 'Eva', 'mdp9', 'lopez.eva@mail.com', 'Responsable Stock'),
+-- ('Muller', 'Thomas', 'mdp10', 'muller.thomas@mail.com', 'Vendeur');
 
 -- Inserts for emplacement table
 INSERT INTO `emplacement` (`code`, `capacite`) VALUES
