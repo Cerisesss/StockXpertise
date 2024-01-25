@@ -51,6 +51,8 @@ namespace StockXpertise.Connection
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
+            btnConnection.IsEnabled = false; // desactive le bouton pour eviter les doublons de requetes
+
             string mail = textboxMail.Text;
             string password = passwordboxPassword.Password;
 
@@ -71,6 +73,8 @@ namespace StockXpertise.Connection
                 ConnexionProgressBar.Visibility = Visibility.Hidden;
                 ConnexionProgressBar.Value = 0;
                 timer.Stop();
+
+                btnConnection.IsEnabled = true;
 
                 return;
             }

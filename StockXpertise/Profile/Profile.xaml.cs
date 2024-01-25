@@ -32,7 +32,6 @@ namespace StockXpertise.Profile
             ProfileLastName.Content = Application.Current.Properties["prenom"];
             ProfileMail.Content = Application.Current.Properties["mail"];
             ProfileStatus.Content = Application.Current.Properties["role"];
-            ProfileMdp.Content = Application.Current.Properties["mdp"];
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

@@ -20,18 +20,16 @@
                 </Image.Clip>
             </Image>
         </Grid>
-        <Rectangle Margin="557,441,431,218" Stroke="#FFABADB3" Width="512" Fill="#FFFFDDCC"/>
+        <Rectangle Margin="557,441,431,244" Stroke="#FFABADB3" Width="512" Fill="#FFFFDDCC"/>
         <Label Content="Nom" Height="28" Margin="587,446,835,326" Width="78"/>
         <Label Content="Prénom" Height="28" Margin="587,470,835,302" Width="78"/>
         <Label Content="Mail" Height="28" Margin="587,496,835,276" Width="78"/>
         <Label Content="Status" Height="28" Margin="587,518,835,254" Width="78"/>
-        <Rectangle Margin="674,441,464,218" Stroke="#FFABADB3" Width="362" Fill="White"/>
+        <Rectangle Margin="674,441,464,244" Stroke="#FFABADB3" Width="362" Fill="White"/>
         <Label x:Name="ProfileFirstName" Content="Nom " Height="28" Margin="693,446,483,326" Width="324"/>
         <Label x:Name="ProfileLastName" Content="Prénom" Height="28" Margin="693,470,483,302" Width="324"/>
         <Label x:Name="ProfileMail" Content="Mail" Height="28" Margin="693,496,483,276" Width="324"/>
         <Label x:Name="ProfileStatus" Content="Status" Height="28" Margin="693,518,483,254" Width="324"/>
-        <Label Content="Mot de passe" Height="28" Margin="587,546,831,226"/>
-        <Label x:Name="ProfileMdp" Content="Mot de passe" Height="28" Margin="693,546,483,226" Width="324"/>
         <Button Content="Déconnexion" Margin="826,595,584,165" Width="90" Click="Button_Click" Background="#FFFFDDCC" BorderBrush="White"/>
         <Button Content="Modifier" Margin="693,595,717,165" Width="90" Click="Button_Modifier" Background="#FFFFDDCC" BorderBrush="White"/>
     </Grid>
