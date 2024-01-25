@@ -22,8 +22,8 @@
                 </Border.Effect>
             </Border>
             <TextBlock Text="Inventaire" HorizontalAlignment="Center" FontSize="24" Margin="0,71,0,685" Width="116" FontWeight="Bold" RenderTransformOrigin="0.189,0.5" Foreground="#FF303030"/>
-            <Button x:Name="button" Content="PDF" HorizontalAlignment="Left"  Margin="1130,172,117,588" VerticalAlignment="Top" Width="80
-                    " RenderTransformOrigin="0.743,1.834" Click="generation_pdf" Background="#FFFFDDCC" BorderBrush="White" Foreground="#FF303030" Height="35"/>
+            <Button x:Name="button" Content="PDF" HorizontalAlignment="Left"  Margin="1130,166,0,0" VerticalAlignment="Top" Width="80
+                    " RenderTransformOrigin="0.743,1.834" Click="generation_pdf" Style="{StaticResource CustomButtonStyle}" Background="White" BorderBrush="White" Foreground="#FF303030" Height="41"/>
             <DataGrid x:Name="MyDataGrid" HorizontalAlignment="Center" VerticalAlignment="Top" Height="500" Width="1247" Margin="0,251,0,0"
                 AutoGenerateColumns="True"
           AlternatingRowBackground="#F0F0F0"

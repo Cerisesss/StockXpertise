@@ -30,7 +30,7 @@
         <Label x:Name="ProfileLastName" Content="Prénom" Height="28" Margin="693,470,483,302" Width="324"/>
         <Label x:Name="ProfileMail" Content="Mail" Height="28" Margin="693,496,483,276" Width="324"/>
         <Label x:Name="ProfileStatus" Content="Status" Height="28" Margin="693,518,483,254" Width="324"/>
-        <Button Content="Déconnexion" Margin="826,595,584,165" Width="90" Click="Button_Click" Background="#FFFFDDCC" BorderBrush="White"/>
-        <Button Content="Modifier" Margin="693,595,717,165" Width="90" Click="Button_Modifier" Background="#FFFFDDCC" BorderBrush="White"/>
+        <Button Content="Déconnexion" Margin="826,595,584,165" Width="90" Click="Button_Click" Style="{StaticResource CustomButtonStyle}" Background="White" BorderBrush="White"/>
+        <Button Content="Modifier" Margin="693,595,717,165" Width="90" Click="Button_Modifier" Style="{StaticResource CustomButtonStyle}" Background="White" BorderBrush="White"/>
     </Grid>
 </Page>

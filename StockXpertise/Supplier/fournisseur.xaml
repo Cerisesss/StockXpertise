@@ -20,7 +20,7 @@
 
             <TextBlock Text="Fournisseur" HorizontalAlignment="Center" FontSize="24" Margin="0,72,0,692" Width="134" FontWeight="Bold" Foreground="#FF303030"/>
             <Rectangle HorizontalAlignment="Left" Margin="123,171,0,0" Stroke="Transparent" VerticalAlignment="Top" Width="68" RenderTransformOrigin="0.527,0.493" Height="40" Fill="#FFFFDDCC"/>
-            <Button x:Name="BtnAddSupplier" Content="Ajouter" HorizontalAlignment="Left" Margin="1162,171,0,0" VerticalAlignment="Top" Width="72" Click="Add_New_Stock" BorderBrush="White" Background="#FFFFDDCC" Height="40"/>
+            <Button x:Name="BtnAddSupplier" Content="Ajouter" HorizontalAlignment="Left" Margin="1162,171,0,0" VerticalAlignment="Top" Width="72" Style="{StaticResource CustomButtonStyle}" Click="Add_New_Stock" BorderBrush="White" Background="White" Height="40"/>
             <ComboBox x:Name="comboBoxAffichage" HorizontalAlignment="Left" Margin="191,171,0,0" VerticalAlignment="Top" Width="330" SelectionChanged="ComboBox_SelectionChanged_affichage" BorderBrush="{x:Null}" Height="40"/>
             <Label Content="Trier" HorizontalAlignment="Left" Margin="136,178,0,0" VerticalAlignment="Top" Width="42"/>
             <DataGrid x:Name="MyDataGrid" HorizontalAlignment="Center" VerticalAlignment="Top" Height="500" Width="1247" Margin="0,251,0,0"

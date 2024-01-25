@@ -16,7 +16,7 @@
                 <ColumnDefinition Width="409*"/>
             </Grid.ColumnDefinitions>
             <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Width="901" AutoGenerateColumns="True" Margin="213,182,0,0" Grid.ColumnSpan="2" Height="512" />
-            <Button x:Name="excelgenerate" Content="Exporter" HorizontalAlignment="Left" Height="40" Margin="81,73,0,0" VerticalAlignment="Top" Width="113" Click="create_excel" BorderBrush="White" BorderThickness="2" RenderTransformOrigin="0.5,0.5" Background="#FFFFDDCC" Grid.Column="1">
+            <Button x:Name="excelgenerate" Content="Exporter" HorizontalAlignment="Left" Height="40" Margin="81,73,0,0" VerticalAlignment="Top" Width="92" Style="{StaticResource CustomButtonStyle}" Click="create_excel" BorderBrush="White" BorderThickness="2" RenderTransformOrigin="0.5,0.5" Background="White" Grid.Column="1">
                 <Button.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>

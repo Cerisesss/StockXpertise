@@ -41,9 +41,9 @@
         <Label x:Name="labelMdp" Content="" Height="29" Margin="279,188,346,232" Width="175"/>
         <Label x:Name="labelMail" Content="" Height="29" Margin="279,230,350,191" Width="175"/>
         <Label x:Name="labelRole" Content="" Height="29" Margin="279,279,350,142" Width="175"/>
-        <Button Content="Supprimer" Margin="1019,184,391,578" Width="90" Click="Button_Supprimer" Background="#FFFFDDCC" BorderBrush="White"/>
-        <Button Content="Valider" Margin="845,570,565,193" Width="90" Click="Button_Click" Background="#FFEBF3E8" BorderBrush="White" RenderTransformOrigin="0.506,0.719"/>
-        <Button Content="Annuler" Margin="712,570,698,193" Width="90" Click="Button_Click_1" Background="#FFFFDDCC" BorderBrush="White"/>
+        <Button Content="Supprimer" Margin="1019,184,391,578" Width="90" Click="Button_Supprimer" Style="{StaticResource CustomButtonStyle}" Background="White" BorderBrush="White"/>
+        <Button Content="Valider" Margin="845,564,565,193" Width="90" Click="Button_Click" Style="{StaticResource CustomButtonStyle}" Background="White" BorderBrush="White" RenderTransformOrigin="0.506,0.719"/>
+        <Button Content="Annuler" Margin="712,564,698,193" Width="90" Click="Button_Click_1" Style="{StaticResource CustomButtonStyle}" Background="White" BorderBrush="White"/>
         <ProgressBar x:Name="ConnexionProgressBar" Margin="578,622,422,160" Minimum="0" Maximum="100" Background="White" BorderBrush="#FFBCBCBC">
             <ProgressBar.Foreground>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
