@@ -16,30 +16,52 @@
             <Rectangle HorizontalAlignment="Left" Margin="123,171,0,0" Stroke="Transparent" VerticalAlignment="Top" Width="68" RenderTransformOrigin="0.527,0.493" Height="40" Fill="#FFFFDDCC"/>
             <ComboBox x:Name="comboBoxAffichage" HorizontalAlignment="Left" Margin="191,171,0,0" VerticalAlignment="Top" Width="330" SelectionChanged="ComboBox_SelectionChanged_affichage" Height="40"/>
             <Label Content="Trier" HorizontalAlignment="Left" Margin="136,178,0,0" VerticalAlignment="Top" Width="42"/>
-            <DataGrid x:Name="MyDataGrid" HorizontalAlignment="Center" VerticalAlignment="Top" Height="500" Width="1247" Margin="0,251,0,0"
-            AutoGenerateColumns="True"
-            AlternatingRowBackground="#F0F0F0"
-            GridLinesVisibility="None"
-            CanUserResizeColumns="True"
-            CanUserResizeRows="False"
-            SelectionMode="Single"
-            RowHeight="40" SelectionChanged="MyDataGrid_SelectionChanged">
-
-                <!-- Style des colonnes -->
+            <DataGrid x:Name="MyDataGrid" HorizontalAlignment="Center" VerticalAlignment="Top" Height="500" Width="1247" Margin="0,251,0,0" RowHeight="40"
+Background="Transparent"
+BorderBrush="Transparent"
+GridLinesVisibility="None"
+CanUserResizeColumns="True"
+CanUserResizeRows="False"
+SelectionMode="Single"
+AutoGenerateColumns="True"
+SelectionChanged="MyDataGrid_SelectionChanged">
+                <!-- Style des colonnes et des lignes -->
                 <DataGrid.Resources>
                     <Style TargetType="DataGridCell">
                         <Setter Property="BorderThickness" Value="0"/>
-                        <Setter Property="Padding" Value="10"/>
+                        <Setter Property="Padding" Value="0"/>
                         <Setter Property="TextBlock.TextAlignment" Value="Center"/>
                         <Setter Property="VerticalContentAlignment" Value="Center"/>
                     </Style>
+                    <Style TargetType="DataGridRow">
+                        <Setter Property="Height" Value="Auto"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="DataGridRow">
+                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10" Margin="0,5">
+                                        <SelectiveScrollingGrid>
+                                            <SelectiveScrollingGrid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </SelectiveScrollingGrid.ColumnDefinitions>
+                                            <SelectiveScrollingGrid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                            </SelectiveScrollingGrid.RowDefinitions>
+                                            <DataGridCellsPresenter Grid.Column="1" ItemsPanel="{TemplateBinding ItemsPanel}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                        </SelectiveScrollingGrid>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
                     <Style TargetType="DataGridColumnHeader">
-                        <Setter Property="Background" Value="#FFD2D2D2"/>
-                        <Setter Property="Foreground" Value="Black"/>
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Foreground" Value="WhiteSmoke"/>
                         <Setter Property="FontWeight" Value="Bold"/>
-                        <Setter Property="BorderThickness" Value="0"/>
                         <Setter Property="Padding" Value="15,10"/>
                         <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                        <Setter Property="BorderBrush" Value="Transparent"/>
+                        <!-- Couleur de la bordure transparente -->
                     </Style>
                 </DataGrid.Resources>
             </DataGrid>
