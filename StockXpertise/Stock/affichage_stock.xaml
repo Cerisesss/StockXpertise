@@ -21,10 +21,9 @@
                 </Border.Effect>
             </Border>
             <TextBlock Text="Stock" HorizontalAlignment="Center" FontSize="24" Margin="0,66,0,687" Width="64" FontWeight="Bold" RenderTransformOrigin="0.189,0.5"/>
-            <Button x:Name="button" Content="PDF" Height="30" Margin="1206,175,31,613" Width="72" RenderTransformOrigin="0.743,1.834" BorderBrush="Black" Click="generation_pdf" Background="#FFFFDDCC"/>
-            <DataGrid x:Name="MyDataGrid" HorizontalAlignment="Center" VerticalAlignment="Top" Height="500" Width="1247" Margin="0,251,0,0" RowHeight="40"
-    Background="Transparent"
-    BorderBrush="Transparent"
+            <Button x:Name="button" Content="PDF" Height="30" Margin="1016,181,45,589" Width="72" RenderTransformOrigin="0.743,1.834" BorderBrush="Black" Click="generation_pdf" Background="#FFFFDDCC"/>
+            <DataGrid x:Name="MyDataGrid" HorizontalAlignment="Center" VerticalAlignment="Top" Height="500" Width="1247" Margin="0,251,0,0"
+    AlternatingRowBackground="#F0F0F0"
     GridLinesVisibility="None"
     CanUserResizeColumns="True"
     CanUserResizeRows="False"
@@ -150,7 +149,7 @@
                     </ControlTemplate>
                 </TextBox.Template>
             </TextBox>
-            <Button x:Name="addStock" Content="Ajouter" Height="30" Margin="1039,175,198,613" Width="72" Click="Add_New_Stock" BorderBrush="Black" Background="#FFFFDDCC" RenderTransformOrigin="1.31,0.427"/>
+            <Button x:Name="addStock" Content="Ajouter" Height="30" Margin="920,181,141,589" Width="72" Click="Add_New_Stock" BorderBrush="Black" Background="#FFFFDDCC" RenderTransformOrigin="1.31,0.427"/>
         </Grid>
     </Grid>
 </Page>

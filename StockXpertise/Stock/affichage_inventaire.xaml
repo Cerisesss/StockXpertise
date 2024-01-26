@@ -21,19 +21,28 @@
                     <DropShadowEffect/>
                 </Border.Effect>
             </Border>
-            <TextBlock Text="Inventaire" HorizontalAlignment="Center" FontSize="24" Margin="0,71,0,685" Width="116" FontWeight="Bold" RenderTransformOrigin="0.189,0.5" Foreground="#FF303030"/>
-            <Button x:Name="button" Content="PDF" HorizontalAlignment="Left"  Margin="1130,166,0,0" VerticalAlignment="Top" Width="80
-                    " RenderTransformOrigin="0.743,1.834" Click="generation_pdf" Style="{StaticResource CustomButtonStyle}" Background="White" BorderBrush="White" Foreground="#FF303030" Height="41"/>
-            DataGrid x:Name="MyDataGrid" HorizontalAlignment="Center" VerticalAlignment="Top" Height="500" Width="1247" Margin="0,251,0,0" RowHeight="40"
-                Background="Transparent"
-                BorderBrush="Transparent"
-                GridLinesVisibility="None"
-                CanUserResizeColumns="True"
-                CanUserResizeRows="False"
-                SelectionMode="Single"
-                AutoGenerateColumns="False"
-                SelectionChanged="MyDataGrid_SelectionChanged">
-                <!-- Style des colonnes et des lignes -->
+            <TextBlock Text="Inventaire" HorizontalAlignment="Left" FontSize="24" Margin="520,54,0,682" Width="136" FontWeight="Bold"/>
+            <Button x:Name="button" Content="PDF" HorizontalAlignment="Left" Height="37" Margin="562,662,0,0" VerticalAlignment="Top" Width="94" RenderTransformOrigin="0.743,1.834" Click="generation_pdf" Background="#FFFFDDCC" BorderBrush="Black"/>
+            <DataGrid x:Name="MyDataGrid" HorizontalAlignment="Left" VerticalAlignment="Center" Height="434" Width="914" Margin="159,0,0,0"
+          AutoGenerateColumns="True"
+          AlternatingRowBackground="#F0F0F0"
+          GridLinesVisibility="None"
+          CanUserResizeColumns="True"
+          CanUserResizeRows="False"
+          SelectionMode="Single"
+          RowHeight="40" SelectionChanged="MyDataGrid_SelectionChanged">
+                
+                <!-- Définition des colonnes manuellement -->
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id produit" Binding="{Binding Id_produit}"/>
+                <DataGridTextColumn Header="Nom" Binding="{Binding Nom}"/>
+                <DataGridTextColumn Header="Quantite normalement en stock" Binding="{Binding Quantite_stock}"/>
+                <DataGridTextColumn Header="Quantite réellement en stock" Binding="{Binding Quantite_stock_reel}"/>
+                <DataGridTextColumn Header="Emplacement" Binding="{Binding Code}"/>
+                <DataGridTextColumn Header="Emplacement réel" Binding="{Binding Code_reel}"/>
+            </DataGrid.Columns>
+
+                <!-- Style des colonnes -->
                 <DataGrid.Resources>
                     <Style TargetType="DataGridCell">
                         <Setter Property="BorderThickness" Value="0"/>
