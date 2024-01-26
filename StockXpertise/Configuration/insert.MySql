@@ -9,75 +9,73 @@ INSERT INTO `fournisseur` (`nom`, `prenom`, `numero`, `mail`, `adresse`) VALUES
 ('Lambert', 'Julien', 987654789, 'lambert.julien@mail.com', '14 Avenue des Roses, Nice'),
 ('Moreau', 'Hélène', 321789654, 'moreau.helene@mail.com', '7 Rue de la Paix, Nantes'),
 ('Robert', 'Luc', 654987321, 'robert.luc@mail.com', '10 Boulevard Carnot, Strasbourg'),
-('Leclerc', 'Sophie', 789654321, 'leclerc.sophie@mail.com', '18 Avenue de la Gare, Rennes');
+('Leclerc', 'Sophie', 789654321, 'leclerc.sophie@mail.com', '18 Avenue de la Gare, Rennes'),
+('Ding', 'Chunmei', 0788286498, 'chunmeiding610@gmail.com', '3 rue de la Haie Coq')
+;
 
 -- Inserts for employes table
--- INSERT INTO `employes` (`nom`, `prenom`, `mot_de_passe`, `mail`, `role`) VALUES
--- ('Durand', 'Paul', 'mdp2', 'durand.paul@mail.com', 'Vendeur'),
--- ('Leroy', 'Julie', 'mdp3', 'leroy.julie@mail.com', 'Magasinier'),
--- ('Girard', 'Philippe', 'mdp4', 'girard.philippe@mail.com', 'Caissier'),
--- ('Lemoine', 'Sophie', 'mdp5', 'lemoine.sophie@mail.com', 'Responsable Stock'),
--- ('Smith', 'John', 'mdp6', 'smith.john@mail.com', 'Vendeur'),
--- ('Dubois', 'Céline', 'mdp7', 'dubois.celine@mail.com', 'Magasinier'),
--- ('Fournier', 'François', 'mdp8', 'fournier.francois@mail.com', 'Caissier'),
--- ('Lopez', 'Eva', 'mdp9', 'lopez.eva@mail.com', 'Responsable Stock'),
--- ('Muller', 'Thomas', 'mdp10', 'muller.thomas@mail.com', 'Vendeur');
+INSERT INTO `employes` (`nom`, `prenom`, `mot_de_passe`, `mail`, `role`) VALUES
+('Durand', 'Paul', 'mdp2', 'durand.paul@mail.com', 'Vendeur'),
+ ('Leroy', 'Julie', 'mdp3', 'leroy.julie@mail.com', 'Magasinier'),
+ ('Girard', 'Philippe', 'mdp4', 'girard.philippe@mail.com', 'Caissier'),
+ ('Lemoine', 'Sophie', 'mdp5', 'lemoine.sophie@mail.com', 'Responsable Stock'),
+ ('Smith', 'John', 'mdp6', 'smith.john@mail.com', 'Vendeur'),
+ ('Dubois', 'Céline', 'mdp7', 'dubois.celine@mail.com', 'Magasinier'),
+ ('Fournier', 'François', 'mdp8', 'fournier.francois@mail.com', 'Caissier'),
+ ('Lopez', 'Eva', 'mdp9', 'lopez.eva@mail.com', 'Responsable Stock'),
+ ('Muller', 'Thomas', 'mdp10', 'muller.thomas@mail.com', 'Vendeur');
 
 -- Inserts for emplacement table
 INSERT INTO `emplacement` (`code`, `capacite`) VALUES
-('A1', 100),
-('A2', 150),
-('A3', 200),
-('A4', 120),
-('A5', 180),
-('B1', 120),
-('B2', 180),
-('B3', 200),
-('A4', 160),
-('B5', 150);
+('A', 100),
+('B', 160),
+('C', 150);
 
 -- Inserts for articles table
 INSERT INTO `articles` (`id_fournisseur`, `nom`, `famille`, `prix_ht`, `prix_ttc`, `prix_vente`, `prix_achat`, `description`, `code_barre`, `image`) VALUES
-(1, 'repère et référence statistique', 'Livre', 20, 22, 26, 15, 'LIVRE', '9782110953902', '/Images/image0.jpg'),
-(2, 'grumeaux numéro 2', 'livre', 7, 8, 10, 6, 'livre', '9782913549715', '/Images/image1.jpg'),
-(3, 'La cybersécurité face au défi de la confiance', 'livre', 20, 21, 23, 18, 'livre cyber', '9782738143679', '/Images/image2.jpg'),
-(4, 'Numérique Responsable', 'livre', 10, 11, 12, 9, 'livre', '0000000', '/Images/image3.jpg'),
-(5, 'Rosa bonheur', 'livre', 8, 9, 10, 7, 'Livre', '3061990143808', '/Images/image4.jpg'),
-(1, 'quand l écologie nous gagne', 'écologie', 16, 17, 19, 15, 'éco livre', '00002', '/Images/image5.jpg'),
-(2, 'Phonétisme et prononciations du français', 'livre', 27, 28, 30, 23, 'livre nathan université', '9782091902906', '/Images/image6.jpg'),
-(3, 'Lamour Dieu', 'livre', 13, 14, 16, 11, 'livre dieu', '9782867446528', '/Images/image7.jpg'),
-(4, 'souris inphic', 'inphic', 33, 35, 40, 30, 'souris', '0707443237931', '/Images/image8.jpg'),
-(1, 'chat', 'chat', 12, 13, 15, 10, 'chat', '9215327655534395500000000066', '/Images/image9.jpg'),
-(2, 'broad noodle chili oil flavor', 'pate', 4, 4, 5, 3, 'pate', '6926410320115', '/Images/image10.jpg'),
-(3, 'ansung noodle', 'pate', 5, 5, 6, 4, 'pate', '8801043157735', '/Images/image11.jpg'),
-(4, 'hot and spicy flavour', 'pate', 5, 5, 6, 4, 'pate', '8850987131264', '/Images/image12.jpg'),
-(1, 'Artificial beef with sauerkraut', 'pate', 5, 5, 6, 4, 'pate', '6935270641698', '/Images/image13.jpg'),
-(2, 'Broad noodle chili oil flavor', 'pate', 4, 4, 5, 3, 'pate', '6926410320115', '/Images/image14.jpg')
+(1, 'Repère et référence statistique', 'Livre', 20, 22, 26, 15, 'Livre', '9782110953902', '/Images/image0.jpg'),
+(2, 'Grumeaux numéro 2', 'Livre', 7, 8, 10, 6, 'Livre', '9782913549715', '/Images/image1.jpg'),
+(3, 'La cybersécurité face au défi de la confiance', 'Livre', 20, 21, 23, 18, 'Livre cyber', '9782738143679', '/Images/image2.jpg'),
+(4, 'Numérique Responsable', 'Livre', 10, 11, 12, 9, 'Livre', '0000000', '/Images/image3.jpg'),
+(5, 'Rosa bonheur', 'Livre', 8, 9, 10, 7, 'Livre', '3061990143808', '/Images/image4.jpg'),
+(1, 'Quand l écologie nous gagne', 'Livre', 16, 17, 19, 15, 'Livre ecologie', '00002', '/Images/image5.jpg'),
+(2, 'Phonétisme et prononciations du français', 'Livre', 27, 28, 30, 23, 'Livre nathan université', '9782091902906', '/Images/image6.jpg'),
+(3, 'Lamour Dieu', 'Livre', 13, 14, 16, 11, 'Livre dieu', '9782867446528', '/Images/image7.jpg'),
+(11, 'Souris Inphic', 'Technologie', 33, 35, 40, 30, 'Souris', '0707443237931', '/Images/image8.jpg'),
+(1, 'Chat', 'chat', 12, 13, 15, 10, 'Chat', '9215327655534395500000000066', '/Images/image9.jpg'),
+(2, 'Broad noodle chili oil flavor', 'Nourriture', 4, 4, 5, 3, 'Nouilles instantané', '6926410320115', '/Images/image10.jpg'),
+(3, 'Ansung noodle', 'Nourriture', 5, 5, 6, 4, 'Nouilles instantané', '8801043157735', '/Images/image11.jpg'),
+(4, 'Hot and spicy flavour', 'Nourriture', 5, 5, 6, 4, 'Nouilles instantané', '8850987131264', '/Images/image12.jpg'),
+(1, 'Artificial beef with sauerkraut', 'Nourriture', 5, 5, 6, 4, 'Nouilles instantané', '6935270641698', '/Images/image13.jpg'),
+(2, 'Broad noodle chili oil flavor', 'Nourriture', 4, 4, 5, 3, 'Nouilles instantané', '6926410320115', '/Images/image14.jpg'),
+(11, 'Pot de fleur musical', 'Technologie', 8, 10, 10, 5, 'Pot de fleur avec une enceinte intégré', '0632422828841', '/Images/pot.png'),
+(11, 'Rechargeable camping lantern Wilson', 'Led', 8, 10, 10, 5, 'Led lantern pour camping ou autre, rechargeable avec un panneau solaire intégré', '8718658554227', '/Images/lantern.png'),
+(11, 'Stake light set', 'Led', 16, 20, 20, 10, 'Led pour jardin, rechargeable avec un panneau solaire intégré', 'X001D0STGV', '/Images/stake.png')
 ;
 
 
 -- Inserts for produit table
 INSERT INTO `produit` (`id_emplacement`, `id_articles`, `quantite_stock`, `quantite_stock_reel`) VALUES
-(1, 1, 50, 0),
+(2, 1, 50, 0),
 (2, 1, 30, 0),
-(3, 3, 75, 0),
-(4, 4, 40, 0),
-(5, 5, 60, 0),
-(6, 6, 25, 0),
-(7, 7, 35, 0),
-(8, 8, 50, 0),
-(9, 9, 30, 0),
-(10, 1, 40, 0),
-(1, 3, 20, 0),
-(2, 9, 30, 0),
-(3, 2, 40, 0),
-(4, 6, 50, 0),
-(5, 9, 60, 0),
-(6, 7, 70, 0),
-(7, 3, 10, 0),
-(8, 4, 80, 0),
-(9, 5, 90, 0),
-(10, 2, 20, 0);
+(2, 3, 75, 0),
+(2, 4, 40, 0),
+(2, 5, 60, 0),
+(2, 6, 25, 0),
+(2, 7, 35, 0),
+(2, 8, 50, 0),
+(1, 9, 50, 0),
+(3, 10, 20, 0),
+(2, 11, 30, 0),
+(2, 12, 40, 0),
+(2, 13, 50, 0),
+(2, 14, 60, 0),
+(2, 15, 10, 0),
+(3, 16, 20, 0),
+(2, 17, 20, 0),
+(1, 18, 10, 0);
+
+
 
 
 -- Inserts for mouvement table
