@@ -25,12 +25,19 @@
             <TextBox x:Name="text_code_barre" Margin="385,183,692,582" TextWrapping="Wrap" Width="250" PreviewKeyDown="text_code_barre_PreviewKeyDown"/>
             <TextBox x:Name="text_quantite" Margin="653,183,462,583" TextWrapping="Wrap" Width="85"/>
             <ListBox x:Name="listBoxImages" Height="340" Margin="247,303,462,151" Width="490">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <!-- Utiliser un UniformGrid pour organiser les éléments -->
+                        <UniformGrid Columns="3" Margin="25,0,0,0" />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel>
+                        <!-- Utiliser un StackPanel pour organiser l'image, le nom et la quantité -->
+                        <StackPanel Margin="5">
                             <Image Source="{Binding image_path}" Width="100" Height="100"/>
-                            <TextBlock Text="{Binding nom_article}" HorizontalAlignment="Center" />
-                            <TextBlock Text="{Binding quantite}" HorizontalAlignment="Center" />
+                            <TextBlock Text="{Binding nom_article}" HorizontalAlignment="Center"/>
+                            <TextBlock Text="{Binding quantite}" HorizontalAlignment="Center"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

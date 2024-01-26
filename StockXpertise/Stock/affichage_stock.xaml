@@ -73,11 +73,11 @@
                 </DataGrid.Resources>
             </DataGrid>
             <Button x:Name="addStock" Content="Ajouter" Margin="1017,172,237,588" Click="Add_New_Stock" Style="{StaticResource CustomButtonStyle}" BorderBrush="White" Background="White" RenderTransformOrigin="1.31,0.427" Foreground="#FF303030"/>
-            <TextBox x:Name="Search_TextBox" Margin="133,172,469,588" Text="Search ..." TextWrapping="Wrap">
+            <TextBox x:Name="Search_TextBox" Height="30" Margin="142,177,480,593" TextWrapping="Wrap" Width="705">
                 <TextBox.Template>
                     <ControlTemplate TargetType="{x:Type TextBox}">
                         <Grid>
-                            <Border CornerRadius="10" BorderBrush="Black" BorderThickness="1" Background="White">
+                            <Border CornerRadius="15" BorderBrush="Black" BorderThickness="1" Background="White">
                                 <ScrollViewer x:Name="PART_ContentHost" Padding="5" Margin="5"/>
                             </Border>
                             <Button Content="🔍" HorizontalAlignment="Right" VerticalAlignment="Center" Width="40" Margin="-35,0,5,0" BorderBrush="{x:Null}" Click="Search_TextBox_TextChanged" Background="White"/>
