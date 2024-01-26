@@ -18,6 +18,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AForge.Video;
 using AForge.Video.DirectShow;
+using iText.IO.Image;
 using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI.Common;
 using StockXpertise.Connection;
@@ -34,7 +35,6 @@ namespace StockXpertise.Caisse
         List<Article> listeArticles = new List<Article>();
         private FilterInfoCollection filterInfoCollection;
         private VideoCaptureDevice videoCaptureDevice;
-
 
         public Caisse()
         {
