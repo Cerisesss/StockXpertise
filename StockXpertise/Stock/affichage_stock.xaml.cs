@@ -192,7 +192,16 @@ namespace StockXpertise.Stock
             // Si un mot de recherche est saisi, ajuste la requête et exécute la recherche
             if (!string.IsNullOrEmpty(motRecherche))
             {
-                query += " WHERE articles.id_articles LIKE @motRecherche OR articles.nom LIKE @motRecherche OR articles.famille LIKE @motRecherche OR articles.code_barre LIKE @motRecherche OR articles.description LIKE @motRecherche OR articles.prix_ht LIKE @motRecherche OR articles.prix_ttc LIKE @motRecherche OR produit.quantite_stock LIKE @motRecherche OR produit.id_emplacement LIKE @motRecherche OR emplacement.code LIKE @motRecherche";
+                // Vérifie si le mot de recherche est un nombre
+                if (IsNumeric(motRecherche))
+                {
+                    query += " WHERE articles.id_articles = @motRecherche OR articles.code_barre = @motRecherche OR produit.quantite_stock = @motRecherche OR produit.id_emplacement = @motRecherche";
+                }
+                else
+                {
+                    query += " WHERE articles.nom LIKE @motRecherche OR articles.famille LIKE @motRecherche OR articles.description LIKE @motRecherche OR articles.prix_ht LIKE @motRecherche OR articles.prix_ttc LIKE @motRecherche OR emplacement.code LIKE @motRecherche";
+                }
+
                 query = query.Replace("@motRecherche", "'" + "%" + motRecherche + "%" + "'");
                 MySqlDataReader reader = ConfigurationDB.ExecuteQuery(query);
 
@@ -210,6 +219,12 @@ namespace StockXpertise.Stock
             {
                 MessageBox.Show("Veuillez saisir un mot de recherche", "Oups", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        // Méthode pour vérifier si une chaîne est numérique
+        private bool IsNumeric(string value)
+        {
+            return double.TryParse(value, out _);
         }
 
         private void Add_New_Stock(object sender, RoutedEventArgs e)
